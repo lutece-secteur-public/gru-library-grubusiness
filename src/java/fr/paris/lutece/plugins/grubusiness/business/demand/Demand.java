@@ -48,7 +48,6 @@ public class Demand extends BaseDemand
 {
     public static final int STATUS_INPROGRESS = 0;
     public static final int STATUS_CLOSED = 1;
-    private static final String NO_DATE = "";
 
     // Variables declarations 
     private String _strTitle;
