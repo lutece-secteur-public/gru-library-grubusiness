@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2015, Mairie de Paris
+ * Copyright (c) 2002-2016, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,55 +31,78 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.grubusiness.business.demand;
+package fr.paris.lutece.plugins.grubusiness.business.notification;
 
-import org.codehaus.jackson.annotate.JsonProperty;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonRootName;
 
 /**
- * This is the business class for the object Email
+ * The Class AgentNotification for backoffice notification.<br/>
+ * Fields description :<br/>
+ * - message, content of the notification<br/>
+ * - status_test, status label which will be displayed
  */
-public class Sms
+@JsonRootName( value = "backoffice_logging" )
+@JsonPropertyOrder( {"message",
+    "status_text"
+} )
+public class BackofficeNotification
 {
-    // Variables declarations 
-    private String _strPhoneNumber;
+    // Variables declarations
     private String _strMessage;
+    private String _strStatusText;
 
     /**
-     * Returns the PhoneNumber
-     * @return The PhoneNumber
+     * Instantiates a new notify gru agent notification.
      */
-    public String getPhoneNumber(  )
+    public BackofficeNotification(  )
     {
-        return _strPhoneNumber;
+        this._strMessage = NotificationConstants.DEFAULT_STRING;
+        this._strStatusText = NotificationConstants.DEFAULT_STRING;
     }
 
     /**
-     * Sets the PhoneNumber
-     * @param strPhoneNumber The PhoneNumber
+     * Gets the message.
+     *
+     * @return the message
      */
-    @JsonProperty( "phone_number" )
-    public void setPhoneNumber( String strPhoneNumber )
-    {
-        _strPhoneNumber = strPhoneNumber;
-    }
-
-    /**
-     * Returns the Message
-     * @return The Message
-     */
+    @JsonProperty( "message" )
     public String getMessage(  )
     {
         return _strMessage;
     }
 
     /**
-     * Sets the Message
-     * @param strMessage The Message
+     * Sets the message.
+     *
+     * @param strMessage the new message
      */
     @JsonProperty( "message" )
     public void setMessage( String strMessage )
     {
         _strMessage = strMessage;
+    }
+
+    /**
+     * Gets the status text.
+     *
+     * @return the status text
+     */
+    @JsonProperty( "status_text" )
+    public String getStatusText(  )
+    {
+        return _strStatusText;
+    }
+
+    /**
+     * Sets the status text.
+     *
+     * @param strStatusText the new status text
+     */
+    @JsonProperty( "status_text" )
+    public void setStatusText( String strStatusText )
+    {
+        _strStatusText = strStatusText;
     }
 }

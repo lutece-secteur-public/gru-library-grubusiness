@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2015, Mairie de Paris
+ * Copyright (c) 2002-2016, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,59 +31,30 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.grubusiness.business.demand;
-
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
+package fr.paris.lutece.plugins.grubusiness.business.notification;
 
 
 /**
- *
- * Back-office Notification to Agent
- *
+ * The Class ConstantsLibraryNotifyGru.
  */
-@JsonIgnoreProperties( ignoreUnknown = true )
-public class BackOfficeLogging
+public final class NotificationConstants
 {
-    // Variables declarations 
-    private String _strStatusText;
-    private String _strMessage;
+    /** The Constant DEFAULT_STRING. */
+    public static final String DEFAULT_STRING = "";
+
+    /** The Constant DEFAULT_INT. */
+    public static final int DEFAULT_INT = -1;
+
+    /** The Constant DEFAULT_LONG. */
+    public static final long DEFAULT_LONG = -1;
 
     /**
-     * Returns the StatusText
-     * @return The StatusText
+     * final class of constants, don't have to be instantiated
+     *
+     * @throws Exception the exception
      */
-    public String getStatusText(  )
+    private NotificationConstants(  ) throws Exception
     {
-        return _strStatusText;
-    }
-
-    /**
-     * Sets the StatusText
-     * @param strStatusText The StatusText
-     */
-    @JsonProperty( "status_text" )
-    public void setStatusText( String strStatusText )
-    {
-        _strStatusText = strStatusText;
-    }
-
-    /**
-     * Returns the Message
-     * @return The Message
-     */
-    public String getMessage(  )
-    {
-        return _strMessage;
-    }
-
-    /**
-     * Sets the Message
-     * @param strMessage The Message
-     */
-    @JsonProperty( "message" )
-    public void setMessage( String strMessage )
-    {
-        _strMessage = strMessage;
+        throw new Exception(  );
     }
 }

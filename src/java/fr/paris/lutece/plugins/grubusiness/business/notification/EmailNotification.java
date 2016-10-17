@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2015, Mairie de Paris
+ * Copyright (c) 2002-2016, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,35 +31,60 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.grubusiness.business.demand;
+package fr.paris.lutece.plugins.grubusiness.business.notification;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 
 /**
- * This is the business class for the object Email
+ * The Class EmailNotification for email notification.<br/>
+ * Fields description :<br/>
+ * - message, content of the notification<br/>
+ * - cci, blind carbon copy email(s)<br/>
+ * - subject, subject of the email<br/>
+ * - sender_email, sender email address<br/>
+ * - sender_name, sender name<br/>
+ * - recipient, user email<br/>
+ * - cc, carbon copy email(s)
  */
-@JsonIgnoreProperties( ignoreUnknown = true )
-public class Email
+@JsonRootName( value = "user_email" )
+@JsonPropertyOrder( {"message",
+    "cci",
+    "subject",
+    "sender_email",
+    "sender_name",
+    "recipient",
+    "cc"
+} )
+public class EmailNotification
 {
-    // Variables declarations 
+    // Variables declarations
     private String _strSenderName;
+    private String _strSenderEmail;
     private String _strRecipient;
     private String _strSubject;
     private String _strMessage;
+    private String _strCc;
+    private String _strCci;
 
     /**
-     * Returns the SenderName
+     * Returns the SenderName.
+     *
      * @return The SenderName
      */
+    @JsonProperty( "sender_name" )
     public String getSenderName(  )
     {
         return _strSenderName;
     }
 
     /**
-     * Sets the SenderName
+     * Sets the SenderName.
+     *
      * @param strSenderName The SenderName
      */
     @JsonProperty( "sender_name" )
@@ -69,16 +94,41 @@ public class Email
     }
 
     /**
-     * Returns the Recipient
+     * Returns the SenderEmail.
+     *
+     * @return The SenderEmail
+     */
+    @JsonProperty( "sender_email" )
+    public String getSenderEmail(  )
+    {
+        return _strSenderEmail;
+    }
+
+    /**
+     * Sets the SenderEmail.
+     *
+     * @param strSenderEmail The SenderEmail
+     */
+    @JsonProperty( "sender_email" )
+    public void setSenderEmail( String strSenderEmail )
+    {
+        _strSenderEmail = strSenderEmail;
+    }
+
+    /**
+     * Returns the Recipient.
+     *
      * @return The Recipient
      */
+    @JsonProperty( "recipient" )
     public String getRecipient(  )
     {
         return _strRecipient;
     }
 
     /**
-     * Sets the Recipient
+     * Sets the Recipient.
+     *
      * @param strRecipient The Recipient
      */
     @JsonProperty( "recipient" )
@@ -88,16 +138,19 @@ public class Email
     }
 
     /**
-     * Returns the Subject
+     * Returns the Subject.
+     *
      * @return The Subject
      */
+    @JsonProperty( "subject" )
     public String getSubject(  )
     {
         return _strSubject;
     }
 
     /**
-     * Sets the Subject
+     * Sets the Subject.
+     *
      * @param strSubject The Subject
      */
     @JsonProperty( "subject" )
@@ -107,21 +160,70 @@ public class Email
     }
 
     /**
-     * Returns the Message
+     * Returns the Message.
+     *
      * @return The Message
      */
+    @JsonProperty( "message" )
     public String getMessage(  )
     {
         return _strMessage;
     }
 
     /**
-     * Sets the Message
+     * Sets the Message.
+     *
      * @param strMessage The Message
      */
     @JsonProperty( "message" )
     public void setMessage( String strMessage )
     {
         _strMessage = strMessage;
+    }
+
+    /**
+     * Gets the cc.
+     *
+     * @return the cc
+     */
+    @JsonProperty( "cc" )
+    @JsonInclude( Include.NON_NULL )
+    public String getCc(  )
+    {
+        return _strCc;
+    }
+
+    /**
+     * Sets the cc.
+     *
+     * @param strCc the new cc
+     */
+    @JsonProperty( "cc" )
+    public void setCc( String strCc )
+    {
+        _strCc = strCc;
+    }
+
+    /**
+     * Gets the cci.
+     *
+     * @return the cci
+     */
+    @JsonProperty( "cci" )
+    @JsonInclude( Include.NON_NULL )
+    public String getCci(  )
+    {
+        return _strCci;
+    }
+
+    /**
+     * Sets the cci.
+     *
+     * @param strCci the new cci
+     */
+    @JsonProperty( "cci" )
+    public void setCci( String strCci )
+    {
+        _strCci = strCci;
     }
 }

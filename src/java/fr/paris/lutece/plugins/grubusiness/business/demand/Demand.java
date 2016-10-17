@@ -35,7 +35,7 @@ package fr.paris.lutece.plugins.grubusiness.business.demand;
 
 import fr.paris.lutece.plugins.grubusiness.business.demand.Action;
 import fr.paris.lutece.plugins.grubusiness.business.demand.BaseDemand;
-import fr.paris.lutece.plugins.grubusiness.business.demand.Notification;
+import fr.paris.lutece.plugins.grubusiness.business.notification.NotifyGruGlobalNotification;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +51,7 @@ public class Demand extends BaseDemand
 
     // Variables declarations 
     private String _strTitle;
-    private List<Notification> _listNotifications = new ArrayList<Notification>(  );
+    private List<NotifyGruGlobalNotification> _listNotifications = new ArrayList<NotifyGruGlobalNotification>(  );
     private List<Action> _listActions = new ArrayList<Action>(  );
     private String _strCustomerStatus;
     private String _strAgentStatus;
@@ -98,7 +98,7 @@ public class Demand extends BaseDemand
      *
      * @return The Notifications
      */
-    public List<Notification> getNotifications(  )
+    public List<NotifyGruGlobalNotification> getNotifications(  )
     {
         return _listNotifications;
     }
@@ -108,7 +108,7 @@ public class Demand extends BaseDemand
      *
      * @param Notifications The Notifications
      */
-    public void setNotifications( List<Notification> Notifications )
+    public void setNotifications( List<NotifyGruGlobalNotification> Notifications )
     {
         _listNotifications = Notifications;
     }
@@ -117,7 +117,7 @@ public class Demand extends BaseDemand
      * Add a notification
      * @param notification
      */
-    public void addNotification( Notification notification )
+    public void addNotification( NotifyGruGlobalNotification notification )
     {
         _listNotifications.add( notification );
     }

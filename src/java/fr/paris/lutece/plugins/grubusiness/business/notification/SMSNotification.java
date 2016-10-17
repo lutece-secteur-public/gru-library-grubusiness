@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2015, Mairie de Paris
+ * Copyright (c) 2002-2016, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,93 +31,75 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.grubusiness.business.demand;
+package fr.paris.lutece.plugins.grubusiness.business.notification;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonRootName;
 
 
 /**
- * UserDashboard
+ * The Class SMSNotification for SMS notification.<br/>
+ * Fields description :<br/>
+ * - message, content of the notification<br/>
+ * - phone_number, phone number of the user<br/>
  */
-@JsonIgnoreProperties( ignoreUnknown = true )
-public class UserDashboard
+@JsonRootName( value = "user_sms" )
+@JsonPropertyOrder( {"message",
+    "phone_number"
+} )
+public class SMSNotification
 {
     // Variables declarations 
-    private String _strStatusText;
-    private String _strSenderName;
-    private String _strSubject;
+    private String _strPhoneNumber;
     private String _strMessage;
 
     /**
-     * Returns the StatusText
-     * @return The StatusText
+     * Instantiates a new notify gru sms notification.
      */
-    public String getStatusText(  )
+    public SMSNotification(  )
     {
-        return _strStatusText;
+        this._strPhoneNumber = NotificationConstants.DEFAULT_STRING;
+        this._strMessage = NotificationConstants.DEFAULT_STRING;
     }
 
     /**
-     * Sets the StatusText
-     * @param strStatusText The StatusText
+     * Gets the phone number.
+     *
+     * @return the phone number
      */
-    @JsonProperty( "status_text" )
-    public void setStatusText( String strStatusText )
+    @JsonProperty( "phone_number" )
+    public String getPhoneNumber(  )
     {
-        _strStatusText = strStatusText;
+        return _strPhoneNumber;
     }
 
     /**
-     * Returns the SenderName
-     * @return The SenderName
+     * Sets the phone number.
+     *
+     * @param strPhoneNumber the new phone number
      */
-    public String getSenderName(  )
+    @JsonProperty( "phone_number" )
+    public void setPhoneNumber( String strPhoneNumber )
     {
-        return _strSenderName;
+        _strPhoneNumber = strPhoneNumber;
     }
 
     /**
-     * Sets the SenderName
-     * @param strSenderName The SenderName
+     * Gets the message.
+     *
+     * @return the message
      */
-    @JsonProperty( "sender_name" )
-    public void setSenderName( String strSenderName )
-    {
-        _strSenderName = strSenderName;
-    }
-
-    /**
-     * Returns the Subject
-     * @return The Subject
-     */
-    public String getSubject(  )
-    {
-        return _strSubject;
-    }
-
-    /**
-     * Sets the Subject
-     * @param strSubject The Subject
-     */
-    @JsonProperty( "subject" )
-    public void setSubject( String strSubject )
-    {
-        _strSubject = strSubject;
-    }
-
-    /**
-     * Returns the Message
-     * @return The Message
-     */
+    @JsonProperty( "message" )
     public String getMessage(  )
     {
         return _strMessage;
     }
 
     /**
-     * Sets the Message
-     * @param strMessage The Message
+     * Sets the message.
+     *
+     * @param strMessage the new message
      */
     @JsonProperty( "message" )
     public void setMessage( String strMessage )
