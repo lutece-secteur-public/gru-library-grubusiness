@@ -34,10 +34,11 @@
 package fr.paris.lutece.plugins.grubusiness.business.notification;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 
 /**
  * The Class BroadcastNotification for broadcast notification.<br/>

@@ -40,6 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+
 /**
  * The Class NotifyGruGlobalNotification, default notification object.<br/>
  * Fields description<br/>
@@ -438,7 +439,7 @@ public class NotifyGruGlobalNotification
      * @return the user sms
      */
     @JsonProperty( "user_sms" )
-    @JsonSerialize( include=JsonSerialize.Inclusion.NON_NULL )
+    @JsonSerialize( include = JsonSerialize.Inclusion.NON_NULL )
     public SMSNotification getUserSMS(  )
     {
         return _userSMS;
@@ -461,7 +462,7 @@ public class NotifyGruGlobalNotification
      * @return the user agent
      */
     @JsonProperty( "backoffice_logging" )
-    @JsonSerialize( include=JsonSerialize.Inclusion.NON_NULL )
+    @JsonSerialize( include = JsonSerialize.Inclusion.NON_NULL )
     public BackofficeNotification getBackofficeLogging(  )
     {
         return _backofficeLogging;
@@ -484,7 +485,7 @@ public class NotifyGruGlobalNotification
      * @return the user guichet
      */
     @JsonProperty( "user_dashboard" )
-    @JsonSerialize( include=JsonSerialize.Inclusion.NON_NULL )
+    @JsonSerialize( include = JsonSerialize.Inclusion.NON_NULL )
     public UserDashboardNotification getUserDashboard(  )
     {
         return _userDashboard;
@@ -506,7 +507,7 @@ public class NotifyGruGlobalNotification
      * @return the _broadcast
      */
     @JsonProperty( "broadcast" )
-    @JsonSerialize( include=JsonSerialize.Inclusion.NON_NULL )
+    @JsonSerialize( include = JsonSerialize.Inclusion.NON_NULL )
     public BroadcastNotification getBroadcast(  )
     {
         return _broadcast;
