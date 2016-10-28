@@ -33,15 +33,15 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.notification;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -525,17 +525,18 @@ public class NotifyGruGlobalNotification
     {
         this._lstBroadcastEmail = lstBroadcastEmail;
     }
-    
+
     /**
      * add a broadcastEmai
      * @param broadcastEmail, the email to add
      */
     public void addBroadcastEmail( BroadcastNotification broadcastEmail )
     {
-    	if( this._lstBroadcastEmail == null )
-    	{
-    		this._lstBroadcastEmail = new ArrayList<BroadcastNotification>(  );
-    	}
-    	this._lstBroadcastEmail.add( broadcastEmail );
+        if ( this._lstBroadcastEmail == null )
+        {
+            this._lstBroadcastEmail = new ArrayList<BroadcastNotification>(  );
+        }
+
+        this._lstBroadcastEmail.add( broadcastEmail );
     }
 }

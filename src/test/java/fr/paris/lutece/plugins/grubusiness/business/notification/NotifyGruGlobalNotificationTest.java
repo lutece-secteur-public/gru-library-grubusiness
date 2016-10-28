@@ -33,10 +33,6 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.notification;
 
-import java.io.IOException;
-
-import org.junit.Test;
-
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -45,33 +41,41 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 import junit.framework.TestCase;
 
+import org.junit.Test;
+
+import java.io.IOException;
+
+
 /**
  * Test for json parsing, no controls are done !
  */
 public class NotifyGruGlobalNotificationTest extends TestCase
 {
-	@Test
-	public void testUnserialize(  ) throws JsonParseException, JsonMappingException, IOException
-	{
-		ObjectMapper mapper = new ObjectMapper(  );
+    @Test
+    public void testUnserialize(  ) throws JsonParseException, JsonMappingException, IOException
+    {
+        ObjectMapper mapper = new ObjectMapper(  );
         mapper.enable( DeserializationFeature.UNWRAP_ROOT_VALUE );
         mapper.enable( SerializationFeature.WRAP_ROOT_VALUE );
         mapper.enable( SerializationFeature.INDENT_OUTPUT );
-        NotifyGruGlobalNotification notification = mapper.readValue( getClass(  ).getResourceAsStream( "/notification.json" ),
+
+        NotifyGruGlobalNotification notification = mapper.readValue( getClass(  )
+                                                                         .getResourceAsStream( "/notification.json" ),
                 NotifyGruGlobalNotification.class );
         String jsonNotif = mapper.writeValueAsString( notification );
+
         // Uncomment for console checking
         // System.out.println( jsonNotif );
-	}
-	
-	@Test
-	public void testSerialize(  ) throws JsonParseException, JsonMappingException, IOException
-	{
-		ObjectMapper mapper = new ObjectMapper(  );
+    }
+
+    @Test
+    public void testSerialize(  ) throws JsonParseException, JsonMappingException, IOException
+    {
+        ObjectMapper mapper = new ObjectMapper(  );
         mapper.enable( DeserializationFeature.UNWRAP_ROOT_VALUE );
         mapper.enable( SerializationFeature.WRAP_ROOT_VALUE );
         mapper.enable( SerializationFeature.INDENT_OUTPUT );
-        
+
         NotifyGruGlobalNotification notification = new NotifyGruGlobalNotification(  );
         int nCount = 0;
         long lCount = 0L;
@@ -88,12 +92,12 @@ public class NotifyGruGlobalNotificationTest extends TestCase
         notification.setGuid( "strGuid" );
         notification.setRemoteDemandId( nCount++ );
         notification.setCustomerId( nCount++ );
-        
+
         BackofficeNotification backNotif = new BackofficeNotification(  );
         backNotif.setMessage( "strMessage" );
         backNotif.setStatusText( "strStatusText" );
         notification.setBackofficeLogging( backNotif );
-        
+
         EmailNotification emailNotif = new EmailNotification(  );
         emailNotif.setBcc( "strBcc" );
         emailNotif.setCc( "strCc" );
@@ -103,12 +107,12 @@ public class NotifyGruGlobalNotificationTest extends TestCase
         emailNotif.setSenderName( "strSenderName" );
         emailNotif.setSubject( "strSubject" );
         notification.setUserEmail( emailNotif );
-        
+
         SMSNotification smsNotif = new SMSNotification(  );
         smsNotif.setMessage( "strMessage" );
         smsNotif.setPhoneNumber( "strPhoneNumber" );
         notification.setUserSMS( smsNotif );
-        
+
         BroadcastNotification broadcastNotif = new BroadcastNotification(  );
         broadcastNotif.setBcc( EmailAddress.buildEmailAddresses( new String[] { "strBcc", "strBcc2" } ) );
         broadcastNotif.setCc( EmailAddress.buildEmailAddresses( new String[] { "strCc", "strCc2" } ) );
@@ -118,7 +122,7 @@ public class NotifyGruGlobalNotificationTest extends TestCase
         broadcastNotif.setSenderName( "strSenderName" );
         broadcastNotif.setSubject( "strSubject" );
         notification.addBroadcastEmail( broadcastNotif );
-        
+
         broadcastNotif = new BroadcastNotification(  );
         broadcastNotif.setBcc( null );
         broadcastNotif.setCc( null );
@@ -127,11 +131,13 @@ public class NotifyGruGlobalNotificationTest extends TestCase
         broadcastNotif.setSenderEmail( "strSenderEmail" );
         broadcastNotif.setSenderName( "strSenderName" );
         broadcastNotif.setSubject( "strSubject" );
-        notification.addBroadcastEmail( broadcastNotif );        
-        
+        notification.addBroadcastEmail( broadcastNotif );
+
         String jsonNotif = mapper.writeValueAsString( notification );
+
         // Uncomment for console checking
         // System.out.println( jsonNotif );
-        NotifyGruGlobalNotification notificationFromString = mapper.readValue( jsonNotif, NotifyGruGlobalNotification.class );
-	}
+        NotifyGruGlobalNotification notificationFromString = mapper.readValue( jsonNotif,
+                NotifyGruGlobalNotification.class );
+    }
 }

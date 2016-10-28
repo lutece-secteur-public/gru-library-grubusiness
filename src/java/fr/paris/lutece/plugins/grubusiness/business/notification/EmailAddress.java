@@ -33,12 +33,13 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.notification;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Class for email adresses of Email notifications
@@ -46,40 +47,42 @@ import com.fasterxml.jackson.annotation.JsonRootName;
  * - address, the email adress
  */
 @JsonRootName( value = "email_address" )
-@JsonPropertyOrder( {"address"} )
+@JsonPropertyOrder( {"address"
+} )
 public class EmailAddress
 {
-	private String _strAddress;
+    private String _strAddress;
 
-	/**
-	 * @return the Address
-	 */
-	@JsonProperty( "address" )
-	public String getAddress()
-	{
-		return _strAddress;
-	}
+    /**
+     * @return the Address
+     */
+    @JsonProperty( "address" )
+    public String getAddress(  )
+    {
+        return _strAddress;
+    }
 
-	/**
-	 * @param trAddress the Address to set
-	 */
-	@JsonProperty( "address" )
-	public void setAddress( String strAddress )
-	{
-		this._strAddress = strAddress;
-	}
-	
-	public static List<EmailAddress> buildEmailAddresses( String[] arrAdresses )
-	{
-		List<EmailAddress> lstResult = new ArrayList<EmailAddress>(  );
-		EmailAddress tmpAdress = null;
-		for ( String strAdress : arrAdresses )
+    /**
+     * @param trAddress the Address to set
+     */
+    @JsonProperty( "address" )
+    public void setAddress( String strAddress )
+    {
+        this._strAddress = strAddress;
+    }
+
+    public static List<EmailAddress> buildEmailAddresses( String[] arrAdresses )
+    {
+        List<EmailAddress> lstResult = new ArrayList<EmailAddress>(  );
+        EmailAddress tmpAdress = null;
+
+        for ( String strAdress : arrAdresses )
         {
-			tmpAdress = new EmailAddress(  );
-			tmpAdress.setAddress( strAdress );
-			lstResult.add( tmpAdress );
+            tmpAdress = new EmailAddress(  );
+            tmpAdress.setAddress( strAdress );
+            lstResult.add( tmpAdress );
         }
-		return lstResult;
-	}
-	
+
+        return lstResult;
+    }
 }

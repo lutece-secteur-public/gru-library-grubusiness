@@ -33,14 +33,14 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.notification;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -137,16 +137,17 @@ public class BroadcastNotification
     @JsonProperty( "recipient" )
     public void setRecipient( List<EmailAddress> lstRecipient )
     {
-    	_lstRecipient = lstRecipient;
+        _lstRecipient = lstRecipient;
     }
-    
+
     public void addRecipient( EmailAddress recipient )
     {
-    	if( this._lstRecipient == null )
-    	{
-    		this._lstRecipient = new ArrayList<EmailAddress>(  );
-    	}
-    	this._lstRecipient.add( recipient );
+        if ( this._lstRecipient == null )
+        {
+            this._lstRecipient = new ArrayList<EmailAddress>(  );
+        }
+
+        this._lstRecipient.add( recipient );
     }
 
     /**
@@ -215,14 +216,15 @@ public class BroadcastNotification
     {
         _lstCc = lstCc;
     }
-    
+
     public void addCc( EmailAddress recipient )
     {
-    	if( this._lstCc == null )
-    	{
-    		this._lstCc = new ArrayList<EmailAddress>(  );
-    	}
-    	this._lstCc.add( recipient );
+        if ( this._lstCc == null )
+        {
+            this._lstCc = new ArrayList<EmailAddress>(  );
+        }
+
+        this._lstCc.add( recipient );
     }
 
     /**
@@ -247,13 +249,14 @@ public class BroadcastNotification
     {
         _lstBcc = lstBcc;
     }
-    
+
     public void addBcc( EmailAddress recipient )
     {
-    	if( this._lstBcc == null )
-    	{
-    		this._lstBcc = new ArrayList<EmailAddress>(  );
-    	}
-    	this._lstBcc.add( recipient );
+        if ( this._lstBcc == null )
+        {
+            this._lstBcc = new ArrayList<EmailAddress>(  );
+        }
+
+        this._lstBcc.add( recipient );
     }
 }
