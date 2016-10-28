@@ -33,6 +33,9 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.notification;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -44,16 +47,16 @@ import com.fasterxml.jackson.annotation.JsonRootName;
  * The Class BroadcastNotification for broadcast notification.<br/>
  * Fields description :<br/>
  * - message, content of the notification<br/>
- * - recipient, list (; separator) of email for the broadcast
- * - cci, blind carbon copy email(s)<br/>
+ * - recipient, list of emailAddress for the broadcast
+ * - bcc, list of emailAddress for blind carbon copy<br/>
  * - subject, subject of the email<br/>
  * - sender_email, sender email address<br/>
  * - sender_name, sender name<br/>
- * - cc, carbon copy email(s)
+ * - cc, list of emailAddress for carbon copy
  */
 @JsonRootName( value = "broadcast_email" )
 @JsonPropertyOrder( {"message",
-    "cci",
+    "bcc",
     "subject",
     "sender_email",
     "sender_name",
@@ -65,11 +68,11 @@ public class BroadcastNotification
     // Variables declarations
     private String _strSenderName;
     private String _strSenderEmail;
-    private String _strRecipient;
+    private List<EmailAddress> _lstRecipient;
     private String _strSubject;
     private String _strMessage;
-    private String _strCc;
-    private String _strCci;
+    private List<EmailAddress> _lstCc;
+    private List<EmailAddress> _lstBcc;
 
     /**
      * Returns the SenderName.
@@ -116,25 +119,34 @@ public class BroadcastNotification
     }
 
     /**
-     * Returns the Recipient.
+     * Returns Recipients.
      *
-     * @return The Recipient
+     * @return Recipients
      */
     @JsonProperty( "recipient" )
-    public String getRecipient(  )
+    public List<EmailAddress> getRecipient(  )
     {
-        return _strRecipient;
+        return _lstRecipient;
     }
 
     /**
-     * Sets the Recipient.
+     * Sets Recipients.
      *
-     * @param strRecipient The Recipient
+     * @param lstRecipient all Recipients
      */
     @JsonProperty( "recipient" )
-    public void setRecipient( String strRecipient )
+    public void setRecipient( List<EmailAddress> lstRecipient )
     {
-        _strRecipient = strRecipient;
+    	_lstRecipient = lstRecipient;
+    }
+    
+    public void addRecipient( EmailAddress recipient )
+    {
+    	if( this._lstRecipient == null )
+    	{
+    		this._lstRecipient = new ArrayList<EmailAddress>(  );
+    	}
+    	this._lstRecipient.add( recipient );
     }
 
     /**
@@ -182,48 +194,66 @@ public class BroadcastNotification
     }
 
     /**
-     * Gets the cc.
+     * Gets cc addresses.
      *
-     * @return the cc
+     * @return cc addresses
      */
     @JsonProperty( "cc" )
     @JsonInclude( Include.NON_NULL )
-    public String getCc(  )
+    public List<EmailAddress> getCc(  )
     {
-        return _strCc;
+        return _lstCc;
     }
 
     /**
-     * Sets the cc.
+     * Sets cc addresses.
      *
-     * @param strCc the new cc
+     * @param lstCc cc addresses
      */
     @JsonProperty( "cc" )
-    public void setCc( String strCc )
+    public void setCc( List<EmailAddress> lstCc )
     {
-        _strCc = strCc;
+        _lstCc = lstCc;
+    }
+    
+    public void addCc( EmailAddress recipient )
+    {
+    	if( this._lstCc == null )
+    	{
+    		this._lstCc = new ArrayList<EmailAddress>(  );
+    	}
+    	this._lstCc.add( recipient );
     }
 
     /**
-     * Gets the cci.
+     * Gets bcc addresses.
      *
-     * @return the cci
+     * @return bbc addresses
      */
-    @JsonProperty( "cci" )
+    @JsonProperty( "bcc" )
     @JsonInclude( Include.NON_NULL )
-    public String getCci(  )
+    public List<EmailAddress> getBcc(  )
     {
-        return _strCci;
+        return _lstBcc;
     }
 
     /**
-     * Sets the cci.
+     * Sets bcc addresses.
      *
-     * @param strCci the new cci
+     * @param lstBcc bcc addresses
      */
-    @JsonProperty( "cci" )
-    public void setCci( String strCci )
+    @JsonProperty( "bcc" )
+    public void setBcc( List<EmailAddress> lstBcc )
     {
-        _strCci = strCci;
+        _lstBcc = lstBcc;
+    }
+    
+    public void addBcc( EmailAddress recipient )
+    {
+    	if( this._lstBcc == null )
+    	{
+    		this._lstBcc = new ArrayList<EmailAddress>(  );
+    	}
+    	this._lstBcc.add( recipient );
     }
 }

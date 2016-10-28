@@ -33,6 +33,9 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.notification;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -98,7 +101,7 @@ public class NotifyGruGlobalNotification
     private SMSNotification _userSMS;
     private BackofficeNotification _backofficeLogging;
     private UserDashboardNotification _userDashboard;
-    private BroadcastNotification _broadcast;
+    private List<BroadcastNotification> _lstBroadcastEmail;
 
     /**
      * Instantiates a new notify gru global notification.
@@ -462,7 +465,7 @@ public class NotifyGruGlobalNotification
      * @return the user agent
      */
     @JsonProperty( "backoffice_logging" )
-    @JsonSerialize( include = JsonSerialize.Inclusion.NON_NULL )
+    @JsonInclude( Include.NON_NULL )
     public BackofficeNotification getBackofficeLogging(  )
     {
         return _backofficeLogging;
@@ -485,7 +488,7 @@ public class NotifyGruGlobalNotification
      * @return the user guichet
      */
     @JsonProperty( "user_dashboard" )
-    @JsonSerialize( include = JsonSerialize.Inclusion.NON_NULL )
+    @JsonInclude( Include.NON_NULL )
     public UserDashboardNotification getUserDashboard(  )
     {
         return _userDashboard;
@@ -506,20 +509,33 @@ public class NotifyGruGlobalNotification
      * Gets the broadcast
      * @return the _broadcast
      */
-    @JsonProperty( "broadcast" )
-    @JsonSerialize( include = JsonSerialize.Inclusion.NON_NULL )
-    public BroadcastNotification getBroadcast(  )
+    @JsonProperty( "broadcast_email" )
+    @JsonInclude( Include.NON_NULL )
+    public List<BroadcastNotification> getBroadcastEmail(  )
     {
-        return _broadcast;
+        return _lstBroadcastEmail;
     }
 
     /**
      * Sets the broadcast
      * @param broadcast the broadcast to set
      */
-    @JsonProperty( "broadcast" )
-    public void setBroadcast( BroadcastNotification broadcast )
+    @JsonProperty( "broadcast_email" )
+    public void setBroadcastEmail( List<BroadcastNotification> lstBroadcastEmail )
     {
-        this._broadcast = broadcast;
+        this._lstBroadcastEmail = lstBroadcastEmail;
+    }
+    
+    /**
+     * add a broadcastEmai
+     * @param broadcastEmail, the email to add
+     */
+    public void addBroadcastEmail( BroadcastNotification broadcastEmail )
+    {
+    	if( this._lstBroadcastEmail == null )
+    	{
+    		this._lstBroadcastEmail = new ArrayList<BroadcastNotification>(  );
+    	}
+    	this._lstBroadcastEmail.add( broadcastEmail );
     }
 }

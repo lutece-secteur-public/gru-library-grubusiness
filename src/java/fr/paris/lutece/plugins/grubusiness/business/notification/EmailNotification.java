@@ -53,7 +53,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
  */
 @JsonRootName( value = "user_email" )
 @JsonPropertyOrder( {"message",
-    "cci",
+    "bcc",
     "subject",
     "sender_email",
     "sender_name",
@@ -69,7 +69,7 @@ public class EmailNotification
     private String _strSubject;
     private String _strMessage;
     private String _strCc;
-    private String _strCci;
+    private String _strBcc;
 
     /**
      * Returns the SenderName.
@@ -205,25 +205,25 @@ public class EmailNotification
     }
 
     /**
-     * Gets the cci.
+     * Gets the bcc.
      *
-     * @return the cci
+     * @return the bcc
      */
-    @JsonProperty( "cci" )
+    @JsonProperty( "bcc" )
     @JsonInclude( Include.NON_NULL )
     public String getCci(  )
     {
-        return _strCci;
+        return _strBcc;
     }
 
     /**
-     * Sets the cci.
+     * Sets the bcc.
      *
-     * @param strCci the new cci
+     * @param strCci the new bcc
      */
-    @JsonProperty( "cci" )
-    public void setCci( String strCci )
+    @JsonProperty( "bcc" )
+    public void setBcc( String strBcc )
     {
-        _strCci = strCci;
+        _strBcc = strBcc;
     }
 }
