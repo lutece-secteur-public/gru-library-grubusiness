@@ -90,7 +90,7 @@ public class NotifyGruGlobalNotification
     private String _strNotificationType;
     private int _nDemandStatus;
     private String _strDemandReference;
-    private int _nCustomerId;
+    private String _strCustomerId;
     private Long _notificationDate;
     private int _nDemandId;
     private int _nRemoteDemandId;
@@ -114,7 +114,7 @@ public class NotifyGruGlobalNotification
         this._strNotificationType = NotificationConstants.DEFAULT_STRING;
         this._nDemandStatus = NotificationConstants.DEFAULT_INT;
         this._strDemandReference = NotificationConstants.DEFAULT_STRING;
-        this._nCustomerId = NotificationConstants.DEFAULT_INT;
+        this._strCustomerId = NotificationConstants.DEFAULT_STRING;
         this._notificationDate = NotificationConstants.DEFAULT_LONG;
         this._nDemandId = NotificationConstants.DEFAULT_INT;
         this._nRemoteDemandId = NotificationConstants.DEFAULT_INT;
@@ -261,9 +261,9 @@ public class NotifyGruGlobalNotification
      * @return The CustomerId
      */
     @JsonProperty( "customer_id" )
-    public int getCustomerId(  )
+    public String getCustomerId(  )
     {
-        return _nCustomerId;
+        return _strCustomerId;
     }
 
     /**
@@ -272,9 +272,9 @@ public class NotifyGruGlobalNotification
      * @param nCustomerId The CustomerId
      */
     @JsonProperty( "customer_id" )
-    public void setCustomerId( int nCustomerId )
+    public void setCustomerId( String strCustomerId )
     {
-        _nCustomerId = nCustomerId;
+        _strCustomerId = strCustomerId;
     }
 
     /**

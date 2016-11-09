@@ -91,7 +91,7 @@ public class NotifyGruGlobalNotificationTest extends TestCase
         notification.setDemandReference( "strDemandReference" );
         notification.setGuid( "strGuid" );
         notification.setRemoteDemandId( nCount++ );
-        notification.setCustomerId( nCount++ );
+        notification.setCustomerId( "strCustomerId" );
 
         BackofficeNotification backNotif = new BackofficeNotification(  );
         backNotif.setMessage( "strMessage" );
