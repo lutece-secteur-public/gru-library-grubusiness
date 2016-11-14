@@ -50,9 +50,8 @@ public class Customer implements Serializable
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;
 
-    /** The _n id. */
     // Variables declarations
-    private int _nId;
+    private String _strId;
 
     /** The _n id title. */
     private int _nIdTitle;
@@ -106,20 +105,20 @@ public class Customer implements Serializable
      *
      * @return The Id
      */
-    public int getId(  )
+    public String getId(  )
     {
-        return _nId;
+        return _strId;
     }
 
     /**
      * Sets the Id.
      *
-     * @param nId
+     * @param strId
      *            The Id
      */
-    public void setId( int nId )
+    public void setId( String strId )
     {
-        _nId = nId;
+        _strId = strId;
     }
 
     /**
