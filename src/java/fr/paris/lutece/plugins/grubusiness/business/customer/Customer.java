@@ -99,6 +99,9 @@ public class Customer implements Serializable
     /** The _str extras attributes. */
     @NotEmpty( message = "#i18n{gru.validation.customer.ExtrasAttributes.notEmpty}" )
     private String _strExtrasAttributes;
+    
+    /** The _str birthdate. */
+    private String _strBirthDate;
 
     /**
      * Returns the Id.
@@ -371,5 +374,26 @@ public class Customer implements Serializable
     public void setExtrasAttributes( String strExtrasAttributes )
     {
         _strExtrasAttributes = strExtrasAttributes;
+    }
+    
+    /**
+     * Returns the birthDate.
+     *
+     * @return The birthDate
+     */
+    public String getBirthDate(  )
+    {
+        return _strBirthDate;
+    }
+
+    /**
+     * Sets the birthDate.
+     *
+     * @param strBirthDate
+     *            The birthDate
+     */
+    public void setBirthDate( String strBirthDate )
+    {
+        _strBirthDate = strBirthDate;
     }
 }
