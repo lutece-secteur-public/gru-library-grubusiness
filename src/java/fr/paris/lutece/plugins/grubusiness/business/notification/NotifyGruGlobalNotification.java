@@ -84,6 +84,7 @@ import java.util.List;
 public class NotifyGruGlobalNotification
 {
     // Variables declarations 
+    private int _nId;
     private String _strGuid;
     private String _strEmail;
     private int _nCrmStatusId;
@@ -121,6 +122,24 @@ public class NotifyGruGlobalNotification
         this._nDemandTypeId = NotificationConstants.DEFAULT_INT;
         this._nDemandMaxStep = NotificationConstants.DEFAULT_INT;
         this._nDemandUserCurrentStep = NotificationConstants.DEFAULT_INT;
+    }
+
+    /**
+     * Gives the notification id
+     * @return the notification id
+     */
+    public int getId(  )
+    {
+        return _nId;
+    }
+
+    /**
+     * Sets the notification id
+     * @param nId the id to set
+     */
+    public void setId( int nId )
+    {
+        _nId = nId;
     }
 
     /**

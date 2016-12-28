@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2015, Mairie de Paris
+ * Copyright (c) 2002-2016, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,90 +40,90 @@ package fr.paris.lutece.plugins.grubusiness.business.demand;
 public class BaseDemand
 {
     // Variables declarations 
-    private String _strDemandId;
-    private String _strDemandReference;
-    private String _strDemandTypeId;
-    private int _nDemandStatus;
-    private long _lTimeOpened;
+    private String _strId;
+    private String _strReference;
+    private String _strTypeId;
+    protected int _nStatusId;
+    protected long _lTimeOpened;
 
     /**
-     * Returns the DemandId
+     * Gives the id
      *
-     * @return The DemandId
+     * @return The id
      */
     public String getId(  )
     {
-        return _strDemandId;
+        return _strId;
     }
 
     /**
-     * Sets the DemandId
+     * Sets the id
      *
-     * @param strDemandId The DemandId
+     * @param strId The id
      */
-    public void setId( String strDemandId )
+    public void setId( String strId )
     {
-        _strDemandId = strDemandId;
+        _strId = strId;
     }
 
     /**
-     * Returns the DemandReference
+     * Gives the reference
      *
-     * @return The DemandReference
+     * @return The reference
      */
     public String getReference(  )
     {
-        return _strDemandReference;
+        return _strReference;
     }
 
     /**
-     * Sets the DemandReference
+     * Sets the reference
      *
-     * @param strDemandReference The DemandReference
+     * @param strReference The reference
      */
-    public void setReference( String strDemandReference )
+    public void setReference( String strReference )
     {
-        _strDemandReference = strDemandReference;
+        _strReference = strReference;
     }
 
     /**
-     * Returns the DemandStatus
+     * Gives the status id
      *
-     * @return The DemandStatus
+     * @return The status id
      */
-    public int getStatus(  )
+    public int getStatusId(  )
     {
-        return _nDemandStatus;
+        return _nStatusId;
     }
 
     /**
-     * Sets the DemandStatus
+     * Sets the status id
      *
-     * @param nDemandStatus The DemandStatus
+     * @param nStatusId The status id
      */
-    public void setStatus( int nDemandStatus )
+    public void setStatusId( int nStatusId )
     {
-        _nDemandStatus = nDemandStatus;
+        _nStatusId = nStatusId;
     }
 
     /**
-     * Sets the DemandTypeId
+     * Sets the type id
      *
-     * @param strDemandTypeId The DemandType Id
+     * @param strTypeId The type id
      */
-    public void setDemandTypeId( String strDemandTypeId )
+    public void setTypeId( String strTypeId )
     {
-        _strDemandTypeId = strDemandTypeId;
+        _strTypeId = strTypeId;
     }
 
     /**
-     * Returns the DemandTypeId
+     * Gves the type id
      *
-     * @return The DemandTypeId
+     * @return The type id
      */
-    public String getDemandTypeId(  )
+    public String getTypeId(  )
     {
-        return _strDemandTypeId;
+        return _strTypeId;
     }
 
     /**

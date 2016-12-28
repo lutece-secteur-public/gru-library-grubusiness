@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2015, Mairie de Paris
+ * Copyright (c) 2002-2016, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,11 +33,10 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.demand;
 
-import fr.paris.lutece.plugins.grubusiness.business.demand.Action;
-import fr.paris.lutece.plugins.grubusiness.business.demand.BaseDemand;
 import fr.paris.lutece.plugins.grubusiness.business.notification.NotifyGruGlobalNotification;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -51,10 +50,11 @@ public class Demand extends BaseDemand
 
     // Variables declarations 
     private String _strTitle;
-    private List<NotifyGruGlobalNotification> _listNotifications = new ArrayList<NotifyGruGlobalNotification>(  );
+    private List<NotifyGruGlobalNotification> _listNotifications;
     private List<Action> _listActions = new ArrayList<Action>(  );
-    private String _strCustomerStatus;
-    private String _strAgentStatus;
+    private String _strCustomerId;
+    private int _nMaxSteps;
+    private int _nCurrentStep;
     private boolean _bShowDetails;
 
     /** Constructor */
@@ -70,8 +70,8 @@ public class Demand extends BaseDemand
     {
         setId( base.getId(  ) );
         setReference( base.getReference(  ) );
-        setDemandTypeId( base.getDemandTypeId(  ) );
-        setStatus( base.getStatus(  ) );
+        setTypeId( base.getTypeId(  ) );
+        setStatusId( base.getStatusId(  ) );
         setTimeOpenedInMs( base.getTimeOpenedInMs(  ) );
     }
 
@@ -106,20 +106,16 @@ public class Demand extends BaseDemand
     /**
      * Sets the Notifications
      *
-     * @param Notifications The Notifications
+     * @param listNotifications The Notifications
      */
-    public void setNotifications( List<NotifyGruGlobalNotification> Notifications )
+    public void setNotifications( List<NotifyGruGlobalNotification> listNotifications )
     {
-        _listNotifications = Notifications;
-    }
+        _listNotifications = listNotifications;
 
-    /**
-     * Add a notification
-     * @param notification
-     */
-    public void addNotification( NotifyGruGlobalNotification notification )
-    {
-        _listNotifications.add( notification );
+        if ( ( listNotifications != null ) && !listNotifications.isEmpty(  ) )
+        {
+            calculateOpenedTime(  );
+        }
     }
 
     /**
@@ -135,60 +131,74 @@ public class Demand extends BaseDemand
     /**
      * Sets the Actions
      *
-     * @param Actions The Actions
+     * @param listActions The Actions
      */
-    public void setActions( List<Action> Actions )
+    public void setActions( List<Action> listActions )
     {
-        _listActions = Actions;
+        _listActions = listActions;
     }
 
     /**
-     * Add a notification
-     * @param notification
+     * Add an action
+     * @param action the action to add
      */
-    public void addAction( Action notification )
+    public void addAction( Action action )
     {
-        _listActions.add( notification );
+        _listActions.add( action );
     }
 
     /**
-     * Returns the customer status
-     *
-     * @return The customer status
+     * Gives the customer id
+     * @return the customer id
      */
-    public String getCustomerStatus(  )
+    public String getCustomerId(  )
     {
-        return _strCustomerStatus;
+        return _strCustomerId;
     }
 
     /**
-     * Sets the customer status
-     *
-     * @param strCustomerStatus The customer status
+     * Sets the customer id
+     * @param strCustomerId the customer id to set
      */
-    public void setCustomerStatus( String strCustomerStatus )
+    public void setCustomerId( String strCustomerId )
     {
-        _strCustomerStatus = strCustomerStatus;
+        _strCustomerId = strCustomerId;
     }
 
     /**
-     * Returns the agent status
-     *
-     * @return The agent status
+     * Gives the number of steps
+     * @return the number of steps
      */
-    public String getAgentStatus(  )
+    public int getMaxSteps(  )
     {
-        return _strAgentStatus;
+        return _nMaxSteps;
     }
 
     /**
-     * Sets the agent status
-     *
-     * @param strAgentStatus The agent status
+     * Sets the number of steps
+     * @param nMaxSteps the number of steps to set
      */
-    public void setAgentStatus( String strAgentStatus )
+    public void setMaxSteps( int nMaxSteps )
     {
-        _strAgentStatus = strAgentStatus;
+        _nMaxSteps = nMaxSteps;
+    }
+
+    /**
+     * Gives the current step
+     * @return the current step
+     */
+    public int getCurrentStep(  )
+    {
+        return _nCurrentStep;
+    }
+
+    /**
+     * Sets the current step
+     * @param nCurrentStep the current step to set
+     */
+    public void setCurrentStep( int nCurrentStep )
+    {
+        _nCurrentStep = nCurrentStep;
     }
 
     /**
@@ -207,5 +217,22 @@ public class Demand extends BaseDemand
     public boolean getShowDetails(  )
     {
         return _bShowDetails;
+    }
+
+    /**
+     * Calculates the opened time
+     */
+    private void calculateOpenedTime(  )
+    {
+        if ( _nStatusId == STATUS_CLOSED )
+        {
+            _lTimeOpened = _listNotifications.get( 0 ).getNotificationDate(  ) -
+                _listNotifications.get( _listNotifications.size(  ) - 1 ).getNotificationDate(  );
+        }
+        else
+        {
+            _lTimeOpened = ( new Date(  ) ).getTime(  ) -
+                _listNotifications.get( _listNotifications.size(  ) - 1 ).getNotificationDate(  );
+        }
     }
 }
