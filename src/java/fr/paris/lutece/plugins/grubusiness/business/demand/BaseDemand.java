@@ -44,7 +44,6 @@ public class BaseDemand
     private String _strReference;
     private String _strTypeId;
     protected int _nStatusId;
-    protected long _lTimeOpened;
 
     /**
      * Gives the id
@@ -124,23 +123,5 @@ public class BaseDemand
     public String getTypeId(  )
     {
         return _strTypeId;
-    }
-
-    /**
-     * Set Time opened in milliseconds
-     * @param lTimeOpened Time opened in milliseconds
-     */
-    public void setTimeOpenedInMs( long lTimeOpened )
-    {
-        _lTimeOpened = lTimeOpened;
-    }
-
-    /**
-     * Get Time opened in milliseconds
-     * @return Time opened in milliseconds
-     */
-    public long getTimeOpenedInMs(  )
-    {
-        return _lTimeOpened;
     }
 }

@@ -36,7 +36,6 @@ package fr.paris.lutece.plugins.grubusiness.business.demand;
 import fr.paris.lutece.plugins.grubusiness.business.notification.NotifyGruGlobalNotification;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -53,6 +52,8 @@ public class Demand extends BaseDemand
     private List<NotifyGruGlobalNotification> _listNotifications;
     private List<Action> _listActions = new ArrayList<Action>(  );
     private String _strCustomerId;
+    private long _lCreationDate;
+    private long _lClosureDate;
     private int _nMaxSteps;
     private int _nCurrentStep;
     private boolean _bShowDetails;
@@ -60,19 +61,6 @@ public class Demand extends BaseDemand
     /** Constructor */
     public Demand(  )
     {
-    }
-
-    /**
-     * Constructor
-     * @param base Base demand
-     */
-    public Demand( BaseDemand base )
-    {
-        setId( base.getId(  ) );
-        setReference( base.getReference(  ) );
-        setTypeId( base.getTypeId(  ) );
-        setStatusId( base.getStatusId(  ) );
-        setTimeOpenedInMs( base.getTimeOpenedInMs(  ) );
     }
 
     /**
@@ -111,11 +99,6 @@ public class Demand extends BaseDemand
     public void setNotifications( List<NotifyGruGlobalNotification> listNotifications )
     {
         _listNotifications = listNotifications;
-
-        if ( ( listNotifications != null ) && !listNotifications.isEmpty(  ) )
-        {
-            calculateOpenedTime(  );
-        }
     }
 
     /**
@@ -163,6 +146,42 @@ public class Demand extends BaseDemand
     public void setCustomerId( String strCustomerId )
     {
         _strCustomerId = strCustomerId;
+    }
+
+    /**
+     * Gives the creation date
+     * @return the creation date
+     */
+    public long getCreationDate(  )
+    {
+        return _lCreationDate;
+    }
+
+    /**
+     * Sets the creation date
+     * @param lCreationDate the creation date to set
+     */
+    public void setCreationDate( long lCreationDate )
+    {
+        this._lCreationDate = lCreationDate;
+    }
+
+    /**
+     * Gives the closure date
+     * @return the closure date
+     */
+    public long getClosureDate(  )
+    {
+        return _lClosureDate;
+    }
+
+    /**
+     * Sets the closure date
+     * @param lClosureDate the closure date to set
+     */
+    public void setClosureDate( long lClosureDate )
+    {
+        this._lClosureDate = lClosureDate;
     }
 
     /**
@@ -217,22 +236,5 @@ public class Demand extends BaseDemand
     public boolean getShowDetails(  )
     {
         return _bShowDetails;
-    }
-
-    /**
-     * Calculates the opened time
-     */
-    private void calculateOpenedTime(  )
-    {
-        if ( _nStatusId == STATUS_CLOSED )
-        {
-            _lTimeOpened = _listNotifications.get( 0 ).getNotificationDate(  ) -
-                _listNotifications.get( _listNotifications.size(  ) - 1 ).getNotificationDate(  );
-        }
-        else
-        {
-            _lTimeOpened = ( new Date(  ) ).getTime(  ) -
-                _listNotifications.get( _listNotifications.size(  ) - 1 ).getNotificationDate(  );
-        }
     }
 }

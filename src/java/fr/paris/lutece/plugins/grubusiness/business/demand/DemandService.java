@@ -66,14 +66,7 @@ public class DemandService
      */
     public Collection<Demand> findByCustomerId( String strCustomerId )
     {
-        Collection<Demand> collectionDemands = _demandDao.loadByCustomerId( strCustomerId );
-
-        for ( Demand demand : collectionDemands )
-        {
-            demand.setNotifications( _notificationDao.loadByDemand( demand.getId(  ), demand.getTypeId(  ) ) );
-        }
-
-        return collectionDemands;
+        return _demandDao.loadByCustomerId( strCustomerId );
     }
 
     /**
