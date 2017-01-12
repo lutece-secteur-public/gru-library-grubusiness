@@ -39,6 +39,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import fr.paris.lutece.plugins.grubusiness.business.customer.Customer;
+import fr.paris.lutece.plugins.grubusiness.business.demand.Demand;
 import junit.framework.TestCase;
 
 import org.junit.Test;
@@ -59,9 +61,9 @@ public class NotifyGruGlobalNotificationTest extends TestCase
         mapper.enable( SerializationFeature.WRAP_ROOT_VALUE );
         mapper.enable( SerializationFeature.INDENT_OUTPUT );
 
-        NotifyGruGlobalNotification notification = mapper.readValue( getClass(  )
+        Notification notification = mapper.readValue( getClass(  )
                                                                          .getResourceAsStream( "/notification.json" ),
-                NotifyGruGlobalNotification.class );
+                Notification.class );
         String jsonNotif = mapper.writeValueAsString( notification );
 
         // Uncomment for console checking
@@ -76,22 +78,25 @@ public class NotifyGruGlobalNotificationTest extends TestCase
         mapper.enable( SerializationFeature.WRAP_ROOT_VALUE );
         mapper.enable( SerializationFeature.INDENT_OUTPUT );
 
-        NotifyGruGlobalNotification notification = new NotifyGruGlobalNotification(  );
+        Notification notification = new Notification(  );
         int nCount = 0;
         long lCount = 0L;
-        notification.setCrmStatusId( nCount++ );
-        notification.setDemandMaxStep( nCount++ );
-        notification.setDemandId( nCount++ );
-        notification.setNotificationType( "strNotificationType" );
-        notification.setDemandUserCurrentStep( nCount++ );
-        notification.setDemandTypeId( nCount++ );
-        notification.setDemandStatus( nCount++ );
+
         notification.setNotificationDate( lCount++ );
-        notification.setEmail( "strEmail" );
-        notification.setDemandReference( "strDemandReference" );
-        notification.setGuid( "strGuid" );
-        notification.setRemoteDemandId( nCount++ );
-        notification.setCustomerId( "strCustomerId" );
+        
+        Demand demandNotif = new Demand( );
+        demandNotif.setId( "strDemandId" );
+        demandNotif.setTypeId( "strTypeId" );
+        demandNotif.setReference( "strDemandReference" );
+        demandNotif.setStatusId( nCount );
+        demandNotif.setMaxSteps( nCount );
+        demandNotif.setCurrentStep( nCount );
+        
+        Customer customerNotif = new Customer( );
+        customerNotif.setId( "strCustomerId" );
+        customerNotif.setAccountGuid( "strAccountGuid" );
+        customerNotif.setEmail( "strEmail" );
+        demandNotif.setCustomer( customerNotif );
 
         BackofficeNotification backNotif = new BackofficeNotification(  );
         backNotif.setMessage( "strMessage" );
@@ -132,12 +137,15 @@ public class NotifyGruGlobalNotificationTest extends TestCase
         broadcastNotif.setSenderName( "strSenderName" );
         broadcastNotif.setSubject( "strSubject" );
         notification.addBroadcastEmail( broadcastNotif );
+        
+        DashboardNotification crmDashboardNotif = new DashboardNotification();
+        crmDashboardNotif.setStatusId( 1 );
 
         String jsonNotif = mapper.writeValueAsString( notification );
 
         // Uncomment for console checking
         // System.out.println( jsonNotif );
-        NotifyGruGlobalNotification notificationFromString = mapper.readValue( jsonNotif,
-                NotifyGruGlobalNotification.class );
+        Notification notificationFromString = mapper.readValue( jsonNotif,
+                Notification.class );
     }
 }

@@ -47,16 +47,16 @@ public class MockNotificationDAO implements INotificationDAO
      * {@inheritDoc}
      */
     @Override
-    public List<NotifyGruGlobalNotification> loadByDemand( String strDemandId, String strDemandTypeId )
+    public List<Notification> loadByDemand( String strDemandId, String strDemandTypeId )
     {
-        return new ArrayList<NotifyGruGlobalNotification>(  );
+        return new ArrayList<Notification>(  );
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public NotifyGruGlobalNotification insert( NotifyGruGlobalNotification notification )
+    public Notification insert( Notification notification )
     {
         return notification;
     }

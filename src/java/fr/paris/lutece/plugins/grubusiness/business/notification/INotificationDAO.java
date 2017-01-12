@@ -49,14 +49,14 @@ public interface INotificationDAO
      * @param strDemandTypeId the demand type id
      * @return the notifications. An empty list is returned if no notification has been found.
      */
-    List<NotifyGruGlobalNotification> loadByDemand( String strDemandId, String strDemandTypeId );
+    List<Notification> loadByDemand( String strDemandId, String strDemandTypeId );
 
     /**
      * Inserts a notification
      * @param notification the notification to insert
      * @return the inserted notification
      */
-    NotifyGruGlobalNotification insert( NotifyGruGlobalNotification notification );
+    Notification insert( Notification notification );
 
     /**
      * Deletes notifications associated to the specified demand id and demand type id

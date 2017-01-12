@@ -34,7 +34,7 @@
 package fr.paris.lutece.plugins.grubusiness.business.demand;
 
 import fr.paris.lutece.plugins.grubusiness.business.notification.INotificationDAO;
-import fr.paris.lutece.plugins.grubusiness.business.notification.NotifyGruGlobalNotification;
+import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
 
 import java.util.Collection;
 
@@ -102,7 +102,7 @@ public class DemandService
      * @param notification the notification to create
      * @return the created notification
      */
-    public NotifyGruGlobalNotification create( NotifyGruGlobalNotification notification )
+    public Notification create( Notification notification )
     {
         return _notificationDao.insert( notification );
     }

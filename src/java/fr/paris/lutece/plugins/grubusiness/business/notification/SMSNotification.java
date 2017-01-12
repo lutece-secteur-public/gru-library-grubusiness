@@ -44,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
  * - message, content of the notification<br/>
  * - phone_number, phone number of the user<br/>
  */
-@JsonRootName( value = "user_sms" )
+@JsonRootName( value = "sms" )
 @JsonPropertyOrder( {"message",
     "phone_number"
 } )

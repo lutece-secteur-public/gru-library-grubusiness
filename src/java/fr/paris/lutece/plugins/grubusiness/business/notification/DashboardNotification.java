@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 
 
 /**
- * The Class UserDashboardNotification for 'Guichet' notification.<br/>
+ * The Class DashboardNotification for 'Guichet' notification.<br/>
  * Fields description :<br/>
  * - status_text, status label which will be displayed<br/>
  * - message, content for the new notif to add<br/>
@@ -47,16 +47,18 @@ import com.fasterxml.jackson.annotation.JsonRootName;
  * - data, ...<br/>
  * - sender_name, Sender name for the new notif to add<br/>
  */
-@JsonRootName( value = "user_dashboard" )
-@JsonPropertyOrder( {"status_text",
+@JsonRootName( value = "mydashboard" )
+@JsonPropertyOrder( {"status_id",
+	"status_text",
     "message",
     "subject",
     "data",
     "sender_name"
 } )
-public class UserDashboardNotification
+public class DashboardNotification
 {
     // Variables declarations 
+    private int _nStatusId;
     private String _strStatusText;
     private String _strMessage;
     private String _strSubject;
@@ -64,11 +66,28 @@ public class UserDashboardNotification
     private String _strData;
 
     /**
+	 * @return the StatusId
+	 */
+	public int getStatusId()
+	{
+		return _nStatusId;
+	}
+
+	/**
+	 * @param strStatusId the StatusId to set
+	 */
+	public void setStatusId( int nStatusId )
+	{
+		this._nStatusId = nStatusId;
+	}
+
+	/**
      * Instantiates a new notify gru guichet notification.
      */
-    public UserDashboardNotification(  )
+    public DashboardNotification(  )
     {
-        this._strStatusText = NotificationConstants.DEFAULT_STRING;
+        this._nStatusId = NotificationConstants.DEFAULT_INT;
+    	this._strStatusText = NotificationConstants.DEFAULT_STRING;
         this._strMessage = NotificationConstants.DEFAULT_STRING;
         this._strSubject = NotificationConstants.DEFAULT_STRING;
         this._strSenderName = NotificationConstants.DEFAULT_STRING;

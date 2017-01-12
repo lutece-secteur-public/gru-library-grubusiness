@@ -33,36 +33,149 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.demand;
 
-import fr.paris.lutece.plugins.grubusiness.business.notification.NotifyGruGlobalNotification;
+import fr.paris.lutece.plugins.grubusiness.business.customer.Customer;
+import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonRootName;
 
 
 /**
  * Demand Class
  */
-public class Demand extends BaseDemand
+@JsonRootName( value = "demand" )
+@JsonPropertyOrder( {"id",
+	"type_id",
+    "reference",
+    "status_id",
+    "max_step",
+    "current_step",
+    "customer"
+} )
+public class Demand
 {
     public static final int STATUS_INPROGRESS = 0;
     public static final int STATUS_CLOSED = 1;
 
     // Variables declarations 
+    private String _strId;
+    private String _strReference;
+    private String _strTypeId;
+    protected int _nStatusId;
+    @JsonIgnore
     private String _strTitle;
-    private List<NotifyGruGlobalNotification> _listNotifications;
+    @JsonIgnore
+    private List<Notification> _listNotifications;
+    @JsonIgnore
     private List<Action> _listActions = new ArrayList<Action>(  );
-    private String _strCustomerId;
+    @JsonIgnore
     private long _lCreationDate;
+    @JsonIgnore
     private long _lClosureDate;
     private int _nMaxSteps;
     private int _nCurrentStep;
+    @JsonIgnore
     private boolean _bShowDetails;
+    private Customer _customer;
 
     /** Constructor */
     public Demand(  )
     {
     }
 
+    /**
+     * Gives the id
+     *
+     * @return The id
+     */
+    @JsonProperty( "id" )
+    public String getId(  )
+    {
+        return _strId;
+    }
+
+    /**
+     * Sets the id
+     *
+     * @param strId The id
+     */
+    @JsonProperty( "id" )
+    public void setId( String strId )
+    {
+        _strId = strId;
+    }
+
+    /**
+     * Gives the reference
+     *
+     * @return The reference
+     */
+    @JsonProperty( "reference" )
+    public String getReference(  )
+    {
+        return _strReference;
+    }
+
+    /**
+     * Sets the reference
+     *
+     * @param strReference The reference
+     */
+    @JsonProperty( "reference" )
+    public void setReference( String strReference )
+    {
+        _strReference = strReference;
+    }
+
+    /**
+     * Gives the status id
+     *
+     * @return The status id
+     */
+    @JsonProperty( "status_id" )
+    public int getStatusId(  )
+    {
+        return _nStatusId;
+    }
+
+    /**
+     * Sets the status id
+     *
+     * @param nStatusId The status id
+     */
+    @JsonProperty( "status_id" )
+    public void setStatusId( int nStatusId )
+    {
+        _nStatusId = nStatusId;
+    }
+
+    /**
+     * Sets the type id
+     *
+     * @param strTypeId The type id
+     */
+    @JsonProperty( "type_id" )
+    public void setTypeId( String strTypeId )
+    {
+        _strTypeId = strTypeId;
+    }
+
+    /**
+     * Gves the type id
+     *
+     * @return The type id
+     */
+    @JsonProperty( "type_id" )
+    public String getTypeId(  )
+    {
+        return _strTypeId;
+    }
+    
     /**
     * Returns the Title
     * @return The Title
@@ -86,7 +199,7 @@ public class Demand extends BaseDemand
      *
      * @return The Notifications
      */
-    public List<NotifyGruGlobalNotification> getNotifications(  )
+    public List<Notification> getNotifications(  )
     {
         return _listNotifications;
     }
@@ -96,7 +209,7 @@ public class Demand extends BaseDemand
      *
      * @param listNotifications The Notifications
      */
-    public void setNotifications( List<NotifyGruGlobalNotification> listNotifications )
+    public void setNotifications( List<Notification> listNotifications )
     {
         _listNotifications = listNotifications;
     }
@@ -131,22 +244,26 @@ public class Demand extends BaseDemand
     }
 
     /**
-     * Gives the customer id
-     * @return the customer id
+     * Gives the customer
+     * @return the customer
      */
-    public String getCustomerId(  )
+    @JsonProperty( "customer" )
+    public Customer getCustomer(  )
     {
-        return _strCustomerId;
+        return _customer;
     }
 
     /**
-     * Sets the customer id
-     * @param strCustomerId the customer id to set
+     * Sets the customer
+     * @param customer the customer to set
      */
-    public void setCustomerId( String strCustomerId )
+    @JsonProperty( "customer" )
+    public void setCustomer( Customer customer )
     {
-        _strCustomerId = strCustomerId;
+        _customer = customer;
     }
+    
+    
 
     /**
      * Gives the creation date
@@ -188,6 +305,7 @@ public class Demand extends BaseDemand
      * Gives the number of steps
      * @return the number of steps
      */
+    @JsonProperty( "max_step" )
     public int getMaxSteps(  )
     {
         return _nMaxSteps;
@@ -197,6 +315,7 @@ public class Demand extends BaseDemand
      * Sets the number of steps
      * @param nMaxSteps the number of steps to set
      */
+    @JsonProperty( "max_step" )
     public void setMaxSteps( int nMaxSteps )
     {
         _nMaxSteps = nMaxSteps;
@@ -206,6 +325,7 @@ public class Demand extends BaseDemand
      * Gives the current step
      * @return the current step
      */
+    @JsonProperty( "current_step" )
     public int getCurrentStep(  )
     {
         return _nCurrentStep;
@@ -215,6 +335,7 @@ public class Demand extends BaseDemand
      * Sets the current step
      * @param nCurrentStep the current step to set
      */
+    @JsonProperty( "current_step" )
     public void setCurrentStep( int nCurrentStep )
     {
         _nCurrentStep = nCurrentStep;

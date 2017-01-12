@@ -36,6 +36,10 @@ package fr.paris.lutece.plugins.grubusiness.business.customer;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import java.io.Serializable;
 
 import javax.validation.constraints.Size;
@@ -45,6 +49,7 @@ import javax.validation.constraints.Size;
 /**
  * This is the business class for the object Customer.
  */
+@JsonRootName( value = "customer" )
 public class Customer implements Serializable
 {
     /** The Constant serialVersionUID. */
@@ -71,6 +76,7 @@ public class Customer implements Serializable
 
     /** The _str account login. */
     @Size( max = 50, message = "#i18n{gru.validation.customer.AccountLogin.size}" )
+    @JsonIgnore
     private String _strAccountLogin;
 
     /** The _str account guid. */
@@ -108,6 +114,7 @@ public class Customer implements Serializable
      *
      * @return The Id
      */
+    @JsonProperty( "id" )
     public String getId(  )
     {
         return _strId;
@@ -119,6 +126,7 @@ public class Customer implements Serializable
      * @param strId
      *            The Id
      */
+    @JsonProperty( "id" )
     public void setId( String strId )
     {
         _strId = strId;
@@ -129,6 +137,7 @@ public class Customer implements Serializable
      *
      * @return The IdTitle
      */
+    @JsonProperty( "gender" )
     public int getIdTitle(  )
     {
         return _nIdTitle;
@@ -140,6 +149,7 @@ public class Customer implements Serializable
      * @param nIdTitle
      *            The IdTitle
      */
+    @JsonProperty( "gender" )  
     public void setIdTitle( int nIdTitle )
     {
         _nIdTitle = nIdTitle;
@@ -150,6 +160,7 @@ public class Customer implements Serializable
      *
      * @return The Firstname
      */
+    @JsonProperty( "firstname" )
     public String getFirstname(  )
     {
         return _strFirstname;
@@ -161,6 +172,7 @@ public class Customer implements Serializable
      * @param strFirstname
      *            The Firstname
      */
+    @JsonProperty( "firstname" )
     public void setFirstname( String strFirstname )
     {
         _strFirstname = strFirstname;
@@ -171,6 +183,7 @@ public class Customer implements Serializable
      *
      * @return The Lastname
      */
+    @JsonProperty( "lastname" )
     public String getLastname(  )
     {
         return _strLastname;
@@ -182,6 +195,7 @@ public class Customer implements Serializable
      * @param strLastname
      *            The Lastname
      */
+    @JsonProperty( "lastname" )
     public void setLastname( String strLastname )
     {
         _strLastname = strLastname;
@@ -234,6 +248,7 @@ public class Customer implements Serializable
      *
      * @return The AccountGuid
      */
+    @JsonProperty( "connection_id" )
     public String getAccountGuid(  )
     {
         return _strAccountGuid;
@@ -245,6 +260,7 @@ public class Customer implements Serializable
      * @param strAccountGuid
      *            The AccountGuid
      */
+    @JsonProperty( "connection_id" )
     public void setAccountGuid( String strAccountGuid )
     {
         _strAccountGuid = strAccountGuid;
@@ -255,6 +271,7 @@ public class Customer implements Serializable
      *
      * @return The Email
      */
+    @JsonProperty( "email" )
     public String getEmail(  )
     {
         return _strEmail;
@@ -266,6 +283,7 @@ public class Customer implements Serializable
      * @param strEmail
      *            The Email
      */
+    @JsonProperty( "email" )
     public void setEmail( String strEmail )
     {
         _strEmail = strEmail;
