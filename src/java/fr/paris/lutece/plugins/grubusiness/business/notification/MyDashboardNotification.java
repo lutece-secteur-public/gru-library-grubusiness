@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 
 
 /**
- * The Class DashboardNotification for 'Guichet' notification.<br/>
+ * The Class MyDashboardNotification for 'Guichet' notification.<br/>
  * Fields description :<br/>
  * - status_text, status label which will be displayed<br/>
  * - message, content for the new notif to add<br/>
@@ -49,13 +49,13 @@ import com.fasterxml.jackson.annotation.JsonRootName;
  */
 @JsonRootName( value = "mydashboard" )
 @JsonPropertyOrder( {"status_id",
-	"status_text",
+    "status_text",
     "message",
     "subject",
     "data",
     "sender_name"
 } )
-public class DashboardNotification
+public class MyDashboardNotification
 {
     // Variables declarations 
     private int _nStatusId;
@@ -66,32 +66,34 @@ public class DashboardNotification
     private String _strData;
 
     /**
-	 * @return the StatusId
-	 */
-	public int getStatusId()
-	{
-		return _nStatusId;
-	}
-
-	/**
-	 * @param strStatusId the StatusId to set
-	 */
-	public void setStatusId( int nStatusId )
-	{
-		this._nStatusId = nStatusId;
-	}
-
-	/**
-     * Instantiates a new notify gru guichet notification.
-     */
-    public DashboardNotification(  )
+    * Instantiates a new notify gru guichet notification.
+    */
+    public MyDashboardNotification(  )
     {
         this._nStatusId = NotificationConstants.DEFAULT_INT;
-    	this._strStatusText = NotificationConstants.DEFAULT_STRING;
+        this._strStatusText = NotificationConstants.DEFAULT_STRING;
         this._strMessage = NotificationConstants.DEFAULT_STRING;
         this._strSubject = NotificationConstants.DEFAULT_STRING;
         this._strSenderName = NotificationConstants.DEFAULT_STRING;
         this._strData = NotificationConstants.DEFAULT_STRING;
+    }
+
+    /**
+         * @return the StatusId
+         */
+    @JsonProperty( "status_id" )
+    public int getStatusId(  )
+    {
+        return _nStatusId;
+    }
+
+    /**
+     * @param strStatusId the StatusId to set
+     */
+    @JsonProperty( "status_id" )
+    public void setStatusId( int nStatusId )
+    {
+        this._nStatusId = nStatusId;
     }
 
     /**

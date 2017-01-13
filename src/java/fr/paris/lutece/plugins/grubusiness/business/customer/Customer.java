@@ -33,12 +33,12 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.customer;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import java.io.Serializable;
 
@@ -149,7 +149,7 @@ public class Customer implements Serializable
      * @param nIdTitle
      *            The IdTitle
      */
-    @JsonProperty( "gender" )  
+    @JsonProperty( "gender" )
     public void setIdTitle( int nIdTitle )
     {
         _nIdTitle = nIdTitle;

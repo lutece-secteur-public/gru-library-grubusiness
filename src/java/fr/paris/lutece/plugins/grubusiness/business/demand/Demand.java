@@ -33,16 +33,16 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.demand;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import fr.paris.lutece.plugins.grubusiness.business.customer.Customer;
 import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonRootName;
 
 
 /**
@@ -50,7 +50,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
  */
 @JsonRootName( value = "demand" )
 @JsonPropertyOrder( {"id",
-	"type_id",
+    "type_id",
     "reference",
     "status_id",
     "max_step",
@@ -175,7 +175,7 @@ public class Demand
     {
         return _strTypeId;
     }
-    
+
     /**
     * Returns the Title
     * @return The Title
@@ -262,8 +262,6 @@ public class Demand
     {
         _customer = customer;
     }
-    
-    
 
     /**
      * Gives the creation date

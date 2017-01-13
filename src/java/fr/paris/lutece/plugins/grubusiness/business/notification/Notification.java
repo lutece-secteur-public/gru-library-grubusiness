@@ -62,12 +62,12 @@ import java.util.List;
  *  - user_guid, user id to create a new request<br/>
  *  - user_sms, {@link SMSNotification}<br/>
  *  - user_email, {@link EmailNotification}<br/>
- *  - user_dashboard, {@link DashboardNotification}
+ *  - user_dashboard, {@link MyDashboardNotification}
  *
  */
 @JsonRootName( value = "notification" )
 @JsonPropertyOrder( {"date",
-	"demand",
+    "demand",
     "backoffice",
     "customer_email",
     "sms",
@@ -78,13 +78,13 @@ public class Notification
 {
     // Variables declarations
     @JsonIgnore
-	private int _nId;
+    private int _nId;
     private Demand _demand;
     private Long _notificationDate;
     private EmailNotification _emailNotification;
     private SMSNotification _userSMS;
     private BackofficeNotification _backofficeLogging;
-    private DashboardNotification _userDashboard;;
+    private MyDashboardNotification _userDashboard;
     private List<BroadcastNotification> _lstBroadcastEmail;
 
     /**
@@ -95,7 +95,6 @@ public class Notification
         this._notificationDate = NotificationConstants.DEFAULT_LONG;
     }
 
-    
     /**
      * Gives the notification id
      * @return the notification id
@@ -116,26 +115,25 @@ public class Notification
 
     /**
      * Returns the Demand
-     * 
-	 * @return the Demand
-	 */
+     *
+         * @return the Demand
+         */
     @JsonProperty( "demand" )
-	public Demand getDemand()
-	{
-		return _demand;
-	}
+    public Demand getDemand(  )
+    {
+        return _demand;
+    }
 
-	/**
-	 * Sets the Demand.
-	 * 
-	 * @param demand the Demand to set
-	 */
+    /**
+     * Sets the Demand.
+     *
+     * @param demand the Demand to set
+     */
     @JsonProperty( "demand" )
-	public void setDemand( Demand demand )
-	{
-		this._demand = demand;
-	}
-
+    public void setDemand( Demand demand )
+    {
+        this._demand = demand;
+    }
 
     /**
      * Returns the NotificationDate.
@@ -159,7 +157,6 @@ public class Notification
         _notificationDate = notificationDate;
     }
 
-    
     /**
      * Gets the user email notification.
      *
@@ -169,10 +166,9 @@ public class Notification
     @JsonInclude( Include.NON_NULL )
     public EmailNotification getUserEmail(  )
     {
-    	return _emailNotification;
+        return _emailNotification;
     }
 
-    
     /**
      * Sets the user email notification.
      *
@@ -181,9 +177,8 @@ public class Notification
     @JsonProperty( "customer_email" )
     public void setUserEmail( EmailNotification emailNotification )
     {
-    	this._emailNotification = emailNotification;
+        this._emailNotification = emailNotification;
     }
-
 
     /**
      * Gets the user sms.
@@ -238,7 +233,7 @@ public class Notification
      */
     @JsonProperty( "mydashboard" )
     @JsonInclude( Include.NON_NULL )
-    public DashboardNotification getUserDashboard(  )
+    public MyDashboardNotification getUserDashboard(  )
     {
         return _userDashboard;
     }
@@ -249,7 +244,7 @@ public class Notification
      * @param userDashboard the new user dashboard notif
      */
     @JsonProperty( "mydashboard" )
-    public void setUserDashboard( DashboardNotification userDashboard )
+    public void setUserDashboard( MyDashboardNotification userDashboard )
     {
         this._userDashboard = userDashboard;
     }

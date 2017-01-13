@@ -41,6 +41,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 import fr.paris.lutece.plugins.grubusiness.business.customer.Customer;
 import fr.paris.lutece.plugins.grubusiness.business.demand.Demand;
+
 import junit.framework.TestCase;
 
 import org.junit.Test;
@@ -61,8 +62,7 @@ public class NotifyGruGlobalNotificationTest extends TestCase
         mapper.enable( SerializationFeature.WRAP_ROOT_VALUE );
         mapper.enable( SerializationFeature.INDENT_OUTPUT );
 
-        Notification notification = mapper.readValue( getClass(  )
-                                                                         .getResourceAsStream( "/notification.json" ),
+        Notification notification = mapper.readValue( getClass(  ).getResourceAsStream( "/notification.json" ),
                 Notification.class );
         String jsonNotif = mapper.writeValueAsString( notification );
 
@@ -83,16 +83,16 @@ public class NotifyGruGlobalNotificationTest extends TestCase
         long lCount = 0L;
 
         notification.setNotificationDate( lCount++ );
-        
-        Demand demandNotif = new Demand( );
+
+        Demand demandNotif = new Demand(  );
         demandNotif.setId( "strDemandId" );
         demandNotif.setTypeId( "strTypeId" );
         demandNotif.setReference( "strDemandReference" );
         demandNotif.setStatusId( nCount );
         demandNotif.setMaxSteps( nCount );
         demandNotif.setCurrentStep( nCount );
-        
-        Customer customerNotif = new Customer( );
+
+        Customer customerNotif = new Customer(  );
         customerNotif.setId( "strCustomerId" );
         customerNotif.setAccountGuid( "strAccountGuid" );
         customerNotif.setEmail( "strEmail" );
@@ -137,15 +137,14 @@ public class NotifyGruGlobalNotificationTest extends TestCase
         broadcastNotif.setSenderName( "strSenderName" );
         broadcastNotif.setSubject( "strSubject" );
         notification.addBroadcastEmail( broadcastNotif );
-        
-        DashboardNotification crmDashboardNotif = new DashboardNotification();
+
+        MyDashboardNotification crmDashboardNotif = new MyDashboardNotification(  );
         crmDashboardNotif.setStatusId( 1 );
 
         String jsonNotif = mapper.writeValueAsString( notification );
 
         // Uncomment for console checking
         // System.out.println( jsonNotif );
-        Notification notificationFromString = mapper.readValue( jsonNotif,
-                Notification.class );
+        Notification notificationFromString = mapper.readValue( jsonNotif, Notification.class );
     }
 }
