@@ -34,6 +34,7 @@
 package fr.paris.lutece.plugins.grubusiness.business.demand;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
@@ -67,19 +68,13 @@ public class Demand
     private String _strReference;
     private String _strTypeId;
     protected int _nStatusId;
-    @JsonIgnore
     private String _strTitle;
-    @JsonIgnore
     private List<Notification> _listNotifications;
-    @JsonIgnore
     private List<Action> _listActions = new ArrayList<Action>(  );
-    @JsonIgnore
     private long _lCreationDate;
-    @JsonIgnore
     private long _lClosureDate;
     private int _nMaxSteps;
     private int _nCurrentStep;
-    @JsonIgnore
     private boolean _bShowDetails;
     private Customer _customer;
 
@@ -180,6 +175,7 @@ public class Demand
     * Returns the Title
     * @return The Title
     */
+    @JsonIgnore
     public String getTitle(  )
     {
         return _strTitle;
@@ -199,6 +195,7 @@ public class Demand
      *
      * @return The Notifications
      */
+    @JsonIgnore
     public List<Notification> getNotifications(  )
     {
         return _listNotifications;
@@ -219,6 +216,7 @@ public class Demand
      *
      * @return The Actions
      */
+    @JsonIgnore
     public List<Action> getActions(  )
     {
         return _listActions;
@@ -267,6 +265,7 @@ public class Demand
      * Gives the creation date
      * @return the creation date
      */
+    @JsonIgnore
     public long getCreationDate(  )
     {
         return _lCreationDate;
@@ -285,6 +284,7 @@ public class Demand
      * Gives the closure date
      * @return the closure date
      */
+    @JsonIgnore
     public long getClosureDate(  )
     {
         return _lClosureDate;
@@ -352,6 +352,7 @@ public class Demand
      * Return true if details can be shown otherwise false.
      * @return The display details flag
      */
+    @JsonIgnore
     public boolean getShowDetails(  )
     {
         return _bShowDetails;

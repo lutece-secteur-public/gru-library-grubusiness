@@ -41,7 +41,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import fr.paris.lutece.plugins.grubusiness.business.customer.Customer;
 import fr.paris.lutece.plugins.grubusiness.business.demand.Demand;
 
 import java.util.ArrayList;
@@ -77,7 +76,6 @@ import java.util.List;
 public class Notification
 {
     // Variables declarations
-    @JsonIgnore
     private int _nId;
     private Demand _demand;
     private Long _notificationDate;
@@ -99,6 +97,7 @@ public class Notification
      * Gives the notification id
      * @return the notification id
      */
+    @JsonIgnore
     public int getId(  )
     {
         return _nId;

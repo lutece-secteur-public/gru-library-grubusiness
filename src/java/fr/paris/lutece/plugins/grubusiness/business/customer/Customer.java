@@ -76,7 +76,6 @@ public class Customer implements Serializable
 
     /** The _str account login. */
     @Size( max = 50, message = "#i18n{gru.validation.customer.AccountLogin.size}" )
-    @JsonIgnore
     private String _strAccountLogin;
 
     /** The _str account guid. */
@@ -137,7 +136,7 @@ public class Customer implements Serializable
      *
      * @return The IdTitle
      */
-    @JsonProperty( "gender" )
+    @JsonIgnore
     public int getIdTitle(  )
     {
         return _nIdTitle;
@@ -149,7 +148,6 @@ public class Customer implements Serializable
      * @param nIdTitle
      *            The IdTitle
      */
-    @JsonProperty( "gender" )
     public void setIdTitle( int nIdTitle )
     {
         _nIdTitle = nIdTitle;
@@ -160,7 +158,6 @@ public class Customer implements Serializable
      *
      * @return The Firstname
      */
-    @JsonProperty( "firstname" )
     public String getFirstname(  )
     {
         return _strFirstname;
@@ -172,7 +169,6 @@ public class Customer implements Serializable
      * @param strFirstname
      *            The Firstname
      */
-    @JsonProperty( "firstname" )
     public void setFirstname( String strFirstname )
     {
         _strFirstname = strFirstname;
@@ -183,7 +179,6 @@ public class Customer implements Serializable
      *
      * @return The Lastname
      */
-    @JsonProperty( "lastname" )
     public String getLastname(  )
     {
         return _strLastname;
@@ -195,7 +190,6 @@ public class Customer implements Serializable
      * @param strLastname
      *            The Lastname
      */
-    @JsonProperty( "lastname" )
     public void setLastname( String strLastname )
     {
         _strLastname = strLastname;
@@ -206,6 +200,7 @@ public class Customer implements Serializable
      *
      * @return The HasAccount
      */
+    @JsonIgnore
     public boolean getHasAccount(  )
     {
         return _bHasAccount;
@@ -227,6 +222,7 @@ public class Customer implements Serializable
      *
      * @return The AccountLogin
      */
+    @JsonIgnore
     public String getAccountLogin(  )
     {
         return _strAccountLogin;
@@ -294,6 +290,7 @@ public class Customer implements Serializable
      *
      * @return The IsEmailVerified
      */
+    @JsonIgnore
     public boolean getIsEmailVerified(  )
     {
         return _bIsEmailVerified;
@@ -357,6 +354,7 @@ public class Customer implements Serializable
      *
      * @return The IsMobilePhoneVerified
      */
+    @JsonIgnore
     public boolean getIsMobilePhoneVerified(  )
     {
         return _bIsMobilePhoneVerified;
@@ -378,6 +376,7 @@ public class Customer implements Serializable
      *
      * @return The ExtrasAttributes
      */
+    @JsonIgnore
     public String getExtrasAttributes(  )
     {
         return _strExtrasAttributes;
