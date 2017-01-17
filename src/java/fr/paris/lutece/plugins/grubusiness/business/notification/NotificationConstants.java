@@ -33,7 +33,6 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.notification;
 
-
 /**
  * The Class ConstantsLibraryNotifyGru.
  */
@@ -51,10 +50,11 @@ public final class NotificationConstants
     /**
      * final class of constants, don't have to be instantiated
      *
-     * @throws Exception the exception
+     * @throws Exception
+     *             the exception
      */
-    private NotificationConstants(  ) throws Exception
+    private NotificationConstants( ) throws Exception
     {
-        throw new Exception(  );
+        throw new Exception( );
     }
 }

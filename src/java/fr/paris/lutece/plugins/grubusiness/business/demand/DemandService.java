@@ -38,7 +38,6 @@ import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
 
 import java.util.Collection;
 
-
 /**
  * This class manages demands
  *
@@ -50,8 +49,11 @@ public class DemandService
 
     /**
      * Constructor
-     * @param demandDAO the DAO for the demands
-     * @param notificationDAO the DAO for the notifications
+     * 
+     * @param demandDAO
+     *            the DAO for the demands
+     * @param notificationDAO
+     *            the DAO for the notifications
      */
     public DemandService( IDemandDAO demandDAO, INotificationDAO notificationDAO )
     {
@@ -61,7 +63,9 @@ public class DemandService
 
     /**
      * Finds demands for the specified customer id
-     * @param strCustomerId the customer id
+     * 
+     * @param strCustomerId
+     *            the customer id
      * @return the demands. An empty collection is returned if no demand has been found
      */
     public Collection<Demand> findByCustomerId( String strCustomerId )
@@ -71,8 +75,11 @@ public class DemandService
 
     /**
      * Finds a demand for the specified id and type id
-     * @param strDemandId the demand id
-     * @param strDemandTypeId the demand type id
+     * 
+     * @param strDemandId
+     *            the demand id
+     * @param strDemandTypeId
+     *            the demand type id
      * @return the demand if found, {@code null} otherwise
      */
     public Demand findByPrimaryKey( String strDemandId, String strDemandTypeId )
@@ -89,7 +96,9 @@ public class DemandService
 
     /**
      * Creates a demand
-     * @param demand the demand to create
+     * 
+     * @param demand
+     *            the demand to create
      * @return the created demand
      */
     public Demand create( Demand demand )
@@ -99,7 +108,9 @@ public class DemandService
 
     /**
      * Creates a notification
-     * @param notification the notification to create
+     * 
+     * @param notification
+     *            the notification to create
      * @return the created notification
      */
     public Notification create( Notification notification )
@@ -109,7 +120,9 @@ public class DemandService
 
     /**
      * Updates a demand
-     * @param demand the demand to update
+     * 
+     * @param demand
+     *            the demand to update
      * @return the updated demand
      */
     public Demand update( Demand demand )
@@ -119,8 +132,11 @@ public class DemandService
 
     /**
      * Removes a demand with the specified id and type id
-     * @param strDemandId the demand id
-     * @param strDemandTypeId the demand type id
+     * 
+     * @param strDemandId
+     *            the demand id
+     * @param strDemandTypeId
+     *            the demand type id
      */
     public void remove( String strDemandId, String strDemandTypeId )
     {

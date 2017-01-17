@@ -44,7 +44,6 @@ import java.io.Serializable;
 
 import javax.validation.constraints.Size;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * This is the business class for the object Customer.
@@ -114,7 +113,7 @@ public class Customer implements Serializable
      * @return The Id
      */
     @JsonProperty( "id" )
-    public String getId(  )
+    public String getId( )
     {
         return _strId;
     }
@@ -137,7 +136,7 @@ public class Customer implements Serializable
      * @return The IdTitle
      */
     @JsonIgnore
-    public int getIdTitle(  )
+    public int getIdTitle( )
     {
         return _nIdTitle;
     }
@@ -158,7 +157,7 @@ public class Customer implements Serializable
      *
      * @return The Firstname
      */
-    public String getFirstname(  )
+    public String getFirstname( )
     {
         return _strFirstname;
     }
@@ -179,7 +178,7 @@ public class Customer implements Serializable
      *
      * @return The Lastname
      */
-    public String getLastname(  )
+    public String getLastname( )
     {
         return _strLastname;
     }
@@ -201,7 +200,7 @@ public class Customer implements Serializable
      * @return The HasAccount
      */
     @JsonIgnore
-    public boolean getHasAccount(  )
+    public boolean getHasAccount( )
     {
         return _bHasAccount;
     }
@@ -223,7 +222,7 @@ public class Customer implements Serializable
      * @return The AccountLogin
      */
     @JsonIgnore
-    public String getAccountLogin(  )
+    public String getAccountLogin( )
     {
         return _strAccountLogin;
     }
@@ -245,7 +244,7 @@ public class Customer implements Serializable
      * @return The AccountGuid
      */
     @JsonProperty( "connection_id" )
-    public String getAccountGuid(  )
+    public String getAccountGuid( )
     {
         return _strAccountGuid;
     }
@@ -268,7 +267,7 @@ public class Customer implements Serializable
      * @return The Email
      */
     @JsonProperty( "email" )
-    public String getEmail(  )
+    public String getEmail( )
     {
         return _strEmail;
     }
@@ -291,7 +290,7 @@ public class Customer implements Serializable
      * @return The IsEmailVerified
      */
     @JsonIgnore
-    public boolean getIsEmailVerified(  )
+    public boolean getIsEmailVerified( )
     {
         return _bIsEmailVerified;
     }
@@ -312,7 +311,7 @@ public class Customer implements Serializable
      *
      * @return The MobilePhone
      */
-    public String getMobilePhone(  )
+    public String getMobilePhone( )
     {
         return _strMobilePhone;
     }
@@ -333,7 +332,7 @@ public class Customer implements Serializable
      *
      * @return the fixe phone
      */
-    public String getFixedPhoneNumber(  )
+    public String getFixedPhoneNumber( )
     {
         return _strFixedPhoneNumber;
     }
@@ -355,7 +354,7 @@ public class Customer implements Serializable
      * @return The IsMobilePhoneVerified
      */
     @JsonIgnore
-    public boolean getIsMobilePhoneVerified(  )
+    public boolean getIsMobilePhoneVerified( )
     {
         return _bIsMobilePhoneVerified;
     }
@@ -377,7 +376,7 @@ public class Customer implements Serializable
      * @return The ExtrasAttributes
      */
     @JsonIgnore
-    public String getExtrasAttributes(  )
+    public String getExtrasAttributes( )
     {
         return _strExtrasAttributes;
     }
@@ -398,7 +397,7 @@ public class Customer implements Serializable
      *
      * @return The birthDate
      */
-    public String getBirthDate(  )
+    public String getBirthDate( )
     {
         return _strBirthDate;
     }

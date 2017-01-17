@@ -37,12 +37,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
-
 /**
  * The Class NotifyGruResponse.
  */
 @JsonRootName( value = "acknowledge" )
-@JsonPropertyOrder( {"status"
+@JsonPropertyOrder( {
+    "status"
 } )
 public class NotifyGruResponse
 {
@@ -53,13 +53,14 @@ public class NotifyGruResponse
      * @return the _strStatus
      */
     @JsonProperty( "status" )
-    public String getStatus(  )
+    public String getStatus( )
     {
         return _strStatus;
     }
 
     /**
-     * @param strStatus the strStatus to set
+     * @param strStatus
+     *            the strStatus to set
      */
     @JsonProperty( "status" )
     public void setStatus( String strStatus )

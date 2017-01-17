@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.grubusiness.business.demand;
 
 import java.util.Collection;
 
-
 /**
  * This interface represents a data access object for Demand object
  *
@@ -44,37 +43,49 @@ public interface IDemandDAO
 {
     /**
      * Finds the demands associated to the specified customer id
-     * @param strCustomerId the customer id
+     * 
+     * @param strCustomerId
+     *            the customer id
      * @return the demands. An empty collection is returned if no demands has been found.
      */
     Collection<Demand> loadByCustomerId( String strCustomerId );
 
     /**
      * Finds a demand with the specified id and type id
-     * @param strDemandId the demand id
-     * @param strDemandTypeId the demand type id
+     * 
+     * @param strDemandId
+     *            the demand id
+     * @param strDemandTypeId
+     *            the demand type id
      * @return the demand if found, {@code null} otherwise
      */
     Demand load( String strDemandId, String strDemandTypeId );
 
     /**
      * Insert a demand
-     * @param demand the demand to insert
+     * 
+     * @param demand
+     *            the demand to insert
      * @return the inserted demand
      */
     Demand insert( Demand demand );
 
     /**
      * Stores a demand
-     * @param demand the demand to store
+     * 
+     * @param demand
+     *            the demand to store
      * @return the stored demand
      */
     Demand store( Demand demand );
 
     /**
      * Deletes a demand with the specified id and type id
-     * @param strDemandId the demand id
-     * @param strDemandTypeId the demand type id
+     * 
+     * @param strDemandId
+     *            the demand id
+     * @param strDemandTypeId
+     *            the demand type id
      */
     void delete( String strDemandId, String strDemandTypeId );
 }

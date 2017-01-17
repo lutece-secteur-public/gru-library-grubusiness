@@ -45,32 +45,26 @@ import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * Demand Class
  */
 @JsonRootName( value = "demand" )
-@JsonPropertyOrder( {"id",
-    "type_id",
-    "reference",
-    "status_id",
-    "max_step",
-    "current_step",
-    "customer"
+@JsonPropertyOrder( {
+        "id", "type_id", "reference", "status_id", "max_step", "current_step", "customer"
 } )
 public class Demand
 {
     public static final int STATUS_INPROGRESS = 0;
     public static final int STATUS_CLOSED = 1;
 
-    // Variables declarations 
+    // Variables declarations
     private String _strId;
     private String _strReference;
     private String _strTypeId;
     protected int _nStatusId;
     private String _strTitle;
     private List<Notification> _listNotifications;
-    private List<Action> _listActions = new ArrayList<Action>(  );
+    private List<Action> _listActions = new ArrayList<Action>( );
     private long _lCreationDate;
     private long _lClosureDate;
     private int _nMaxSteps;
@@ -79,7 +73,7 @@ public class Demand
     private Customer _customer;
 
     /** Constructor */
-    public Demand(  )
+    public Demand( )
     {
     }
 
@@ -89,7 +83,7 @@ public class Demand
      * @return The id
      */
     @JsonProperty( "id" )
-    public String getId(  )
+    public String getId( )
     {
         return _strId;
     }
@@ -97,7 +91,8 @@ public class Demand
     /**
      * Sets the id
      *
-     * @param strId The id
+     * @param strId
+     *            The id
      */
     @JsonProperty( "id" )
     public void setId( String strId )
@@ -111,7 +106,7 @@ public class Demand
      * @return The reference
      */
     @JsonProperty( "reference" )
-    public String getReference(  )
+    public String getReference( )
     {
         return _strReference;
     }
@@ -119,7 +114,8 @@ public class Demand
     /**
      * Sets the reference
      *
-     * @param strReference The reference
+     * @param strReference
+     *            The reference
      */
     @JsonProperty( "reference" )
     public void setReference( String strReference )
@@ -133,7 +129,7 @@ public class Demand
      * @return The status id
      */
     @JsonProperty( "status_id" )
-    public int getStatusId(  )
+    public int getStatusId( )
     {
         return _nStatusId;
     }
@@ -141,7 +137,8 @@ public class Demand
     /**
      * Sets the status id
      *
-     * @param nStatusId The status id
+     * @param nStatusId
+     *            The status id
      */
     @JsonProperty( "status_id" )
     public void setStatusId( int nStatusId )
@@ -152,7 +149,8 @@ public class Demand
     /**
      * Sets the type id
      *
-     * @param strTypeId The type id
+     * @param strTypeId
+     *            The type id
      */
     @JsonProperty( "type_id" )
     public void setTypeId( String strTypeId )
@@ -166,24 +164,27 @@ public class Demand
      * @return The type id
      */
     @JsonProperty( "type_id" )
-    public String getTypeId(  )
+    public String getTypeId( )
     {
         return _strTypeId;
     }
 
     /**
-    * Returns the Title
-    * @return The Title
-    */
+     * Returns the Title
+     * 
+     * @return The Title
+     */
     @JsonIgnore
-    public String getTitle(  )
+    public String getTitle( )
     {
         return _strTitle;
     }
 
     /**
      * Sets the Title
-     * @param strTitle The Title
+     * 
+     * @param strTitle
+     *            The Title
      */
     public void setTitle( String strTitle )
     {
@@ -196,7 +197,7 @@ public class Demand
      * @return The Notifications
      */
     @JsonIgnore
-    public List<Notification> getNotifications(  )
+    public List<Notification> getNotifications( )
     {
         return _listNotifications;
     }
@@ -204,7 +205,8 @@ public class Demand
     /**
      * Sets the Notifications
      *
-     * @param listNotifications The Notifications
+     * @param listNotifications
+     *            The Notifications
      */
     public void setNotifications( List<Notification> listNotifications )
     {
@@ -217,7 +219,7 @@ public class Demand
      * @return The Actions
      */
     @JsonIgnore
-    public List<Action> getActions(  )
+    public List<Action> getActions( )
     {
         return _listActions;
     }
@@ -225,7 +227,8 @@ public class Demand
     /**
      * Sets the Actions
      *
-     * @param listActions The Actions
+     * @param listActions
+     *            The Actions
      */
     public void setActions( List<Action> listActions )
     {
@@ -234,7 +237,9 @@ public class Demand
 
     /**
      * Add an action
-     * @param action the action to add
+     * 
+     * @param action
+     *            the action to add
      */
     public void addAction( Action action )
     {
@@ -243,17 +248,20 @@ public class Demand
 
     /**
      * Gives the customer
+     * 
      * @return the customer
      */
     @JsonProperty( "customer" )
-    public Customer getCustomer(  )
+    public Customer getCustomer( )
     {
         return _customer;
     }
 
     /**
      * Sets the customer
-     * @param customer the customer to set
+     * 
+     * @param customer
+     *            the customer to set
      */
     @JsonProperty( "customer" )
     public void setCustomer( Customer customer )
@@ -263,17 +271,20 @@ public class Demand
 
     /**
      * Gives the creation date
+     * 
      * @return the creation date
      */
     @JsonIgnore
-    public long getCreationDate(  )
+    public long getCreationDate( )
     {
         return _lCreationDate;
     }
 
     /**
      * Sets the creation date
-     * @param lCreationDate the creation date to set
+     * 
+     * @param lCreationDate
+     *            the creation date to set
      */
     public void setCreationDate( long lCreationDate )
     {
@@ -282,17 +293,20 @@ public class Demand
 
     /**
      * Gives the closure date
+     * 
      * @return the closure date
      */
     @JsonIgnore
-    public long getClosureDate(  )
+    public long getClosureDate( )
     {
         return _lClosureDate;
     }
 
     /**
      * Sets the closure date
-     * @param lClosureDate the closure date to set
+     * 
+     * @param lClosureDate
+     *            the closure date to set
      */
     public void setClosureDate( long lClosureDate )
     {
@@ -301,17 +315,20 @@ public class Demand
 
     /**
      * Gives the number of steps
+     * 
      * @return the number of steps
      */
     @JsonProperty( "max_step" )
-    public int getMaxSteps(  )
+    public int getMaxSteps( )
     {
         return _nMaxSteps;
     }
 
     /**
      * Sets the number of steps
-     * @param nMaxSteps the number of steps to set
+     * 
+     * @param nMaxSteps
+     *            the number of steps to set
      */
     @JsonProperty( "max_step" )
     public void setMaxSteps( int nMaxSteps )
@@ -321,17 +338,20 @@ public class Demand
 
     /**
      * Gives the current step
+     * 
      * @return the current step
      */
     @JsonProperty( "current_step" )
-    public int getCurrentStep(  )
+    public int getCurrentStep( )
     {
         return _nCurrentStep;
     }
 
     /**
      * Sets the current step
-     * @param nCurrentStep the current step to set
+     * 
+     * @param nCurrentStep
+     *            the current step to set
      */
     @JsonProperty( "current_step" )
     public void setCurrentStep( int nCurrentStep )
@@ -341,7 +361,9 @@ public class Demand
 
     /**
      * Set the flag to show or not details
-     * @param bShowDetails the flag value
+     * 
+     * @param bShowDetails
+     *            the flag value
      */
     public void setShowDetails( boolean bShowDetails )
     {
@@ -350,10 +372,11 @@ public class Demand
 
     /**
      * Return true if details can be shown otherwise false.
+     * 
      * @return The display details flag
      */
     @JsonIgnore
-    public boolean getShowDetails(  )
+    public boolean getShowDetails( )
     {
         return _bShowDetails;
     }

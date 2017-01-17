@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.grubusiness.business.notification;
 
 import java.util.List;
 
-
 /**
  * This interface represents a data access object for Notification object
  *
@@ -43,25 +42,32 @@ import java.util.List;
 public interface INotificationDAO
 {
     /**
-     * Finds notifications associated to the specified demand id and demand type id.
-     * The notifications must be sorted by date descending
-     * @param strDemandId the demand id
-     * @param strDemandTypeId the demand type id
+     * Finds notifications associated to the specified demand id and demand type id. The notifications must be sorted by date descending
+     * 
+     * @param strDemandId
+     *            the demand id
+     * @param strDemandTypeId
+     *            the demand type id
      * @return the notifications. An empty list is returned if no notification has been found.
      */
     List<Notification> loadByDemand( String strDemandId, String strDemandTypeId );
 
     /**
      * Inserts a notification
-     * @param notification the notification to insert
+     * 
+     * @param notification
+     *            the notification to insert
      * @return the inserted notification
      */
     Notification insert( Notification notification );
 
     /**
      * Deletes notifications associated to the specified demand id and demand type id
-     * @param strDemandId the demand id
-     * @param strDemandTypeId the demand type id
+     * 
+     * @param strDemandId
+     *            the demand id
+     * @param strDemandTypeId
+     *            the demand type id
      */
     void deleteByDemand( String strDemandId, String strDemandTypeId );
 }

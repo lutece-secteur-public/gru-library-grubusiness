@@ -40,14 +40,13 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * Class for email adresses of Email notifications
- * Fields description :<br/>
+ * Class for email adresses of Email notifications Fields description :<br/>
  * - address, the email adress
  */
 @JsonRootName( value = "email_address" )
-@JsonPropertyOrder( {"address"
+@JsonPropertyOrder( {
+    "address"
 } )
 public class EmailAddress
 {
@@ -57,13 +56,14 @@ public class EmailAddress
      * @return the Address
      */
     @JsonProperty( "address" )
-    public String getAddress(  )
+    public String getAddress( )
     {
         return _strAddress;
     }
 
     /**
-     * @param trAddress the Address to set
+     * @param trAddress
+     *            the Address to set
      */
     @JsonProperty( "address" )
     public void setAddress( String strAddress )
@@ -71,14 +71,14 @@ public class EmailAddress
         this._strAddress = strAddress;
     }
 
-    public static List<EmailAddress> buildEmailAddresses( String[] arrAdresses )
+    public static List<EmailAddress> buildEmailAddresses( String [ ] arrAdresses )
     {
-        List<EmailAddress> lstResult = new ArrayList<EmailAddress>(  );
+        List<EmailAddress> lstResult = new ArrayList<EmailAddress>( );
         EmailAddress tmpAdress = null;
 
         for ( String strAdress : arrAdresses )
         {
-            tmpAdress = new EmailAddress(  );
+            tmpAdress = new EmailAddress( );
             tmpAdress.setAddress( strAdress );
             lstResult.add( tmpAdress );
         }

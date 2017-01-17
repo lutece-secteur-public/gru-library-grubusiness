@@ -46,32 +46,26 @@ import fr.paris.lutece.plugins.grubusiness.business.demand.Demand;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * The Class Notification, default notification object.<br/>
  * Fields description<br/>
- *  - crm_status_id, single CRM status id<br/>
- *  - demand_max_step, maximum step of the demand<br/>
- *  - demand_id_type, single request type id associated with 'Guichet' services<br/>
- *  - demand_id, request ID for the current user<br/>
- *  - email, user email<br/>
- *  - notification_type, typ of the notification<br/>
- *  - demand_user_current_step, current step of the demand<br/>
- *  - backoffice_logging, {@link BackofficeNotification}<br/>
- *  - user_guid, user id to create a new request<br/>
- *  - user_sms, {@link SMSNotification}<br/>
- *  - user_email, {@link EmailNotification}<br/>
- *  - user_dashboard, {@link MyDashboardNotification}
+ * - crm_status_id, single CRM status id<br/>
+ * - demand_max_step, maximum step of the demand<br/>
+ * - demand_id_type, single request type id associated with 'Guichet' services<br/>
+ * - demand_id, request ID for the current user<br/>
+ * - email, user email<br/>
+ * - notification_type, typ of the notification<br/>
+ * - demand_user_current_step, current step of the demand<br/>
+ * - backoffice_logging, {@link BackofficeNotification}<br/>
+ * - user_guid, user id to create a new request<br/>
+ * - user_sms, {@link SMSNotification}<br/>
+ * - user_email, {@link EmailNotification}<br/>
+ * - user_dashboard, {@link MyDashboardNotification}
  *
  */
 @JsonRootName( value = "notification" )
-@JsonPropertyOrder( {"date",
-    "demand",
-    "backoffice",
-    "customer_email",
-    "sms",
-    "mydashboard",
-    "email"
+@JsonPropertyOrder( {
+        "date", "demand", "backoffice", "customer_email", "sms", "mydashboard", "email"
 } )
 public class Notification
 {
@@ -88,24 +82,27 @@ public class Notification
     /**
      * Instantiates a new notify gru global notification.
      */
-    public Notification(  )
+    public Notification( )
     {
         this._notificationDate = NotificationConstants.DEFAULT_LONG;
     }
 
     /**
      * Gives the notification id
+     * 
      * @return the notification id
      */
     @JsonIgnore
-    public int getId(  )
+    public int getId( )
     {
         return _nId;
     }
 
     /**
      * Sets the notification id
-     * @param nId the id to set
+     * 
+     * @param nId
+     *            the id to set
      */
     public void setId( int nId )
     {
@@ -115,10 +112,10 @@ public class Notification
     /**
      * Returns the Demand
      *
-         * @return the Demand
-         */
+     * @return the Demand
+     */
     @JsonProperty( "demand" )
-    public Demand getDemand(  )
+    public Demand getDemand( )
     {
         return _demand;
     }
@@ -126,7 +123,8 @@ public class Notification
     /**
      * Sets the Demand.
      *
-     * @param demand the Demand to set
+     * @param demand
+     *            the Demand to set
      */
     @JsonProperty( "demand" )
     public void setDemand( Demand demand )
@@ -140,7 +138,7 @@ public class Notification
      * @return The NotificationDate
      */
     @JsonProperty( "date" )
-    public Long getNotificationDate(  )
+    public Long getNotificationDate( )
     {
         return _notificationDate;
     }
@@ -148,7 +146,8 @@ public class Notification
     /**
      * Sets the NotificationDate.
      *
-     * @param notificationDate The NotificationDate
+     * @param notificationDate
+     *            The NotificationDate
      */
     @JsonProperty( "date" )
     public void setNotificationDate( Long notificationDate )
@@ -163,7 +162,7 @@ public class Notification
      */
     @JsonProperty( "customer_email" )
     @JsonInclude( Include.NON_NULL )
-    public EmailNotification getUserEmail(  )
+    public EmailNotification getUserEmail( )
     {
         return _emailNotification;
     }
@@ -171,7 +170,8 @@ public class Notification
     /**
      * Sets the user email notification.
      *
-     * @param emailNotification the new user email
+     * @param emailNotification
+     *            the new user email
      */
     @JsonProperty( "customer_email" )
     public void setUserEmail( EmailNotification emailNotification )
@@ -186,7 +186,7 @@ public class Notification
      */
     @JsonProperty( "sms" )
     @JsonSerialize( include = JsonSerialize.Inclusion.NON_NULL )
-    public SMSNotification getUserSMS(  )
+    public SMSNotification getUserSMS( )
     {
         return _userSMS;
     }
@@ -194,7 +194,8 @@ public class Notification
     /**
      * Sets the user sms.
      *
-     * @param userSMS the new user sms
+     * @param userSMS
+     *            the new user sms
      */
     @JsonProperty( "sms" )
     public void setUserSMS( SMSNotification userSMS )
@@ -209,7 +210,7 @@ public class Notification
      */
     @JsonProperty( "backoffice" )
     @JsonInclude( Include.NON_NULL )
-    public BackofficeNotification getBackofficeLogging(  )
+    public BackofficeNotification getBackofficeLogging( )
     {
         return _backofficeLogging;
     }
@@ -217,7 +218,8 @@ public class Notification
     /**
      * Sets the user agent.
      *
-     * @param userAgent the new user agent
+     * @param userAgent
+     *            the new user agent
      */
     @JsonProperty( "backoffice" )
     public void setBackofficeLogging( BackofficeNotification backofficeLogging )
@@ -232,7 +234,7 @@ public class Notification
      */
     @JsonProperty( "mydashboard" )
     @JsonInclude( Include.NON_NULL )
-    public MyDashboardNotification getUserDashboard(  )
+    public MyDashboardNotification getUserDashboard( )
     {
         return _userDashboard;
     }
@@ -240,7 +242,8 @@ public class Notification
     /**
      * Sets the user dashboard notif.
      *
-     * @param userDashboard the new user dashboard notif
+     * @param userDashboard
+     *            the new user dashboard notif
      */
     @JsonProperty( "mydashboard" )
     public void setUserDashboard( MyDashboardNotification userDashboard )
@@ -250,18 +253,21 @@ public class Notification
 
     /**
      * Gets the broadcast
+     * 
      * @return the _broadcast
      */
     @JsonProperty( "broadcast_email" )
     @JsonInclude( Include.NON_NULL )
-    public List<BroadcastNotification> getBroadcastEmail(  )
+    public List<BroadcastNotification> getBroadcastEmail( )
     {
         return _lstBroadcastEmail;
     }
 
     /**
      * Sets the broadcast
-     * @param broadcast the broadcast to set
+     * 
+     * @param broadcast
+     *            the broadcast to set
      */
     @JsonProperty( "broadcast_email" )
     public void setBroadcastEmail( List<BroadcastNotification> lstBroadcastEmail )
@@ -271,13 +277,15 @@ public class Notification
 
     /**
      * add a broadcastEmai
-     * @param broadcastEmail, the email to add
+     * 
+     * @param broadcastEmail
+     *            , the email to add
      */
     public void addBroadcastEmail( BroadcastNotification broadcastEmail )
     {
         if ( this._lstBroadcastEmail == null )
         {
-            this._lstBroadcastEmail = new ArrayList<BroadcastNotification>(  );
+            this._lstBroadcastEmail = new ArrayList<BroadcastNotification>( );
         }
 
         this._lstBroadcastEmail.add( broadcastEmail );

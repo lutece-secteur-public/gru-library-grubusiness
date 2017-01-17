@@ -39,7 +39,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
-
 /**
  * The Class EmailNotification for email notification.<br/>
  * Fields description :<br/>
@@ -52,13 +51,8 @@ import com.fasterxml.jackson.annotation.JsonRootName;
  * - cc, carbon copy email(s)
  */
 @JsonRootName( value = "user_email" )
-@JsonPropertyOrder( {"message",
-    "bcc",
-    "subject",
-    "sender_email",
-    "sender_name",
-    "recipient",
-    "cc"
+@JsonPropertyOrder( {
+        "message", "bcc", "subject", "sender_email", "sender_name", "recipient", "cc"
 } )
 public class EmailNotification
 {
@@ -77,7 +71,7 @@ public class EmailNotification
      * @return The SenderName
      */
     @JsonProperty( "sender_name" )
-    public String getSenderName(  )
+    public String getSenderName( )
     {
         return _strSenderName;
     }
@@ -85,7 +79,8 @@ public class EmailNotification
     /**
      * Sets the SenderName.
      *
-     * @param strSenderName The SenderName
+     * @param strSenderName
+     *            The SenderName
      */
     @JsonProperty( "sender_name" )
     public void setSenderName( String strSenderName )
@@ -99,7 +94,7 @@ public class EmailNotification
      * @return The SenderEmail
      */
     @JsonProperty( "sender_email" )
-    public String getSenderEmail(  )
+    public String getSenderEmail( )
     {
         return _strSenderEmail;
     }
@@ -107,7 +102,8 @@ public class EmailNotification
     /**
      * Sets the SenderEmail.
      *
-     * @param strSenderEmail The SenderEmail
+     * @param strSenderEmail
+     *            The SenderEmail
      */
     @JsonProperty( "sender_email" )
     public void setSenderEmail( String strSenderEmail )
@@ -121,7 +117,7 @@ public class EmailNotification
      * @return The Recipient
      */
     @JsonProperty( "recipient" )
-    public String getRecipient(  )
+    public String getRecipient( )
     {
         return _strRecipient;
     }
@@ -129,7 +125,8 @@ public class EmailNotification
     /**
      * Sets the Recipient.
      *
-     * @param strRecipient The Recipient
+     * @param strRecipient
+     *            The Recipient
      */
     @JsonProperty( "recipient" )
     public void setRecipient( String strRecipient )
@@ -143,7 +140,7 @@ public class EmailNotification
      * @return The Subject
      */
     @JsonProperty( "subject" )
-    public String getSubject(  )
+    public String getSubject( )
     {
         return _strSubject;
     }
@@ -151,7 +148,8 @@ public class EmailNotification
     /**
      * Sets the Subject.
      *
-     * @param strSubject The Subject
+     * @param strSubject
+     *            The Subject
      */
     @JsonProperty( "subject" )
     public void setSubject( String strSubject )
@@ -165,7 +163,7 @@ public class EmailNotification
      * @return The Message
      */
     @JsonProperty( "message" )
-    public String getMessage(  )
+    public String getMessage( )
     {
         return _strMessage;
     }
@@ -173,7 +171,8 @@ public class EmailNotification
     /**
      * Sets the Message.
      *
-     * @param strMessage The Message
+     * @param strMessage
+     *            The Message
      */
     @JsonProperty( "message" )
     public void setMessage( String strMessage )
@@ -188,7 +187,7 @@ public class EmailNotification
      */
     @JsonProperty( "cc" )
     @JsonInclude( Include.NON_NULL )
-    public String getCc(  )
+    public String getCc( )
     {
         return _strCc;
     }
@@ -196,7 +195,8 @@ public class EmailNotification
     /**
      * Sets the cc.
      *
-     * @param strCc the new cc
+     * @param strCc
+     *            the new cc
      */
     @JsonProperty( "cc" )
     public void setCc( String strCc )
@@ -211,7 +211,7 @@ public class EmailNotification
      */
     @JsonProperty( "bcc" )
     @JsonInclude( Include.NON_NULL )
-    public String getCci(  )
+    public String getCci( )
     {
         return _strBcc;
     }
@@ -219,7 +219,8 @@ public class EmailNotification
     /**
      * Sets the bcc.
      *
-     * @param strCci the new bcc
+     * @param strCci
+     *            the new bcc
      */
     @JsonProperty( "bcc" )
     public void setBcc( String strBcc )

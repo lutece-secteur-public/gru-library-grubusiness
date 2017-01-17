@@ -33,9 +33,6 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.indexing;
 
-
-
-
 /**
  *
  * Exception thrown when indexing data
@@ -49,7 +46,7 @@ public class IndexingException extends Exception
      * Constructor 1
      *
      * @param strMessage
-     *          The error message
+     *            The error message
      */
     public IndexingException( String strMessage )
     {
@@ -60,9 +57,9 @@ public class IndexingException extends Exception
      * Constructor 2
      *
      * @param strMessage
-     *          The error message
+     *            The error message
      * @param e
-     *          The initial exception
+     *            The initial exception
      */
     public IndexingException( String strMessage, Exception e )
     {
@@ -72,8 +69,8 @@ public class IndexingException extends Exception
     /**
      * Constructor 3
      */
-    public IndexingException(  )
+    public IndexingException( )
     {
-        super(  );
+        super( );
     }
 }

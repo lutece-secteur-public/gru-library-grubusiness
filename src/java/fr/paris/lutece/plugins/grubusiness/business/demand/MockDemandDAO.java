@@ -36,7 +36,6 @@ package fr.paris.lutece.plugins.grubusiness.business.demand;
 import java.util.ArrayList;
 import java.util.Collection;
 
-
 /**
  * This class is a DAO mock for Demand object
  *
@@ -49,7 +48,7 @@ public class MockDemandDAO implements IDemandDAO
     @Override
     public Collection<Demand> loadByCustomerId( String strCustomerId )
     {
-        return new ArrayList<Demand>(  );
+        return new ArrayList<Demand>( );
     }
 
     /**
@@ -58,7 +57,7 @@ public class MockDemandDAO implements IDemandDAO
     @Override
     public Demand load( String strDemandId, String strDemandTypeId )
     {
-        Demand demand = new Demand(  );
+        Demand demand = new Demand( );
         demand.setId( strDemandId );
         demand.setTypeId( strDemandTypeId );
 

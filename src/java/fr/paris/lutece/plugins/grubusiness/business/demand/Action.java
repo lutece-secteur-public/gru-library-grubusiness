@@ -33,28 +33,30 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.demand;
 
-
 /**
  * Action
  */
 public class Action
 {
-    // Variables declarations 
+    // Variables declarations
     private String _strName;
     private String _strUrl;
 
     /**
      * Returns the Name
+     * 
      * @return The Name
      */
-    public String getName(  )
+    public String getName( )
     {
         return _strName;
     }
 
     /**
      * Sets the Name
-     * @param strName The Name
+     * 
+     * @param strName
+     *            The Name
      */
     public void setName( String strName )
     {
@@ -63,16 +65,19 @@ public class Action
 
     /**
      * Returns the Url
+     * 
      * @return The Url
      */
-    public String getUrl(  )
+    public String getUrl( )
     {
         return _strUrl;
     }
 
     /**
      * Sets the Url
-     * @param strUrl The Url
+     * 
+     * @param strUrl
+     *            The Url
      */
     public void setUrl( String strUrl )
     {

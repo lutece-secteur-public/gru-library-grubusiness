@@ -37,7 +37,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
-
 /**
  * The Class SMSNotification for SMS notification.<br/>
  * Fields description :<br/>
@@ -45,19 +44,19 @@ import com.fasterxml.jackson.annotation.JsonRootName;
  * - phone_number, phone number of the user<br/>
  */
 @JsonRootName( value = "sms" )
-@JsonPropertyOrder( {"message",
-    "phone_number"
+@JsonPropertyOrder( {
+        "message", "phone_number"
 } )
 public class SMSNotification
 {
-    // Variables declarations 
+    // Variables declarations
     private String _strPhoneNumber;
     private String _strMessage;
 
     /**
      * Instantiates a new notify gru sms notification.
      */
-    public SMSNotification(  )
+    public SMSNotification( )
     {
         this._strPhoneNumber = NotificationConstants.DEFAULT_STRING;
         this._strMessage = NotificationConstants.DEFAULT_STRING;
@@ -69,7 +68,7 @@ public class SMSNotification
      * @return the phone number
      */
     @JsonProperty( "phone_number" )
-    public String getPhoneNumber(  )
+    public String getPhoneNumber( )
     {
         return _strPhoneNumber;
     }
@@ -77,7 +76,8 @@ public class SMSNotification
     /**
      * Sets the phone number.
      *
-     * @param strPhoneNumber the new phone number
+     * @param strPhoneNumber
+     *            the new phone number
      */
     @JsonProperty( "phone_number" )
     public void setPhoneNumber( String strPhoneNumber )
@@ -91,7 +91,7 @@ public class SMSNotification
      * @return the message
      */
     @JsonProperty( "message" )
-    public String getMessage(  )
+    public String getMessage( )
     {
         return _strMessage;
     }
@@ -99,7 +99,8 @@ public class SMSNotification
     /**
      * Sets the message.
      *
-     * @param strMessage the new message
+     * @param strMessage
+     *            the new message
      */
     @JsonProperty( "message" )
     public void setMessage( String strMessage )

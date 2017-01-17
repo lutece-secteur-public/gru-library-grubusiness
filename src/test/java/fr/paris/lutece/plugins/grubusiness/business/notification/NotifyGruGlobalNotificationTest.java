@@ -48,22 +48,20 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-
 /**
  * Test for json parsing, no controls are done !
  */
 public class NotifyGruGlobalNotificationTest extends TestCase
 {
     @Test
-    public void testUnserialize(  ) throws JsonParseException, JsonMappingException, IOException
+    public void testUnserialize( ) throws JsonParseException, JsonMappingException, IOException
     {
-        ObjectMapper mapper = new ObjectMapper(  );
+        ObjectMapper mapper = new ObjectMapper( );
         mapper.enable( DeserializationFeature.UNWRAP_ROOT_VALUE );
         mapper.enable( SerializationFeature.WRAP_ROOT_VALUE );
         mapper.enable( SerializationFeature.INDENT_OUTPUT );
 
-        Notification notification = mapper.readValue( getClass(  ).getResourceAsStream( "/notification.json" ),
-                Notification.class );
+        Notification notification = mapper.readValue( getClass( ).getResourceAsStream( "/notification.json" ), Notification.class );
         String jsonNotif = mapper.writeValueAsString( notification );
 
         // Uncomment for console checking
@@ -71,20 +69,20 @@ public class NotifyGruGlobalNotificationTest extends TestCase
     }
 
     @Test
-    public void testSerialize(  ) throws JsonParseException, JsonMappingException, IOException
+    public void testSerialize( ) throws JsonParseException, JsonMappingException, IOException
     {
-        ObjectMapper mapper = new ObjectMapper(  );
+        ObjectMapper mapper = new ObjectMapper( );
         mapper.enable( DeserializationFeature.UNWRAP_ROOT_VALUE );
         mapper.enable( SerializationFeature.WRAP_ROOT_VALUE );
         mapper.enable( SerializationFeature.INDENT_OUTPUT );
 
-        Notification notification = new Notification(  );
+        Notification notification = new Notification( );
         int nCount = 0;
         long lCount = 0L;
 
         notification.setNotificationDate( lCount++ );
 
-        Demand demandNotif = new Demand(  );
+        Demand demandNotif = new Demand( );
         demandNotif.setId( "strDemandId" );
         demandNotif.setTypeId( "strTypeId" );
         demandNotif.setReference( "strDemandReference" );
@@ -92,18 +90,18 @@ public class NotifyGruGlobalNotificationTest extends TestCase
         demandNotif.setMaxSteps( nCount );
         demandNotif.setCurrentStep( nCount );
 
-        Customer customerNotif = new Customer(  );
+        Customer customerNotif = new Customer( );
         customerNotif.setId( "strCustomerId" );
         customerNotif.setAccountGuid( "strAccountGuid" );
         customerNotif.setEmail( "strEmail" );
         demandNotif.setCustomer( customerNotif );
 
-        BackofficeNotification backNotif = new BackofficeNotification(  );
+        BackofficeNotification backNotif = new BackofficeNotification( );
         backNotif.setMessage( "strMessage" );
         backNotif.setStatusText( "strStatusText" );
         notification.setBackofficeLogging( backNotif );
 
-        EmailNotification emailNotif = new EmailNotification(  );
+        EmailNotification emailNotif = new EmailNotification( );
         emailNotif.setBcc( "strBcc" );
         emailNotif.setCc( "strCc" );
         emailNotif.setMessage( "strMessage" );
@@ -113,32 +111,40 @@ public class NotifyGruGlobalNotificationTest extends TestCase
         emailNotif.setSubject( "strSubject" );
         notification.setUserEmail( emailNotif );
 
-        SMSNotification smsNotif = new SMSNotification(  );
+        SMSNotification smsNotif = new SMSNotification( );
         smsNotif.setMessage( "strMessage" );
         smsNotif.setPhoneNumber( "strPhoneNumber" );
         notification.setUserSMS( smsNotif );
 
-        BroadcastNotification broadcastNotif = new BroadcastNotification(  );
-        broadcastNotif.setBcc( EmailAddress.buildEmailAddresses( new String[] { "strBcc", "strBcc2" } ) );
-        broadcastNotif.setCc( EmailAddress.buildEmailAddresses( new String[] { "strCc", "strCc2" } ) );
+        BroadcastNotification broadcastNotif = new BroadcastNotification( );
+        broadcastNotif.setBcc( EmailAddress.buildEmailAddresses( new String [ ] {
+                "strBcc", "strBcc2"
+        } ) );
+        broadcastNotif.setCc( EmailAddress.buildEmailAddresses( new String [ ] {
+                "strCc", "strCc2"
+        } ) );
         broadcastNotif.setMessage( "strMessage" );
-        broadcastNotif.setRecipient( EmailAddress.buildEmailAddresses( new String[] { "strRecipient" } ) );
+        broadcastNotif.setRecipient( EmailAddress.buildEmailAddresses( new String [ ] {
+            "strRecipient"
+        } ) );
         broadcastNotif.setSenderEmail( "strSenderEmail" );
         broadcastNotif.setSenderName( "strSenderName" );
         broadcastNotif.setSubject( "strSubject" );
         notification.addBroadcastEmail( broadcastNotif );
 
-        broadcastNotif = new BroadcastNotification(  );
+        broadcastNotif = new BroadcastNotification( );
         broadcastNotif.setBcc( null );
         broadcastNotif.setCc( null );
         broadcastNotif.setMessage( "strMessage" );
-        broadcastNotif.setRecipient( EmailAddress.buildEmailAddresses( new String[] { "strRecipient" } ) );
+        broadcastNotif.setRecipient( EmailAddress.buildEmailAddresses( new String [ ] {
+            "strRecipient"
+        } ) );
         broadcastNotif.setSenderEmail( "strSenderEmail" );
         broadcastNotif.setSenderName( "strSenderName" );
         broadcastNotif.setSubject( "strSubject" );
         notification.addBroadcastEmail( broadcastNotif );
 
-        MyDashboardNotification crmDashboardNotif = new MyDashboardNotification(  );
+        MyDashboardNotification crmDashboardNotif = new MyDashboardNotification( );
         crmDashboardNotif.setStatusId( 1 );
 
         String jsonNotif = mapper.writeValueAsString( notification );

@@ -42,26 +42,19 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * The Class BroadcastNotification for broadcast notification.<br/>
  * Fields description :<br/>
  * - message, content of the notification<br/>
- * - recipient, list of emailAddress for the broadcast
- * - bcc, list of emailAddress for blind carbon copy<br/>
+ * - recipient, list of emailAddress for the broadcast - bcc, list of emailAddress for blind carbon copy<br/>
  * - subject, subject of the email<br/>
  * - sender_email, sender email address<br/>
  * - sender_name, sender name<br/>
  * - cc, list of emailAddress for carbon copy
  */
 @JsonRootName( value = "broadcast_email" )
-@JsonPropertyOrder( {"message",
-    "bcc",
-    "subject",
-    "sender_email",
-    "sender_name",
-    "recipient",
-    "cc"
+@JsonPropertyOrder( {
+        "message", "bcc", "subject", "sender_email", "sender_name", "recipient", "cc"
 } )
 public class BroadcastNotification
 {
@@ -80,7 +73,7 @@ public class BroadcastNotification
      * @return The SenderName
      */
     @JsonProperty( "sender_name" )
-    public String getSenderName(  )
+    public String getSenderName( )
     {
         return _strSenderName;
     }
@@ -88,7 +81,8 @@ public class BroadcastNotification
     /**
      * Sets the SenderName.
      *
-     * @param strSenderName The SenderName
+     * @param strSenderName
+     *            The SenderName
      */
     @JsonProperty( "sender_name" )
     public void setSenderName( String strSenderName )
@@ -102,7 +96,7 @@ public class BroadcastNotification
      * @return The SenderEmail
      */
     @JsonProperty( "sender_email" )
-    public String getSenderEmail(  )
+    public String getSenderEmail( )
     {
         return _strSenderEmail;
     }
@@ -110,7 +104,8 @@ public class BroadcastNotification
     /**
      * Sets the SenderEmail.
      *
-     * @param strSenderEmail The SenderEmail
+     * @param strSenderEmail
+     *            The SenderEmail
      */
     @JsonProperty( "sender_email" )
     public void setSenderEmail( String strSenderEmail )
@@ -124,7 +119,7 @@ public class BroadcastNotification
      * @return Recipients
      */
     @JsonProperty( "recipient" )
-    public List<EmailAddress> getRecipient(  )
+    public List<EmailAddress> getRecipient( )
     {
         return _lstRecipient;
     }
@@ -132,7 +127,8 @@ public class BroadcastNotification
     /**
      * Sets Recipients.
      *
-     * @param lstRecipient all Recipients
+     * @param lstRecipient
+     *            all Recipients
      */
     @JsonProperty( "recipient" )
     public void setRecipient( List<EmailAddress> lstRecipient )
@@ -144,7 +140,7 @@ public class BroadcastNotification
     {
         if ( this._lstRecipient == null )
         {
-            this._lstRecipient = new ArrayList<EmailAddress>(  );
+            this._lstRecipient = new ArrayList<EmailAddress>( );
         }
 
         this._lstRecipient.add( recipient );
@@ -156,7 +152,7 @@ public class BroadcastNotification
      * @return The Subject
      */
     @JsonProperty( "subject" )
-    public String getSubject(  )
+    public String getSubject( )
     {
         return _strSubject;
     }
@@ -164,7 +160,8 @@ public class BroadcastNotification
     /**
      * Sets the Subject.
      *
-     * @param strSubject The Subject
+     * @param strSubject
+     *            The Subject
      */
     @JsonProperty( "subject" )
     public void setSubject( String strSubject )
@@ -178,7 +175,7 @@ public class BroadcastNotification
      * @return The Message
      */
     @JsonProperty( "message" )
-    public String getMessage(  )
+    public String getMessage( )
     {
         return _strMessage;
     }
@@ -186,7 +183,8 @@ public class BroadcastNotification
     /**
      * Sets the Message.
      *
-     * @param strMessage The Message
+     * @param strMessage
+     *            The Message
      */
     @JsonProperty( "message" )
     public void setMessage( String strMessage )
@@ -201,7 +199,7 @@ public class BroadcastNotification
      */
     @JsonProperty( "cc" )
     @JsonInclude( Include.NON_NULL )
-    public List<EmailAddress> getCc(  )
+    public List<EmailAddress> getCc( )
     {
         return _lstCc;
     }
@@ -209,7 +207,8 @@ public class BroadcastNotification
     /**
      * Sets cc addresses.
      *
-     * @param lstCc cc addresses
+     * @param lstCc
+     *            cc addresses
      */
     @JsonProperty( "cc" )
     public void setCc( List<EmailAddress> lstCc )
@@ -221,7 +220,7 @@ public class BroadcastNotification
     {
         if ( this._lstCc == null )
         {
-            this._lstCc = new ArrayList<EmailAddress>(  );
+            this._lstCc = new ArrayList<EmailAddress>( );
         }
 
         this._lstCc.add( recipient );
@@ -234,7 +233,7 @@ public class BroadcastNotification
      */
     @JsonProperty( "bcc" )
     @JsonInclude( Include.NON_NULL )
-    public List<EmailAddress> getBcc(  )
+    public List<EmailAddress> getBcc( )
     {
         return _lstBcc;
     }
@@ -242,7 +241,8 @@ public class BroadcastNotification
     /**
      * Sets bcc addresses.
      *
-     * @param lstBcc bcc addresses
+     * @param lstBcc
+     *            bcc addresses
      */
     @JsonProperty( "bcc" )
     public void setBcc( List<EmailAddress> lstBcc )
@@ -254,7 +254,7 @@ public class BroadcastNotification
     {
         if ( this._lstBcc == null )
         {
-            this._lstBcc = new ArrayList<EmailAddress>(  );
+            this._lstBcc = new ArrayList<EmailAddress>( );
         }
 
         this._lstBcc.add( recipient );

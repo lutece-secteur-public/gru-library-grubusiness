@@ -37,7 +37,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
-
 /**
  * The Class MyDashboardNotification for 'Guichet' notification.<br/>
  * Fields description :<br/>
@@ -48,16 +47,12 @@ import com.fasterxml.jackson.annotation.JsonRootName;
  * - sender_name, Sender name for the new notif to add<br/>
  */
 @JsonRootName( value = "mydashboard" )
-@JsonPropertyOrder( {"status_id",
-    "status_text",
-    "message",
-    "subject",
-    "data",
-    "sender_name"
+@JsonPropertyOrder( {
+        "status_id", "status_text", "message", "subject", "data", "sender_name"
 } )
 public class MyDashboardNotification
 {
-    // Variables declarations 
+    // Variables declarations
     private int _nStatusId;
     private String _strStatusText;
     private String _strMessage;
@@ -66,9 +61,9 @@ public class MyDashboardNotification
     private String _strData;
 
     /**
-    * Instantiates a new notify gru guichet notification.
-    */
-    public MyDashboardNotification(  )
+     * Instantiates a new notify gru guichet notification.
+     */
+    public MyDashboardNotification( )
     {
         this._nStatusId = NotificationConstants.DEFAULT_INT;
         this._strStatusText = NotificationConstants.DEFAULT_STRING;
@@ -79,16 +74,17 @@ public class MyDashboardNotification
     }
 
     /**
-         * @return the StatusId
-         */
+     * @return the StatusId
+     */
     @JsonProperty( "status_id" )
-    public int getStatusId(  )
+    public int getStatusId( )
     {
         return _nStatusId;
     }
 
     /**
-     * @param strStatusId the StatusId to set
+     * @param strStatusId
+     *            the StatusId to set
      */
     @JsonProperty( "status_id" )
     public void setStatusId( int nStatusId )
@@ -102,7 +98,7 @@ public class MyDashboardNotification
      * @return the status text
      */
     @JsonProperty( "status_text" )
-    public String getStatusText(  )
+    public String getStatusText( )
     {
         return _strStatusText;
     }
@@ -110,7 +106,8 @@ public class MyDashboardNotification
     /**
      * Sets the status text.
      *
-     * @param strStatusText the new status text
+     * @param strStatusText
+     *            the new status text
      */
     @JsonProperty( "status_text" )
     public void setStatusText( String strStatusText )
@@ -124,7 +121,7 @@ public class MyDashboardNotification
      * @return the message
      */
     @JsonProperty( "message" )
-    public String getMessage(  )
+    public String getMessage( )
     {
         return _strMessage;
     }
@@ -132,7 +129,8 @@ public class MyDashboardNotification
     /**
      * Sets the Message.
      *
-     * @param strMessage The Message
+     * @param strMessage
+     *            The Message
      */
     @JsonProperty( "message" )
     public void setMessage( String strMessage )
@@ -146,7 +144,7 @@ public class MyDashboardNotification
      * @return the subject
      */
     @JsonProperty( "subject" )
-    public String getSubject(  )
+    public String getSubject( )
     {
         return _strSubject;
     }
@@ -154,7 +152,8 @@ public class MyDashboardNotification
     /**
      * Sets the Subject.
      *
-     * @param strSubject The Subject
+     * @param strSubject
+     *            The Subject
      */
     @JsonProperty( "subject" )
     public void setSubject( String strSubject )
@@ -168,7 +167,7 @@ public class MyDashboardNotification
      * @return The SenderName
      */
     @JsonProperty( "sender_name" )
-    public String getSenderName(  )
+    public String getSenderName( )
     {
         return _strSenderName;
     }
@@ -176,7 +175,8 @@ public class MyDashboardNotification
     /**
      * Sets the SenderName.
      *
-     * @param strSenderName The SenderName
+     * @param strSenderName
+     *            The SenderName
      */
     @JsonProperty( "sender_name" )
     public void setSenderName( String strSenderName )
@@ -190,7 +190,7 @@ public class MyDashboardNotification
      * @return The Data
      */
     @JsonProperty( "data" )
-    public String getData(  )
+    public String getData( )
     {
         return _strData;
     }
@@ -198,7 +198,8 @@ public class MyDashboardNotification
     /**
      * Sets the Data.
      *
-     * @param strData The Data
+     * @param strData
+     *            The Data
      */
     @JsonProperty( "data" )
     public void setData( String strData )

@@ -36,7 +36,6 @@ package fr.paris.lutece.plugins.grubusiness.business.notification;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * This class is a DAO mock for Notification object
  *
@@ -49,7 +48,7 @@ public class MockNotificationDAO implements INotificationDAO
     @Override
     public List<Notification> loadByDemand( String strDemandId, String strDemandTypeId )
     {
-        return new ArrayList<Notification>(  );
+        return new ArrayList<Notification>( );
     }
 
     /**

@@ -33,17 +33,17 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.indexing;
 
-
-
 /**
  * This interface enables to index any object
  */
 public interface IIndexingService<T>
 {
     /**
-    * Indexes a object
-    * @param object the object to index
-    */
+     * Indexes a object
+     * 
+     * @param object
+     *            the object to index
+     */
     void index( T object ) throws IndexingException;
 
 }

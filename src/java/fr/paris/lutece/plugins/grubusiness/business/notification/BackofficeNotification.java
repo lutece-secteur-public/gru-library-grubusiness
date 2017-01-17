@@ -37,7 +37,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
-
 /**
  * The Class AgentNotification for backoffice notification.<br/>
  * Fields description :<br/>
@@ -45,8 +44,8 @@ import com.fasterxml.jackson.annotation.JsonRootName;
  * - status_test, status label which will be displayed
  */
 @JsonRootName( value = "backoffice_logging" )
-@JsonPropertyOrder( {"message",
-    "status_text"
+@JsonPropertyOrder( {
+        "message", "status_text"
 } )
 public class BackofficeNotification
 {
@@ -57,7 +56,7 @@ public class BackofficeNotification
     /**
      * Instantiates a new notify gru agent notification.
      */
-    public BackofficeNotification(  )
+    public BackofficeNotification( )
     {
         this._strMessage = NotificationConstants.DEFAULT_STRING;
         this._strStatusText = NotificationConstants.DEFAULT_STRING;
@@ -69,7 +68,7 @@ public class BackofficeNotification
      * @return the message
      */
     @JsonProperty( "message" )
-    public String getMessage(  )
+    public String getMessage( )
     {
         return _strMessage;
     }
@@ -77,7 +76,8 @@ public class BackofficeNotification
     /**
      * Sets the message.
      *
-     * @param strMessage the new message
+     * @param strMessage
+     *            the new message
      */
     @JsonProperty( "message" )
     public void setMessage( String strMessage )
@@ -91,7 +91,7 @@ public class BackofficeNotification
      * @return the status text
      */
     @JsonProperty( "status_text" )
-    public String getStatusText(  )
+    public String getStatusText( )
     {
         return _strStatusText;
     }
@@ -99,7 +99,8 @@ public class BackofficeNotification
     /**
      * Sets the status text.
      *
-     * @param strStatusText the new status text
+     * @param strStatusText
+     *            the new status text
      */
     @JsonProperty( "status_text" )
     public void setStatusText( String strStatusText )
