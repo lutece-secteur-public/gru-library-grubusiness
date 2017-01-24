@@ -46,4 +46,11 @@ public interface IIndexingService<T>
      */
     void index( T object ) throws IndexingException;
 
+    /**
+     * Delete index
+     * 
+     * @param object
+     *            the object to delete
+     */
+    void deleteIndex( T object ) throws IndexingException;
 }
