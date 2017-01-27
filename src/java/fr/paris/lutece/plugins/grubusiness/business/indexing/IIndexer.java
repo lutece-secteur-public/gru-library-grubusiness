@@ -31,69 +31,17 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.grubusiness.business.demand;
-
-import java.util.ArrayList;
-import java.util.Collection;
+package fr.paris.lutece.plugins.grubusiness.business.indexing;
 
 /**
- * This class is a DAO mock for Demand object
- *
+ * Interface used to index all elements indexing by indexer
  */
-public class MockDemandDAO implements IDemandDAO
+public interface IIndexer extends IIndexerProperties
 {
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Collection<Demand> loadByCustomerId( String strCustomerId )
-    {
-        return new ArrayList<Demand>( );
-    }
 
     /**
-     * {@inheritDoc}
+     * Method used to index all elements of an indexer
      */
-    @Override
-    public Demand load( String strDemandId, String strDemandTypeId )
-    {
-        Demand demand = new Demand( );
-        demand.setId( strDemandId );
-        demand.setTypeId( strDemandTypeId );
-
-        return demand;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Demand insert( Demand demand )
-    {
-        return demand;
-    }
-
-    @Override
-    public Demand store( Demand demand )
-    {
-        return demand;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void delete( String strDemandId, String strDemandTypeId )
-    {
-        // Nothing to do
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Collection<Demand> loadAllDemands( )
-    {
-        return null;
-    }
+    void indexAllElements();
+    
 }

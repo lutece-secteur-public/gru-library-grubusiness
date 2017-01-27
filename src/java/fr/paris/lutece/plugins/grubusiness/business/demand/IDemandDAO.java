@@ -49,6 +49,13 @@ public interface IDemandDAO
      * @return the demands. An empty collection is returned if no demands has been found.
      */
     Collection<Demand> loadByCustomerId( String strCustomerId );
+    
+    /**
+     * Finds all the demands in the table
+     * 
+     * @return all the demands. An empty collection is returned if no demands has been found.
+     */
+    Collection<Demand> loadAllDemands( );
 
     /**
      * Finds a demand with the specified id and type id

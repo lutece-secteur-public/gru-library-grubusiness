@@ -31,69 +31,36 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.grubusiness.business.demand;
-
-import java.util.ArrayList;
-import java.util.Collection;
+package fr.paris.lutece.plugins.grubusiness.business.indexing;
 
 /**
- * This class is a DAO mock for Demand object
- *
+ * Interface of all methods about the properties of the indexer
  */
-public class MockDemandDAO implements IDemandDAO
+public interface IIndexerProperties
 {
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Collection<Demand> loadByCustomerId( String strCustomerId )
-    {
-        return new ArrayList<Demand>( );
-    }
 
     /**
-     * {@inheritDoc}
+     * Returns the name of the elastic search indexer
+     * @return the elastic search indexer name
      */
-    @Override
-    public Demand load( String strDemandId, String strDemandTypeId )
-    {
-        Demand demand = new Demand( );
-        demand.setId( strDemandId );
-        demand.setTypeId( strDemandTypeId );
-
-        return demand;
-    }
+    String getName( );
 
     /**
-     * {@inheritDoc}
+     * Returns the version of the elastic search indexer
+     * @return the elastic search indexer version
      */
-    @Override
-    public Demand insert( Demand demand )
-    {
-        return demand;
-    }
-
-    @Override
-    public Demand store( Demand demand )
-    {
-        return demand;
-    }
+    String getVersion( );
 
     /**
-     * {@inheritDoc}
+     * Returns the description of the elastic search indexer
+     * @return the elastic search indexer description
      */
-    @Override
-    public void delete( String strDemandId, String strDemandTypeId )
-    {
-        // Nothing to do
-    }
-
+    String getDescription( );
+    
     /**
-     * {@inheritDoc}
+     * Method used to know if an ElasticSearchIndexer is enable or not
+     * @return true if the indexer is enable, false otherwise
      */
-    @Override
-    public Collection<Demand> loadAllDemands( )
-    {
-        return null;
-    }
+    boolean isEnable();
+    
 }
