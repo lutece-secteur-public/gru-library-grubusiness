@@ -72,7 +72,7 @@ public class DemandService
     {
         return _demandDao.loadByCustomerId( strCustomerId );
     }
-    
+
     /**
      * Finds all demands in the table
      * 

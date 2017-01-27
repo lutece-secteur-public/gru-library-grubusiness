@@ -41,26 +41,30 @@ public interface IIndexerProperties
 
     /**
      * Returns the name of the elastic search indexer
+     * 
      * @return the elastic search indexer name
      */
     String getName( );
 
     /**
      * Returns the version of the elastic search indexer
+     * 
      * @return the elastic search indexer version
      */
     String getVersion( );
 
     /**
      * Returns the description of the elastic search indexer
+     * 
      * @return the elastic search indexer description
      */
     String getDescription( );
-    
+
     /**
      * Method used to know if an ElasticSearchIndexer is enable or not
+     * 
      * @return true if the indexer is enable, false otherwise
      */
-    boolean isEnable();
-    
+    boolean isEnable( );
+
 }

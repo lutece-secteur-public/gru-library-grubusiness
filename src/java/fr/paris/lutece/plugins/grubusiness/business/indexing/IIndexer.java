@@ -42,6 +42,6 @@ public interface IIndexer extends IIndexerProperties
     /**
      * Method used to index all elements of an indexer
      */
-    void indexAllElements();
-    
+    void indexAllElements( );
+
 }
