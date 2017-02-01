@@ -51,6 +51,15 @@ public interface IDemandDAO
     Collection<Demand> loadByCustomerId( String strCustomerId );
 
     /**
+     * Finds the demands associated to the specified reference
+     * 
+     * @param strReference
+     *            the reference
+     * @return the demands. An empty collection is returned if no demands has been found.
+     */
+    Collection<Demand> loadByReference( String strReference );
+
+    /**
      * Finds all the demands in the table
      * 
      * @return all the demands. An empty collection is returned if no demands has been found.

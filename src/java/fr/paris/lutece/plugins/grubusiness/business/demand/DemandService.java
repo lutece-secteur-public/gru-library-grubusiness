@@ -74,6 +74,18 @@ public class DemandService
     }
 
     /**
+     * Finds demands for the specified reference
+     * 
+     * @param strReference
+     *            the reference
+     * @return the demands. An empty collection is returned if no demand has been found
+     */
+    public Collection<Demand> findByReference( String strReference )
+    {
+        return _demandDao.loadByReference( strReference );
+    }
+
+    /**
      * Finds all demands in the table
      * 
      * @return all the demands. An empty collection is returned if no demand has been found
