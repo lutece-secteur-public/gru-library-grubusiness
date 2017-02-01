@@ -55,6 +55,15 @@ public class MockDemandDAO implements IDemandDAO
      * {@inheritDoc}
      */
     @Override
+    public Collection<Demand> loadByReference( String strReference )
+    {
+        return new ArrayList<Demand>( );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public Demand load( String strDemandId, String strDemandTypeId )
     {
         Demand demand = new Demand( );
