@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2016, Mairie de Paris
+ * Copyright (c) 2002-2017, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,6 +36,8 @@ package fr.paris.lutece.plugins.grubusiness.business.demand;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import fr.paris.lutece.plugins.grubusiness.business.customer.Customer;
+
 /**
  * This class is a DAO mock for Demand object
  *
@@ -67,8 +69,11 @@ public class MockDemandDAO implements IDemandDAO
     public Demand load( String strDemandId, String strDemandTypeId )
     {
         Demand demand = new Demand( );
+        Customer customer = new Customer( );
+
         demand.setId( strDemandId );
         demand.setTypeId( strDemandTypeId );
+        demand.setCustomer( customer );
 
         return demand;
     }
