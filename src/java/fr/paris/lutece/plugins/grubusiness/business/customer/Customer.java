@@ -77,9 +77,9 @@ public class Customer implements Serializable
     @Size( max = 50, message = "#i18n{gru.validation.customer.AccountLogin.size}" )
     private String _strAccountLogin;
 
-    /** The _str account guid. */
+    /** The connection Id. */
     @Size( max = 50, message = "#i18n{gru.validation.customer.AccountGuid.size}" )
-    private String _strAccountGuid;
+    private String _strConnectionId;
 
     /** The _str email. */
     @Email( message = "#i18n{portal.validation.message.email}" )
@@ -239,26 +239,26 @@ public class Customer implements Serializable
     }
 
     /**
-     * Returns the AccountGuid.
+     * Returns the connection Id.
      *
-     * @return The AccountGuid
+     * @return The connection Id
      */
     @JsonProperty( "connection_id" )
-    public String getAccountGuid( )
+    public String getConnectionId( )
     {
-        return _strAccountGuid;
+        return _strConnectionId;
     }
 
     /**
-     * Sets the AccountGuid.
+     * Sets the connection id.
      *
-     * @param strAccountGuid
-     *            The AccountGuid
+     * @param strConnectionId
+     *            The Connection Id
      */
     @JsonProperty( "connection_id" )
-    public void setAccountGuid( String strAccountGuid )
+    public void setConnectionId( String strConnectionId )
     {
-        _strAccountGuid = strAccountGuid;
+        _strConnectionId = strConnectionId;
     }
 
     /**

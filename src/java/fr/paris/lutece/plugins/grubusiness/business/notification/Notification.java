@@ -72,19 +72,19 @@ public class Notification
     // Variables declarations
     private int _nId;
     private Demand _demand;
-    private Long _notificationDate;
+    private Long _lDate;
     private EmailNotification _emailNotification;
-    private SMSNotification _userSMS;
-    private BackofficeNotification _backofficeLogging;
-    private MyDashboardNotification _userDashboard;
-    private List<BroadcastNotification> _lstBroadcastEmail;
+    private SMSNotification _smsNotification;
+    private BackofficeNotification _backofficeNotification;
+    private MyDashboardNotification _myDashboardNotification;
+    private List<BroadcastNotification> _listBroadcastEmail;
 
     /**
      * Instantiates a new notify gru global notification.
      */
     public Notification( )
     {
-        this._notificationDate = NotificationConstants.DEFAULT_LONG;
+        this._lDate = NotificationConstants.DEFAULT_LONG;
     }
 
     /**
@@ -138,9 +138,9 @@ public class Notification
      * @return The NotificationDate
      */
     @JsonProperty( "date" )
-    public Long getNotificationDate( )
+    public Long getDate( )
     {
-        return _notificationDate;
+        return _lDate;
     }
 
     /**
@@ -150,9 +150,9 @@ public class Notification
      *            The NotificationDate
      */
     @JsonProperty( "date" )
-    public void setNotificationDate( Long notificationDate )
+    public void setDate( Long notificationDate )
     {
-        _notificationDate = notificationDate;
+        _lDate = notificationDate;
     }
 
     /**
@@ -162,7 +162,7 @@ public class Notification
      */
     @JsonProperty( "customer_email" )
     @JsonInclude( Include.NON_NULL )
-    public EmailNotification getUserEmail( )
+    public EmailNotification getEmailNotification( )
     {
         return _emailNotification;
     }
@@ -174,7 +174,7 @@ public class Notification
      *            the new user email
      */
     @JsonProperty( "customer_email" )
-    public void setUserEmail( EmailNotification emailNotification )
+    public void setEmailNotification( EmailNotification emailNotification )
     {
         this._emailNotification = emailNotification;
     }
@@ -186,9 +186,9 @@ public class Notification
      */
     @JsonProperty( "sms" )
     @JsonSerialize( include = JsonSerialize.Inclusion.NON_NULL )
-    public SMSNotification getUserSMS( )
+    public SMSNotification getSmsNotification( )
     {
-        return _userSMS;
+        return _smsNotification;
     }
 
     /**
@@ -198,33 +198,33 @@ public class Notification
      *            the new user sms
      */
     @JsonProperty( "sms" )
-    public void setUserSMS( SMSNotification userSMS )
+    public void setSmsNotification( SMSNotification userSMS )
     {
-        this._userSMS = userSMS;
+        this._smsNotification = userSMS;
     }
 
     /**
-     * Gets the user agent.
+     * Gets the _backofficeNotification.
      *
-     * @return the user agent
+     * @return the backofficeNotification
      */
     @JsonProperty( "backoffice" )
     @JsonInclude( Include.NON_NULL )
-    public BackofficeNotification getBackofficeLogging( )
+    public BackofficeNotification getBackofficeNotification( )
     {
-        return _backofficeLogging;
+        return _backofficeNotification;
     }
 
     /**
-     * Sets the user agent.
+     * Sets the _backofficeNotification.
      *
-     * @param userAgent
-     *            the new user agent
+     * @param backofficeNotification
+     *            the backofficeNotification
      */
     @JsonProperty( "backoffice" )
-    public void setBackofficeLogging( BackofficeNotification backofficeLogging )
+    public void setBackofficeNotification( BackofficeNotification backofficeNotification )
     {
-        this._backofficeLogging = backofficeLogging;
+        this._backofficeNotification = backofficeNotification;
     }
 
     /**
@@ -234,9 +234,9 @@ public class Notification
      */
     @JsonProperty( "mydashboard" )
     @JsonInclude( Include.NON_NULL )
-    public MyDashboardNotification getUserDashboard( )
+    public MyDashboardNotification getMyDashboardNotification( )
     {
-        return _userDashboard;
+        return _myDashboardNotification;
     }
 
     /**
@@ -246,9 +246,9 @@ public class Notification
      *            the new user dashboard notif
      */
     @JsonProperty( "mydashboard" )
-    public void setUserDashboard( MyDashboardNotification userDashboard )
+    public void setMyDashboardNotification( MyDashboardNotification myDashboardNotification )
     {
-        this._userDashboard = userDashboard;
+        this._myDashboardNotification = myDashboardNotification;
     }
 
     /**
@@ -260,7 +260,7 @@ public class Notification
     @JsonInclude( Include.NON_NULL )
     public List<BroadcastNotification> getBroadcastEmail( )
     {
-        return _lstBroadcastEmail;
+        return _listBroadcastEmail;
     }
 
     /**
@@ -270,9 +270,9 @@ public class Notification
      *            the broadcast to set
      */
     @JsonProperty( "broadcast_email" )
-    public void setBroadcastEmail( List<BroadcastNotification> lstBroadcastEmail )
+    public void setBroadcastEmail( List<BroadcastNotification> listBroadcastEmail )
     {
-        this._lstBroadcastEmail = lstBroadcastEmail;
+        this._listBroadcastEmail = listBroadcastEmail;
     }
 
     /**
@@ -283,11 +283,11 @@ public class Notification
      */
     public void addBroadcastEmail( BroadcastNotification broadcastEmail )
     {
-        if ( this._lstBroadcastEmail == null )
+        if ( this._listBroadcastEmail == null )
         {
-            this._lstBroadcastEmail = new ArrayList<BroadcastNotification>( );
+            this._listBroadcastEmail = new ArrayList<BroadcastNotification>( );
         }
 
-        this._lstBroadcastEmail.add( broadcastEmail );
+        this._listBroadcastEmail.add( broadcastEmail );
     }
 }
