@@ -80,7 +80,7 @@ public class NotifyGruGlobalNotificationTest extends TestCase
         int nCount = 0;
         long lCount = 0L;
 
-        notification.setNotificationDate( lCount++ );
+        notification.setDate( lCount++ );
 
         Demand demandNotif = new Demand( );
         demandNotif.setId( "strDemandId" );
@@ -92,14 +92,14 @@ public class NotifyGruGlobalNotificationTest extends TestCase
 
         Customer customerNotif = new Customer( );
         customerNotif.setId( "strCustomerId" );
-        customerNotif.setAccountGuid( "strAccountGuid" );
+        customerNotif.setConnectionId( "strAccountGuid" );
         customerNotif.setEmail( "strEmail" );
         demandNotif.setCustomer( customerNotif );
 
         BackofficeNotification backNotif = new BackofficeNotification( );
         backNotif.setMessage( "strMessage" );
         backNotif.setStatusText( "strStatusText" );
-        notification.setBackofficeLogging( backNotif );
+        notification.setBackofficeNotification( backNotif );
 
         EmailNotification emailNotif = new EmailNotification( );
         emailNotif.setBcc( "strBcc" );
@@ -109,12 +109,12 @@ public class NotifyGruGlobalNotificationTest extends TestCase
         emailNotif.setSenderEmail( "strSenderEmail" );
         emailNotif.setSenderName( "strSenderName" );
         emailNotif.setSubject( "strSubject" );
-        notification.setUserEmail( emailNotif );
+        notification.setEmailNotification( emailNotif );
 
         SMSNotification smsNotif = new SMSNotification( );
         smsNotif.setMessage( "strMessage" );
         smsNotif.setPhoneNumber( "strPhoneNumber" );
-        notification.setUserSMS( smsNotif );
+        notification.setSmsNotification( smsNotif );
 
         BroadcastNotification broadcastNotif = new BroadcastNotification( );
         broadcastNotif.setBcc( EmailAddress.buildEmailAddresses( new String [ ] {
