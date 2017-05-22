@@ -34,9 +34,12 @@
 package fr.paris.lutece.plugins.grubusiness.business.demand;
 
 import fr.paris.lutece.plugins.grubusiness.business.notification.INotificationDAO;
+import fr.paris.lutece.plugins.grubusiness.business.notification.INotificationListener;
 import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * This class manages demands
@@ -45,7 +48,9 @@ import java.util.Collection;
 public class DemandService
 {
     private IDemandDAO _demandDao;
+    private List<IDemandListener> _listDemandListener;
     private INotificationDAO _notificationDao;
+    private List<INotificationListener> _listNotificationListener;
 
     /**
      * Constructor
@@ -59,6 +64,28 @@ public class DemandService
     {
         _demandDao = demandDAO;
         _notificationDao = notificationDAO;
+        _listDemandListener = new ArrayList<IDemandListener>( );
+        _listNotificationListener = new ArrayList<INotificationListener>( );
+    }
+
+    /**
+     * Constructor
+     * 
+     * @param demandDAO
+     *            the DAO for the demands
+     * @param notificationDAO
+     *            the DAO for the notifications
+     * @param listDemandListener
+     * 			  list of IDemandListener
+     * @param listNotificationListener
+     * 			  list of INotificationListener
+     */
+    public DemandService( IDemandDAO demandDAO, INotificationDAO notificationDAO, List<IDemandListener> listDemandListener, List<INotificationListener> listNotificationListener )
+    {
+        _demandDao = demandDAO;
+        _notificationDao = notificationDAO;
+        _listDemandListener = listDemandListener;
+        _listNotificationListener = listNotificationListener;
     }
 
     /**
@@ -125,7 +152,12 @@ public class DemandService
      */
     public Demand create( Demand demand )
     {
-        return _demandDao.insert( demand );
+        Demand demandDao = _demandDao.insert( demand );
+        for ( IDemandListener iDemandListener : _listDemandListener )
+        {
+    		iDemandListener.onCreateDemand( demandDao );
+        }
+        return demandDao;
     }
 
     /**
@@ -137,7 +169,12 @@ public class DemandService
      */
     public Notification create( Notification notification )
     {
-        return _notificationDao.insert( notification );
+    	Notification notificationDao = _notificationDao.insert( notification );
+    	for ( INotificationListener iNotificationListener : _listNotificationListener )
+        {
+    		iNotificationListener.onCreateNotification( notificationDao );
+        }
+        return notificationDao;
     }
 
     /**
@@ -149,7 +186,12 @@ public class DemandService
      */
     public Demand update( Demand demand )
     {
-        return _demandDao.store( demand );
+    	Demand demandDao = _demandDao.store( demand );
+    	for ( IDemandListener iDemandListener : _listDemandListener )
+        {
+    		iDemandListener.onUpdateDemand( demandDao );
+        }
+        return demandDao;
     }
 
     /**
@@ -163,6 +205,14 @@ public class DemandService
     public void remove( String strDemandId, String strDemandTypeId )
     {
         _notificationDao.deleteByDemand( strDemandId, strDemandTypeId );
+        for ( INotificationListener iNotificationListener : _listNotificationListener )
+        {
+    		iNotificationListener.onDeleteDemand( strDemandId, strDemandTypeId );
+        }
         _demandDao.delete( strDemandId, strDemandTypeId );
+        for ( IDemandListener iDemandListener : _listDemandListener )
+        {
+    		iDemandListener.onDeleteDemand( strDemandId, strDemandTypeId );
+        }
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2016, Mairie de Paris
+ * Copyright (c) 2002-2017, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,48 +33,29 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.notification;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * This class is a DAO mock for Notification object
  *
  */
-public class MockNotificationDAO implements INotificationDAO
+public interface INotificationListener
 {
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<Notification> loadByDemand( String strDemandId, String strDemandTypeId )
-    {
-        return new ArrayList<Notification>( );
-    }
+	/**
+	 * Something to do when a notification is created
+	 * @param notification
+	 */
+	void onCreateNotification( Notification notification );
+	
+	/**
+	 * Something to do when a notification is updated
+	 * @param notification
+	 */
+	void onUpdateNotification( Notification notification );
 
 	/**
-	 * {@inheritDoc}
+	 * Something to do on notification when a demand is deleted
+     * @param strDemandId
+     *            the demand id
+     * @param strDemandTypeId
+     *            the demand type id
 	 */
-    @Override
-    public List<Notification> loadAllNotifications()
-    {
-    	return new ArrayList<Notification>( );
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Notification insert( Notification notification )
-    {
-        return notification;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void deleteByDemand( String strDemandId, String strDemandTypeId )
-    {
-        // Nothing to do
-    }
+	void onDeleteDemand( String strDemandId, String strDemandTypeId );
 }

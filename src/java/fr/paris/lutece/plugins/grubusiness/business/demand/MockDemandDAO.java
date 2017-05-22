@@ -108,6 +108,6 @@ public class MockDemandDAO implements IDemandDAO
     @Override
     public Collection<Demand> loadAllDemands( )
     {
-        return null;
+        return new ArrayList<Demand>( );
     }
 }
