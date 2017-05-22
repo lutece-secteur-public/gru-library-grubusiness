@@ -38,25 +38,27 @@ package fr.paris.lutece.plugins.grubusiness.business.demand;
  */
 public interface IDemandListener
 {
-	/**
-	 * Something to do when a demand is created
-	 * @param demand
-	 */
-	void onCreateDemand( Demand demand );
-	
-	/**
-	 * Something to do when a demand is updated
-	 * @param demand
-	 */
-	void onUpdateDemand( Demand demand );
+    /**
+     * Something to do when a demand is created
+     * 
+     * @param demand
+     */
+    void onCreateDemand( Demand demand );
 
-	/**
-	 * Something to do when a demand is deleted	 
+    /**
+     * Something to do when a demand is updated
+     * 
+     * @param demand
+     */
+    void onUpdateDemand( Demand demand );
+
+    /**
+     * Something to do when a demand is deleted
      * 
      * @param strDemandId
      *            the demand id
      * @param strDemandTypeId
      *            the demand type id
-	 */
-	void onDeleteDemand( String strDemandId, String strDemandTypeId );
+     */
+    void onDeleteDemand( String strDemandId, String strDemandTypeId );
 }

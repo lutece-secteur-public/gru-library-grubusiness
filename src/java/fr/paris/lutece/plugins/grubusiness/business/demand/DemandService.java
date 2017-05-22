@@ -76,11 +76,12 @@ public class DemandService
      * @param notificationDAO
      *            the DAO for the notifications
      * @param listDemandListener
-     * 			  list of IDemandListener
+     *            list of IDemandListener
      * @param listNotificationListener
-     * 			  list of INotificationListener
+     *            list of INotificationListener
      */
-    public DemandService( IDemandDAO demandDAO, INotificationDAO notificationDAO, List<IDemandListener> listDemandListener, List<INotificationListener> listNotificationListener )
+    public DemandService( IDemandDAO demandDAO, INotificationDAO notificationDAO, List<IDemandListener> listDemandListener,
+            List<INotificationListener> listNotificationListener )
     {
         _demandDao = demandDAO;
         _notificationDao = notificationDAO;
@@ -155,7 +156,7 @@ public class DemandService
         Demand demandDao = _demandDao.insert( demand );
         for ( IDemandListener iDemandListener : _listDemandListener )
         {
-    		iDemandListener.onCreateDemand( demandDao );
+            iDemandListener.onCreateDemand( demandDao );
         }
         return demandDao;
     }
@@ -169,10 +170,10 @@ public class DemandService
      */
     public Notification create( Notification notification )
     {
-    	Notification notificationDao = _notificationDao.insert( notification );
-    	for ( INotificationListener iNotificationListener : _listNotificationListener )
+        Notification notificationDao = _notificationDao.insert( notification );
+        for ( INotificationListener iNotificationListener : _listNotificationListener )
         {
-    		iNotificationListener.onCreateNotification( notificationDao );
+            iNotificationListener.onCreateNotification( notificationDao );
         }
         return notificationDao;
     }
@@ -186,10 +187,10 @@ public class DemandService
      */
     public Demand update( Demand demand )
     {
-    	Demand demandDao = _demandDao.store( demand );
-    	for ( IDemandListener iDemandListener : _listDemandListener )
+        Demand demandDao = _demandDao.store( demand );
+        for ( IDemandListener iDemandListener : _listDemandListener )
         {
-    		iDemandListener.onUpdateDemand( demandDao );
+            iDemandListener.onUpdateDemand( demandDao );
         }
         return demandDao;
     }
@@ -207,12 +208,12 @@ public class DemandService
         _notificationDao.deleteByDemand( strDemandId, strDemandTypeId );
         for ( INotificationListener iNotificationListener : _listNotificationListener )
         {
-    		iNotificationListener.onDeleteDemand( strDemandId, strDemandTypeId );
+            iNotificationListener.onDeleteDemand( strDemandId, strDemandTypeId );
         }
         _demandDao.delete( strDemandId, strDemandTypeId );
         for ( IDemandListener iDemandListener : _listDemandListener )
         {
-    		iDemandListener.onDeleteDemand( strDemandId, strDemandTypeId );
+            iDemandListener.onDeleteDemand( strDemandId, strDemandTypeId );
         }
     }
 }

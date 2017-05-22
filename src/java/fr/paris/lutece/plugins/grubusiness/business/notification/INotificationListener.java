@@ -38,24 +38,27 @@ package fr.paris.lutece.plugins.grubusiness.business.notification;
  */
 public interface INotificationListener
 {
-	/**
-	 * Something to do when a notification is created
-	 * @param notification
-	 */
-	void onCreateNotification( Notification notification );
-	
-	/**
-	 * Something to do when a notification is updated
-	 * @param notification
-	 */
-	void onUpdateNotification( Notification notification );
+    /**
+     * Something to do when a notification is created
+     * 
+     * @param notification
+     */
+    void onCreateNotification( Notification notification );
 
-	/**
-	 * Something to do on notification when a demand is deleted
+    /**
+     * Something to do when a notification is updated
+     * 
+     * @param notification
+     */
+    void onUpdateNotification( Notification notification );
+
+    /**
+     * Something to do on notification when a demand is deleted
+     * 
      * @param strDemandId
      *            the demand id
      * @param strDemandTypeId
      *            the demand type id
-	 */
-	void onDeleteDemand( String strDemandId, String strDemandTypeId );
+     */
+    void onDeleteDemand( String strDemandId, String strDemandTypeId );
 }

@@ -51,13 +51,13 @@ public class MockNotificationDAO implements INotificationDAO
         return new ArrayList<Notification>( );
     }
 
-	/**
-	 * {@inheritDoc}
-	 */
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public List<Notification> loadAllNotifications()
+    public List<Notification> loadAllNotifications( )
     {
-    	return new ArrayList<Notification>( );
+        return new ArrayList<Notification>( );
     }
 
     /**
