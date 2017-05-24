@@ -53,14 +53,12 @@ public interface INotificationDAO
     List<Notification> loadByDemand( String strDemandId, String strDemandTypeId );
 
     /**
-     * Finds all notifications This method is used for statistic purpose, so only some info required are : Notification.Demand.Id Notification.Demand.TypeId
-     * Notification.Date Notification.EmailNotification not null if it has one Notification.SMSNotification not null if it has one
-     * Notification.BackofficeNotification not null if it has one Notification.MyDashboardNotification not null if it has one
-     * Notification.List<BroadcastNotification> not null and with correct count if it has at least one
+     * Finds and populate notification according to the filter
      * 
+     * @param notificationFilter
      * @return the notifications. An empty list is returned if no notification has been found.
      */
-    List<Notification> loadAllNotifications( );
+    List<Notification> loadByFilter( NotificationFilter notificationFilter );
 
     /**
      * Inserts a notification

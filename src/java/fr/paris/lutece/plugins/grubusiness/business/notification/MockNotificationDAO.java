@@ -55,7 +55,7 @@ public class MockNotificationDAO implements INotificationDAO
      * {@inheritDoc}
      */
     @Override
-    public List<Notification> loadAllNotifications( )
+    public List<Notification> loadByFilter( NotificationFilter notificationFilter )
     {
         return new ArrayList<Notification>( );
     }
