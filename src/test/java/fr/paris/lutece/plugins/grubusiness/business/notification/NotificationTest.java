@@ -51,7 +51,7 @@ import java.io.IOException;
 /**
  * Test for json parsing, no controls are done !
  */
-public class NotifyGruGlobalNotificationTest extends TestCase
+public class NotificationTest extends TestCase
 {
     @Test
     public void testUnserialize( ) throws JsonParseException, JsonMappingException, IOException

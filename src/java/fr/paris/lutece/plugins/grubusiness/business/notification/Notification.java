@@ -49,19 +49,13 @@ import java.util.List;
 /**
  * The Class Notification, default notification object.<br/>
  * Fields description<br/>
- * - crm_status_id, single CRM status id<br/>
- * - demand_max_step, maximum step of the demand<br/>
- * - demand_id_type, single request type id associated with 'Guichet' services<br/>
- * - demand_id, request ID for the current user<br/>
- * - email, user email<br/>
- * - notification_type, typ of the notification<br/>
- * - demand_user_current_step, current step of the demand<br/>
- * - backoffice_logging, {@link BackofficeNotification}<br/>
- * - user_guid, user id to create a new request<br/>
- * - user_sms, {@link SMSNotification}<br/>
- * - user_email, {@link EmailNotification}<br/>
- * - user_dashboard, {@link MyDashboardNotification}
- *
+ * - demand,{@link Demand}<br/>
+ * - date, timestamp of the notification<br/>
+ * - backoffice, {@link BackofficeNotification}<br/>
+ * - sms, {@link SMSNotification}<br/>
+ * - customer_email, {@link EmailNotification}<br/>
+ * - mydashboard, {@link MyDashboardNotification}<br/>
+ * - email, list of {@link BroadcastNotification}
  */
 @JsonRootName( value = "notification" )
 @JsonPropertyOrder( {

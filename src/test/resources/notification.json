@@ -1,74 +1,56 @@
 {
   "notification" : {
-    "crm_status_id" : 1,
-    "demand_max_step" : 5,
-    "demand_id" : -1,
-    "notification_type" : "string",
-    "demand_user_current_step" : 3,
-    "backoffice_logging" : {
-      "message" : "Traitement de la demande en cours par le service de la DVD",
-      "status_text" : "En attente de validation"
+    "date" : 1496217415936,
+    "demand" : {
+      "id" : "809",
+      "type_id" : "101",
+      "reference" : "INF170500079",
+      "status_id" : 0,
+      "max_step" : 4,
+      "current_step" : 1,
+      "customer" : {
+        "id" : "63b089c3",
+        "email" : "test@lutece.fr",
+        "connection_id" : "b22e93e0"
+      }
     },
-    "demand_type_id" : 14,
-    "demand_status" : 0,
-    "user_email" : {
-      "message" : "Bonjour Monsieur John Doe, Votre demande de carte de stationnement est en attente de validation",
+    "backoffice" : {
+      "message" : "<p>Domaine Autre - Test recap</p>",
+      "status_text" : "Nouveau"
+    },
+    "customer_email" : {
+      "message" : "<p>Bonjour Erwan-Maurice Train,</p>\r\n<p>Nous avons bien re&ccedil;u votre demande et nous vous remercions de votre confiance.</p>\r\n<p>Un e-mail de confirmation vous a &eacute;t&eacute; envoy&eacute; &agrave; l'adresse suivante erwan.train@atos.net. Il contient un num&eacute;ro de suivi qui vous sera demand&eacute; au 3975 pour suivre son &eacute;tat d'avancement. Il est &eacute;galement disponible dans votre espace Compte Parisien.</p>\r\n<p>Nous avons not&eacute; que votre adresse postale est la suivante:</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Nous restons &agrave; votre enti&egrave;re disposition pour toute information compl&eacute;mentaire.</p>\r\n<p>Cordialement,</p>\r\n<p>Mairie de Paris.</p>",
       "bcc" : "string",
-      "subject" : "[Mairie de Paris] Demande de carte de stationnement",
-      "sender_email" : "no_reply@paris.fr",
+      "subject" : "Votre demande :  INF170500079",
+      "sender_email" : "no-reply@mydomain.com",
       "sender_name" : "Mairie de Paris",
-      "recipient" : "john.doe@somewhere.com",
+      "recipient" : "test@lutece.fr",
       "cc" : "string"
     },
-    "notification_date" : 1455631063473,
-    "email" : "john.doe@somewhere.com",
-    "demand_reference" : "RCL160200116",
-    "user_guid" : "12312",
-    "user_sms" : {
-      "message" : "Votre demande de carte de stationnement est en attente de validation",
-      "phone_number" : "0600000000"
+    "sms" : {
+      "message" : "Bonjour Test, votre demande INF170500079 est bien reÃ§ue. Cordialement. Mairie de Paris",
+      "phone_number" : "0787878787"
     },
-    "remote_demand_id" : 1234,
-    "customer_id" : "123456",
-    "user_dashboard" : {
-      "status_text" : "En attente de validation",
-      "message" : "this is a test!",
-      "subject" : "this is a test!",
+    "mydashboard" : {
+      "status_id" : 1,
+      "status_text" : "En cours de traitement",
+      "message" : "<p>Bonjour Test,</p>\r\n<p>Nous avons bien re&ccedil;u votre demande et nous vous remercions de votre confiance.</p>\r\n<p>Un e-mail de confirmation vous a &eacute;t&eacute; envoy&eacute; &agrave; l'adresse suivante erwan.train@atos.net. Il contient un num&eacute;ro de suivi qui vous sera demand&eacute; au 3975 pour suivre son &eacute;tat d'avancement. Il est &eacute;galement disponible dans votre espace Compte Parisien.</p>\r\n<p>Nous restons &agrave; votre enti&egrave;re disposition pour toute information compl&eacute;mentaire.</p>\r\n<p>Cordialement,</p>\r\n<p>Mairie de Paris.</p>",
+      "subject" : "Votre demande INF170500079",
       "data" : "string",
       "sender_name" : "Mairie de Paris"
     },
-    "broadcast_email":[
-      {  
-        "message":"this is my first message",
-        "recipient":[
-          {"address": "xnormand@jasmineconseil.com"}
-        ],
-        "cc":[
-          {"address": "xaviernormand@yahoo.com"},
-          {"address": "xavier1522@gmail.com"}
-        ],
-        "bcc":[
-          {}
-        ],
-        "subject":"my first request",
-        "sender_email":"no-reply@mydomain.com",
-        "sender_name":"Mairie de Paris"
-      },
-      {  
-        "message":"this is my second message",
-        "recipient":[
-          {"address": "xaviernormand@yahoo.com"}
-        ],
-        "cc":[
-           {"address": "xavier1522@gmail.com"}
-        ],
-        "bcc":[
-           {"address": "xnormand@jasmineconseil.com"}
-        ],
-        "subject":"My second request",
-        "sender_email":"no-reply@mydomain.com",
-        "sender_name":"Mairie de Paris"
-      }
-    ]
+    "broadcast_email" : [ {
+      "message" : "<p>Bonjour Test,</p>\r\n<p>Nous avons bien re&ccedil;u votre demande et nous vous remercions de votre confiance.</p>\r\n<p>Un e-mail de confirmation vous a &eacute;t&eacute; envoy&eacute; &agrave; l'adresse suivante erwan.train@atos.net. Il contient un num&eacute;ro de suivi qui vous sera demand&eacute; au 3975 pour suivre son &eacute;tat d'avancement. Il est &eacute;galement disponible dans votre espace Compte Parisien.</p>\r\n<p>Nous restons &agrave; votre enti&egrave;re disposition pour toute information compl&eacute;mentaire.</p>\r\n<p>Cordialement,</p>\r\n<p>Mairie de Paris.</p>",
+      "bcc" : [ { "address" : "test@lutece.fr" } ],
+      "subject" : "Votre demande INF170500079",
+      "sender_email" : "no-reply@mydomain.com",
+      "sender_name" : "Mairie de Paris",
+      "recipient" : [ {
+        "address" : "admin@lutece.fr"
+      }, {
+        "address" : "lutece@lutece.fr"
+      } ],
+      "cc" : [ { "address" : "test@lutece.fr" } ]
+    } ]
   }
 }
