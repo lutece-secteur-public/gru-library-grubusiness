@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <properties>
+        <title>Librairie Grubusiness</title>
+    </properties>
+    <body>
+        <section name="Librairie Grubusiness">
+            <subsection name="Introduction">
+                <p>Cette librairie met&amp;nbsp;&amp;agrave; disposition un mod&amp;egrave;le et des services pour les objets de la GRU.</p>
+            </subsection>
+            <subsection name="Mod&amp;egrave;le, interface et services">
+                <p>
+                La librairie met&amp;nbsp;&amp;agrave; disposition des objets globaux&amp;nbsp;&amp;agrave; la GRU :
+                <ul>
+                    <li>Notification, une notification du workflow GRU</li>
+                    <li>Demand, des informations sur le ticket GRU</li>
+                    <li>Customer, des informations sur l'usager</li>
+                </ul>
+                </p>
+                <p>
+                Pour manipuler ces objets, un ensemble d'interface et de service sont pr&amp;eacute;sents :
+                <ul>
+                    <li>IDemandDAO, une interface de DAO pour les Demand</li>
+                    <li>IDemandListener, une interface qui est notifi&amp;eacute;&amp;nbsp;&amp;agrave; chaque op&amp;eacute;ration sur Demand via le DemandService</li>
+                    <li>INotificationDAO, une interface de DAO pour les Notification</li>
+                    <li>INotificationListener, une interface qui est notifi&amp;eacute;&amp;nbsp;&amp;agrave; chaque op&amp;eacute;ration sur Notification via le DemandService</li>
+                    <li>DemandService, un service permettant de g&amp;eacute;rer les Demand et les Notification</li>
+                    <li>ICustomerDAO, une interface de DAO pour les Customer</li>
+                    <li>CustomerService, un service permettant de g&amp;eacute;rer les Customer</li>
+                    <li>IIndexingService, une interface pour les indexations</li>
+                </ul> 
+                </p>
+                <p>
+                Attention cette librairie n'a pas d'impl&amp;eacute;mentation utilisable pour ces interfaces.
+                </p>
+            </subsection>
+            <subsection name="Configuration">
+                <p>
+                La libraire a besoin d'avoir ces DAO et service de correctement configur&amp;eacute; via les contexts Spring.
+                </p>
+                <p>
+                    Le service DemandService met&amp;nbsp;&amp;agrave; disposition deux constructeurs.
+                    Le premier n'a besoin de recevoir que les impl&amp;eacute;mentations des IDemandDAO et INotificationDAO.
+                    Le second a besoin des DAO ainsi que la liste des impl&amp;eacute;mentations des IDemandListener et INotificationListener.
+                </p>
+                <p>
+                    Le service CustomerService poss&amp;egrave;de un unique constructeur n&amp;eacute;cessitant l'impl&amp;eacute;mentation d'une ICustomerDAO.
+                </p>
+            </subsection>
+            <subsection name="Exemples de configuration spring">
+                <p>
+                    <b>Configuration utilisant les objets d&amp;eacute;finis dans le plugin plugin-grusupply</b>
+                    <pre>
+    &lt;bean id="grusupply.demandDAO"  class="fr.paris.lutece.plugins.grusupply.business.DemandDAO" /&gt;  
+    &lt;bean id="grusupply.notificationDAO"  class="fr.paris.lutece.plugins.grusupply.business.NotificationDAO" /&gt;
+    &lt;bean id="grusupply.demandListener" class="fr.paris.lutece.plugins.grusupply.business.listener.LogDemandListener" /&gt;
+    &lt;bean id="grusupply.notificationListener" class="fr.paris.lutece.plugins.grusupply.business.listener.LogNotificationListener" /&gt;
+    &lt;bean id="grusupply.storageService" class="fr.paris.lutece.plugins.grubusiness.business.demand.DemandService"&gt;
+      &lt;constructor-arg ref="grusupply.demandDAO" /&gt;
+      &lt;constructor-arg ref="grusupply.notificationDAO" /&gt;
+      &lt;constructor-arg&gt;
+        &lt;list&gt;
+          &lt;ref bean="grusupply.demandListener" /&gt;
+        &lt;/list&gt;
+      &lt;/constructor-arg&gt;
+      &lt;constructor-arg&gt;
+        &lt;list&gt;
+          &lt;ref bean="grusupply.notificationListener" /&gt;
+        &lt;/list&gt;
+      &lt;/constructor-arg&gt;
+    &lt;/bean&gt;
+                    </pre>
+                </p>
+            </subsection>
+        </section>
+    </body>
+</document>
+
