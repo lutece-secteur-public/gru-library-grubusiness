@@ -49,12 +49,12 @@
             </subsection>
             <subsection name="Exemples de configuration spring">
                 <p>
-                    <b>Configuration utilisant les objets d&amp;eacute;finis dans le plugin plugin-grusupply</b>
+                    <b>Configuration utilisant les objets d&amp;eacute;finis dans le plugin plugin-grustoragedb</b>
                     <pre>
-    &lt;bean id="grusupply.demandDAO"  class="fr.paris.lutece.plugins.grusupply.business.DemandDAO" /&gt;  
-    &lt;bean id="grusupply.notificationDAO"  class="fr.paris.lutece.plugins.grusupply.business.NotificationDAO" /&gt;
-    &lt;bean id="grusupply.demandListener" class="fr.paris.lutece.plugins.grusupply.business.listener.LogDemandListener" /&gt;
-    &lt;bean id="grusupply.notificationListener" class="fr.paris.lutece.plugins.grusupply.business.listener.LogNotificationListener" /&gt;
+    &lt;bean id="grusupply.demandDAO"  class="fr.paris.lutece.plugins.grustoragedb.business.DemandDAO" /&gt;  
+    &lt;bean id="grusupply.notificationDAO"  class="fr.paris.lutece.plugins.grustoragedb.business.NotificationDAO" /&gt;
+    &lt;bean id="grusupply.demandListener" class="fr.paris.lutece.plugins.grustoragedb.business.listener.LogDemandListener" /&gt;
+    &lt;bean id="grusupply.notificationListener" class="fr.paris.lutece.plugins.grustoragedb.business.listener.LogNotificationListener" /&gt;
     &lt;bean id="grusupply.storageService" class="fr.paris.lutece.plugins.grubusiness.business.demand.DemandService"&gt;
       &lt;constructor-arg ref="grusupply.demandDAO" /&gt;
       &lt;constructor-arg ref="grusupply.notificationDAO" /&gt;

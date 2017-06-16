@@ -38,13 +38,13 @@ Le service CustomerService poss&egrave;de un unique constructeur n&eacute;cessit
 
 ## Exemples de configuration spring
 
- **Configuration utilisant les objets d&eacute;finis dans le plugin plugin-grusupply** 
+ **Configuration utilisant les objets d&eacute;finis dans le plugin plugin-grustoragedb** 
 ```
 
-    <bean id="grusupply.demandDAO"  class="fr.paris.lutece.plugins.grusupply.business.DemandDAO" />  
-    <bean id="grusupply.notificationDAO"  class="fr.paris.lutece.plugins.grusupply.business.NotificationDAO" />
-    <bean id="grusupply.demandListener" class="fr.paris.lutece.plugins.grusupply.business.listener.LogDemandListener" />
-    <bean id="grusupply.notificationListener" class="fr.paris.lutece.plugins.grusupply.business.listener.LogNotificationListener" />
+    <bean id="grusupply.demandDAO"  class="fr.paris.lutece.plugins.grustoragedb.business.DemandDAO" />  
+    <bean id="grusupply.notificationDAO"  class="fr.paris.lutece.plugins.grustoragedb.business.NotificationDAO" />
+    <bean id="grusupply.demandListener" class="fr.paris.lutece.plugins.grustoragedb.business.listener.LogDemandListener" />
+    <bean id="grusupply.notificationListener" class="fr.paris.lutece.plugins.grustoragedb.business.listener.LogNotificationListener" />
     <bean id="grusupply.storageService" class="fr.paris.lutece.plugins.grubusiness.business.demand.DemandService">
       <constructor-arg ref="grusupply.demandDAO" />
       <constructor-arg ref="grusupply.notificationDAO" />
