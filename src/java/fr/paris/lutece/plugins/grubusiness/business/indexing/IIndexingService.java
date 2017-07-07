@@ -33,6 +33,8 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.indexing;
 
+import java.util.List;
+
 /**
  * This interface enables to index any object
  */
@@ -45,6 +47,13 @@ public interface IIndexingService<T>
      *            the object to index
      */
     void index( T object ) throws IndexingException;
+    
+    /**
+     * Index list of object
+     * @param listObjects
+     * @throws IndexingException 
+     */
+    void indexList( List<T> listObjects ) throws IndexingException;
 
     /**
      * Delete index
