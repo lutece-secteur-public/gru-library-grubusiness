@@ -4,6 +4,7 @@
     "demand" : {
       "id" : "809",
       "type_id" : "101",
+      "subtype_id" : "10101",
       "reference" : "INF170500079",
       "status_id" : 0,
       "max_step" : 4,

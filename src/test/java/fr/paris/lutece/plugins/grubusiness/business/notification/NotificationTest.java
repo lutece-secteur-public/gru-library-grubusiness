@@ -85,6 +85,7 @@ public class NotificationTest extends TestCase
         Demand demandNotif = new Demand( );
         demandNotif.setId( "strDemandId" );
         demandNotif.setTypeId( "strTypeId" );
+        demandNotif.setSubtypeId( "strSubtypeId" );
         demandNotif.setReference( "strDemandReference" );
         demandNotif.setStatusId( nCount );
         demandNotif.setMaxSteps( nCount );
@@ -95,6 +96,7 @@ public class NotificationTest extends TestCase
         customerNotif.setConnectionId( "strAccountGuid" );
         customerNotif.setEmail( "strEmail" );
         demandNotif.setCustomer( customerNotif );
+        notification.setDemand( demandNotif );
 
         BackofficeNotification backNotif = new BackofficeNotification( );
         backNotif.setMessage( "strMessage" );

@@ -49,7 +49,7 @@ import java.util.List;
  */
 @JsonRootName( value = "demand" )
 @JsonPropertyOrder( {
-        "id", "type_id", "reference", "status_id", "max_step", "current_step", "customer"
+        "id", "type_id", "subtype_id", "reference", "status_id", "max_step", "current_step", "customer"
 } )
 public class Demand
 {
@@ -60,6 +60,7 @@ public class Demand
     private String _strId;
     private String _strReference;
     private String _strTypeId;
+    private String _strSubtypeId;
     protected int _nStatusId;
     private String _strTitle;
     private List<Notification> _listNotifications;
@@ -166,6 +167,29 @@ public class Demand
     public String getTypeId( )
     {
         return _strTypeId;
+    }
+
+    /**
+     * Sets the subtype id
+     *
+     * @param strSubtypeId
+     *            The subtype id
+     */
+    @JsonProperty( "subtype_id" )
+    public void setSubtypeId( String strSubtypeId )
+    {
+        _strSubtypeId = strSubtypeId;
+    }
+
+    /**
+     * Gves the subtype id
+     *
+     * @return The subtype id
+     */
+    @JsonProperty( "subtype_id" )
+    public String getSubtypeId( )
+    {
+        return _strSubtypeId;
     }
 
     /**
