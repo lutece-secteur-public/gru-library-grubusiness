@@ -47,11 +47,12 @@ public interface IIndexingService<T>
      *            the object to index
      */
     void index( T object ) throws IndexingException;
-    
+
     /**
      * Index list of object
+     * 
      * @param listObjects
-     * @throws IndexingException 
+     * @throws IndexingException
      */
     void indexList( List<T> listObjects ) throws IndexingException;
 

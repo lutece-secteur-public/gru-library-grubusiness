@@ -69,7 +69,7 @@ public class Customer implements Serializable
     @NotEmpty( message = "#i18n{gru.validation.customer.Lastname.notEmpty}" )
     @Size( max = 50, message = "#i18n{gru.validation.customer.Lastname.size}" )
     private String _strLastname;
-    
+
     /** The _str familyname. */
     @Size( max = 50, message = "#i18n{gru.validation.customer.Familyname.size}" )
     private String _strFamilyname;
@@ -197,7 +197,7 @@ public class Customer implements Serializable
     {
         _strLastname = strLastname;
     }
-    
+
     /**
      * Returns the Familyname.
      *
@@ -216,8 +216,8 @@ public class Customer implements Serializable
      */
     public void setFamilyname( String strFamilyname )
     {
-    	_strFamilyname = strFamilyname;
-    }    
+        _strFamilyname = strFamilyname;
+    }
 
     /**
      * Returns the HasAccount.
