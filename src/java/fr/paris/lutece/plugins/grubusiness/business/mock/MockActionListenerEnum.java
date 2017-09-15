@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2016, Mairie de Paris
+ * Copyright (c) 2002-2017, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,50 +31,12 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.grubusiness.business.notification;
-
-import java.util.ArrayList;
-import java.util.List;
+package fr.paris.lutece.plugins.grubusiness.business.mock;
 
 /**
- * This class is a DAO mock for Notification object
- *
+ * This enum is a mock for ActionListener
  */
-public class MockNotificationDAO implements INotificationDAO
+public enum MockActionListenerEnum
 {
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<Notification> loadByDemand( String strDemandId, String strDemandTypeId )
-    {
-        return new ArrayList<Notification>( );
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<Notification> loadByFilter( NotificationFilter notificationFilter )
-    {
-        return new ArrayList<Notification>( );
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Notification insert( Notification notification )
-    {
-        return notification;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void deleteByDemand( String strDemandId, String strDemandTypeId )
-    {
-        // Nothing to do
-    }
+    CREATE, UPDATE, DELETE;
 }

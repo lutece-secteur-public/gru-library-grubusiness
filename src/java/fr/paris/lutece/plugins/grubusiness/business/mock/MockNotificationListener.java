@@ -40,11 +40,11 @@ import fr.paris.lutece.plugins.grubusiness.business.notification.INotificationLi
 import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
 
 /**
- *
+ * This class is a mock implementation of {@link INotificationListener}
  */
 public class MockNotificationListener implements INotificationListener
 {
-    List<String> _listLogAction = new ArrayList<String>( );
+    private final List<String> _listLogAction = new ArrayList<String>( );
 
     /**
      * {@inheritDoc}
@@ -73,6 +73,15 @@ public class MockNotificationListener implements INotificationListener
         _listLogAction.add( MockActionListenerEnum.DELETE.name( ) + "|" + strDemandTypeId + "|" + strDemandId );
     }
 
+    /**
+     * Listens and consumes a notification
+     * 
+     * @param actionListener
+     *            the action to perform
+     * @param notification
+     *            the notification
+     * @return {@code true} if the treatment is successful, {@code false} otherwise
+     */
     public synchronized boolean listenAndConsume( MockActionListenerEnum actionListener, Notification notification )
     {
         String strCompareLog = actionListener.name( ) + "|";

@@ -42,11 +42,11 @@ import fr.paris.lutece.plugins.grubusiness.business.customer.Customer;
 import fr.paris.lutece.plugins.grubusiness.business.customer.ICustomerDAO;
 
 /**
- * 
+ * This class is a mock implementation of {@link ICustomerDAO}
  */
 public class MockCustomerDAO implements ICustomerDAO
 {
-    Map<String, Customer> _mapMockCustomer = new HashMap<String, Customer>( );
+    private final Map<String, Customer> _mapMockCustomer = new HashMap<String, Customer>( );
 
     /**
      * {@inheritDoc}
@@ -74,6 +74,12 @@ public class MockCustomerDAO implements ICustomerDAO
         return _mapMockCustomer.get( strCustomerId );
     }
 
+    /**
+     * Stores a customer
+     * 
+     * @param customer
+     *            the customer to store
+     */
     public void store( Customer customer )
     {
         _mapMockCustomer.put( customer.getId( ), customer );

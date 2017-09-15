@@ -41,13 +41,13 @@ import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
 import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationFilter;
 
 /**
- *
+ * This class is a mock implementation of {@link INotificationDAO}
  */
 public class MockNotificationDAO implements INotificationDAO
 {
 
-    List<Notification> _listMockNotification = new ArrayList<Notification>( );
-    int _lastId = 0;
+    private final List<Notification> _listMockNotification = new ArrayList<Notification>( );
+    private int _lastId;
 
     /**
      * {@inheritDoc}

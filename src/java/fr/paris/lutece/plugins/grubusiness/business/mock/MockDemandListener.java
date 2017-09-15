@@ -40,11 +40,11 @@ import fr.paris.lutece.plugins.grubusiness.business.demand.Demand;
 import fr.paris.lutece.plugins.grubusiness.business.demand.IDemandListener;
 
 /**
- *
+ * This class is a mock implementation of {@link IDemandListener}
  */
 public class MockDemandListener implements IDemandListener
 {
-    List<String> _listLogAction = new ArrayList<String>( );
+    private final List<String> _listLogAction = new ArrayList<String>( );
 
     /**
      * {@inheritDoc}
@@ -73,6 +73,15 @@ public class MockDemandListener implements IDemandListener
         _listLogAction.add( MockActionListenerEnum.DELETE.name( ) + "|" + strDemandTypeId + "|" + strDemandId );
     }
 
+    /**
+     * Listens and consumes a demand
+     * 
+     * @param actionListener
+     *            the action to perform
+     * @param demand
+     *            the demand
+     * @return {@code true} if the treatment is successful, {@code false} otherwise
+     */
     public synchronized boolean listenAndConsume( MockActionListenerEnum actionListener, Demand demand )
     {
         int nIndexConsume = -1;

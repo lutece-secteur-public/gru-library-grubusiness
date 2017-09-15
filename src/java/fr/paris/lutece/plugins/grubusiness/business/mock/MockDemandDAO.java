@@ -42,11 +42,11 @@ import fr.paris.lutece.plugins.grubusiness.business.demand.Demand;
 import fr.paris.lutece.plugins.grubusiness.business.demand.IDemandDAO;
 
 /**
- *
+ * This class is a mock implementation of {@link IDemandDAO}
  */
 public class MockDemandDAO implements IDemandDAO
 {
-    Map<String, Demand> _mapMockDemand = new HashMap<String, Demand>( );
+    private final Map<String, Demand> _mapMockDemand = new HashMap<String, Demand>( );
 
     /**
      * {@inheritDoc}
