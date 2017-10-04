@@ -42,16 +42,18 @@ import com.fasterxml.jackson.annotation.JsonRootName;
  * Fields description :<br/>
  * - message, content of the notification<br/>
  * - phone_number, phone number of the user<br/>
+ * - sender_name, the name of the sms sender<br/>
  */
 @JsonRootName( value = "sms" )
 @JsonPropertyOrder( {
-        "message", "phone_number"
+        "message", "phone_number", "sender_name"
 } )
 public class SMSNotification
 {
     // Variables declarations
     private String _strPhoneNumber;
     private String _strMessage;
+    private String _strSenderName;
 
     /**
      * Instantiates a new notify gru sms notification.
@@ -60,6 +62,7 @@ public class SMSNotification
     {
         this._strPhoneNumber = NotificationConstants.DEFAULT_STRING;
         this._strMessage = NotificationConstants.DEFAULT_STRING;
+        this._strSenderName = NotificationConstants.DEFAULT_STRING;
     }
 
     /**
@@ -106,5 +109,28 @@ public class SMSNotification
     public void setMessage( String strMessage )
     {
         _strMessage = strMessage;
+    }
+
+    /**
+     * Gets the sender_name.
+     *
+     * @return the sender_name
+     */
+    @JsonProperty( "sender_name" )
+    public String getSenderName( )
+    {
+        return _strSenderName;
+    }
+
+    /**
+     * Sets the sender_name.
+     *
+     * @param strSenderName
+     *            the new sender_name
+     */
+    @JsonProperty( "sender_name" )
+    public void setSenderName( String strSenderName )
+    {
+    	_strSenderName = strSenderName;
     }
 }

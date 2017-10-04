@@ -30,7 +30,8 @@
     },
     "sms" : {
       "message" : "Bonjour Test, votre demande INF170500079 est bien reÃ§ue. Cordialement. Mairie de Paris",
-      "phone_number" : "0787878787"
+      "phone_number" : "0787878787",
+      "sender_name" : "123457890@lutece.fr"
     },
     "mydashboard" : {
       "status_id" : 1,

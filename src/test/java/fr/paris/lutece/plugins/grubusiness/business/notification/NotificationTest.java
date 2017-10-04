@@ -53,16 +53,26 @@ import java.io.IOException;
  */
 public class NotificationTest extends TestCase
 {
+	ObjectMapper _mapper;
+	
+	/**
+	 * default constructor with mapper init
+	 */
+	public NotificationTest( )
+	{
+		super( );
+		_mapper = new ObjectMapper( );
+		_mapper.enable( DeserializationFeature.UNWRAP_ROOT_VALUE );
+		_mapper.disable( DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES );
+		_mapper.enable( SerializationFeature.WRAP_ROOT_VALUE );
+		_mapper.enable( SerializationFeature.INDENT_OUTPUT );
+	}
+	
     @Test
     public void testUnserialize( ) throws JsonParseException, JsonMappingException, IOException
     {
-        ObjectMapper mapper = new ObjectMapper( );
-        mapper.enable( DeserializationFeature.UNWRAP_ROOT_VALUE );
-        mapper.enable( SerializationFeature.WRAP_ROOT_VALUE );
-        mapper.enable( SerializationFeature.INDENT_OUTPUT );
-
-        Notification notification = mapper.readValue( getClass( ).getResourceAsStream( "/notification.json" ), Notification.class );
-        String jsonNotif = mapper.writeValueAsString( notification );
+        Notification notification = _mapper.readValue( getClass( ).getResourceAsStream( "/notification.json" ), Notification.class );
+        String jsonNotif = _mapper.writeValueAsString( notification );
 
         // Uncomment for console checking
         // System.out.println( jsonNotif );
@@ -71,11 +81,6 @@ public class NotificationTest extends TestCase
     @Test
     public void testSerialize( ) throws JsonParseException, JsonMappingException, IOException
     {
-        ObjectMapper mapper = new ObjectMapper( );
-        mapper.enable( DeserializationFeature.UNWRAP_ROOT_VALUE );
-        mapper.enable( SerializationFeature.WRAP_ROOT_VALUE );
-        mapper.enable( SerializationFeature.INDENT_OUTPUT );
-
         Notification notification = new Notification( );
         int nCount = 0;
         long lCount = 0L;
@@ -116,6 +121,7 @@ public class NotificationTest extends TestCase
         SMSNotification smsNotif = new SMSNotification( );
         smsNotif.setMessage( "strMessage" );
         smsNotif.setPhoneNumber( "strPhoneNumber" );
+        smsNotif.setSenderName( "strSenderName" );
         notification.setSmsNotification( smsNotif );
 
         BroadcastNotification broadcastNotif = new BroadcastNotification( );
@@ -149,10 +155,10 @@ public class NotificationTest extends TestCase
         MyDashboardNotification crmDashboardNotif = new MyDashboardNotification( );
         crmDashboardNotif.setStatusId( 1 );
 
-        String jsonNotif = mapper.writeValueAsString( notification );
+        String jsonNotif = _mapper.writeValueAsString( notification );
 
         // Uncomment for console checking
         // System.out.println( jsonNotif );
-        Notification notificationFromString = mapper.readValue( jsonNotif, Notification.class );
+        Notification notificationFromString = _mapper.readValue( jsonNotif, Notification.class );
     }
 }
