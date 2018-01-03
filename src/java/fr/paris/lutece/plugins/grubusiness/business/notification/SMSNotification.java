@@ -131,6 +131,6 @@ public class SMSNotification
     @JsonProperty( "sender_name" )
     public void setSenderName( String strSenderName )
     {
-    	_strSenderName = strSenderName;
+        _strSenderName = strSenderName;
     }
 }

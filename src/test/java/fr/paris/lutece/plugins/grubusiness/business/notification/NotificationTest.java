@@ -53,21 +53,21 @@ import java.io.IOException;
  */
 public class NotificationTest extends TestCase
 {
-	ObjectMapper _mapper;
-	
-	/**
-	 * default constructor with mapper init
-	 */
-	public NotificationTest( )
-	{
-		super( );
-		_mapper = new ObjectMapper( );
-		_mapper.enable( DeserializationFeature.UNWRAP_ROOT_VALUE );
-		_mapper.disable( DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES );
-		_mapper.enable( SerializationFeature.WRAP_ROOT_VALUE );
-		_mapper.enable( SerializationFeature.INDENT_OUTPUT );
-	}
-	
+    ObjectMapper _mapper;
+
+    /**
+     * default constructor with mapper init
+     */
+    public NotificationTest( )
+    {
+        super( );
+        _mapper = new ObjectMapper( );
+        _mapper.enable( DeserializationFeature.UNWRAP_ROOT_VALUE );
+        _mapper.disable( DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES );
+        _mapper.enable( SerializationFeature.WRAP_ROOT_VALUE );
+        _mapper.enable( SerializationFeature.INDENT_OUTPUT );
+    }
+
     @Test
     public void testUnserialize( ) throws JsonParseException, JsonMappingException, IOException
     {
