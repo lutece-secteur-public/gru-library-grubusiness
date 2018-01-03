@@ -123,7 +123,7 @@ public class Notification
     @JsonProperty( "demand" )
     public void setDemand( Demand demand )
     {
-        this._demand = demand;
+        _demand = demand;
     }
 
     /**
@@ -170,7 +170,7 @@ public class Notification
     @JsonProperty( "customer_email" )
     public void setEmailNotification( EmailNotification emailNotification )
     {
-        this._emailNotification = emailNotification;
+        _emailNotification = emailNotification;
     }
 
     /**
@@ -194,7 +194,7 @@ public class Notification
     @JsonProperty( "sms" )
     public void setSmsNotification( SMSNotification userSMS )
     {
-        this._smsNotification = userSMS;
+        _smsNotification = userSMS;
     }
 
     /**
@@ -218,7 +218,7 @@ public class Notification
     @JsonProperty( "backoffice" )
     public void setBackofficeNotification( BackofficeNotification backofficeNotification )
     {
-        this._backofficeNotification = backofficeNotification;
+        _backofficeNotification = backofficeNotification;
     }
 
     /**
@@ -236,13 +236,13 @@ public class Notification
     /**
      * Sets the user dashboard notif.
      *
-     * @param userDashboard
-     *            the new user dashboard notif
+     * @param myDashboardNotification
+     *            the new myDashboard notification
      */
     @JsonProperty( "mydashboard" )
     public void setMyDashboardNotification( MyDashboardNotification myDashboardNotification )
     {
-        this._myDashboardNotification = myDashboardNotification;
+        _myDashboardNotification = myDashboardNotification;
     }
 
     /**
@@ -260,13 +260,13 @@ public class Notification
     /**
      * Sets the broadcast
      * 
-     * @param broadcast
-     *            the broadcast to set
+     * @param listBroadcastEmail
+     *            the list of broadcast emails to set
      */
     @JsonProperty( "broadcast_email" )
     public void setBroadcastEmail( List<BroadcastNotification> listBroadcastEmail )
     {
-        this._listBroadcastEmail = listBroadcastEmail;
+        _listBroadcastEmail = listBroadcastEmail;
     }
 
     /**
@@ -277,11 +277,11 @@ public class Notification
      */
     public void addBroadcastEmail( BroadcastNotification broadcastEmail )
     {
-        if ( this._listBroadcastEmail == null )
+        if ( _listBroadcastEmail == null )
         {
-            this._listBroadcastEmail = new ArrayList<BroadcastNotification>( );
+            _listBroadcastEmail = new ArrayList<BroadcastNotification>( );
         }
 
-        this._listBroadcastEmail.add( broadcastEmail );
+        _listBroadcastEmail.add( broadcastEmail );
     }
 }

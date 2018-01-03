@@ -39,15 +39,15 @@ package fr.paris.lutece.plugins.grubusiness.business.notification;
 public class NotificationFilter
 {
     // filter on demand
-    private String _strDemandId = null;
-    private String _strDemandTypeId = null;
+    private String _strDemandId;
+    private String _strDemandTypeId;
 
     // filter on sub notif
-    private Boolean _bHasCustomerEmailNotification = null;
-    private Boolean _bHasSmsNotification = null;
-    private Boolean _bHasBackofficeNotification = null;
-    private Boolean _bHasMyDashboardNotification = null;
-    private Boolean _bHasBroadcastEmailNotification = null;
+    private Boolean _bHasCustomerEmailNotification;
+    private Boolean _bHasSmsNotification;
+    private Boolean _bHasBackofficeNotification;
+    private Boolean _bHasMyDashboardNotification;
+    private Boolean _bHasBroadcastEmailNotification;
 
     /**
      * Check if this filter contains a demandId

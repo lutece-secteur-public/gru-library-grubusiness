@@ -65,12 +65,12 @@ public class MyDashboardNotification
      */
     public MyDashboardNotification( )
     {
-        this._nStatusId = NotificationConstants.DEFAULT_INT;
-        this._strStatusText = NotificationConstants.DEFAULT_STRING;
-        this._strMessage = NotificationConstants.DEFAULT_STRING;
-        this._strSubject = NotificationConstants.DEFAULT_STRING;
-        this._strSenderName = NotificationConstants.DEFAULT_STRING;
-        this._strData = NotificationConstants.DEFAULT_STRING;
+        _nStatusId = NotificationConstants.DEFAULT_INT;
+        _strStatusText = NotificationConstants.DEFAULT_STRING;
+        _strMessage = NotificationConstants.DEFAULT_STRING;
+        _strSubject = NotificationConstants.DEFAULT_STRING;
+        _strSenderName = NotificationConstants.DEFAULT_STRING;
+        _strData = NotificationConstants.DEFAULT_STRING;
     }
 
     /**
@@ -83,13 +83,13 @@ public class MyDashboardNotification
     }
 
     /**
-     * @param strStatusId
+     * @param nStatusId
      *            the StatusId to set
      */
     @JsonProperty( "status_id" )
     public void setStatusId( int nStatusId )
     {
-        this._nStatusId = nStatusId;
+        _nStatusId = nStatusId;
     }
 
     /**

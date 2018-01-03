@@ -37,6 +37,9 @@ import java.util.List;
 
 /**
  * This interface enables to index any object
+ *
+ * @param <T>
+ *            the object to index
  */
 public interface IIndexingService<T>
 {
@@ -45,14 +48,18 @@ public interface IIndexingService<T>
      * 
      * @param object
      *            the object to index
+     * @throws IndexingException
+     *             if there is an exception during the indexing
      */
     void index( T object ) throws IndexingException;
 
     /**
-     * Index list of object
+     * Index a list of objects
      * 
      * @param listObjects
+     *            the list of objects to index
      * @throws IndexingException
+     *             if there is an exception during the indexing
      */
     void indexList( List<T> listObjects ) throws IndexingException;
 
@@ -61,6 +68,8 @@ public interface IIndexingService<T>
      * 
      * @param object
      *            the object to delete
+     * @throws IndexingException
+     *             if there is an exception during the deletion
      */
     void deleteIndex( T object ) throws IndexingException;
 }

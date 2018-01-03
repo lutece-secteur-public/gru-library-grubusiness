@@ -84,24 +84,25 @@ public class MockNotificationListener implements INotificationListener
      */
     public synchronized boolean listenAndConsume( MockActionListenerEnum actionListener, Notification notification )
     {
-        String strCompareLog = actionListener.name( ) + "|";
+        StringBuilder sbCompareLog = new StringBuilder( actionListener.name( ) ).append( '|' );
+
         if ( actionListener == MockActionListenerEnum.DELETE )
         {
             if ( notification.getDemand( ) != null )
             {
-                strCompareLog = strCompareLog + notification.getDemand( ).getTypeId( ) + "|" + notification.getDemand( ).getId( );
+                sbCompareLog.append( notification.getDemand( ).getTypeId( ) ).append( '|' ).append( notification.getDemand( ).getId( ) );
             }
         }
         else
         {
-            strCompareLog = strCompareLog + notification.getId( );
+            sbCompareLog.append( notification.getId( ) );
         }
 
         int nIndexConsume = -1;
         for ( int nIndex = 0; nIndex < _listLogAction.size( ); nIndex++ )
         {
 
-            if ( _listLogAction.get( nIndex ).equals( strCompareLog ) )
+            if ( _listLogAction.get( nIndex ).equals( sbCompareLog.toString( ) ) )
             {
                 nIndexConsume = nIndex;
                 break;

@@ -42,6 +42,7 @@ public interface INotificationListener
      * Something to do when a notification is created
      * 
      * @param notification
+     *            the created notification
      */
     void onCreateNotification( Notification notification );
 
@@ -49,6 +50,7 @@ public interface INotificationListener
      * Something to do when a notification is updated
      * 
      * @param notification
+     *            the updated notification
      */
     void onUpdateNotification( Notification notification );
 

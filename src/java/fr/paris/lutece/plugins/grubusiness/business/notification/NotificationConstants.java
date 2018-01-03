@@ -49,12 +49,9 @@ public final class NotificationConstants
 
     /**
      * final class of constants, don't have to be instantiated
-     *
-     * @throws Exception
-     *             the exception
      */
-    private NotificationConstants( ) throws Exception
+    private NotificationConstants( )
     {
-        throw new Exception( );
+
     }
 }

@@ -219,7 +219,7 @@ public class EmailNotification
     /**
      * Sets the bcc.
      *
-     * @param strCci
+     * @param strBcc
      *            the new bcc
      */
     @JsonProperty( "bcc" )

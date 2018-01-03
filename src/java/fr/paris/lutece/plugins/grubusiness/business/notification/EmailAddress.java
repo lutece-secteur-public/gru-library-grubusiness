@@ -53,7 +53,9 @@ public class EmailAddress
     private String _strAddress;
 
     /**
-     * @return the Address
+     * Gives the email address
+     * 
+     * @return the email address
      */
     @JsonProperty( "address" )
     public String getAddress( )
@@ -62,27 +64,36 @@ public class EmailAddress
     }
 
     /**
-     * @param trAddress
-     *            the Address to set
+     * Sets the email address
+     * 
+     * @param strAddress
+     *            the email address to set
      */
     @JsonProperty( "address" )
     public void setAddress( String strAddress )
     {
-        this._strAddress = strAddress;
+        _strAddress = strAddress;
     }
 
-    public static List<EmailAddress> buildEmailAddresses( String [ ] arrAdresses )
+    /**
+     * Builds a list of email addresses from the specified array
+     * 
+     * @param listAdresses
+     *            the array containing the email addresses
+     * @return the list of email addresses
+     */
+    public static List<EmailAddress> buildEmailAddresses( String... listAdresses )
     {
-        List<EmailAddress> lstResult = new ArrayList<EmailAddress>( );
-        EmailAddress tmpAdress = null;
+        List<EmailAddress> listResult = new ArrayList<EmailAddress>( );
+        EmailAddress emailAddress = null;
 
-        for ( String strAdress : arrAdresses )
+        for ( String strAddress : listAdresses )
         {
-            tmpAdress = new EmailAddress( );
-            tmpAdress.setAddress( strAdress );
-            lstResult.add( tmpAdress );
+            emailAddress = new EmailAddress( );
+            emailAddress.setAddress( strAddress );
+            listResult.add( emailAddress );
         }
 
-        return lstResult;
+        return listResult;
     }
 }

@@ -47,10 +47,10 @@ import java.util.List;
  */
 public class DemandService
 {
-    private IDemandDAO _demandDao;
-    private List<IDemandListener> _listDemandListener;
-    private INotificationDAO _notificationDao;
-    private List<INotificationListener> _listNotificationListener;
+    private final IDemandDAO _demandDao;
+    private final List<IDemandListener> _listDemandListener;
+    private final INotificationDAO _notificationDao;
+    private final List<INotificationListener> _listNotificationListener;
 
     /**
      * Constructor

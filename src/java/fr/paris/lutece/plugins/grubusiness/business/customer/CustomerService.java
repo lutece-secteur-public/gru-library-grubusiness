@@ -42,12 +42,13 @@ import java.util.Map;
 public class CustomerService
 {
     // DAO
-    private ICustomerDAO _daoCustomer;
+    private final ICustomerDAO _daoCustomer;
 
     /**
-     * Constructore
+     * Constructor
      * 
      * @param daoCustomer
+     *            the customer DAO used by this service
      */
     public CustomerService( ICustomerDAO daoCustomer )
     {
@@ -84,6 +85,7 @@ public class CustomerService
      * Find a customer by its id
      * 
      * @param strCustomerId
+     *            the customer id
      * @return the customer with the specified id
      */
     public Customer findById( String strCustomerId )

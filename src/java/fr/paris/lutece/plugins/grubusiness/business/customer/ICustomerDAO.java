@@ -66,6 +66,7 @@ public interface ICustomerDAO
      * Return a customer from its id
      * 
      * @param strCustomerId
+     *            the customer id
      * @return the customer associated with the id specified
      */
     Customer load( String strCustomerId );

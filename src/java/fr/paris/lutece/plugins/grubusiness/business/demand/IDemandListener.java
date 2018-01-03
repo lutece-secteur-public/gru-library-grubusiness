@@ -42,6 +42,7 @@ public interface IDemandListener
      * Something to do when a demand is created
      * 
      * @param demand
+     *            the created demand
      */
     void onCreateDemand( Demand demand );
 
@@ -49,6 +50,7 @@ public interface IDemandListener
      * Something to do when a demand is updated
      * 
      * @param demand
+     *            the updated demand
      */
     void onUpdateDemand( Demand demand );
 

@@ -58,12 +58,12 @@ public class IndexingException extends Exception
      *
      * @param strMessage
      *            The error message
-     * @param e
+     * @param exception
      *            The initial exception
      */
-    public IndexingException( String strMessage, Exception e )
+    public IndexingException( String strMessage, Exception exception )
     {
-        super( strMessage, e );
+        super( strMessage, exception );
     }
 
     /**

@@ -136,6 +136,12 @@ public class BroadcastNotification
         _lstRecipient = lstRecipient;
     }
 
+    /**
+     * Adds a recipient
+     * 
+     * @param recipient
+     *            the recipient to add
+     */
     public void addRecipient( EmailAddress recipient )
     {
         if ( this._lstRecipient == null )
@@ -216,6 +222,12 @@ public class BroadcastNotification
         _lstCc = lstCc;
     }
 
+    /**
+     * Adds a carbon copy recipient
+     * 
+     * @param recipient
+     *            the recipient to add
+     */
     public void addCc( EmailAddress recipient )
     {
         if ( this._lstCc == null )
@@ -250,6 +262,12 @@ public class BroadcastNotification
         _lstBcc = lstBcc;
     }
 
+    /**
+     * Adds a blind carbon copy recipient
+     * 
+     * @param recipient
+     *            the recipient to add
+     */
     public void addBcc( EmailAddress recipient )
     {
         if ( this._lstBcc == null )

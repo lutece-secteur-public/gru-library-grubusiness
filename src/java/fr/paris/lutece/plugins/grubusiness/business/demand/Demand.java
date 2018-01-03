@@ -61,7 +61,7 @@ public class Demand
     private String _strReference;
     private String _strTypeId;
     private String _strSubtypeId;
-    protected int _nStatusId;
+    private int _nStatusId;
     private String _strTitle;
     private List<Notification> _listNotifications;
     private List<Action> _listActions = new ArrayList<Action>( );
@@ -71,11 +71,6 @@ public class Demand
     private int _nCurrentStep;
     private boolean _bShowDetails;
     private Customer _customer;
-
-    /** Constructor */
-    public Demand( )
-    {
-    }
 
     /**
      * Gives the id

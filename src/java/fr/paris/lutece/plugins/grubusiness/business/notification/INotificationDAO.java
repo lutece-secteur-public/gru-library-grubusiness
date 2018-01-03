@@ -56,6 +56,7 @@ public interface INotificationDAO
      * Finds and populate notification according to the filter
      * 
      * @param notificationFilter
+     *            the filter
      * @return the notifications. An empty list is returned if no notification has been found.
      */
     List<Notification> loadByFilter( NotificationFilter notificationFilter );
