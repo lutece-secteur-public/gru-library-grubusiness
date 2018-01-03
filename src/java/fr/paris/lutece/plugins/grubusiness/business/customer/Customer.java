@@ -41,6 +41,9 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.validation.constraints.Size;
 
@@ -110,6 +113,16 @@ public class Customer implements Serializable
 
     /** The _str birthdate. */
     private String _strBirthDate;
+
+    private final Map<String, String> _mapAttributes;
+
+    /**
+     * Constructor
+     */
+    public Customer( )
+    {
+        _mapAttributes = new HashMap<>( );
+    }
 
     /**
      * Returns the Id.
@@ -436,5 +449,40 @@ public class Customer implements Serializable
     public void setBirthDate( String strBirthDate )
     {
         _strBirthDate = strBirthDate;
+    }
+
+    /**
+     * Adds an attribute
+     * 
+     * @param strName
+     *            the attribute name
+     * @param strValue
+     *            the attribute value
+     */
+    public void addAttributes( String strName, String strValue )
+    {
+        _mapAttributes.put( strName, strValue );
+    }
+
+    /**
+     * Gives the attribute with the specified name
+     * 
+     * @param strName
+     *            the attribute name
+     * @return the attribute or {@code null} if the attribute does not exist
+     */
+    public String getAttribute( String strName )
+    {
+        return _mapAttributes.get( strName );
+    }
+
+    /**
+     * Gives all the attribute names
+     * 
+     * @return the attributes names
+     */
+    public Collection<String> getAttributeNames( )
+    {
+        return _mapAttributes.keySet( );
     }
 }
