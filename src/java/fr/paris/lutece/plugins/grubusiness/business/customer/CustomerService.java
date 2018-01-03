@@ -34,6 +34,7 @@
 package fr.paris.lutece.plugins.grubusiness.business.customer;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Service used to find customer
@@ -54,15 +55,29 @@ public class CustomerService
     }
 
     /**
-     * Find all customer with a specified name and lastname
+     * Find all the customers corresponding to the specified filter
+     * 
+     * @param mapFilter
+     *            the filter
+     * @return the list of customers
+     */
+    public List<Customer> findbyFilter( Map<String, String> mapFilter )
+    {
+        return _daoCustomer.selectByFilter( mapFilter );
+    }
+
+    /**
+     * Find all the customers with the specified first name and last name
      * 
      * @param strFirstName
+     *            the customer first name
      * @param strLastName
-     * @return the list of all customer with the same name
+     *            the customer last name
+     * @return the list of customers
      */
     public List<Customer> findbyName( String strFirstName, String strLastName )
     {
-        return _daoCustomer.loadByName( strFirstName, strLastName );
+        return _daoCustomer.selectByName( strFirstName, strLastName );
     }
 
     /**

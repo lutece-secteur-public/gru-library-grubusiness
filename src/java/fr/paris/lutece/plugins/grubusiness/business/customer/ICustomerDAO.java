@@ -34,6 +34,7 @@
 package fr.paris.lutece.plugins.grubusiness.business.customer;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Interface DAO for customer
@@ -42,13 +43,24 @@ public interface ICustomerDAO
 {
 
     /**
-     * Load all the customer with the same name and lastname
+     * Load all the customers corresponding to the specified filter
+     * 
+     * @param mapFilter
+     *            the filter
+     * @return the list of customers
+     */
+    List<Customer> selectByFilter( Map<String, String> mapFilter );
+
+    /**
+     * Load all the customers with the specified first name and last name
      * 
      * @param strFirstName
+     *            the customer first name
      * @param strLastName
-     * @return the list of all customer with the same name and same lastname
+     *            the customer last name
+     * @return the list of customers
      */
-    List<Customer> loadByName( String strFirstName, String strLastName );
+    List<Customer> selectByName( String strFirstName, String strLastName );
 
     /**
      * Return a customer from its id

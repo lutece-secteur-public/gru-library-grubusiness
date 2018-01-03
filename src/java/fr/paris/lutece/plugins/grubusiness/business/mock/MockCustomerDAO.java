@@ -46,13 +46,28 @@ import fr.paris.lutece.plugins.grubusiness.business.customer.ICustomerDAO;
  */
 public class MockCustomerDAO implements ICustomerDAO
 {
+    private static final String FIELD_FIRSTNAME = "firstname";
+    private static final String FIELD_LASTNAME = "lastname";
+
     private final Map<String, Customer> _mapMockCustomer = new HashMap<String, Customer>( );
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public List<Customer> loadByName( String strFirstName, String strLastName )
+    public List<Customer> selectByFilter( Map<String, String> mapFilter )
+    {
+        String strFirstName = mapFilter.get( FIELD_FIRSTNAME );
+        String strLastName = mapFilter.get( FIELD_LASTNAME );
+
+        return selectByName( strFirstName, strLastName );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<Customer> selectByName( String strFirstName, String strLastName )
     {
         List<Customer> listResult = new ArrayList<Customer>( );
         for ( Customer customer : _mapMockCustomer.values( ) )
