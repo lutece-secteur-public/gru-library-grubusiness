@@ -97,8 +97,17 @@ public class DemandService
      * @return the demands. An empty collection is returned if no demand has been found
      */
     public Collection<Demand> findByCustomerId( String strCustomerId )
-    {
-        return _demandDao.loadByCustomerId( strCustomerId );
+    {        
+    	Collection<Demand> collectionDemands = _demandDao.loadByCustomerId( strCustomerId );
+
+    	for (Demand demand : collectionDemands )
+    	{
+            if ( demand != null )
+            {
+                demand.setNotifications( _notificationDao.loadByDemand( demand.getId( ), demand.getTypeId( ) ) );
+            }
+    	}
+    	return collectionDemands;
     }
 
     /**
@@ -110,7 +119,16 @@ public class DemandService
      */
     public Collection<Demand> findByReference( String strReference )
     {
-        return _demandDao.loadByReference( strReference );
+    	Collection<Demand> collectionDemands = _demandDao.loadByReference( strReference );
+        
+    	for (Demand demand : collectionDemands )
+    	{
+            if ( demand != null )
+            {
+                demand.setNotifications( _notificationDao.loadByDemand( demand.getId( ), demand.getTypeId( ) ) );
+            }
+    	}
+    	return collectionDemands;
     }
 
     /**
