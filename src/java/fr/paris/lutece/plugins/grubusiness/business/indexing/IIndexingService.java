@@ -72,4 +72,12 @@ public interface IIndexingService<T>
      *             if there is an exception during the deletion
      */
     void deleteIndex( T object ) throws IndexingException;
+
+    /**
+     * Deletes the index for all the objects
+     * 
+     * @throws IndexingException
+     *             if there is an exception during the deletion
+     */
+    void deleteAllIndexes( ) throws IndexingException;
 }
