@@ -158,7 +158,8 @@ public class MockNotificationDAO implements INotificationDAO
      * {@inheritDoc}
      */
     @Override
-    public List<String> loadIdsByFilter(NotificationFilter notificationFilter) {
+    public List<String> loadIdsByFilter( NotificationFilter notificationFilter )
+    {
         List<String> listResult = new ArrayList<>( );
         for ( Notification notification : _listMockNotification )
         {
@@ -210,10 +211,10 @@ public class MockNotificationDAO implements INotificationDAO
      * {@inheritDoc}
      */
     @Override
-    public Notification loadById( String strId ) 
+    public Notification loadById( String strId )
     {
         int nId = Integer.parseInt( strId );
-        
+
         for ( Notification notification : _listMockNotification )
         {
             if ( notification.getDemand( ) != null && notification.getId( ) == nId )

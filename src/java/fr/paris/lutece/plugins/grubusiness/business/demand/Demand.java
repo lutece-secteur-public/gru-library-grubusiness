@@ -75,20 +75,24 @@ public class Demand
 
     /**
      * Get the primary key demand id
+     * 
      * @return the demand id
      */
     @JsonProperty( "demand_id" )
-    public int getDemandId() {
+    public int getDemandId( )
+    {
         return _nDemandId;
     }
 
     /**
      * Set the primary key demand id
-     * @param nDemandId 
-     *          The demand id
+     * 
+     * @param nDemandId
+     *            The demand id
      */
     @JsonProperty( "demand_id" )
-    public void setDemandId( int nDemandId ) {
+    public void setDemandId( int nDemandId )
+    {
         _nDemandId = nDemandId;
     }
 

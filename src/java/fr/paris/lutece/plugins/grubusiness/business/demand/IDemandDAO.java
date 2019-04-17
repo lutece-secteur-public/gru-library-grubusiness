@@ -105,13 +105,14 @@ public interface IDemandDAO
      *            the demand type id
      */
     void delete( String strDemandId, String strDemandTypeId );
-    
+
     /**
      * Load the ids of the demands
+     * 
      * @return The list of demand ids
      */
     List<String> loadAllIds( );
-    
+
     /**
      * Finds demands associated to the id
      * 

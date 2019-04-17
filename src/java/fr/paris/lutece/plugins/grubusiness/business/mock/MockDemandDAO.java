@@ -134,17 +134,17 @@ public class MockDemandDAO implements IDemandDAO
      * {@inheritDoc}
      */
     @Override
-    public List<String> loadAllIds() 
+    public List<String> loadAllIds( )
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException( "Not supported yet." ); // To change body of generated methods, choose Tools | Templates.
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public Demand loadById(String strId) 
+    public Demand loadById( String strId )
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException( "Not supported yet." ); // To change body of generated methods, choose Tools | Templates.
     }
 }

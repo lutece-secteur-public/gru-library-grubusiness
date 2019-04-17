@@ -40,7 +40,7 @@ public class NotificationFilter
 {
     // filter on id
     private String _strId;
-    
+
     // filter on demand
     private String _strDemandId;
     private String _strDemandTypeId;
@@ -52,7 +52,7 @@ public class NotificationFilter
     private Boolean _bHasMyDashboardNotification;
     private Boolean _bHasBroadcastEmailNotification;
 
-     /**
+    /**
      * Check if this filter contains a id
      *
      * @return true if the filter contain an id
@@ -64,17 +64,22 @@ public class NotificationFilter
 
     /**
      * Get the id
-     * @return the id 
+     * 
+     * @return the id
      */
-    public String getId() {
+    public String getId( )
+    {
         return _strId;
     }
 
     /**
      * The id
-     * @param strId the id 
+     * 
+     * @param strId
+     *            the id
      */
-    public void setId( String strId ) {
+    public void setId( String strId )
+    {
         _strId = strId;
     }
 
