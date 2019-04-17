@@ -34,6 +34,7 @@
 package fr.paris.lutece.plugins.grubusiness.business.demand;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * This interface represents a data access object for Demand object
@@ -104,4 +105,18 @@ public interface IDemandDAO
      *            the demand type id
      */
     void delete( String strDemandId, String strDemandTypeId );
+    
+    /**
+     * Load the ids of the demands
+     * @return The list of demand ids
+     */
+    List<String> loadAllIds( );
+    
+    /**
+     * Finds demands associated to the id
+     * 
+     * @param strId
+     * @return the demand coresponding to given id.
+     */
+    Demand loadById( String strId );
 }

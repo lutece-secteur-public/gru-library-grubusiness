@@ -57,6 +57,7 @@ public class Demand
     public static final int STATUS_CLOSED = 1;
 
     // Variables declarations
+    private int _nDemandId;
     private String _strId;
     private String _strReference;
     private String _strTypeId;
@@ -71,6 +72,25 @@ public class Demand
     private int _nCurrentStep;
     private boolean _bShowDetails;
     private Customer _customer;
+
+    /**
+     * Get the primary key demand id
+     * @return the demand id
+     */
+    @JsonProperty( "demand_id" )
+    public int getDemandId() {
+        return _nDemandId;
+    }
+
+    /**
+     * Set the primary key demand id
+     * @param nDemandId 
+     *          The demand id
+     */
+    @JsonProperty( "demand_id" )
+    public void setDemandId( int nDemandId ) {
+        _nDemandId = nDemandId;
+    }
 
     /**
      * Gives the id

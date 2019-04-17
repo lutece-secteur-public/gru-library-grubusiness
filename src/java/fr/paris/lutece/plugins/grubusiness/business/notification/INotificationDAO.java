@@ -41,6 +41,15 @@ import java.util.List;
  */
 public interface INotificationDAO
 {
+    
+    /**
+     * Finds notifications associated to the id
+     * 
+     * @param strId
+     * @return the notification coresponding to given id.
+     */
+    Notification loadById( String strId );
+    
     /**
      * Finds notifications associated to the specified demand id and demand type id. The notifications must be sorted by date descending
      * 
@@ -79,4 +88,12 @@ public interface INotificationDAO
      *            the demand type id
      */
     void deleteByDemand( String strDemandId, String strDemandTypeId );
+    
+    /**
+     * Load the ids of the notification by filter
+     * @param notificationFilter
+     *              The notification filter
+     * @return The list of notifications ids
+     */
+    List<String> loadIdsByFilter( NotificationFilter notificationFilter );
 }

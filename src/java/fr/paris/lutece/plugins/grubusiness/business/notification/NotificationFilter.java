@@ -38,6 +38,9 @@ package fr.paris.lutece.plugins.grubusiness.business.notification;
  */
 public class NotificationFilter
 {
+    // filter on id
+    private String _strId;
+    
     // filter on demand
     private String _strDemandId;
     private String _strDemandTypeId;
@@ -48,6 +51,32 @@ public class NotificationFilter
     private Boolean _bHasBackofficeNotification;
     private Boolean _bHasMyDashboardNotification;
     private Boolean _bHasBroadcastEmailNotification;
+
+     /**
+     * Check if this filter contains a id
+     *
+     * @return true if the filter contain an id
+     */
+    public boolean containsId( )
+    {
+        return ( _strId != null );
+    }
+
+    /**
+     * Get the id
+     * @return the id 
+     */
+    public String getId() {
+        return _strId;
+    }
+
+    /**
+     * The id
+     * @param strId the id 
+     */
+    public void setId( String strId ) {
+        _strId = strId;
+    }
 
     /**
      * Check if this filter contains a demandId

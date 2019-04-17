@@ -40,6 +40,7 @@ import java.util.Map;
 
 import fr.paris.lutece.plugins.grubusiness.business.demand.Demand;
 import fr.paris.lutece.plugins.grubusiness.business.demand.IDemandDAO;
+import java.util.List;
 
 /**
  * This class is a mock implementation of {@link IDemandDAO}
@@ -127,5 +128,23 @@ public class MockDemandDAO implements IDemandDAO
     public void delete( String strDemandId, String strDemandTypeId )
     {
         _mapMockDemand.remove( strDemandTypeId + "|" + strDemandId );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<String> loadAllIds() 
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Demand loadById(String strId) 
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

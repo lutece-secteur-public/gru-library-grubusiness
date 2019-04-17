@@ -153,4 +153,74 @@ public class MockNotificationDAO implements INotificationDAO
             _listMockNotification.remove( nIndexDelete );
         }
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<String> loadIdsByFilter(NotificationFilter notificationFilter) {
+        List<String> listResult = new ArrayList<>( );
+        for ( Notification notification : _listMockNotification )
+        {
+            boolean bAddNotif = true;
+            if ( notificationFilter.containsDemandId( ) )
+            {
+                bAddNotif = notification.getDemand( ) != null && notificationFilter.getDemandId( ).equals( notification.getDemand( ).getId( ) );
+            }
+            if ( bAddNotif && notificationFilter.containsDemandTypeId( ) )
+            {
+                bAddNotif = notification.getDemand( ) != null && notificationFilter.getDemandTypeId( ).equals( notification.getDemand( ).getTypeId( ) );
+            }
+            if ( bAddNotif && notificationFilter.containsHasBackofficeNotification( ) )
+            {
+                bAddNotif = ( notificationFilter.getHasBackofficeNotification( ) && notification.getBackofficeNotification( ) != null )
+                        || ( !notificationFilter.getHasBackofficeNotification( ) && notification.getBackofficeNotification( ) == null );
+            }
+            if ( bAddNotif && notificationFilter.containsHasBroadcastEmailNotification( ) )
+            {
+                bAddNotif = ( notificationFilter.getHasBroadcastEmailNotification( ) && notification.getBroadcastEmail( ) != null && notification
+                        .getBroadcastEmail( ).size( ) > 0 )
+                        || ( !notificationFilter.getHasBroadcastEmailNotification( ) && ( notification.getBroadcastEmail( ) == null || notification
+                                .getBroadcastEmail( ).size( ) == 0 ) );
+            }
+            if ( bAddNotif && notificationFilter.containsHasCustomerEmailNotification( ) )
+            {
+                bAddNotif = ( notificationFilter.getHasCustomerEmailNotification( ) && notification.getEmailNotification( ) != null )
+                        || ( !notificationFilter.getHasCustomerEmailNotification( ) && notification.getEmailNotification( ) == null );
+            }
+            if ( bAddNotif && notificationFilter.containsHasMyDashboardNotification( ) )
+            {
+                bAddNotif = ( notificationFilter.getHasMyDashboardNotification( ) && notification.getMyDashboardNotification( ) != null )
+                        || ( !notificationFilter.getHasMyDashboardNotification( ) && notification.getMyDashboardNotification( ) == null );
+            }
+            if ( bAddNotif && notificationFilter.containsHasSmsNotification( ) )
+            {
+                bAddNotif = ( notificationFilter.getHasSmsNotification( ) && notification.getSmsNotification( ) != null )
+                        || ( !notificationFilter.getHasSmsNotification( ) && notification.getSmsNotification( ) == null );
+            }
+            if ( bAddNotif )
+            {
+                listResult.add( String.valueOf( notification.getId( ) ) );
+            }
+        }
+        return listResult;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Notification loadById( String strId ) 
+    {
+        int nId = Integer.parseInt( strId );
+        
+        for ( Notification notification : _listMockNotification )
+        {
+            if ( notification.getDemand( ) != null && notification.getId( ) == nId )
+            {
+                return notification;
+            }
+        }
+        return null;
+    }
 }
