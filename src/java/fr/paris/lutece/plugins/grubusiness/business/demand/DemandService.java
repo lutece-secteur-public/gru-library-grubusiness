@@ -34,8 +34,10 @@
 package fr.paris.lutece.plugins.grubusiness.business.demand;
 
 import fr.paris.lutece.plugins.grubusiness.business.notification.INotificationDAO;
+import fr.paris.lutece.plugins.grubusiness.business.notification.INotificationEventDAO;
 import fr.paris.lutece.plugins.grubusiness.business.notification.INotificationListener;
 import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
+import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationEvent;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -51,7 +53,8 @@ public class DemandService
     private final List<IDemandListener> _listDemandListener;
     private final INotificationDAO _notificationDao;
     private final List<INotificationListener> _listNotificationListener;
-
+    private final INotificationEventDAO _notificationEventDao;
+    
     /**
      * Constructor
      * 
@@ -66,6 +69,24 @@ public class DemandService
         _notificationDao = notificationDAO;
         _listDemandListener = new ArrayList<IDemandListener>( );
         _listNotificationListener = new ArrayList<INotificationListener>( );
+        _notificationEventDao = null;
+    }
+    
+    /**
+     * Constructor
+     * 
+     * @param demandDAO
+     *            the DAO for the demands
+     * @param notificationDAO
+     *            the DAO for the notifications
+     */
+    public DemandService( IDemandDAO demandDAO, INotificationDAO notificationDAO, INotificationEventDAO notificationEventDAO  )
+    {
+        _demandDao = demandDAO;
+        _notificationDao = notificationDAO;
+        _listDemandListener = new ArrayList<IDemandListener>( );
+        _listNotificationListener = new ArrayList<INotificationListener>( );
+        _notificationEventDao = notificationEventDAO;
     }
 
     /**
@@ -86,8 +107,32 @@ public class DemandService
         _demandDao = demandDAO;
         _notificationDao = notificationDAO;
         _listDemandListener = listDemandListener;
-        _listNotificationListener = listNotificationListener;
+        _listNotificationListener = listNotificationListener;        
+        _notificationEventDao = null;
     }
+
+     /**
+     * Constructor
+     * 
+     * @param demandDAO
+     *            the DAO for the demands
+     * @param notificationDAO
+     *            the DAO for the notifications
+     * @param listDemandListener
+     *            list of IDemandListener
+     * @param listNotificationListener
+     *            list of INotificationListener
+     */
+    public DemandService( IDemandDAO demandDAO, INotificationDAO notificationDAO, List<IDemandListener> listDemandListener,
+            List<INotificationListener> listNotificationListener, INotificationEventDAO notificationEventDAO  )
+    {
+        _demandDao = demandDAO;
+        _notificationDao = notificationDAO;
+        _listDemandListener = listDemandListener;
+        _listNotificationListener = listNotificationListener;        
+        _notificationEventDao = notificationEventDAO;
+    }
+
 
     /**
      * Finds demands for the specified customer id
@@ -196,6 +241,20 @@ public class DemandService
         return notificationDao;
     }
 
+       /**
+     * Creates a notification event
+     * 
+     * @param notificationEvent
+     * @return the created notification event
+     */
+    public NotificationEvent create( NotificationEvent notificationEvent )
+    {
+        NotificationEvent notificationDao = _notificationEventDao.insert( notificationEvent );
+        
+        return notificationDao;
+    }
+
+    
     /**
      * Updates a demand
      * 

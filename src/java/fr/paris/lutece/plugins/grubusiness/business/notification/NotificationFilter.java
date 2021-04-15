@@ -44,6 +44,10 @@ public class NotificationFilter
     // filter on demand
     private String _strDemandId;
     private String _strDemandTypeId;
+    
+    // filter on date
+    private long _lStartDate;
+    private long _lEndDate;
 
     // filter on sub notif
     private Boolean _bHasCustomerEmailNotification;
@@ -271,5 +275,60 @@ public class NotificationFilter
     {
         this._bHasBroadcastEmailNotification = bHasBroadcastEmailNotification;
     }
+
+    /**
+     * test if filter contains start date
+     * 
+     * @return true if starDate > 0
+     */
+    public boolean containsStartDate( )
+    {
+        return ( _lStartDate > 0 );
+    }
+
+    /**
+     * get start date 
+     * @return the start date
+     */
+    public long getStartDate() {
+        return _lStartDate;
+    }
+
+    /**
+     * set start date
+     * 
+     * @param _lStartDate 
+     */
+    public void setStartDate(long _lStartDate) {
+        this._lStartDate = _lStartDate;
+    }
+
+    /**
+     * test if filter contains end date
+     * 
+     * @return true if endDate > 0
+     */
+    public boolean containsEndDate( )
+    {
+        return ( _lEndDate > 0 );
+    }
+    
+    /**
+     * get end date
+     * @return the end date
+     */
+    public long getEndDate() {
+        return _lEndDate;
+    }
+
+    /**
+     * set end date
+     * 
+     * @param _lEndDate 
+     */
+    public void setEndDate(long _lEndDate) {
+        this._lEndDate = _lEndDate;
+    }
+
 
 }
