@@ -51,15 +51,25 @@ public interface INotificationEventDAO
     NotificationEvent loadById( int nId );
 
     /**
-     * Finds notifications associated to the specified demand id and demand type id. The notifications must be sorted by date descending
+     * Finds notification events associated to the specified demand id and demand type id. 
      * 
      * @param strDemandId
      *            the demand id
      * @param strDemandTypeId
      *            the demand type id
-     * @return the notifications. An empty list is returned if no notification has been found.
+     * @return the notification event list
      */
     List<NotificationEvent> loadByDemand( String strDemandId, String strDemandTypeId );
+
+    /**
+     * Finds notification events associated to the specified notification 
+     * 
+     * @param strDemandId
+     * @param strDemandTypeId
+     * @param lNotificationDate
+     * @return the notification event list
+     */
+    public List<NotificationEvent> loadByNotification( String strDemandId, String strDemandTypeId, long lNotificationDate);
 
     /**
      * Finds and populate notification according to the filter

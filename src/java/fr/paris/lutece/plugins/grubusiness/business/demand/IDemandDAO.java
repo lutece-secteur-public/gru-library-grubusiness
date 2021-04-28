@@ -33,6 +33,7 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.demand;
 
+import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationFilter;
 import java.util.Collection;
 import java.util.List;
 
@@ -59,6 +60,14 @@ public interface IDemandDAO
      * @return the demands. An empty collection is returned if no demands has been found.
      */
     Collection<Demand> loadByReference( String strReference );
+
+    /**
+     * Search demands by filter
+     * 
+     * @param filter
+     * @return the demands list 
+     */
+    Collection<Demand> loadByFilter( NotificationFilter filter );
 
     /**
      * Finds all the demands in the table

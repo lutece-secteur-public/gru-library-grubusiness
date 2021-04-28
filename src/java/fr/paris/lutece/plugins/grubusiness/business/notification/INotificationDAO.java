@@ -62,6 +62,16 @@ public interface INotificationDAO
     List<Notification> loadByDemand( String strDemandId, String strDemandTypeId );
 
     /**
+     * Get notification by demand ids and notification date
+     * 
+     * @param strDemandId
+     * @param strDemandTypeId
+     * @param lDate
+     * @return the notification
+     */
+    List<Notification> loadByDemandAndDate( String strDemandId, String strDemandTypeId, long lDate );
+
+    /**
      * Finds and populate notification according to the filter
      * 
      * @param notificationFilter

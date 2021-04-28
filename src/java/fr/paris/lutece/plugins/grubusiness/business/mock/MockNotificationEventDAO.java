@@ -145,5 +145,22 @@ public final class MockNotificationEventDAO implements INotificationEventDAO
         return eventDemandList;
     }
 
+    @Override
+    public List<NotificationEvent> loadByNotification(String strDemandId, String strDemandTypeId, long lNotificationDate) {
+        List<NotificationEvent> eventList = new ArrayList<>();        
+        
+        for (NotificationEvent event : _eventList )
+        {
+            if ( event.getDemand( ).getId( ).equals( strDemandId )
+                    && event.getDemand( ).getTypeId( ).equals( strDemandTypeId ) 
+                    && event.getNotificationDate( ) == lNotificationDate ) 
+            {
+                eventList.add( event );
+            }
+        }
+
+        return eventList;
+    }
+
 
 }

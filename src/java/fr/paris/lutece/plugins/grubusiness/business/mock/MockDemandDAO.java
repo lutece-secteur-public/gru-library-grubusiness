@@ -40,6 +40,8 @@ import java.util.Map;
 
 import fr.paris.lutece.plugins.grubusiness.business.demand.Demand;
 import fr.paris.lutece.plugins.grubusiness.business.demand.IDemandDAO;
+import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationFilter;
+import java.util.AbstractList;
 import java.util.List;
 
 /**
@@ -136,7 +138,7 @@ public class MockDemandDAO implements IDemandDAO
     @Override
     public List<String> loadAllIds( )
     {
-        throw new UnsupportedOperationException( "Not supported yet." ); // To change body of generated methods, choose Tools | Templates.
+        return new ArrayList<>( _mapMockDemand.keySet( ) );
     }
 
     /**
@@ -145,6 +147,11 @@ public class MockDemandDAO implements IDemandDAO
     @Override
     public Demand loadById( String strId )
     {
-        throw new UnsupportedOperationException( "Not supported yet." ); // To change body of generated methods, choose Tools | Templates.
+        return null;
+    }
+
+    @Override
+    public Collection<Demand> loadByFilter(NotificationFilter filter) {
+        return _mapMockDemand.values( );
     }
 }

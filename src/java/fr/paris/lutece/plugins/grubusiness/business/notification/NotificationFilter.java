@@ -63,7 +63,7 @@ public class NotificationFilter
      */
     public boolean containsId( )
     {
-        return ( _strId != null );
+        return ( _strId != null && !"".equals( _strId.trim( ) ) );
     }
 
     /**
@@ -94,7 +94,7 @@ public class NotificationFilter
      */
     public boolean containsDemandId( )
     {
-        return ( _strDemandId != null );
+        return ( _strDemandId != null && !"".equals( _strDemandId.trim( ) ) );
     }
 
     /**
@@ -121,7 +121,7 @@ public class NotificationFilter
      */
     public boolean containsDemandTypeId( )
     {
-        return ( _strDemandTypeId != null );
+        return ( _strDemandTypeId != null && !"".equals( _strDemandTypeId.trim( ) ) );
     }
 
     /**

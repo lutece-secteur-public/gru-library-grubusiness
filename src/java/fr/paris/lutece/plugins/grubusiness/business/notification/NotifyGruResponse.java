@@ -36,18 +36,23 @@ package fr.paris.lutece.plugins.grubusiness.business.notification;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
+import java.util.List;
 
 /**
  * The Class NotifyGruResponse.
  */
 @JsonRootName( value = "acknowledge" )
 @JsonPropertyOrder( {
-    "status"
+    "status", "errors", "warnings"
 } )
 public class NotifyGruResponse
 {
     public static final String STATUS_RECEIVED = "received";
+    public static final String STATUS_ERROR = "error";
+    public static final String STATUS_WARNING = "warning";
     private String _strStatus;
+    private List<Event> _warnings;
+    private List<Event> _errors;
 
     /**
      * @return the _strStatus
@@ -67,4 +72,46 @@ public class NotifyGruResponse
     {
         this._strStatus = strStatus;
     }
+
+    /**
+     * get warnings
+     * 
+     * @return the list
+     */
+    @JsonProperty( "warnings" )
+    public List<Event> getWarnings() {
+        return _warnings;
+    }
+
+    /**
+     * set warnings
+     * 
+     * @param warnings 
+     */
+    @JsonProperty( "warnings" )
+    public void setWarnings(List<Event> warnings) {
+        this._warnings = warnings;
+    }
+
+    /**
+     * get errors
+     * 
+     * @return the list
+     */
+    @JsonProperty( "errors" )
+    public List<Event> getErrors() {
+        return _errors;
+    }
+
+    /**
+     * set errors
+     * 
+     * @param errors 
+     */
+    @JsonProperty( "errors" )
+    public void setErrors(List<Event> errors) {
+        this._errors = errors;
+    }
+    
+    
 }

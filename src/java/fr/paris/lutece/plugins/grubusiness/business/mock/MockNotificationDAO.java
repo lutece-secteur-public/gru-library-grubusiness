@@ -224,4 +224,19 @@ public class MockNotificationDAO implements INotificationDAO
         }
         return null;
     }
+
+    @Override
+    public List<Notification> loadByDemandAndDate(String strDemandId, String strDemandTypeId, long lDate) {
+        List<Notification> listResult = new ArrayList<Notification>( );
+        for ( Notification notification : _listMockNotification )
+        {
+            if ( notification.getDemand( ) != null && notification.getDemand( ).getId( ).equals( strDemandId )
+                    && notification.getDemand( ).getTypeId( ).equals( strDemandTypeId )
+                    && notification.getDate( ) == lDate )
+            {
+                listResult.add( notification );
+            }
+        }
+        return listResult;
+    }
 }
