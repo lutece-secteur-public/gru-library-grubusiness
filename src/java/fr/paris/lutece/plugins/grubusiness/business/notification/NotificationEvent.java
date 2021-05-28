@@ -48,13 +48,14 @@ import fr.paris.lutece.plugins.grubusiness.business.notification.Event;
  */
 @JsonRootName( value = "notificationEvent" )
 @JsonPropertyOrder( { 
-    "date", "demand", "event"
+    "date", "msg_id", "demand", "event"
 } )
 public class NotificationEvent
 {
     // Variables declarations
     private int _nId;
     private Long _lNotificationDate;
+    private String _strMsgId;
     private Demand _demand;
     private Event _event;
 
@@ -126,20 +127,42 @@ public class NotificationEvent
     }
 
     /**
+     * get msg id
+     * @return the message id
+     */
+    @JsonProperty( "msg_id" )
+    public String getMsgId() {
+        return _strMsgId;
+    }
+
+    /**
+     * set message Id
+     * @param strMsgId
+     */
+    @JsonProperty( "msg_id" )
+    public void setMsgId(String strMsgId) {
+        this._strMsgId = strMsgId;
+    }
+    
+    /**
      * get event
      * 
      * @return the event
      */
-     public Event getEvent() {
+    @JsonProperty( "event" )
+    public Event getEvent( ) 
+    {
         return _event;
     }
 
-     /**
-      * set event
-      * 
-      * @param _event 
-      */
-    public void setEvent(Event _event) {
-        this._event = _event;
+    /**
+     * set event
+     * 
+     * @param event 
+     */
+    @JsonProperty( "event" )
+    public void setEvent( Event event ) 
+    {
+        this._event = event;
     }
 }
