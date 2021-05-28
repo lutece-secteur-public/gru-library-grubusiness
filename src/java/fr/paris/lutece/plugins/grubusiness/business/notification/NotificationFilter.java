@@ -56,6 +56,9 @@ public class NotificationFilter
     private Boolean _bHasMyDashboardNotification;
     private Boolean _bHasBroadcastEmailNotification;
 
+    // filter on eventStatus
+    private String _strEventStatus;
+    
     /**
      * Check if this filter contains a id
      *
@@ -328,6 +331,23 @@ public class NotificationFilter
      */
     public void setEndDate(long _lEndDate) {
         this._lEndDate = _lEndDate;
+    }
+
+    /**
+     * get event status
+     * @return the status filter
+     */
+    public String getEventStatus() {
+        return _strEventStatus;
+    }
+
+    /**
+     * set event status
+     * 
+     * @param strEventStatus 
+     */
+    public void setEventStatus(String strEventStatus) {
+        this._strEventStatus = strEventStatus;
     }
 
 

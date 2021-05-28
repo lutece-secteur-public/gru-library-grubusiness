@@ -38,6 +38,7 @@ import fr.paris.lutece.plugins.grubusiness.business.notification.INotificationEv
 import fr.paris.lutece.plugins.grubusiness.business.notification.INotificationListener;
 import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
 import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationEvent;
+import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationFilter;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -122,6 +123,7 @@ public class DemandService
      *            list of IDemandListener
      * @param listNotificationListener
      *            list of INotificationListener
+     * @param notificationEventDAO
      */
     public DemandService( IDemandDAO demandDAO, INotificationDAO notificationDAO, List<IDemandListener> listDemandListener,
             List<INotificationListener> listNotificationListener, INotificationEventDAO notificationEventDAO  )
@@ -292,5 +294,27 @@ public class DemandService
         {
             iDemandListener.onDeleteDemand( strDemandId, strDemandTypeId );
         }
+    }
+    
+    /**
+     * Finds events by date and demand_type_id and status
+     * 
+     * @param dStart
+     * @param dEnd
+     * @param strDemandTypeId
+     * @param strStatus
+     * 
+     * @return the demands. An empty list is returned if no event has been found
+     */
+    public List<NotificationEvent> findEventsByDateAndDemandTypeIdAndStatus( long dStart, long dEnd, String strDemandTypeId, String strStatus )
+    {
+        NotificationFilter notificationFilter = new NotificationFilter();
+        
+        notificationFilter.setStartDate( dStart );
+        notificationFilter.setEndDate( dEnd );
+        notificationFilter.setDemandTypeId( strDemandTypeId );
+        notificationFilter.setEventStatus( strStatus );
+        
+        return _notificationEventDao.loadByFilter( notificationFilter );
     }
 }
