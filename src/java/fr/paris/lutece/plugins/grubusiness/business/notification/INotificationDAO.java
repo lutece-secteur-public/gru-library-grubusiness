@@ -107,4 +107,11 @@ public interface INotificationDAO
      * @return The list of notifications ids
      */
     List<String> loadIdsByFilter( NotificationFilter notificationFilter );
+    
+    /**
+     * load distinct demand type ids
+     * 
+     * @return the id list 
+     */
+    List<String> loadDistinctDemandTypeIds( );
 }
