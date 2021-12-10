@@ -39,6 +39,8 @@ import java.util.List;
 import fr.paris.lutece.plugins.grubusiness.business.notification.INotificationDAO;
 import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
 import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationFilter;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This class is a mock implementation of {@link INotificationDAO}
@@ -238,5 +240,17 @@ public class MockNotificationDAO implements INotificationDAO
             }
         }
         return listResult;
+    }
+
+    @Override
+    public List<String> loadDistinctDemandTypeIds( ) 
+    {
+        Map<String,String> mapDemandTypeIds =  new HashMap<>( );
+        for ( Notification notification : _listMockNotification )
+        {
+            mapDemandTypeIds.put( String.valueOf( notification.getId( ) ), null );
+        }
+        
+        return new ArrayList<>( mapDemandTypeIds.keySet( ) );
     }
 }
