@@ -33,13 +33,15 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.notification;
 
+import java.util.List;
+
 /**
  * NotificationFilter for DAO A base notificationFilter return all notifications without details on sub object
  */
 public class NotificationFilter
 {
     // filter on id
-    private String _strId;
+    private List<Integer> _listIds;
 
     // filter on demand
     private String _strDemandId;
@@ -66,7 +68,7 @@ public class NotificationFilter
      */
     public boolean containsId( )
     {
-        return ( _strId != null && !"".equals( _strId.trim( ) ) );
+        return ( _listIds != null && !_listIds.isEmpty( ) );
     }
 
     /**
@@ -74,9 +76,9 @@ public class NotificationFilter
      * 
      * @return the id
      */
-    public String getId( )
+    public List<Integer> getIds( )
     {
-        return _strId;
+        return _listIds;
     }
 
     /**
@@ -85,9 +87,9 @@ public class NotificationFilter
      * @param strId
      *            the id
      */
-    public void setId( String strId )
+    public void setIds( List<Integer> listIds )
     {
-        _strId = strId;
+        _listIds = listIds;
     }
 
     /**

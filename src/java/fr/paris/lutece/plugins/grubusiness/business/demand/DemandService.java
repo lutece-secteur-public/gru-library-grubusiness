@@ -178,15 +178,6 @@ public class DemandService
         return collectionDemands;
     }
 
-    /**
-     * Finds all demands in the table
-     * 
-     * @return all the demands. An empty collection is returned if no demand has been found
-     */
-    public Collection<Demand> findAllDemands( )
-    {
-        return _demandDao.loadAllDemands( );
-    }
 
     /**
      * Finds a demand for the specified id and type id

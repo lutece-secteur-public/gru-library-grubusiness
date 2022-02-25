@@ -41,6 +41,7 @@ import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
 import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationFilter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * This class is a mock implementation of {@link INotificationDAO}
@@ -160,9 +161,9 @@ public class MockNotificationDAO implements INotificationDAO
      * {@inheritDoc}
      */
     @Override
-    public List<String> loadIdsByFilter( NotificationFilter notificationFilter )
+    public List<Integer> loadIdsByFilter( NotificationFilter notificationFilter )
     {
-        List<String> listResult = new ArrayList<>( );
+        List<Integer> listResult = new ArrayList<>( );
         for ( Notification notification : _listMockNotification )
         {
             boolean bAddNotif = true;
@@ -203,7 +204,7 @@ public class MockNotificationDAO implements INotificationDAO
             }
             if ( bAddNotif )
             {
-                listResult.add( String.valueOf( notification.getId( ) ) );
+                listResult.add(  notification.getId( )  );
             }
         }
         return listResult;
@@ -213,18 +214,17 @@ public class MockNotificationDAO implements INotificationDAO
      * {@inheritDoc}
      */
     @Override
-    public Notification loadById( String strId )
+    public Optional<Notification> loadById( int nId  )
     {
-        int nId = Integer.parseInt( strId );
-
+        
         for ( Notification notification : _listMockNotification )
         {
             if ( notification.getDemand( ) != null && notification.getId( ) == nId )
             {
-                return notification;
+                return Optional.ofNullable( notification );
             }
         }
-        return null;
+        return Optional.empty( );
     }
 
     @Override
@@ -253,4 +253,32 @@ public class MockNotificationDAO implements INotificationDAO
         
         return new ArrayList<>( mapDemandTypeIds.keySet( ) );
     }
+
+	@Override
+	public List<Notification> loadByIds(List<Integer> listIds) {
+
+		List<Notification> list = new ArrayList<>();
+
+        for ( Notification notification : _listMockNotification )
+        {
+            if ( listIds.contains( notification.getId( ) ) )
+            {
+            	list.add( notification );
+            }
+        }
+        return list;
+	}
+
+	@Override
+	public void delete(int id) {
+        for ( Notification notification : _listMockNotification )
+        {
+            if ( id ==  notification.getId( ) ) 
+            {
+            	_listMockNotification.remove( notification );
+            	break;
+            }
+        }
+		
+	}
 }

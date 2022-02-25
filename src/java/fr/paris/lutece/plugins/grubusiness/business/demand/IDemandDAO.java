@@ -70,11 +70,19 @@ public interface IDemandDAO
     Collection<Demand> loadByFilter( NotificationFilter filter );
 
     /**
-     * Finds all the demands in the table
+     * Search demands by filter
      * 
-     * @return all the demands. An empty collection is returned if no demands has been found.
+     * @param filter
+     * @return the demands list 
      */
-    Collection<Demand> loadAllDemands( );
+    List<Integer> loadIdsByFilter( NotificationFilter filter );
+
+    /**
+     * load demands corresponding to the id list
+     * @param listIds
+     * @return the demands
+     */
+    List<Demand> loadByIds( List<Integer> listIds);
 
     /**
      * Finds a demand with the specified id and type id

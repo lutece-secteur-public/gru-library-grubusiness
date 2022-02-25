@@ -40,6 +40,7 @@ import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationFil
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * This class provides Data Access methods for NotificationEvent objects
@@ -63,14 +64,14 @@ public final class MockNotificationEventDAO implements INotificationEventDAO
      * {@inheritDoc }
      */
     @Override
-    public NotificationEvent loadById( int nKey )
+    public Optional<NotificationEvent> loadById( int nKey )
     {
         for (NotificationEvent event : _eventList )
         {
-            if (event.getId( ) == nKey ) return event;
+            if (event.getId( ) == nKey ) return Optional.of( event );
         }
         
-        return null;
+        return Optional.empty( );
     }
 
     /**
@@ -161,6 +162,21 @@ public final class MockNotificationEventDAO implements INotificationEventDAO
 
         return eventList;
     }
+
+	@Override
+	public List<NotificationEvent> loadByIds(List<Integer> listIds) {
+		List<NotificationEvent> eventList = new ArrayList<>();        
+        
+        for (NotificationEvent event : _eventList )
+        {
+            if ( listIds.contains( event.getId() ) ) 
+            {
+            	eventList.add( event );
+            }
+        }
+
+        return eventList;
+	}
 
 
 }

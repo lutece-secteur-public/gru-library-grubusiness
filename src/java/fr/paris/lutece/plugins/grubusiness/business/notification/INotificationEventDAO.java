@@ -34,6 +34,7 @@
 package fr.paris.lutece.plugins.grubusiness.business.notification;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * This interface represents a data access object for Notification object
@@ -46,9 +47,9 @@ public interface INotificationEventDAO
      * Finds notifications associated to the id
      * 
      * @param nId
-     * @return the notification coresponding to given id.
+     * @return the notification corresponding to given id.
      */
-    NotificationEvent loadById( int nId );
+	Optional<NotificationEvent>  loadById( int nId );
 
     /**
      * Finds notification events associated to the specified demand id and demand type id. 
@@ -76,7 +77,7 @@ public interface INotificationEventDAO
      * 
      * @param notificationFilter
      *            the filter
-     * @return the notifications. An empty list is returned if no notification has been found.
+     * @return the notification events. An empty list is returned if no notificationevent has been found.
      */
     List<NotificationEvent> loadByFilter( NotificationFilter notificationFilter );
 
@@ -84,8 +85,8 @@ public interface INotificationEventDAO
      * Inserts a notification event
      * 
      * @param notificationEvent
-     *            the notification to insert
-     * @return the inserted notification
+     *            the notification  event to insert
+     * @return the inserted notification event
      */
     NotificationEvent insert( NotificationEvent notificationEvent );
 
@@ -101,7 +102,14 @@ public interface INotificationEventDAO
      * 
      * @param notificationFilter
      *            The notification filter
-     * @return The list of notifications ids
+     * @return The list of notification event ids
      */
     List<Integer> loadIdsByFilter( NotificationFilter notificationFilter );
+
+	/**
+	 * load the events for an id list
+	 * 
+	 * @return The list of notification events
+	 */
+	List<NotificationEvent> loadByIds(List<Integer> listIds);
 }

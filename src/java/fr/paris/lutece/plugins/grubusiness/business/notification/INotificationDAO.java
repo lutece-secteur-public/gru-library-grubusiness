@@ -34,6 +34,7 @@
 package fr.paris.lutece.plugins.grubusiness.business.notification;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * This interface represents a data access object for Notification object
@@ -48,7 +49,7 @@ public interface INotificationDAO
      * @param strId
      * @return the notification coresponding to given id.
      */
-    Notification loadById( String strId );
+	Optional<Notification> loadById( int id );
 
     /**
      * Finds notifications associated to the specified demand id and demand type id. The notifications must be sorted by date descending
@@ -106,7 +107,7 @@ public interface INotificationDAO
      *            The notification filter
      * @return The list of notifications ids
      */
-    List<String> loadIdsByFilter( NotificationFilter notificationFilter );
+    List<Integer> loadIdsByFilter( NotificationFilter notificationFilter );
     
     /**
      * load distinct demand type ids
@@ -114,4 +115,19 @@ public interface INotificationDAO
      * @return the id list 
      */
     List<String> loadDistinctDemandTypeIds( );
+
+    /**
+     * Loads list by  Ids
+     * 
+     * @param listIds
+     * @return list of Notification
+     */
+	List<Notification> loadByIds(List<Integer> listIds);
+
+	/**
+	 * delete notification
+	 * 
+     * @param id
+	 */
+	void delete(int id);
 }

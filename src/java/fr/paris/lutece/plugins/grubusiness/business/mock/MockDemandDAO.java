@@ -40,6 +40,7 @@ import java.util.Map;
 
 import fr.paris.lutece.plugins.grubusiness.business.demand.Demand;
 import fr.paris.lutece.plugins.grubusiness.business.demand.IDemandDAO;
+import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
 import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationFilter;
 import java.util.AbstractList;
 import java.util.List;
@@ -83,15 +84,6 @@ public class MockDemandDAO implements IDemandDAO
             }
         }
         return listResult;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Collection<Demand> loadAllDemands( )
-    {
-        return _mapMockDemand.values( );
     }
 
     /**
@@ -151,7 +143,29 @@ public class MockDemandDAO implements IDemandDAO
     }
 
     @Override
-    public Collection<Demand> loadByFilter(NotificationFilter filter) {
+    public Collection<Demand> loadByFilter(NotificationFilter filter) 
+    {
         return _mapMockDemand.values( );
     }
+
+	@Override
+	public List<Integer> loadIdsByFilter(NotificationFilter filter) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Demand> loadByIds(List<Integer> listIds) 
+	{
+		List<Demand> listDemands = new ArrayList<>();
+		listDemands.addAll( _mapMockDemand.values( ) );
+		
+		return listDemands;
+	}
+	
+
+
+
+
 }
