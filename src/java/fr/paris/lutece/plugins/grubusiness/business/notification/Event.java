@@ -55,6 +55,7 @@ public class Event
     private Long _lEventDate;
     private String _strType;
     private String _strStatus;
+    private String _strReason;
     private String _strMessage;
     private int _nRedelivry;
 
@@ -135,6 +136,23 @@ public class Event
      */
     public void setStatus(String _strStatus) {
         this._strStatus = _strStatus;
+    }
+
+    /**
+     * get the reason
+     * @return the reason
+     */
+    public String getReason() {
+        return _strReason;
+    }
+
+    /**
+     * set the reason
+     * 
+     * @param _strReason 
+     */
+    public void setReason(String _strReason) {
+        this._strReason = _strReason;
     }
 
     /**
