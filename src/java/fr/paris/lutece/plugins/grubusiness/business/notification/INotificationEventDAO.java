@@ -112,4 +112,12 @@ public interface INotificationEventDAO
 	 * @return The list of notification events
 	 */
 	List<NotificationEvent> loadByIds(List<Integer> listIds);
+
+	/**
+	 * purge the events after N days
+	 * 
+	 * @param nbDays
+	 * @return
+	 */
+	String deleteBeforeDate( long lDate );
 }

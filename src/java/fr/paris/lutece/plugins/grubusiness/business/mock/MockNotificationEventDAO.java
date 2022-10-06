@@ -178,5 +178,11 @@ public final class MockNotificationEventDAO implements INotificationEventDAO
         return eventList;
 	}
 
+	@Override
+	public String deleteBeforeDate(long lDate) {
+		
+		return "MOCK (no need to purge)";
+	}
+
 
 }
