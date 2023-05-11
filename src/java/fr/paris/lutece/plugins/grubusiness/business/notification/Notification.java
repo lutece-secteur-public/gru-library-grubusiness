@@ -59,7 +59,7 @@ import java.util.List;
  */
 @JsonRootName( value = "notification" )
 @JsonPropertyOrder( {
-        "date", "demand", "backoffice", "customer_email", "sms", "mydashboard", "email"
+        "date", "demand", "backoffice", "customer_email", "sms", "mydashboard", "email", "id_content"
 } )
 public class Notification
 {
@@ -72,6 +72,7 @@ public class Notification
     private BackofficeNotification _backofficeNotification;
     private MyDashboardNotification _myDashboardNotification;
     private List<BroadcastNotification> _listBroadcastEmail;
+    private String _strSatusMyDashboard;
 
     /**
      * Instantiates a new notify gru global notification.
@@ -109,6 +110,7 @@ public class Notification
      * @return the Demand
      */
     @JsonProperty( "demand" )
+    @JsonInclude( Include.NON_NULL )
     public Demand getDemand( )
     {
         return _demand;
@@ -284,4 +286,22 @@ public class Notification
 
         _listBroadcastEmail.add( broadcastEmail );
     }
+
+    /**
+     * @return the _strSatusMyDashboard
+     */
+    @JsonProperty( "status_mydashboard" )
+    public String getSatusMyDashboard( )
+    {
+        return _strSatusMyDashboard;
+    }
+
+    /**
+     * @param strSatusMyDashboard the _strSatusMyDashboard to set
+     */
+    public void setSatusMyDashboard( String strSatusMyDashboard )
+    {
+        this._strSatusMyDashboard = strSatusMyDashboard;
+    }
+    
 }

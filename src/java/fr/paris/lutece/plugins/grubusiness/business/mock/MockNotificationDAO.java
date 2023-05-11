@@ -90,30 +90,23 @@ public class MockNotificationDAO implements INotificationDAO
             }
             if ( bAddNotif && notificationFilter.containsHasBackofficeNotification( ) )
             {
-                bAddNotif = ( notificationFilter.getHasBackofficeNotification( ) && notification.getBackofficeNotification( ) != null )
-                        || ( !notificationFilter.getHasBackofficeNotification( ) && notification.getBackofficeNotification( ) == null );
+                bAddNotif = notification.getBackofficeNotification( ) != null;
             }
             if ( bAddNotif && notificationFilter.containsHasBroadcastEmailNotification( ) )
             {
-                bAddNotif = ( notificationFilter.getHasBroadcastEmailNotification( ) && notification.getBroadcastEmail( ) != null && notification
-                        .getBroadcastEmail( ).size( ) > 0 )
-                        || ( !notificationFilter.getHasBroadcastEmailNotification( ) && ( notification.getBroadcastEmail( ) == null || notification
-                                .getBroadcastEmail( ).size( ) == 0 ) );
+                bAddNotif =  notification.getBroadcastEmail( ) != null && !notification.getBroadcastEmail( ).isEmpty( ) ;
             }
             if ( bAddNotif && notificationFilter.containsHasCustomerEmailNotification( ) )
             {
-                bAddNotif = ( notificationFilter.getHasCustomerEmailNotification( ) && notification.getEmailNotification( ) != null )
-                        || ( !notificationFilter.getHasCustomerEmailNotification( ) && notification.getEmailNotification( ) == null );
+                bAddNotif = notification.getEmailNotification( ) != null;
             }
             if ( bAddNotif && notificationFilter.containsHasMyDashboardNotification( ) )
             {
-                bAddNotif = ( notificationFilter.getHasMyDashboardNotification( ) && notification.getMyDashboardNotification( ) != null )
-                        || ( !notificationFilter.getHasMyDashboardNotification( ) && notification.getMyDashboardNotification( ) == null );
+                bAddNotif = notification.getMyDashboardNotification( ) != null;
             }
             if ( bAddNotif && notificationFilter.containsHasSmsNotification( ) )
             {
-                bAddNotif = ( notificationFilter.getHasSmsNotification( ) && notification.getSmsNotification( ) != null )
-                        || ( !notificationFilter.getHasSmsNotification( ) && notification.getSmsNotification( ) == null );
+                bAddNotif = notification.getSmsNotification( ) != null;
             }
             if ( bAddNotif )
             {
@@ -177,30 +170,23 @@ public class MockNotificationDAO implements INotificationDAO
             }
             if ( bAddNotif && notificationFilter.containsHasBackofficeNotification( ) )
             {
-                bAddNotif = ( notificationFilter.getHasBackofficeNotification( ) && notification.getBackofficeNotification( ) != null )
-                        || ( !notificationFilter.getHasBackofficeNotification( ) && notification.getBackofficeNotification( ) == null );
+                bAddNotif = notification.getBackofficeNotification( ) != null;
             }
             if ( bAddNotif && notificationFilter.containsHasBroadcastEmailNotification( ) )
             {
-                bAddNotif = ( notificationFilter.getHasBroadcastEmailNotification( ) && notification.getBroadcastEmail( ) != null && notification
-                        .getBroadcastEmail( ).size( ) > 0 )
-                        || ( !notificationFilter.getHasBroadcastEmailNotification( ) && ( notification.getBroadcastEmail( ) == null || notification
-                                .getBroadcastEmail( ).size( ) == 0 ) );
+                bAddNotif = notification.getBroadcastEmail( ) != null && !notification.getBroadcastEmail( ).isEmpty();
             }
             if ( bAddNotif && notificationFilter.containsHasCustomerEmailNotification( ) )
             {
-                bAddNotif = ( notificationFilter.getHasCustomerEmailNotification( ) && notification.getEmailNotification( ) != null )
-                        || ( !notificationFilter.getHasCustomerEmailNotification( ) && notification.getEmailNotification( ) == null );
+                bAddNotif = notification.getEmailNotification( ) != null;
             }
             if ( bAddNotif && notificationFilter.containsHasMyDashboardNotification( ) )
             {
-                bAddNotif = ( notificationFilter.getHasMyDashboardNotification( ) && notification.getMyDashboardNotification( ) != null )
-                        || ( !notificationFilter.getHasMyDashboardNotification( ) && notification.getMyDashboardNotification( ) == null );
+                bAddNotif = notification.getMyDashboardNotification( ) != null;
             }
             if ( bAddNotif && notificationFilter.containsHasSmsNotification( ) )
             {
-                bAddNotif = ( notificationFilter.getHasSmsNotification( ) && notification.getSmsNotification( ) != null )
-                        || ( !notificationFilter.getHasSmsNotification( ) && notification.getSmsNotification( ) == null );
+                bAddNotif = notification.getSmsNotification( ) != null;
             }
             if ( bAddNotif )
             {
