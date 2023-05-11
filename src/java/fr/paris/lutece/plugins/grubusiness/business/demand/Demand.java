@@ -72,6 +72,9 @@ public class Demand
     private int _nCurrentStep;
     private boolean _bShowDetails;
     private Customer _customer;
+    private long _lModifyDate;
+    private boolean _bIsRead;
+    private String _strStatusMyDashboard;
 
     /**
      * Get the primary key demand id
@@ -422,4 +425,56 @@ public class Demand
     {
         return _bShowDetails;
     }
+
+    /**
+     * @return the _lModifyDate
+     */
+    @JsonProperty( "modify_date" )
+    public long getModifyDate( )
+    {
+        return _lModifyDate;
+    }
+
+    /**
+     * @param lModifyDate the _lModifyDate to set
+     */
+    public void setModifyDate( long lModifyDate )
+    {
+        this._lModifyDate = lModifyDate;
+    }
+
+    /**
+     * @return the isRead
+     */
+    @JsonProperty( "is_read" )
+    public boolean isRead( )
+    {
+        return _bIsRead;
+    }
+
+    /**
+     * @param isRead the isRead to set
+     */
+    public void setRead( boolean isRead )
+    {
+        this._bIsRead = isRead;
+    }
+
+    /**
+     * @return the _strSatusMyDashboard
+     */
+    @JsonProperty( "status_mydashboard" )
+    public String getStatusMyDashboard( )
+    {
+        return _strStatusMyDashboard;
+    }
+
+    /**
+     * @param strSatusMyDashboard the _strSatusMyDashboard to set
+     */
+    public void setStatusMyDashboard( String strSatusMyDashboard )
+    {
+        this._strStatusMyDashboard = strSatusMyDashboard;
+    }
+    
 }

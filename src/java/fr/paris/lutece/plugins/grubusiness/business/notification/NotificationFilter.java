@@ -33,6 +33,7 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.notification;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -50,13 +51,9 @@ public class NotificationFilter
     // filter on date
     private long _lStartDate;
     private long _lEndDate;
-
-    // filter on sub notif
-    private Boolean _bHasCustomerEmailNotification;
-    private Boolean _bHasSmsNotification;
-    private Boolean _bHasBackofficeNotification;
-    private Boolean _bHasMyDashboardNotification;
-    private Boolean _bHasBroadcastEmailNotification;
+    
+    // Notification type
+    private List<EnumNotificationType> _listNotificationType = new ArrayList< >() ;
 
     // filter on eventStatus
     private String _strEventStatus;
@@ -153,25 +150,9 @@ public class NotificationFilter
      */
     public boolean containsHasCustomerEmailNotification( )
     {
-        return ( _bHasCustomerEmailNotification != null );
+        return ( !_listNotificationType.isEmpty( ) && _listNotificationType.contains( EnumNotificationType.CUSTOMER_EMAIL ) );
     }
 
-    /**
-     * @return the HasCustomerEmailNotification
-     */
-    public Boolean getHasCustomerEmailNotification( )
-    {
-        return _bHasCustomerEmailNotification;
-    }
-
-    /**
-     * @param bHasCustomerEmailNotification
-     *            the hasCustomerEmailNotification to set
-     */
-    public void setHasCustomerEmailNotification( Boolean bHasCustomerEmailNotification )
-    {
-        this._bHasCustomerEmailNotification = bHasCustomerEmailNotification;
-    }
 
     /**
      * Check if this filter contains a hasSmsNotification
@@ -180,24 +161,7 @@ public class NotificationFilter
      */
     public boolean containsHasSmsNotification( )
     {
-        return ( _bHasSmsNotification != null );
-    }
-
-    /**
-     * @return the hasSmsNotification
-     */
-    public Boolean getHasSmsNotification( )
-    {
-        return _bHasSmsNotification;
-    }
-
-    /**
-     * @param bHasSmsNotification
-     *            the hasSmsNotification to set
-     */
-    public void setHasSmsNotification( Boolean bHasSmsNotification )
-    {
-        this._bHasSmsNotification = bHasSmsNotification;
+        return ( !_listNotificationType.isEmpty( ) && _listNotificationType.contains( EnumNotificationType.SMS ) );
     }
 
     /**
@@ -207,24 +171,7 @@ public class NotificationFilter
      */
     public boolean containsHasBackofficeNotification( )
     {
-        return ( _bHasBackofficeNotification != null );
-    }
-
-    /**
-     * @return the hasBackofficeNotification
-     */
-    public Boolean getHasBackofficeNotification( )
-    {
-        return _bHasBackofficeNotification;
-    }
-
-    /**
-     * @param bHasBackofficeNotification
-     *            the hasBackofficeNotification to set
-     */
-    public void setHasBackofficeNotification( Boolean bHasBackofficeNotification )
-    {
-        this._bHasBackofficeNotification = bHasBackofficeNotification;
+        return ( !_listNotificationType.isEmpty( ) && _listNotificationType.contains( EnumNotificationType.BACKOFFICE ) );
     }
 
     /**
@@ -234,24 +181,7 @@ public class NotificationFilter
      */
     public boolean containsHasMyDashboardNotification( )
     {
-        return ( _bHasMyDashboardNotification != null );
-    }
-
-    /**
-     * @return the hasMyDashboardNotification
-     */
-    public Boolean getHasMyDashboardNotification( )
-    {
-        return _bHasMyDashboardNotification;
-    }
-
-    /**
-     * @param bHasMyDashboardNotification
-     *            the hasMyDashboardNotification to set
-     */
-    public void setHasMyDashboardNotification( Boolean bHasMyDashboardNotification )
-    {
-        this._bHasMyDashboardNotification = bHasMyDashboardNotification;
+        return ( !_listNotificationType.isEmpty( ) && _listNotificationType.contains( EnumNotificationType.MYDASHBOARD ) );
     }
 
     /**
@@ -261,26 +191,19 @@ public class NotificationFilter
      */
     public boolean containsHasBroadcastEmailNotification( )
     {
-        return ( _bHasBroadcastEmailNotification != null );
+        return ( !_listNotificationType.isEmpty( ) && _listNotificationType.contains( EnumNotificationType.BROADCAST_EMAIL ) );
     }
 
     /**
-     * @return the hasBroadcastEmailNotification
+     * Check if this filter contains a notification type filter
+     * @return true if the filter contain a notification type filter
      */
-    public Boolean getHasBroadcastEmailNotification( )
+    public boolean containsNotificationTypeFilter( )
     {
-        return _bHasBroadcastEmailNotification;
+        return containsHasCustomerEmailNotification( ) || containsHasSmsNotification( ) 
+                || containsHasBackofficeNotification( ) || containsHasMyDashboardNotification( ) || containsHasBroadcastEmailNotification( );
     }
-
-    /**
-     * @param bHasBroadcastEmailNotification
-     *            the hasBroadcastEmailNotification to set
-     */
-    public void setHasBroadcastEmailNotification( Boolean bHasBroadcastEmailNotification )
-    {
-        this._bHasBroadcastEmailNotification = bHasBroadcastEmailNotification;
-    }
-
+    
     /**
      * test if filter contains start date
      * 
@@ -352,5 +275,20 @@ public class NotificationFilter
         this._strEventStatus = strEventStatus;
     }
 
+    /**
+     * @return the _listNotificationType
+     */
+    public List<EnumNotificationType> getListNotificationType( )
+    {
+        return _listNotificationType;
+    }
+
+    /**
+     * @param listNotificationType the _listNotificationType to set
+     */
+    public void setListNotificationType( List<EnumNotificationType> listNotificationType )
+    {
+        this._listNotificationType = listNotificationType;
+    }
 
 }

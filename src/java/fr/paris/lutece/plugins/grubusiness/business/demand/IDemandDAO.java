@@ -137,4 +137,30 @@ public interface IDemandDAO
      * @return the demand coresponding to given id.
      */
     Demand loadById( String strId );
+    
+    /**
+     * load demands corresponding to the id list and load status of last notification
+     * @param listIds
+     * @return the demands
+     */
+    List<Demand> loadByIdsWithLastStatus( List<Integer> listIds );
+    
+    /**
+     * Load demand ids ordered by date notification
+     * @param strCustomerId
+     * @param strNotificationType
+     * @param strIdDemandType (Optional can be null)
+     * @return The list of demand ids
+     */
+    List<Integer> loadIdsByCustomerIdAndIdDemandType ( String strCustomerId, String strNotificationType, String strIdDemandType );
+    
+    /**
+     * Load demand ids by status
+     * @param strCustomerId
+     * @param listStatus 
+     * @param strNotificationType
+     * @param strIdDemandType (Optional can be null)
+     * @return The list of demand ids
+     */
+    List<Integer> loadIdsByStatus ( String strCustomerId, List<String> listStatus, String strNotificationType, String strIdDemandType );
 }
