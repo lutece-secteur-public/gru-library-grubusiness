@@ -72,7 +72,6 @@ public class Notification
     private BackofficeNotification _backofficeNotification;
     private MyDashboardNotification _myDashboardNotification;
     private List<BroadcastNotification> _listBroadcastEmail;
-    private String _strSatusMyDashboard;
 
     /**
      * Instantiates a new notify gru global notification.
@@ -285,23 +284,6 @@ public class Notification
         }
 
         _listBroadcastEmail.add( broadcastEmail );
-    }
-
-    /**
-     * @return the _strSatusMyDashboard
-     */
-    @JsonProperty( "status_mydashboard" )
-    public String getSatusMyDashboard( )
-    {
-        return _strSatusMyDashboard;
-    }
-
-    /**
-     * @param strSatusMyDashboard the _strSatusMyDashboard to set
-     */
-    public void setSatusMyDashboard( String strSatusMyDashboard )
-    {
-        this._strSatusMyDashboard = strSatusMyDashboard;
     }
     
 }

@@ -39,10 +39,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fr.paris.lutece.plugins.grubusiness.business.demand.Demand;
+import fr.paris.lutece.plugins.grubusiness.business.demand.DemandDisplayDTO;
 import fr.paris.lutece.plugins.grubusiness.business.demand.IDemandDAO;
-import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
 import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationFilter;
-import java.util.AbstractList;
 import java.util.List;
 
 /**
@@ -177,7 +176,7 @@ public class MockDemandDAO implements IDemandDAO
     }
 
     @Override
-    public List<Demand> loadByIdsWithLastStatus( List<Integer> listIds )
+    public List<DemandDisplayDTO> loadByIdsWithLastStatus( List<Integer> listIds )
     {
         return null;
     }

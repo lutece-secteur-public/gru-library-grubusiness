@@ -141,9 +141,9 @@ public interface IDemandDAO
     /**
      * load demands corresponding to the id list and load status of last notification
      * @param listIds
-     * @return the demands
+     * @return the demand with status
      */
-    List<Demand> loadByIdsWithLastStatus( List<Integer> listIds );
+    List<DemandDisplayDTO> loadByIdsWithLastStatus( List<Integer> listIds );
     
     /**
      * Load demand ids ordered by date notification
