@@ -34,6 +34,8 @@
 package fr.paris.lutece.plugins.grubusiness.business.demand;
 
 import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationFilter;
+import fr.paris.lutece.plugins.grubusiness.business.web.rs.DemandDisplay;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -137,13 +139,6 @@ public interface IDemandDAO
      * @return the demand coresponding to given id.
      */
     Demand loadById( String strId );
-    
-    /**
-     * load demands corresponding to the id list and load status of last notification
-     * @param listIds
-     * @return the demands
-     */
-    List<Demand> loadByIdsWithLastStatus( List<Integer> listIds );
     
     /**
      * Load demand ids ordered by date notification
