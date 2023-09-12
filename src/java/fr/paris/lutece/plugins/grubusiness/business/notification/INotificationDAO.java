@@ -80,6 +80,25 @@ public interface INotificationDAO
      * @return the notifications. An empty list is returned if no notification has been found.
      */
     List<Notification> loadByFilter( NotificationFilter notificationFilter );
+    
+    /**
+     * Finds and populate notification by demand id, type id, customer id
+     * 
+     * @param strDemandId 
+     * @param strDemandTypeId
+     * @param strCustomerId
+     * @return the notifications. An empty list is returned if no notification has been found.
+     */
+    List<Notification> loadByDemandIdTypeIdCustomerId( String strDemandId, String strDemandTypeId, String strCustomerId );
+    
+    /**
+     * Find last notification by demand id and demand type id
+     * @param strDemandId
+     * @param strDemandTypeId
+     * @return last notification
+     */
+    Notification loadLastNotifByDemandIdAndDemandTypeId( String strDemandId, String strDemandTypeId  );
+    
 
     /**
      * Inserts a notification
