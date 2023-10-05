@@ -43,6 +43,8 @@ public class DemandType
     private String _strLabel;
     @JsonProperty( "url" )
     private String _strUrl;
+    @JsonProperty( "app_code" )
+    private String _strAppCode;
 
     /**
      * Get the id demand type
@@ -112,4 +114,27 @@ public class DemandType
         _strUrl = strUrl;
     }
 
+    /**
+     * Get the app code
+     * 
+     * @return the app code
+     */
+
+    @JsonProperty( "app_code" )
+    public String getAppCode( )
+    {
+        return _strAppCode;
+    }
+
+    /**
+     * Set the app code
+     * 
+     * @param strUrl
+     *            the app code
+     */
+    public void setAppCode( String strAppCode )
+    {
+        _strAppCode = strAppCode;
+    }
+    
 }
