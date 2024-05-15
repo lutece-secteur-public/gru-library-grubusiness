@@ -31,53 +31,90 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.grubusiness.business.indexing;
+package fr.paris.lutece.plugins.grubusiness.business.demand;
 
-import java.util.List;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 
 /**
- * This interface enables to index any object
- *
- * @param <T>
- *            the object to index
+ * This is the business class for the object DemandCategory
  */
-public interface IIndexingService<T>
+public class DemandCategory implements Serializable
 {
-    /**
-     * Indexes a object
-     * 
-     * @param object
-     *            the object to index
-     * @throws IndexingException
-     *             if there is an exception during the indexing
-     */
-    void index( T object ) throws IndexingException;
+    private static final long serialVersionUID = 1L;
+
+    // Variables declarations
+    private int _nId;
+
+    @NotEmpty( message = "#i18n{grusupply.validation.demandcategory.Code.notEmpty}" )
+    @Size( max = 255, message = "#i18n{grusupply.validation.demandcategory.Code.size}" )
+    private String _strCode;
+
+    @NotEmpty( message = "#i18n{grusupply.validation.demandcategory.Label.notEmpty}" )
+    private String _strLabel;
 
     /**
-     * Index a list of objects
+     * Returns the Id
      * 
-     * @param listObjects
-     *            the list of objects to index
-     * @throws IndexingException
-     *             if there is an exception during the indexing
+     * @return The Id
      */
-    void indexList( List<T> listObjects ) throws IndexingException;
+    public int getId( )
+    {
+        return _nId;
+    }
 
     /**
-     * Delete index
+     * Sets the Id
      * 
-     * @param object
-     *            the object to delete
-     * @throws IndexingException
-     *             if there is an exception during the deletion
+     * @param nId
+     *            The Id
      */
-    void deleteIndex( T object ) throws IndexingException;
+    public void setId( int nId )
+    {
+        _nId = nId;
+    }
 
     /**
-     * Deletes the index for all the objects
+     * Returns the Code
      * 
-     * @throws IndexingException
-     *             if there is an exception during the deletion
+     * @return The Code
      */
-    void deleteAllIndexes( ) throws IndexingException;
+    public String getCode( )
+    {
+        return _strCode;
+    }
+
+    /**
+     * Sets the Code
+     * 
+     * @param strCode
+     *            The Code
+     */
+    public void setCode( String strCode )
+    {
+        _strCode = strCode;
+    }
+
+    /**
+     * Returns the Label
+     * 
+     * @return The Label
+     */
+    public String getLabel( )
+    {
+        return _strLabel;
+    }
+
+    /**
+     * Sets the Label
+     * 
+     * @param strLabel
+     *            The Label
+     */
+    public void setLabel( String strLabel )
+    {
+        _strLabel = strLabel;
+    }
+
 }

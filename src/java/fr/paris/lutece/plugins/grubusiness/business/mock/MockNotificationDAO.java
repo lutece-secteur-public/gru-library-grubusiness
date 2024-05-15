@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2024, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -88,23 +88,23 @@ public class MockNotificationDAO implements INotificationDAO
             {
                 bAddNotif = notification.getDemand( ) != null && notificationFilter.getDemandTypeId( ).equals( notification.getDemand( ).getTypeId( ) );
             }
-            if ( bAddNotif && notificationFilter.containsHasBackofficeNotification( ) )
+            if ( bAddNotif && notificationFilter.containsBackofficeNotificationType( ) )
             {
                 bAddNotif = notification.getBackofficeNotification( ) != null;
             }
-            if ( bAddNotif && notificationFilter.containsHasBroadcastEmailNotification( ) )
+            if ( bAddNotif && notificationFilter.containsBroadcastEmailNotificationType( ) )
             {
-                bAddNotif =  notification.getBroadcastEmail( ) != null && !notification.getBroadcastEmail( ).isEmpty( ) ;
+                bAddNotif = notification.getBroadcastEmail( ) != null && !notification.getBroadcastEmail( ).isEmpty( );
             }
-            if ( bAddNotif && notificationFilter.containsHasCustomerEmailNotification( ) )
+            if ( bAddNotif && notificationFilter.containsCustomerEmailNotificationType( ) )
             {
                 bAddNotif = notification.getEmailNotification( ) != null;
             }
-            if ( bAddNotif && notificationFilter.containsHasMyDashboardNotification( ) )
+            if ( bAddNotif && notificationFilter.containsMyDashboardNotificationType( ) )
             {
                 bAddNotif = notification.getMyDashboardNotification( ) != null;
             }
-            if ( bAddNotif && notificationFilter.containsHasSmsNotification( ) )
+            if ( bAddNotif && notificationFilter.containsSmsNotificationType( ) )
             {
                 bAddNotif = notification.getSmsNotification( ) != null;
             }
@@ -168,29 +168,29 @@ public class MockNotificationDAO implements INotificationDAO
             {
                 bAddNotif = notification.getDemand( ) != null && notificationFilter.getDemandTypeId( ).equals( notification.getDemand( ).getTypeId( ) );
             }
-            if ( bAddNotif && notificationFilter.containsHasBackofficeNotification( ) )
+            if ( bAddNotif && notificationFilter.containsBackofficeNotificationType( ) )
             {
                 bAddNotif = notification.getBackofficeNotification( ) != null;
             }
-            if ( bAddNotif && notificationFilter.containsHasBroadcastEmailNotification( ) )
+            if ( bAddNotif && notificationFilter.containsBroadcastEmailNotificationType( ) )
             {
-                bAddNotif = notification.getBroadcastEmail( ) != null && !notification.getBroadcastEmail( ).isEmpty();
+                bAddNotif = notification.getBroadcastEmail( ) != null && !notification.getBroadcastEmail( ).isEmpty( );
             }
-            if ( bAddNotif && notificationFilter.containsHasCustomerEmailNotification( ) )
+            if ( bAddNotif && notificationFilter.containsCustomerEmailNotificationType( ) )
             {
                 bAddNotif = notification.getEmailNotification( ) != null;
             }
-            if ( bAddNotif && notificationFilter.containsHasMyDashboardNotification( ) )
+            if ( bAddNotif && notificationFilter.containsMyDashboardNotificationType( ) )
             {
                 bAddNotif = notification.getMyDashboardNotification( ) != null;
             }
-            if ( bAddNotif && notificationFilter.containsHasSmsNotification( ) )
+            if ( bAddNotif && notificationFilter.containsSmsNotificationType( ) )
             {
                 bAddNotif = notification.getSmsNotification( ) != null;
             }
             if ( bAddNotif )
             {
-                listResult.add(  notification.getId( )  );
+                listResult.add( notification.getId( ) );
             }
         }
         return listResult;
@@ -200,9 +200,9 @@ public class MockNotificationDAO implements INotificationDAO
      * {@inheritDoc}
      */
     @Override
-    public Optional<Notification> loadById( int nId  )
+    public Optional<Notification> loadById( int nId )
     {
-        
+
         for ( Notification notification : _listMockNotification )
         {
             if ( notification.getDemand( ) != null && notification.getId( ) == nId )
@@ -214,13 +214,13 @@ public class MockNotificationDAO implements INotificationDAO
     }
 
     @Override
-    public List<Notification> loadByDemandAndDate(String strDemandId, String strDemandTypeId, long lDate) {
+    public List<Notification> loadByDemandAndDate( String strDemandId, String strDemandTypeId, long lDate )
+    {
         List<Notification> listResult = new ArrayList<Notification>( );
         for ( Notification notification : _listMockNotification )
         {
             if ( notification.getDemand( ) != null && notification.getDemand( ).getId( ).equals( strDemandId )
-                    && notification.getDemand( ).getTypeId( ).equals( strDemandTypeId )
-                    && notification.getDate( ) == lDate )
+                    && notification.getDemand( ).getTypeId( ).equals( strDemandTypeId ) && notification.getDate( ) == lDate )
             {
                 listResult.add( notification );
             }
@@ -229,44 +229,46 @@ public class MockNotificationDAO implements INotificationDAO
     }
 
     @Override
-    public List<String> loadDistinctDemandTypeIds( ) 
+    public List<String> loadDistinctDemandTypeIds( )
     {
-        Map<String,String> mapDemandTypeIds =  new HashMap<>( );
+        Map<String, String> mapDemandTypeIds = new HashMap<>( );
         for ( Notification notification : _listMockNotification )
         {
             mapDemandTypeIds.put( String.valueOf( notification.getId( ) ), null );
         }
-        
+
         return new ArrayList<>( mapDemandTypeIds.keySet( ) );
     }
 
-	@Override
-	public List<Notification> loadByIds(List<Integer> listIds) {
+    @Override
+    public List<Notification> loadByIds( List<Integer> listIds )
+    {
 
-		List<Notification> list = new ArrayList<>();
+        List<Notification> list = new ArrayList<>( );
 
         for ( Notification notification : _listMockNotification )
         {
             if ( listIds.contains( notification.getId( ) ) )
             {
-            	list.add( notification );
+                list.add( notification );
             }
         }
         return list;
-	}
+    }
 
-	@Override
-	public void delete(int id) {
+    @Override
+    public void delete( int id )
+    {
         for ( Notification notification : _listMockNotification )
         {
-            if ( id ==  notification.getId( ) ) 
+            if ( id == notification.getId( ) )
             {
-            	_listMockNotification.remove( notification );
-            	break;
+                _listMockNotification.remove( notification );
+                break;
             }
         }
-		
-	}
+
+    }
 
     @Override
     public List<Notification> loadByDemandIdTypeIdCustomerId( String strDemandId, String strDemandTypeId, String strCustomerId )

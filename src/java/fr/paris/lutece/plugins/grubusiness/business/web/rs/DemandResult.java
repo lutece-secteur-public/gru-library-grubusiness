@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2023, Mairie de Paris
+ * Copyright (c) 2002-2024, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,12 +53,12 @@ public class DemandResult extends SearchResult
     }
 
     /**
-     * @param listDemandDisplay the _listDemandDisplay to set
+     * @param listDemandDisplay
+     *            the _listDemandDisplay to set
      */
     public void setListDemandDisplay( List<DemandDisplay> listDemandDisplay )
     {
         this._listDemandDisplay = listDemandDisplay;
     }
-    
-    
+
 }

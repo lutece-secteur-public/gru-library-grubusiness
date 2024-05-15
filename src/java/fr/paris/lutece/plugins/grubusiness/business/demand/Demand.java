@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2024, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -431,7 +431,8 @@ public class Demand
     }
 
     /**
-     * @param lModifyDate the _lModifyDate to set
+     * @param lModifyDate
+     *            the _lModifyDate to set
      */
     public void setModifyDate( long lModifyDate )
     {

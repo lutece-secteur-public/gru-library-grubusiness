@@ -31,53 +31,72 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.grubusiness.business.indexing;
+package fr.paris.lutece.plugins.grubusiness.business.demand;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
- * This interface enables to index any object
- *
- * @param <T>
- *            the object to index
+ * IDemandTypeDAO Interface
  */
-public interface IIndexingService<T>
+public interface IDemandTypeDAO
 {
     /**
-     * Indexes a object
+     * Insert a new record in the table.
      * 
-     * @param object
-     *            the object to index
-     * @throws IndexingException
-     *             if there is an exception during the indexing
+     * @param demandType
+     *            instance of the DemandType object to insert
      */
-    void index( T object ) throws IndexingException;
+    void insert( DemandType demandType );
 
     /**
-     * Index a list of objects
+     * Update the record in the table
      * 
-     * @param listObjects
-     *            the list of objects to index
-     * @throws IndexingException
-     *             if there is an exception during the indexing
+     * @param demandType
+     *            the reference of the DemandType
      */
-    void indexList( List<T> listObjects ) throws IndexingException;
+    void store( DemandType demandType );
 
     /**
-     * Delete index
+     * Delete a record from the table
      * 
-     * @param object
-     *            the object to delete
-     * @throws IndexingException
-     *             if there is an exception during the deletion
+     * @param nKey
+     *            The identifier of the DemandType to delete
      */
-    void deleteIndex( T object ) throws IndexingException;
+    void delete( int nKey );
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Finders
 
     /**
-     * Deletes the index for all the objects
+     * Load the data from the table
      * 
-     * @throws IndexingException
-     *             if there is an exception during the deletion
+     * @param nKey
+     *            The identifier of the demandType
+     * @return The instance of the demandType
      */
-    void deleteAllIndexes( ) throws IndexingException;
+    Optional<DemandType> load( int nKey );
+
+    /**
+     * Load the data of all the demandType objects and returns them as a list
+     * 
+     * @return The list which contains the data of all the demandType objects
+     */
+    List<DemandType> selectDemandTypesList( );
+
+    /**
+     * Load the id of all the demandType objects and returns them as a list
+     * 
+     * @return The list which contains the id of all the demandType objects
+     */
+    List<Integer> selectIdDemandTypesList( );
+
+    /**
+     * Load the data of all the avant objects and returns them as a list
+     * 
+     * @param listIds
+     *            liste of ids
+     * @return The list which contains the data of all the avant objects
+     */
+    List<DemandType> selectDemandTypesListByIds( List<Integer> listIds );
 }

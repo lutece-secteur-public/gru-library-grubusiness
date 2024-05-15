@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2024, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,7 +46,7 @@ import java.util.List;
  */
 @JsonRootName( value = "email_address" )
 @JsonPropertyOrder( {
-    "address"
+        "address"
 } )
 public class EmailAddress
 {

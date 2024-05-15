@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2021, City of Paris
+ * Copyright (c) 2002-2024, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,7 +31,6 @@
  *
  * License 1.0
  */
-
 package fr.paris.lutece.plugins.grubusiness.business.mock;
 
 import fr.paris.lutece.plugins.grubusiness.business.notification.INotificationEventDAO;
@@ -48,14 +47,14 @@ import java.util.Optional;
 public final class MockNotificationEventDAO implements INotificationEventDAO
 {
     List<NotificationEvent> _eventList = new ArrayList<>( );
-    
+
     /**
      * {@inheritDoc }
      */
     @Override
     public NotificationEvent insert( NotificationEvent notificationEvent )
     {
-        _eventList.add( notificationEvent );  
+        _eventList.add( notificationEvent );
 
         return notificationEvent;
     }
@@ -66,11 +65,12 @@ public final class MockNotificationEventDAO implements INotificationEventDAO
     @Override
     public Optional<NotificationEvent> loadById( int nKey )
     {
-        for (NotificationEvent event : _eventList )
+        for ( NotificationEvent event : _eventList )
         {
-            if (event.getId( ) == nKey ) return Optional.of( event );
+            if ( event.getId( ) == nKey )
+                return Optional.of( event );
         }
-        
+
         return Optional.empty( );
     }
 
@@ -80,9 +80,10 @@ public final class MockNotificationEventDAO implements INotificationEventDAO
     @Override
     public void delete( int nKey )
     {
-        for (NotificationEvent event : _eventList )
+        for ( NotificationEvent event : _eventList )
         {
-            if (event.getId( ) == nKey ) {
+            if ( event.getId( ) == nKey )
+            {
                 _eventList.remove( event );
                 return;
             }
@@ -93,32 +94,13 @@ public final class MockNotificationEventDAO implements INotificationEventDAO
      * {@inheritDoc }
      */
     @Override
-    public List<NotificationEvent> loadByDemand(String strDemandId, String strDemandTypeId) 
+    public List<NotificationEvent> loadByDemand( String strDemandId, String strDemandTypeId )
     {
-        List<NotificationEvent> eventDemandList = new ArrayList<>();
-        
-        for (NotificationEvent event : _eventList )
-        {
-            if (event.getDemand( ).getId( ).equals( strDemandId ) && event.getDemand( ).getTypeId( ).equals( strDemandTypeId ) ) 
-            {
-                eventDemandList.add( event );
-            }
-        }
-        
-        return eventDemandList;
-    }
+        List<NotificationEvent> eventDemandList = new ArrayList<>( );
 
-    /**
-     * {@inheritDoc }
-     */
-    @Override
-    public List<NotificationEvent> loadByFilter(NotificationFilter filter) 
-    {
-        List<NotificationEvent> eventDemandList = new ArrayList<>();        
-        
-        for (NotificationEvent event : _eventList )
+        for ( NotificationEvent event : _eventList )
         {
-            if ( filter.containsDemandTypeId( ) && event.getDemand( ).getTypeId( ).equals( filter.getDemandTypeId( ) ) ) 
+            if ( event.getDemand( ).getId( ).equals( strDemandId ) && event.getDemand( ).getTypeId( ).equals( strDemandTypeId ) )
             {
                 eventDemandList.add( event );
             }
@@ -127,17 +109,36 @@ public final class MockNotificationEventDAO implements INotificationEventDAO
         return eventDemandList;
     }
 
+    /**
+     * {@inheritDoc }
+     */
+    @Override
+    public List<NotificationEvent> loadByFilter( NotificationFilter filter )
+    {
+        List<NotificationEvent> eventDemandList = new ArrayList<>( );
+
+        for ( NotificationEvent event : _eventList )
+        {
+            if ( filter.containsDemandTypeId( ) && event.getDemand( ).getTypeId( ).equals( filter.getDemandTypeId( ) ) )
+            {
+                eventDemandList.add( event );
+            }
+        }
+
+        return eventDemandList;
+    }
 
     /**
      * {@inheritDoc }
      */
     @Override
-    public List<Integer> loadIdsByFilter(NotificationFilter filter) {
-        List<Integer> eventDemandList = new ArrayList<>();        
-        
-        for (NotificationEvent event : _eventList )
+    public List<Integer> loadIdsByFilter( NotificationFilter filter )
+    {
+        List<Integer> eventDemandList = new ArrayList<>( );
+
+        for ( NotificationEvent event : _eventList )
         {
-            if ( filter.containsDemandTypeId( ) && event.getDemand( ).getTypeId( ).equals( filter.getDemandTypeId( ) ) ) 
+            if ( filter.containsDemandTypeId( ) && event.getDemand( ).getTypeId( ).equals( filter.getDemandTypeId( ) ) )
             {
                 eventDemandList.add( event.getId( ) );
             }
@@ -147,14 +148,14 @@ public final class MockNotificationEventDAO implements INotificationEventDAO
     }
 
     @Override
-    public List<NotificationEvent> loadByNotification(String strDemandId, String strDemandTypeId, long lNotificationDate) {
-        List<NotificationEvent> eventList = new ArrayList<>();        
-        
-        for (NotificationEvent event : _eventList )
+    public List<NotificationEvent> loadByNotification( String strDemandId, String strDemandTypeId, long lNotificationDate )
+    {
+        List<NotificationEvent> eventList = new ArrayList<>( );
+
+        for ( NotificationEvent event : _eventList )
         {
-            if ( event.getDemand( ).getId( ).equals( strDemandId )
-                    && event.getDemand( ).getTypeId( ).equals( strDemandTypeId ) 
-                    && event.getNotificationDate( ) == lNotificationDate ) 
+            if ( event.getDemand( ).getId( ).equals( strDemandId ) && event.getDemand( ).getTypeId( ).equals( strDemandTypeId )
+                    && event.getNotificationDate( ) == lNotificationDate )
             {
                 eventList.add( event );
             }
@@ -163,26 +164,27 @@ public final class MockNotificationEventDAO implements INotificationEventDAO
         return eventList;
     }
 
-	@Override
-	public List<NotificationEvent> loadByIds(List<Integer> listIds) {
-		List<NotificationEvent> eventList = new ArrayList<>();        
-        
-        for (NotificationEvent event : _eventList )
+    @Override
+    public List<NotificationEvent> loadByIds( List<Integer> listIds )
+    {
+        List<NotificationEvent> eventList = new ArrayList<>( );
+
+        for ( NotificationEvent event : _eventList )
         {
-            if ( listIds.contains( event.getId() ) ) 
+            if ( listIds.contains( event.getId( ) ) )
             {
-            	eventList.add( event );
+                eventList.add( event );
             }
         }
 
         return eventList;
-	}
+    }
 
-	@Override
-	public String deleteBeforeDate(long lDate) {
-		
-		return "MOCK (no need to purge)";
-	}
+    @Override
+    public String deleteBeforeDate( long lDate )
+    {
 
+        return "MOCK (no need to purge)";
+    }
 
 }

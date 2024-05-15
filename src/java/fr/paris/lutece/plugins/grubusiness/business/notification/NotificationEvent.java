@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2021, Mairie de Paris
+ * Copyright (c) 2002-2024, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,14 +41,13 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import fr.paris.lutece.plugins.grubusiness.business.demand.Demand;
 import fr.paris.lutece.plugins.grubusiness.business.notification.Event;
 
-
 /**
  * NotificationEvent class, object to log events as delivery success or failure.
  *
  */
 @JsonRootName( value = "notificationEvent" )
-@JsonPropertyOrder( { 
-    "date", "msg_id", "demand", "event"
+@JsonPropertyOrder( {
+        "date", "msg_id", "demand", "event"
 } )
 public class NotificationEvent
 {
@@ -128,29 +127,33 @@ public class NotificationEvent
 
     /**
      * get msg id
+     * 
      * @return the message id
      */
     @JsonProperty( "msg_id" )
-    public String getMsgId() {
+    public String getMsgId( )
+    {
         return _strMsgId;
     }
 
     /**
      * set message Id
+     * 
      * @param strMsgId
      */
     @JsonProperty( "msg_id" )
-    public void setMsgId(String strMsgId) {
+    public void setMsgId( String strMsgId )
+    {
         this._strMsgId = strMsgId;
     }
-    
+
     /**
      * get event
      * 
      * @return the event
      */
     @JsonProperty( "event" )
-    public Event getEvent( ) 
+    public Event getEvent( )
     {
         return _event;
     }
@@ -158,10 +161,10 @@ public class NotificationEvent
     /**
      * set event
      * 
-     * @param event 
+     * @param event
      */
     @JsonProperty( "event" )
-    public void setEvent( Event event ) 
+    public void setEvent( Event event )
     {
         this._event = event;
     }

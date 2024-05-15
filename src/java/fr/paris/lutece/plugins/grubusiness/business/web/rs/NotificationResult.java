@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2023, Mairie de Paris
+ * Copyright (c) 2002-2024, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,11 +55,12 @@ public class NotificationResult extends SearchResult
     }
 
     /**
-     * @param notifications the _notifications to set
+     * @param notifications
+     *            the _notifications to set
      */
     public void setNotifications( List<Notification> notifications )
     {
         this._notifications = notifications;
     }
-    
+
 }

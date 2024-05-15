@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2018, Mairie de Paris
+ * Copyright (c) 2002-2024, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,12 +39,18 @@ public class DemandType
 {
     @JsonProperty( "id_demand_type" )
     private int _nIdDemandType;
+
     @JsonProperty( "label" )
     private String _strLabel;
+
     @JsonProperty( "url" )
     private String _strUrl;
+
     @JsonProperty( "app_code" )
     private String _strAppCode;
+
+    @JsonProperty( "category" )
+    private String _strCategory;
 
     /**
      * Get the id demand type
@@ -136,5 +142,27 @@ public class DemandType
     {
         _strAppCode = strAppCode;
     }
-    
+
+    /**
+     * Returns the Category
+     * 
+     * @return The Category
+     */
+    @JsonProperty( "category" )
+    public String getCategory( )
+    {
+        return _strCategory;
+    }
+
+    /**
+     * Sets the Category
+     * 
+     * @param strCategory
+     *            The Category
+     */
+    public void setCategory( String strCategory )
+    {
+        _strCategory = strCategory;
+    }
+
 }

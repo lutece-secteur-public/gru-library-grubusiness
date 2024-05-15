@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2024, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -67,7 +67,7 @@ public interface IDemandDAO
      * Search demands by filter
      * 
      * @param filter
-     * @return the demands list 
+     * @return the demands list
      */
     Collection<Demand> loadByFilter( NotificationFilter filter );
 
@@ -75,16 +75,17 @@ public interface IDemandDAO
      * Search demands by filter
      * 
      * @param filter
-     * @return the demands list 
+     * @return the demands list
      */
     List<Integer> loadIdsByFilter( NotificationFilter filter );
 
     /**
      * load demands corresponding to the id list
+     * 
      * @param listIds
      * @return the demands
      */
-    List<Demand> loadByIds( List<Integer> listIds);
+    List<Demand> loadByIds( List<Integer> listIds );
 
     /**
      * Finds a demand with the specified id and type id
@@ -139,23 +140,27 @@ public interface IDemandDAO
      * @return the demand coresponding to given id.
      */
     Demand loadById( String strId );
-    
+
     /**
      * Load demand ids ordered by date notification
+     * 
      * @param strCustomerId
      * @param strNotificationType
-     * @param strIdDemandType (Optional can be null)
+     * @param strIdDemandType
+     *            (Optional can be null)
      * @return The list of demand ids
      */
-    List<Integer> loadIdsByCustomerIdAndIdDemandType ( String strCustomerId, String strNotificationType, String strIdDemandType );
-    
+    List<Integer> loadIdsByCustomerIdAndIdDemandType( String strCustomerId, String strNotificationType, String strIdDemandType );
+
     /**
      * Load demand ids by status
+     * 
      * @param strCustomerId
-     * @param listStatus 
+     * @param listStatus
      * @param strNotificationType
-     * @param strIdDemandType (Optional can be null)
+     * @param strIdDemandType
+     *            (Optional can be null)
      * @return The list of demand ids
      */
-    List<Integer> loadIdsByStatus ( String strCustomerId, List<String> listStatus, String strNotificationType, String strIdDemandType );
+    List<Integer> loadIdsByStatus( String strCustomerId, List<String> listStatus, String strNotificationType, String strIdDemandType );
 }

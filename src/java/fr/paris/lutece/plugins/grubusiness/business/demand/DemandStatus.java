@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2019, Mairie de Paris
+ * Copyright (c) 2002-2024, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,29 +31,82 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.grubusiness.service.notification;
+package fr.paris.lutece.plugins.grubusiness.business.demand;
 
-import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
+import javax.validation.constraints.NotEmpty;
+
+import fr.paris.lutece.plugins.grubusiness.business.web.rs.EnumGenericStatus;
+
+import java.io.Serializable;
 
 /**
- * This interface provide notification methods to implement
- *
+ * This is the business class for the object Status
  */
-public interface INotificationServiceProvider
+public class DemandStatus implements Serializable
 {
+    private static final long serialVersionUID = 1L;
+
+    // Variables declarations
+    private int _nId;
+
+    @NotEmpty( message = "#i18n{grusupply.validation.status.Status.notEmpty}" )
+    private String _strStatus;
+
+    private EnumGenericStatus _genericStatus;
 
     /**
-     * Process notification 
+     * Returns the Id
      * 
-     * @param notification
-     * @throws fr.paris.lutece.plugins.grubusiness.service.notification.NotificationException
+     * @return The Id
      */
-    public void process( Notification notification ) throws NotificationException;
-    
+    public int getId( )
+    {
+        return _nId;
+    }
+
     /**
-     * get provider name
+     * Sets the Id
      * 
-     * @return the name of the provider 
+     * @param nId
+     *            The Id
      */
-    public String getName ( );
+    public void setId( int nId )
+    {
+        _nId = nId;
+    }
+
+    /**
+     * @return the _strStatus
+     */
+    public String getStatus( )
+    {
+        return _strStatus;
+    }
+
+    /**
+     * @param strStatus
+     *            the _strStatus to set
+     */
+    public void setStatus( String strStatus )
+    {
+        this._strStatus = strStatus;
+    }
+
+    /**
+     * @return the _genericStatus
+     */
+    public EnumGenericStatus getGenericStatus( )
+    {
+        return _genericStatus;
+    }
+
+    /**
+     * @param genericStatus
+     *            : the genericStatus to set
+     */
+    public void setGenericStatus( EnumGenericStatus genericStatus )
+    {
+        this._genericStatus = genericStatus;
+    }
+
 }

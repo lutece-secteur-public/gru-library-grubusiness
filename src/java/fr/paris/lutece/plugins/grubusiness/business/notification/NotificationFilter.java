@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2024, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,17 +47,17 @@ public class NotificationFilter
     // filter on demand
     private String _strDemandId;
     private String _strDemandTypeId;
-    
+
     // filter on date
     private long _lStartDate;
     private long _lEndDate;
-    
+
     // Notification type
-    private List<EnumNotificationType> _listNotificationType = new ArrayList< >() ;
+    private List<EnumNotificationType> _listNotificationType = new ArrayList<>( );
 
     // filter on eventStatus
     private String _strEventStatus;
-    
+
     /**
      * Check if this filter contains a id
      *
@@ -148,18 +148,17 @@ public class NotificationFilter
      *
      * @return true if the filter contain a hasCustomerEmailNotification
      */
-    public boolean containsHasCustomerEmailNotification( )
+    public boolean containsCustomerEmailNotificationType( )
     {
         return ( !_listNotificationType.isEmpty( ) && _listNotificationType.contains( EnumNotificationType.CUSTOMER_EMAIL ) );
     }
-
 
     /**
      * Check if this filter contains a hasSmsNotification
      *
      * @return true if the filter contain a hasSmsNotification
      */
-    public boolean containsHasSmsNotification( )
+    public boolean containsSmsNotificationType( )
     {
         return ( !_listNotificationType.isEmpty( ) && _listNotificationType.contains( EnumNotificationType.SMS ) );
     }
@@ -169,7 +168,7 @@ public class NotificationFilter
      *
      * @return true if the filter contain a hasBackofficeNotification
      */
-    public boolean containsHasBackofficeNotification( )
+    public boolean containsBackofficeNotificationType( )
     {
         return ( !_listNotificationType.isEmpty( ) && _listNotificationType.contains( EnumNotificationType.BACKOFFICE ) );
     }
@@ -179,7 +178,7 @@ public class NotificationFilter
      *
      * @return true if the filter contain a hasMyDashboardNotification
      */
-    public boolean containsHasMyDashboardNotification( )
+    public boolean containsMyDashboardNotificationType( )
     {
         return ( !_listNotificationType.isEmpty( ) && _listNotificationType.contains( EnumNotificationType.MYDASHBOARD ) );
     }
@@ -189,21 +188,22 @@ public class NotificationFilter
      *
      * @return true if the filter contain a hasBroadcastEmailNotification
      */
-    public boolean containsHasBroadcastEmailNotification( )
+    public boolean containsBroadcastEmailNotificationType( )
     {
         return ( !_listNotificationType.isEmpty( ) && _listNotificationType.contains( EnumNotificationType.BROADCAST_EMAIL ) );
     }
 
     /**
      * Check if this filter contains a notification type filter
+     * 
      * @return true if the filter contain a notification type filter
      */
     public boolean containsNotificationTypeFilter( )
     {
-        return containsHasCustomerEmailNotification( ) || containsHasSmsNotification( ) 
-                || containsHasBackofficeNotification( ) || containsHasMyDashboardNotification( ) || containsHasBroadcastEmailNotification( );
+        return containsCustomerEmailNotificationType( ) || containsSmsNotificationType( ) || containsBackofficeNotificationType( )
+                || containsMyDashboardNotificationType( ) || containsBroadcastEmailNotificationType( );
     }
-    
+
     /**
      * test if filter contains start date
      * 
@@ -215,19 +215,22 @@ public class NotificationFilter
     }
 
     /**
-     * get start date 
+     * get start date
+     * 
      * @return the start date
      */
-    public long getStartDate() {
+    public long getStartDate( )
+    {
         return _lStartDate;
     }
 
     /**
      * set start date
      * 
-     * @param _lStartDate 
+     * @param _lStartDate
      */
-    public void setStartDate(long _lStartDate) {
+    public void setStartDate( long _lStartDate )
+    {
         this._lStartDate = _lStartDate;
     }
 
@@ -240,38 +243,44 @@ public class NotificationFilter
     {
         return ( _lEndDate > 0 );
     }
-    
+
     /**
      * get end date
+     * 
      * @return the end date
      */
-    public long getEndDate() {
+    public long getEndDate( )
+    {
         return _lEndDate;
     }
 
     /**
      * set end date
      * 
-     * @param _lEndDate 
+     * @param _lEndDate
      */
-    public void setEndDate(long _lEndDate) {
+    public void setEndDate( long _lEndDate )
+    {
         this._lEndDate = _lEndDate;
     }
 
     /**
      * get event status
+     * 
      * @return the status filter
      */
-    public String getEventStatus() {
+    public String getEventStatus( )
+    {
         return _strEventStatus;
     }
 
     /**
      * set event status
      * 
-     * @param strEventStatus 
+     * @param strEventStatus
      */
-    public void setEventStatus(String strEventStatus) {
+    public void setEventStatus( String strEventStatus )
+    {
         this._strEventStatus = strEventStatus;
     }
 
@@ -284,7 +293,8 @@ public class NotificationFilter
     }
 
     /**
-     * @param listNotificationType the _listNotificationType to set
+     * @param listNotificationType
+     *            the _listNotificationType to set
      */
     public void setListNotificationType( List<EnumNotificationType> listNotificationType )
     {

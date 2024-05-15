@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2024, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@ import java.util.List;
  */
 @JsonRootName( value = "acknowledge" )
 @JsonPropertyOrder( {
-    "status", "errors", "warnings"
+        "status", "errors", "warnings"
 } )
 public class NotifyGruResponse
 {
@@ -79,17 +79,19 @@ public class NotifyGruResponse
      * @return the list
      */
     @JsonProperty( "warnings" )
-    public List<Event> getWarnings() {
+    public List<Event> getWarnings( )
+    {
         return _warnings;
     }
 
     /**
      * set warnings
      * 
-     * @param warnings 
+     * @param warnings
      */
     @JsonProperty( "warnings" )
-    public void setWarnings(List<Event> warnings) {
+    public void setWarnings( List<Event> warnings )
+    {
         this._warnings = warnings;
     }
 
@@ -99,19 +101,20 @@ public class NotifyGruResponse
      * @return the list
      */
     @JsonProperty( "errors" )
-    public List<Event> getErrors() {
+    public List<Event> getErrors( )
+    {
         return _errors;
     }
 
     /**
      * set errors
      * 
-     * @param errors 
+     * @param errors
      */
     @JsonProperty( "errors" )
-    public void setErrors(List<Event> errors) {
+    public void setErrors( List<Event> errors )
+    {
         this._errors = errors;
     }
-    
-    
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2024, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -84,8 +84,12 @@ public class Customer implements Serializable
     private String _strAccountLogin;
 
     /** The connection Id. */
-    @Size( max = 50, message = "#i18n{gru.validation.customer.AccountGuid.size}" )
+    @Size( max = 56, message = "#i18n{gru.validation.customer.AccountGuid.size}" )
     private String _strConnectionId;
+
+    /** The customer Id. */
+    @Size( max = 50, message = "#i18n{gru.validation.customer.AccountCuid.size}" )
+    private String _strCustomerId;
 
     /** The _str email. */
     @Email( message = "#i18n{portal.validation.message.email}" )
@@ -296,6 +300,29 @@ public class Customer implements Serializable
     public void setConnectionId( String strConnectionId )
     {
         _strConnectionId = strConnectionId;
+    }
+
+    /**
+     * Returns the Customer Id.
+     *
+     * @return The Customer Id
+     */
+    @JsonProperty( "customer_id" )
+    public String getCustomerId( )
+    {
+        return _strCustomerId;
+    }
+
+    /**
+     * Sets the Customer id.
+     *
+     * @param strCustomerId
+     *            The Customer Id
+     */
+    @JsonProperty( "customer_id" )
+    public void setCustomerId( String strCustomerId )
+    {
+        _strCustomerId = strCustomerId;
     }
 
     /**

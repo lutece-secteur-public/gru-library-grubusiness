@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2023, Mairie de Paris
+ * Copyright (c) 2002-2024, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,13 +41,13 @@ package fr.paris.lutece.plugins.grubusiness.business.web.rs;
 public abstract class SearchResult
 {
     public static final String ERROR_FIELD_MANDATORY = "ERROR_FIELD_MANDATORY";
-    
+
     private String _status;
     private String _paginator;
     private String _index;
     private Integer _nNumberResult;
     private String _strErrorMessage;
-    
+
     /**
      * @return the _status
      */
@@ -55,14 +55,16 @@ public abstract class SearchResult
     {
         return _status;
     }
+
     /**
-     * @param status the _status to set
+     * @param status
+     *            the _status to set
      */
     public void setStatus( String status )
     {
         this._status = status;
     }
-    
+
     /**
      * @return the _index
      */
@@ -70,13 +72,16 @@ public abstract class SearchResult
     {
         return _index;
     }
+
     /**
-     * @param index the _index to set
+     * @param index
+     *            the _index to set
      */
     public void setIndex( String index )
     {
         this._index = index;
     }
+
     /**
      * @return the _paginator
      */
@@ -84,13 +89,16 @@ public abstract class SearchResult
     {
         return _paginator;
     }
+
     /**
-     * @param paginator the _paginator to set
+     * @param paginator
+     *            the _paginator to set
      */
     public void setPaginator( String paginator )
     {
         this._paginator = paginator;
     }
+
     /**
      * @return the _nNumberResult
      */
@@ -98,13 +106,16 @@ public abstract class SearchResult
     {
         return _nNumberResult;
     }
+
     /**
-     * @param nNumberResult the _nNumberResult to set
+     * @param nNumberResult
+     *            the _nNumberResult to set
      */
     public void setNumberResult( Integer nNumberResult )
     {
         this._nNumberResult = nNumberResult;
     }
+
     /**
      * @return the _strErrorMessage
      */
@@ -112,8 +123,10 @@ public abstract class SearchResult
     {
         return _strErrorMessage;
     }
+
     /**
-     * @param _strErrorMessage the _strErrorMessage to set
+     * @param _strErrorMessage
+     *            the _strErrorMessage to set
      */
     public void setErrorMessage( String _strErrorMessage )
     {

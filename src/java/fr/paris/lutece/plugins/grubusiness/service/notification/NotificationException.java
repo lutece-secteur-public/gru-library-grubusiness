@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2019, Mairie de Paris
+ * Copyright (c) 2002-2024, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,13 +37,14 @@ package fr.paris.lutece.plugins.grubusiness.service.notification;
  *
  * @author sleridon
  */
-public class NotificationException extends Exception {
-    
+public class NotificationException extends Exception
+{
+
     /**
      *
      */
     private static final long serialVersionUID = 4086460224358874263L;
-    
+
     /**
      * Constructor
      *
@@ -68,5 +69,4 @@ public class NotificationException extends Exception {
         super( strMessage, e );
     }
 
-    
 }

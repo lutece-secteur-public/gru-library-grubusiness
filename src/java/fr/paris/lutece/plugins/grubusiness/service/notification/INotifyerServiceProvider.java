@@ -31,53 +31,29 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.grubusiness.business.indexing;
+package fr.paris.lutece.plugins.grubusiness.service.notification;
 
-import java.util.List;
+import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
 
 /**
- * This interface enables to index any object
+ * This interface provide notification methods to implement
  *
- * @param <T>
- *            the object to index
  */
-public interface IIndexingService<T>
+public interface INotifyerServiceProvider
 {
-    /**
-     * Indexes a object
-     * 
-     * @param object
-     *            the object to index
-     * @throws IndexingException
-     *             if there is an exception during the indexing
-     */
-    void index( T object ) throws IndexingException;
 
     /**
-     * Index a list of objects
+     * Process notification
      * 
-     * @param listObjects
-     *            the list of objects to index
-     * @throws IndexingException
-     *             if there is an exception during the indexing
+     * @param notification
+     * @throws fr.paris.lutece.plugins.grubusiness.service.notification.NotificationException
      */
-    void indexList( List<T> listObjects ) throws IndexingException;
+    public void process( Notification notification ) throws NotificationException;
 
     /**
-     * Delete index
+     * get provider name
      * 
-     * @param object
-     *            the object to delete
-     * @throws IndexingException
-     *             if there is an exception during the deletion
+     * @return the name of the provider
      */
-    void deleteIndex( T object ) throws IndexingException;
-
-    /**
-     * Deletes the index for all the objects
-     * 
-     * @throws IndexingException
-     *             if there is an exception during the deletion
-     */
-    void deleteAllIndexes( ) throws IndexingException;
+    public String getName( );
 }

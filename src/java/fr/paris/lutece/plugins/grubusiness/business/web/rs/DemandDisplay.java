@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2023, Mairie de Paris
+ * Copyright (c) 2002-2024, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,8 +43,8 @@ import fr.paris.lutece.plugins.grubusiness.business.demand.Demand;
 public class DemandDisplay
 {
     private Demand _demand;
-    private String _strStatus;  
-    
+    private String _strStatus;
+
     /**
      * @return the _demand
      */
@@ -52,13 +52,16 @@ public class DemandDisplay
     {
         return _demand;
     }
+
     /**
-     * @param demand the _demand to set
+     * @param demand
+     *            the _demand to set
      */
     public void setDemand( Demand demand )
     {
         this._demand = demand;
     }
+
     /**
      * @return the _strStatus
      */
@@ -66,12 +69,14 @@ public class DemandDisplay
     {
         return _strStatus;
     }
+
     /**
-     * @param strStatus the _strStatus to set
+     * @param strStatus
+     *            the _strStatus to set
      */
     public void setStatus( String strStatus )
     {
         this._strStatus = strStatus;
-    }   
-    
+    }
+
 }

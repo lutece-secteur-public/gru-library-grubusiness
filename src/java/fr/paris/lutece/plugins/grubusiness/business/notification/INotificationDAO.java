@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2024, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,7 +49,7 @@ public interface INotificationDAO
      * @param strId
      * @return the notification coresponding to given id.
      */
-	Optional<Notification> loadById( int id );
+    Optional<Notification> loadById( int id );
 
     /**
      * Finds notifications associated to the specified demand id and demand type id. The notifications must be sorted by date descending
@@ -80,25 +80,25 @@ public interface INotificationDAO
      * @return the notifications. An empty list is returned if no notification has been found.
      */
     List<Notification> loadByFilter( NotificationFilter notificationFilter );
-    
+
     /**
      * Finds and populate notification by demand id, type id, customer id
      * 
-     * @param strDemandId 
+     * @param strDemandId
      * @param strDemandTypeId
      * @param strCustomerId
      * @return the notifications. An empty list is returned if no notification has been found.
      */
     List<Notification> loadByDemandIdTypeIdCustomerId( String strDemandId, String strDemandTypeId, String strCustomerId );
-    
+
     /**
      * Find last notification by demand id and demand type id
+     * 
      * @param strDemandId
      * @param strDemandTypeId
      * @return last notification
      */
-    Notification loadLastNotifByDemandIdAndDemandTypeId( String strDemandId, String strDemandTypeId  );
-    
+    Notification loadLastNotifByDemandIdAndDemandTypeId( String strDemandId, String strDemandTypeId );
 
     /**
      * Inserts a notification
@@ -127,26 +127,26 @@ public interface INotificationDAO
      * @return The list of notifications ids
      */
     List<Integer> loadIdsByFilter( NotificationFilter notificationFilter );
-    
+
     /**
      * load distinct demand type ids
      * 
-     * @return the id list 
+     * @return the id list
      */
     List<String> loadDistinctDemandTypeIds( );
 
     /**
-     * Loads list by  Ids
+     * Loads list by Ids
      * 
      * @param listIds
      * @return list of Notification
      */
-	List<Notification> loadByIds(List<Integer> listIds);
+    List<Notification> loadByIds( List<Integer> listIds );
 
-	/**
-	 * delete notification
-	 * 
+    /**
+     * delete notification
+     * 
      * @param id
-	 */
-	void delete(int id);
+     */
+    void delete( int id );
 }

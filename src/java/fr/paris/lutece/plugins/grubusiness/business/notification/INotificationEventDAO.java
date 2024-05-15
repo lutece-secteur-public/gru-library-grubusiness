@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2024, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,10 +49,10 @@ public interface INotificationEventDAO
      * @param nId
      * @return the notification corresponding to given id.
      */
-	Optional<NotificationEvent>  loadById( int nId );
+    Optional<NotificationEvent> loadById( int nId );
 
     /**
-     * Finds notification events associated to the specified demand id and demand type id. 
+     * Finds notification events associated to the specified demand id and demand type id.
      * 
      * @param strDemandId
      *            the demand id
@@ -63,14 +63,14 @@ public interface INotificationEventDAO
     List<NotificationEvent> loadByDemand( String strDemandId, String strDemandTypeId );
 
     /**
-     * Finds notification events associated to the specified notification 
+     * Finds notification events associated to the specified notification
      * 
      * @param strDemandId
      * @param strDemandTypeId
      * @param lNotificationDate
      * @return the notification event list
      */
-    public List<NotificationEvent> loadByNotification( String strDemandId, String strDemandTypeId, long lNotificationDate);
+    public List<NotificationEvent> loadByNotification( String strDemandId, String strDemandTypeId, long lNotificationDate );
 
     /**
      * Finds and populate notification according to the filter
@@ -85,7 +85,7 @@ public interface INotificationEventDAO
      * Inserts a notification event
      * 
      * @param notificationEvent
-     *            the notification  event to insert
+     *            the notification event to insert
      * @return the inserted notification event
      */
     NotificationEvent insert( NotificationEvent notificationEvent );
@@ -106,18 +106,18 @@ public interface INotificationEventDAO
      */
     List<Integer> loadIdsByFilter( NotificationFilter notificationFilter );
 
-	/**
-	 * load the events for an id list
-	 * 
-	 * @return The list of notification events
-	 */
-	List<NotificationEvent> loadByIds(List<Integer> listIds);
+    /**
+     * load the events for an id list
+     * 
+     * @return The list of notification events
+     */
+    List<NotificationEvent> loadByIds( List<Integer> listIds );
 
-	/**
-	 * purge the events after N days
-	 * 
-	 * @param nbDays
-	 * @return
-	 */
-	String deleteBeforeDate( long lDate );
+    /**
+     * purge the events after N days
+     * 
+     * @param nbDays
+     * @return
+     */
+    String deleteBeforeDate( long lDate );
 }

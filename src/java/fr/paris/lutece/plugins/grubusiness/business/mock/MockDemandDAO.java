@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2024, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -142,26 +142,26 @@ public class MockDemandDAO implements IDemandDAO
     }
 
     @Override
-    public Collection<Demand> loadByFilter(NotificationFilter filter) 
+    public Collection<Demand> loadByFilter( NotificationFilter filter )
     {
         return _mapMockDemand.values( );
     }
 
-	@Override
-	public List<Integer> loadIdsByFilter(NotificationFilter filter) 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public List<Integer> loadIdsByFilter( NotificationFilter filter )
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	@Override
-	public List<Demand> loadByIds(List<Integer> listIds) 
-	{
-		List<Demand> listDemands = new ArrayList<>();
-		listDemands.addAll( _mapMockDemand.values( ) );
-		
-		return listDemands;
-	}
+    @Override
+    public List<Demand> loadByIds( List<Integer> listIds )
+    {
+        List<Demand> listDemands = new ArrayList<>( );
+        listDemands.addAll( _mapMockDemand.values( ) );
+
+        return listDemands;
+    }
 
     @Override
     public List<Integer> loadIdsByCustomerIdAndIdDemandType( String strCustomerId, String strNotificationType, String strIdDemandType )

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2024, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -133,7 +133,7 @@ public class NotificationTest extends TestCase
         } ) );
         broadcastNotif.setMessage( "strMessage" );
         broadcastNotif.setRecipient( EmailAddress.buildEmailAddresses( new String [ ] {
-            "strRecipient"
+                "strRecipient"
         } ) );
         broadcastNotif.setSenderEmail( "strSenderEmail" );
         broadcastNotif.setSenderName( "strSenderName" );
@@ -145,7 +145,7 @@ public class NotificationTest extends TestCase
         broadcastNotif.setCc( null );
         broadcastNotif.setMessage( "strMessage" );
         broadcastNotif.setRecipient( EmailAddress.buildEmailAddresses( new String [ ] {
-            "strRecipient"
+                "strRecipient"
         } ) );
         broadcastNotif.setSenderEmail( "strSenderEmail" );
         broadcastNotif.setSenderName( "strSenderName" );
