@@ -100,7 +100,7 @@ public final class MockNotificationEventDAO implements INotificationEventDAO
 
         for ( NotificationEvent event : _eventList )
         {
-            if ( event.getDemand( ).getId( ).equals( strDemandId ) && event.getDemand( ).getTypeId( ).equals( strDemandTypeId ) )
+            if ( event.getDemand( ).getDemandId( ).equals( strDemandId ) && event.getDemand( ).getTypeId( ).equals( strDemandTypeId ) )
             {
                 eventDemandList.add( event );
             }
@@ -154,7 +154,7 @@ public final class MockNotificationEventDAO implements INotificationEventDAO
 
         for ( NotificationEvent event : _eventList )
         {
-            if ( event.getDemand( ).getId( ).equals( strDemandId ) && event.getDemand( ).getTypeId( ).equals( strDemandTypeId )
+            if ( event.getDemand( ).getDemandId( ).equals( strDemandId ) && event.getDemand( ).getTypeId( ).equals( strDemandTypeId )
                     && event.getNotificationDate( ) == lNotificationDate )
             {
                 eventList.add( event );

@@ -89,7 +89,19 @@ public class MockDemandDAO implements IDemandDAO
      * {@inheritDoc}
      */
     @Override
-    public Demand load( String strDemandId, String strDemandTypeId )
+    public Demand load( int nId )
+    {
+       //TODO:
+        
+        return null;
+    }
+
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Demand loadByDemandIdAndTypeId( String strDemandId, String strDemandTypeId )
     {
         return _mapMockDemand.get( strDemandTypeId + "|" + strDemandId );
     }
@@ -136,7 +148,7 @@ public class MockDemandDAO implements IDemandDAO
      * {@inheritDoc}
      */
     @Override
-    public Demand loadById( String strId )
+    public Demand loadByDemandId( String strId )
     {
         return null;
     }

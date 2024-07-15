@@ -37,6 +37,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DemandType
 {
+    @JsonProperty( "id" )
+    private int _nId;
+    
     @JsonProperty( "id_demand_type" )
     private int _nIdDemandType;
 
@@ -51,6 +54,23 @@ public class DemandType
 
     @JsonProperty( "category" )
     private String _strCategory;
+
+    
+    /**
+     * @return the _nId
+     */
+    public int getId( )
+    {
+        return _nId;
+    }
+
+    /**
+     * @param _nId the _nId to set
+     */
+    public void setId( int _nId )
+    {
+        this._nId = _nId;
+    }
 
     /**
      * Get the id demand type
