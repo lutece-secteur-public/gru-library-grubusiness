@@ -54,8 +54,8 @@ import java.util.List;
 public class Demand
 {
     // Variables declarations
-    private int _nDemandId;
-    private String _strId;
+    private int _nId;
+    private String _strDemandId;
     private String _strReference;
     private String _strTypeId;
     private String _strSubtypeId;
@@ -72,49 +72,49 @@ public class Demand
     private long _lModifyDate;
 
     /**
-     * Get the primary key demand id
+     * Get the primary key id
+     * 
+     * @return the technical id
+     */
+    @JsonProperty( "demand_id" )
+    public int getId( )
+    {
+        return _nId;
+    }
+
+    /**
+     * Set the primary key id
+     * 
+     * @param nId
+     *            The technical id
+     */
+    @JsonProperty( "demand_id" )
+    public void setId( int nId )
+    {
+        _nId = nId;
+    }
+    
+    /**
+     * Get the demand id
      * 
      * @return the demand id
      */
-    @JsonProperty( "demand_id" )
-    public int getDemandId( )
+    @JsonProperty( "id" )
+    public String getDemandId( )
     {
-        return _nDemandId;
+        return _strDemandId;
     }
 
     /**
-     * Set the primary key demand id
+     * Set the demand id
      * 
-     * @param nDemandId
+     * @param strDemandId
      *            The demand id
      */
-    @JsonProperty( "demand_id" )
-    public void setDemandId( int nDemandId )
-    {
-        _nDemandId = nDemandId;
-    }
-
-    /**
-     * Gives the id
-     *
-     * @return The id
-     */
     @JsonProperty( "id" )
-    public String getId( )
+    public void setDemandId( String strDemandId )
     {
-        return _strId;
-    }
-
-    /**
-     * Sets the id
-     *
-     * @param strId
-     *            The id
-     */
-    @JsonProperty( "id" )
-    public void setId( String strId )
-    {
-        _strId = strId;
+        _strDemandId = strDemandId;
     }
 
     /**

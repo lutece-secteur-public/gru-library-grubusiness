@@ -35,12 +35,12 @@ package fr.paris.lutece.plugins.grubusiness.business.web.rs;
 
 public enum EnumGenericStatus
 {
-    CLOSED( 15, "grustoragedb.enum.generic_status.label.closed", true ),
-    PAID( 14, "grustoragedb.enum.generic_status.label.paid", true ),
-    TOCOMPLETE( 13, "grustoragedb.enum.generic_status.label.tocomplete", false ),
-    TOPAY( 12, "grustoragedb.enum.generic_status.label.topay", false ),
-    ONGOING( 11, "grustoragedb.enum.generic_status.label.ongoing", false ),
-    CANCELED( 10, "grustoragedb.enum.generic_status.label.canceled", true );
+    CLOSED( 15, "notificationstore.enum.generic_status.label.closed", true ),
+    PAID( 14, "notificationstore.enum.generic_status.label.paid", true ),
+    TOCOMPLETE( 13, "notificationstore.enum.generic_status.label.tocomplete", false ),
+    TOPAY( 12, "notificationstore.enum.generic_status.label.topay", false ),
+    ONGOING( 11, "notificationstore.enum.generic_status.label.ongoing", false ),
+    CANCELED( 10, "notificationstore.enum.generic_status.label.canceled", true );
 
     private Integer _nStatusId;
     private String _strLabel;
