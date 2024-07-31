@@ -38,24 +38,24 @@ Le service CustomerService poss&egrave;de un unique constructeur n&eacute;cessit
 
 ## Exemples de configuration spring
 
- **Configuration utilisant les objets d&eacute;finis dans le plugin plugin-grustoragedb** 
+ **Configuration utilisant les objets d&eacute;finis dans le plugin plugin-notificationstore** 
 ```
 
-    <bean id="grusupply.demandDAO"  class="fr.paris.lutece.plugins.grustoragedb.business.DemandDAO" />  
-    <bean id="grusupply.notificationDAO"  class="fr.paris.lutece.plugins.grustoragedb.business.NotificationDAO" />
-    <bean id="grusupply.demandListener" class="fr.paris.lutece.plugins.grustoragedb.business.listener.LogDemandListener" />
-    <bean id="grusupply.notificationListener" class="fr.paris.lutece.plugins.grustoragedb.business.listener.LogNotificationListener" />
-    <bean id="grusupply.storageService" class="fr.paris.lutece.plugins.grubusiness.business.demand.DemandService">
-      <constructor-arg ref="grusupply.demandDAO" />
-      <constructor-arg ref="grusupply.notificationDAO" />
+    <bean id="notificationstore.demandDAO"  class="fr.paris.lutece.plugins.notificationstore.business.DemandDAO" />  
+    <bean id="notificationstore.notificationDAO"  class="fr.paris.lutece.plugins.notificationstore.business.NotificationDAO" />
+    <bean id="notificationstore.demandListener" class="fr.paris.lutece.plugins.notificationstore.business.listener.LogDemandListener" />
+    <bean id="notificationstore.notificationListener" class="fr.paris.lutece.plugins.notificationstore.business.listener.LogNotificationListener" />
+    <bean id="notificationstore.storageService" class="fr.paris.lutece.plugins.grubusiness.business.demand.DemandService">
+      <constructor-arg ref="notificationstore.demandDAO" />
+      <constructor-arg ref="notificationstore.notificationDAO" />
       <constructor-arg>
         <list>
-          <ref bean="grusupply.demandListener" />
+          <ref bean="notificationstore.demandListener" />
         </list>
       </constructor-arg>
       <constructor-arg>
         <list>
-          <ref bean="grusupply.notificationListener" />
+          <ref bean="notificationstore.notificationListener" />
         </list>
       </constructor-arg>
     </bean>

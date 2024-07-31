@@ -49,23 +49,23 @@
             </subsection>
             <subsection name="Exemples de configuration spring">
                 <p>
-                    <b>Configuration utilisant les objets d&amp;eacute;finis dans le plugin plugin-grustoragedb</b>
+                    <b>Configuration utilisant les objets d&amp;eacute;finis dans le plugin plugin-notificationstore</b>
                     <pre>
-    &lt;bean id="grusupply.demandDAO"  class="fr.paris.lutece.plugins.grustoragedb.business.DemandDAO" /&gt;  
-    &lt;bean id="grusupply.notificationDAO"  class="fr.paris.lutece.plugins.grustoragedb.business.NotificationDAO" /&gt;
-    &lt;bean id="grusupply.demandListener" class="fr.paris.lutece.plugins.grustoragedb.business.listener.LogDemandListener" /&gt;
-    &lt;bean id="grusupply.notificationListener" class="fr.paris.lutece.plugins.grustoragedb.business.listener.LogNotificationListener" /&gt;
-    &lt;bean id="grusupply.storageService" class="fr.paris.lutece.plugins.grubusiness.business.demand.DemandService"&gt;
-      &lt;constructor-arg ref="grusupply.demandDAO" /&gt;
-      &lt;constructor-arg ref="grusupply.notificationDAO" /&gt;
+    &lt;bean id="notificationstore.demandDAO"  class="fr.paris.lutece.plugins.notificationstore.business.DemandDAO" /&gt;  
+    &lt;bean id="notificationstore.notificationDAO"  class="fr.paris.lutece.plugins.notificationstore.business.NotificationDAO" /&gt;
+    &lt;bean id="notificationstore.demandListener" class="fr.paris.lutece.plugins.notificationstore.business.listener.LogDemandListener" /&gt;
+    &lt;bean id="notificationstore.notificationListener" class="fr.paris.lutece.plugins.notificationstore.business.listener.LogNotificationListener" /&gt;
+    &lt;bean id="notificationstore.storageService" class="fr.paris.lutece.plugins.grubusiness.business.demand.DemandService"&gt;
+      &lt;constructor-arg ref="notificationstore.demandDAO" /&gt;
+      &lt;constructor-arg ref="notificationstore.notificationDAO" /&gt;
       &lt;constructor-arg&gt;
         &lt;list&gt;
-          &lt;ref bean="grusupply.demandListener" /&gt;
+          &lt;ref bean="notificationstore.demandListener" /&gt;
         &lt;/list&gt;
       &lt;/constructor-arg&gt;
       &lt;constructor-arg&gt;
         &lt;list&gt;
-          &lt;ref bean="grusupply.notificationListener" /&gt;
+          &lt;ref bean="notificationstore.notificationListener" /&gt;
         &lt;/list&gt;
       &lt;/constructor-arg&gt;
     &lt;/bean&gt;
