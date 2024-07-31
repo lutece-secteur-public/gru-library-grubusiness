@@ -47,11 +47,11 @@ public class DemandCategory implements Serializable
     // Variables declarations
     private int _nId;
 
-    @NotEmpty( message = "#i18n{grusupply.validation.demandcategory.Code.notEmpty}" )
-    @Size( max = 255, message = "#i18n{grusupply.validation.demandcategory.Code.size}" )
+    @NotEmpty( message = "#i18n{notificationstore.validation.demandcategory.Code.notEmpty}" )
+    @Size( max = 255, message = "#i18n{notificationstore.validation.demandcategory.Code.size}" )
     private String _strCode;
 
-    @NotEmpty( message = "#i18n{grusupply.validation.demandcategory.Label.notEmpty}" )
+    @NotEmpty( message = "#i18n{notificationstore.validation.demandcategory.Label.notEmpty}" )
     private String _strLabel;
 
     /**

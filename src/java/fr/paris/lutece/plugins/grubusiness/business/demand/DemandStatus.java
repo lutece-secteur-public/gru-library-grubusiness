@@ -49,7 +49,7 @@ public class DemandStatus implements Serializable
     // Variables declarations
     private int _nId;
 
-    @NotEmpty( message = "#i18n{grusupply.validation.status.Status.notEmpty}" )
+    @NotEmpty( message = "#i18n{notificationstore.validation.status.Status.notEmpty}" )
     private String _strStatus;
 
     private EnumGenericStatus _genericStatus;
