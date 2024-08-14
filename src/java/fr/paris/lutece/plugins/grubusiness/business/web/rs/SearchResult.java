@@ -33,25 +33,31 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.web.rs;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import fr.paris.lutece.plugins.grubusiness.business.web.rs.responseStatus.ResponseStatus;
+
+
 /**
  * 
  * SearchResult
  *
  */
-public abstract class SearchResult
+public abstract class SearchResult 
 {
     public static final String ERROR_FIELD_MANDATORY = "ERROR_FIELD_MANDATORY";
-
-    private String _status;
+    
+    protected ResponseStatus _status;
+    
     private String _paginator;
     private String _index;
     private Integer _nNumberResult;
-    private String _strErrorMessage;
-
+    
     /**
      * @return the _status
      */
-    public String getStatus( )
+    @JsonProperty( value = "status" )
+    public ResponseStatus getStatus( )
     {
         return _status;
     }
@@ -60,9 +66,17 @@ public abstract class SearchResult
      * @param status
      *            the _status to set
      */
-    public void setStatus( String status )
+    @JsonProperty( value = "status" )
+    public void setStatus( final ResponseStatus status )
     {
         this._status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "ResponseDto{" +
+                "_status=" + _status +
+                '}';
     }
 
     /**
@@ -116,20 +130,4 @@ public abstract class SearchResult
         this._nNumberResult = nNumberResult;
     }
 
-    /**
-     * @return the _strErrorMessage
-     */
-    public String getErrorMessage( )
-    {
-        return _strErrorMessage;
-    }
-
-    /**
-     * @param _strErrorMessage
-     *            the _strErrorMessage to set
-     */
-    public void setErrorMessage( String _strErrorMessage )
-    {
-        this._strErrorMessage = _strErrorMessage;
-    }
 }
