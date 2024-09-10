@@ -54,8 +54,8 @@ import java.util.List;
 public class Demand
 {
     // Variables declarations
-    private int _nId;
-    private String _strDemandId;
+    private int _nUId;
+    private String _strId;
     private String _strReference;
     private String _strTypeId;
     private String _strSubtypeId;
@@ -76,22 +76,22 @@ public class Demand
      * 
      * @return the technical id
      */
-    @JsonProperty( "demand_id" )
-    public int getId( )
+    @JsonProperty
+    public int getUID( )
     {
-        return _nId;
+        return _nUId;
     }
 
     /**
      * Set the primary key id
      * 
-     * @param nId
+     * @param nUId
      *            The technical id
      */
-    @JsonProperty( "demand_id" )
-    public void setId( int nId )
+    @JsonProperty
+    public void setUID( int nUId )
     {
-        _nId = nId;
+        _nUId = nUId;
     }
     
     /**
@@ -100,21 +100,21 @@ public class Demand
      * @return the demand id
      */
     @JsonProperty( "id" )
-    public String getDemandId( )
+    public String getId( )
     {
-        return _strDemandId;
+        return _strId;
     }
 
     /**
      * Set the demand id
      * 
-     * @param strDemandId
+     * @param strId
      *            The demand id
      */
     @JsonProperty( "id" )
-    public void setDemandId( String strDemandId )
+    public void setId( String strId )
     {
-        _strDemandId = strDemandId;
+        _strId = strId;
     }
 
     /**

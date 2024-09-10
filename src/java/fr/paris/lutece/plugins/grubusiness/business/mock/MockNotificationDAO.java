@@ -61,7 +61,7 @@ public class MockNotificationDAO implements INotificationDAO
         List<Notification> listResult = new ArrayList<Notification>( );
         for ( Notification notification : _listMockNotification )
         {
-            if ( notification.getDemand( ) != null && notification.getDemand( ).getDemandId( ).equals( strDemandId )
+            if ( notification.getDemand( ) != null && notification.getDemand( ).getId( ).equals( strDemandId )
                     && notification.getDemand( ).getTypeId( ).equals( strDemandTypeId ) )
             {
                 listResult.add( notification );
@@ -137,7 +137,7 @@ public class MockNotificationDAO implements INotificationDAO
         for ( int nIndex = 0; nIndex < _listMockNotification.size( ); nIndex++ )
         {
             Notification notification = _listMockNotification.get( nIndex );
-            if ( notification.getDemand( ) != null && notification.getDemand( ).getDemandId( ).equals( strDemandId )
+            if ( notification.getDemand( ) != null && notification.getDemand( ).getId( ).equals( strDemandId )
                     && notification.getDemand( ).getTypeId( ).equals( strDemandTypeId ) )
             {
                 nIndexDelete = nIndex;
@@ -219,7 +219,7 @@ public class MockNotificationDAO implements INotificationDAO
         List<Notification> listResult = new ArrayList<Notification>( );
         for ( Notification notification : _listMockNotification )
         {
-            if ( notification.getDemand( ) != null && notification.getDemand( ).getDemandId( ).equals( strDemandId )
+            if ( notification.getDemand( ) != null && notification.getDemand( ).getId( ).equals( strDemandId )
                     && notification.getDemand( ).getTypeId( ).equals( strDemandTypeId ) && notification.getDate( ) == lDate )
             {
                 listResult.add( notification );

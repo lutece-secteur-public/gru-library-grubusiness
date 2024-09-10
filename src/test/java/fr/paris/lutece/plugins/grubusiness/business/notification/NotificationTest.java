@@ -88,7 +88,7 @@ public class NotificationTest extends TestCase
         notification.setDate( lCount++ );
 
         Demand demandNotif = new Demand( );
-        demandNotif.setDemandId( "strDemandId" );
+        demandNotif.setId( "strDemandId" );
         demandNotif.setTypeId( "strTypeId" );
         demandNotif.setSubtypeId( "strSubtypeId" );
         demandNotif.setReference( "strDemandReference" );
