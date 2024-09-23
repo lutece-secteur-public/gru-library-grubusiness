@@ -54,6 +54,8 @@ public class DemandCategory implements Serializable
     @NotEmpty( message = "#i18n{notificationstore.validation.demandcategory.Label.notEmpty}" )
     private String _strLabel;
 
+    private boolean _isDefault;
+
     /**
      * Returns the Id
      * 
@@ -117,4 +119,20 @@ public class DemandCategory implements Serializable
         _strLabel = strLabel;
     }
 
+    /**
+     * @return the _isDefault
+     */
+    public boolean isDefault( )
+    {
+        return _isDefault;
+    }
+
+    /**
+     * @param isDefault the _isDefault to set
+     */
+    public void setDefault( boolean isDefault )
+    {
+        this._isDefault = isDefault;
+    }
+  
 }
