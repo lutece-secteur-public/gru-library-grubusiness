@@ -96,6 +96,13 @@ public interface INotificationEventDAO
      * @param nId
      */
     void delete( int nId );
+    
+    /**
+     * Delete by customer id
+     * @param strCustomerId
+     */
+    void deleteByCustomerId( String strCustomerId );
+    
 
     /**
      * Load the ids of the notification events by filter
@@ -120,4 +127,5 @@ public interface INotificationEventDAO
      * @return
      */
     String deleteBeforeDate( long lDate );
+
 }

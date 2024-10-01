@@ -125,6 +125,15 @@ public interface IDemandDAO
      */
     void delete( String strDemandId, String strDemandTypeId );
 
+
+    /**
+     * Deletes a demand with the specified uid
+     * 
+     * @param nUid
+     *            the uid
+     */
+    void deleteByUid( int nUid );
+    
     /**
      * Load the ids of the demands
      * 
@@ -170,4 +179,5 @@ public interface IDemandDAO
      * @return The list of demand ids
      */
     List<Integer> loadIdsByStatus( String strCustomerId, List<String> listStatus, String strNotificationType, String strIdDemandType );
+
 }

@@ -187,4 +187,11 @@ public class MockDemandDAO implements IDemandDAO
         return null;
     }
 
+    @Override
+    public void deleteByUid( int nUid )
+    {
+        // TODO Auto-generated method stub
+        
+    }
+
 }
