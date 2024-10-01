@@ -187,4 +187,11 @@ public final class MockNotificationEventDAO implements INotificationEventDAO
         return "MOCK (no need to purge)";
     }
 
+    @Override
+    public void deleteByCustomerId( String strCustomerId )
+    {
+        // TODO Auto-generated method stub
+        
+    }
+
 }
