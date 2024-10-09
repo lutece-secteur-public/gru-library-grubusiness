@@ -199,4 +199,11 @@ public interface IDemandServiceProvider
      * @return the status
      */
     public Optional<DemandStatus> getStatusByLabel( String strStatusLabel );
+    
+    /**
+     * Deletion of the demand and data related to the demand.
+     * @param strCustomerId
+     */
+    public void deleteAllDemandByCustomerId ( String  strCustomerId );
+    
 }
