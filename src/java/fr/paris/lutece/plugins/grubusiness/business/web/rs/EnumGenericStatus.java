@@ -40,7 +40,8 @@ public enum EnumGenericStatus
     TOCOMPLETE( 13, "notificationstore.enum.generic_status.label.tocomplete", false ),
     TOPAY( 12, "notificationstore.enum.generic_status.label.topay", false ),
     ONGOING( 11, "notificationstore.enum.generic_status.label.ongoing", false ),
-    CANCELED( 10, "notificationstore.enum.generic_status.label.canceled", true );
+    CANCELED( 10, "notificationstore.enum.generic_status.label.canceled", true ),
+    UNDEFINED( -1, "notificationstore.enum.generic_status.label.undefined", false );
 
     private Integer _nStatusId;
     private String _strLabel;
