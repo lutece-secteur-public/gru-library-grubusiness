@@ -97,6 +97,6 @@ public class MockCustomerDAO implements ICustomerDAO
      */
     public void store( Customer customer )
     {
-        _mapMockCustomer.put( customer.getId( ), customer );
+        _mapMockCustomer.put( customer.getCustomerId( ), customer );
     }
 }

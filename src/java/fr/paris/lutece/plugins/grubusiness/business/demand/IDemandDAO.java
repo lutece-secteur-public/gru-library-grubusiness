@@ -122,8 +122,9 @@ public interface IDemandDAO
      *            the demand id
      * @param strDemandTypeId
      *            the demand type id
+     * @param strCustomerId 
      */
-    void delete( String strDemandId, String strDemandTypeId );
+    void delete( String strDemandId, String strDemandTypeId, String strCustomerId );
 
 
     /**
@@ -155,7 +156,7 @@ public interface IDemandDAO
      * @param strDemandId
      * @return the demand coresponding to given demand id.
      */
-    Demand loadByDemandIdAndTypeId( String strDemandId, String strDemandTypeId );
+    Demand loadByDemandIdAndTypeIdAndCustomerId( String strDemandId, String strDemandTypeId, String strCustomerId);
 
     /**
      * Load demand ids ordered by date notification

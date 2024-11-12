@@ -47,6 +47,7 @@ public class NotificationFilter
     // filter on demand
     private String _strDemandId;
     private String _strDemandTypeId;
+    private String _strCustomerId;
 
     // filter on date
     private long _lStartDate;
@@ -143,6 +144,33 @@ public class NotificationFilter
         this._strDemandTypeId = strDemandTypeId;
     }
 
+    /**
+     * Check if this filter contains a CustomerId
+     *
+     * @return true if the filter contain an id of Customer
+     */
+    public boolean containsCustomerId( )
+    {
+        return ( _strCustomerId != null && !"".equals( _strCustomerId.trim( ) ) );
+    }
+
+    /**
+     * @return the CustomerId
+     */
+    public String getCustomerId( )
+    {
+        return _strCustomerId;
+    }
+
+    /**
+     * @param strCustomerId
+     *            the CustomerId to set
+     */
+    public void setCustomerId( String strCustomerId )
+    {
+        this._strCustomerId = strCustomerId;
+    }
+    
     /**
      * Check if this filter contains a hasCustomerEmailNotification
      *

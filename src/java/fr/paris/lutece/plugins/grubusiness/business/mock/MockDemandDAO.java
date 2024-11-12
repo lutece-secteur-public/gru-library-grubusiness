@@ -60,7 +60,7 @@ public class MockDemandDAO implements IDemandDAO
         Collection<Demand> listResult = new ArrayList<Demand>( );
         for ( Demand demand : _mapMockDemand.values( ) )
         {
-            if ( demand.getCustomer( ) != null && demand.getCustomer( ).getId( ).equals( strCustomerId ) )
+            if ( demand.getCustomer( ) != null && demand.getCustomer( ).getCustomerId( ).equals( strCustomerId ) )
             {
                 listResult.add( demand );
             }
@@ -101,9 +101,9 @@ public class MockDemandDAO implements IDemandDAO
      * {@inheritDoc}
      */
     @Override
-    public Demand loadByDemandIdAndTypeId( String strDemandId, String strDemandTypeId )
+    public Demand loadByDemandIdAndTypeIdAndCustomerId( String strDemandId, String strDemandTypeId, String strCustomerID )
     {
-        return _mapMockDemand.get( strDemandTypeId + "|" + strDemandId );
+        return _mapMockDemand.get( strDemandTypeId + "|" + strDemandId + " | " + strCustomerID );
     }
 
     /**
@@ -130,9 +130,9 @@ public class MockDemandDAO implements IDemandDAO
      * {@inheritDoc}
      */
     @Override
-    public void delete( String strDemandId, String strDemandTypeId )
+    public void delete( String strDemandId, String strDemandTypeId, String strCustomerID )
     {
-        _mapMockDemand.remove( strDemandTypeId + "|" + strDemandId );
+        _mapMockDemand.remove( strDemandTypeId + "|" + strDemandId + " | " + strCustomerID);
     }
 
     /**

@@ -60,7 +60,7 @@ public interface INotificationDAO
      *            the demand type id
      * @return the notifications. An empty list is returned if no notification has been found.
      */
-    List<Notification> loadByDemand( String strDemandId, String strDemandTypeId );
+    List<Notification> loadByDemand( String strDemandId, String strDemandTypeId, String strCustomerId );
 
     /**
      * Get notification by demand ids and notification date
@@ -117,7 +117,7 @@ public interface INotificationDAO
      * @param strDemandTypeId
      *            the demand type id
      */
-    void deleteByDemand( String strDemandId, String strDemandTypeId );
+    void deleteByDemand( String strDemandId, String strDemandTypeId, String strCustomerId );
 
     /**
      * Load the ids of the notification by filter

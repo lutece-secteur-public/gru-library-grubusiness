@@ -66,38 +66,38 @@ public class CustomerServiceTest extends TestCase
         // Customer.lastName
 
         Customer customer1 = new Customer( );
-        customer1.setId( "cust_1" );
+        customer1.setCustomerId( "cust_1" );
         customer1.setFirstname( "first_1" );
         customer1.setLastname( "last_1" );
 
         Customer customer2 = new Customer( );
-        customer2.setId( "cust_2" );
+        customer2.setCustomerId( "cust_2" );
         customer2.setFirstname( "first_2" );
         customer2.setLastname( "last_2" );
 
         Customer customer3 = new Customer( );
-        customer3.setId( "cust_3" );
+        customer3.setCustomerId( "cust_3" );
         customer3.setFirstname( "first_1" );
         customer3.setLastname( "last_1" );
 
         // creation customer1
         _customerDAO.store( customer1 );
-        assertNotNull( serviceTest.findById( customer1.getId( ) ) );
-        assertNull( serviceTest.findById( customer2.getId( ) ) );
+        assertNotNull( serviceTest.findById( customer1.getCustomerId( ) ) );
+        assertNull( serviceTest.findById( customer2.getCustomerId( ) ) );
         assertEquals( serviceTest.findbyName( customer1.getFirstname( ), customer1.getLastname( ) ).size( ), 1 );
         assertEquals( serviceTest.findbyName( customer2.getFirstname( ), customer2.getLastname( ) ).size( ), 0 );
 
         // creation customer2
         _customerDAO.store( customer2 );
-        assertNotNull( serviceTest.findById( customer1.getId( ) ) );
-        assertNotNull( serviceTest.findById( customer2.getId( ) ) );
+        assertNotNull( serviceTest.findById( customer1.getCustomerId( ) ) );
+        assertNotNull( serviceTest.findById( customer2.getCustomerId( ) ) );
         assertEquals( serviceTest.findbyName( customer1.getFirstname( ), customer1.getLastname( ) ).size( ), 1 );
         assertEquals( serviceTest.findbyName( customer2.getFirstname( ), customer2.getLastname( ) ).size( ), 1 );
 
         // creation customer3
         _customerDAO.store( customer3 );
-        assertNotNull( serviceTest.findById( customer1.getId( ) ) );
-        assertNotNull( serviceTest.findById( customer2.getId( ) ) );
+        assertNotNull( serviceTest.findById( customer1.getCustomerId( ) ) );
+        assertNotNull( serviceTest.findById( customer2.getCustomerId( ) ) );
         assertEquals( serviceTest.findbyName( customer1.getFirstname( ), customer1.getLastname( ) ).size( ), 2 );
         assertEquals( serviceTest.findbyName( customer2.getFirstname( ), customer2.getLastname( ) ).size( ), 1 );
     }

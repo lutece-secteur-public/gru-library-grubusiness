@@ -108,7 +108,7 @@ public interface IDemandServiceProvider
      *            the demand type id
      * @return the demand if found, {@code null} otherwise
      */
-    public Demand findByPrimaryKey( String strDemandId, String strDemandTypeId );
+    public Demand findByPrimaryKey( String strDemandId, String strDemandTypeId, String strCustomerId );
 
     /**
      * Creates a demand
@@ -153,7 +153,7 @@ public interface IDemandServiceProvider
      * @param strDemandTypeId
      *            the demand type id
      */
-    public void remove( String strDemandId, String strDemandTypeId );
+    public void remove( String strDemandId, String strDemandTypeId, String strCustomerId );
 
     /**
      * Finds events by date and demand_type_id and status

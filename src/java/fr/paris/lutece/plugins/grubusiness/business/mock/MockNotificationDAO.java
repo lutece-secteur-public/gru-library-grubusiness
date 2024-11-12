@@ -56,7 +56,7 @@ public class MockNotificationDAO implements INotificationDAO
      * {@inheritDoc}
      */
     @Override
-    public List<Notification> loadByDemand( String strDemandId, String strDemandTypeId )
+    public List<Notification> loadByDemand( String strDemandId, String strDemandTypeId, String strCustomerID )
     {
         List<Notification> listResult = new ArrayList<Notification>( );
         for ( Notification notification : _listMockNotification )
@@ -131,7 +131,7 @@ public class MockNotificationDAO implements INotificationDAO
      * {@inheritDoc}
      */
     @Override
-    public void deleteByDemand( String strDemandId, String strDemandTypeId )
+    public void deleteByDemand( String strDemandId, String strDemandTypeId, String strCustomerID )
     {
         int nIndexDelete = -1;
         for ( int nIndex = 0; nIndex < _listMockNotification.size( ); nIndex++ )

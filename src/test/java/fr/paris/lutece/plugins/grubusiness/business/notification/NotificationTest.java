@@ -97,7 +97,7 @@ public class NotificationTest extends TestCase
         demandNotif.setCurrentStep( nCount );
 
         Customer customerNotif = new Customer( );
-        customerNotif.setId( "strCustomerId" );
+        customerNotif.setCustomerId( "strCustomerId" );
         customerNotif.setConnectionId( "strAccountGuid" );
         customerNotif.setEmail( "strEmail" );
         demandNotif.setCustomer( customerNotif );
