@@ -37,9 +37,9 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * IStatusDAO Interface
+ * ITemporaryStatusDAO Interface
  */
-public interface IDemandStatusDAO
+public interface ITemporaryStatusDAO
 {
     /**
      * Insert a new record in the table.
@@ -49,7 +49,7 @@ public interface IDemandStatusDAO
      * @param plugin
      *            the Plugin
      */
-    void insert( DemandStatus status );
+    void insert( TemporaryStatus status );
 
     /**
      * Update the record in the table
@@ -59,7 +59,7 @@ public interface IDemandStatusDAO
      * @param plugin
      *            the Plugin
      */
-    void store( DemandStatus status );
+    void store( TemporaryStatus status );
 
     /**
      * Delete a record from the table
@@ -83,7 +83,7 @@ public interface IDemandStatusDAO
      *            the Plugin
      * @return The instance of the status
      */
-    Optional<DemandStatus> load( int nKey );
+    Optional<TemporaryStatus> load( int nKey );
 
     /**
      * Load the data from the table
@@ -93,7 +93,7 @@ public interface IDemandStatusDAO
      *            the Plugin
      * @return The instance of the status
      */
-    Optional<DemandStatus> loadByStatusId( int nStatusId );
+    Optional<TemporaryStatus> loadByStatusId( int nStatusId );
 
     /**
      * Load the data of all the status objects and returns them as a list
@@ -102,7 +102,7 @@ public interface IDemandStatusDAO
      *            the Plugin
      * @return The list which contains the data of all the status objects
      */
-    List<DemandStatus> selectStatusList( );
+    List<TemporaryStatus> selectStatusList( );
 
     /**
      * Load the id of all the status objects and returns them as a list
@@ -122,7 +122,7 @@ public interface IDemandStatusDAO
      *            liste of ids
      * @return The list which contains the data of all the avant objects
      */
-    List<DemandStatus> selectStatusListByIds( List<Integer> listIds );
+    List<TemporaryStatus> selectStatusListByIds( List<Integer> listIds );
 
     /**
      * Load the data from the table
@@ -132,5 +132,5 @@ public interface IDemandStatusDAO
      *            the Plugin
      * @return The instance of the status
      */
-    Optional<DemandStatus> loadByStatus( String strStatus );
+    Optional<TemporaryStatus> loadByStatus( String strStatus );
 }

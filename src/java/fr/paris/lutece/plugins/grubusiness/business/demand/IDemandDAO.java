@@ -114,6 +114,16 @@ public interface IDemandDAO
      * @return the stored demand
      */
     Demand store( Demand demand );
+    
+    /**
+     * Update demands status id
+     * 
+     * @param nStatusId
+     *            the new status id
+     * @param nTemporaryStatusId
+     *            To find Demands that are linked to notifications that have the temporary status in parameter
+     */
+    void updateDemandsStatusId( int nStatusId, int nTemporaryStatusId );
 
     /**
      * Deletes a demand with the specified id and type id
