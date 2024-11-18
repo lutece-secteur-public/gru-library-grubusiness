@@ -194,4 +194,11 @@ public class MockDemandDAO implements IDemandDAO
         
     }
 
+    @Override
+    public void updateDemandsStatusId( int nStatusId, int nTemporaryStatusId )
+    {
+        // TODO Auto-generated method stub
+        
+    }
+
 }

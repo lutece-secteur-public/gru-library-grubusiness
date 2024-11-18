@@ -79,7 +79,7 @@ public interface IDemandServiceProvider
      * 
      * @param dao
      */
-    public void setStatusDao( IDemandStatusDAO dao );
+    public void setStatusDao( ITemporaryStatusDAO dao );
 
     /**
      * Finds demands for the specified customer id
@@ -144,6 +144,16 @@ public interface IDemandServiceProvider
      * @return the updated demand
      */
     public Demand update( Demand demand );
+    
+    /**
+     * Update status demand 
+     * 
+     * @param nNewStatusId
+     *            the new status id
+     * @param nTemporaryStatusId
+     *            To find Demands that are linked to notifications that have the temporary status in parameter
+     */
+    public void updateDemandsStatusId( int nNewStatusId, int nTemporaryStatusId );
 
     /**
      * Removes a demand with the specified id and type id
@@ -198,7 +208,7 @@ public interface IDemandServiceProvider
      * @param strStatusLabel
      * @return the status
      */
-    public Optional<DemandStatus> getStatusByLabel( String strStatusLabel );
+    public Optional<TemporaryStatus> getStatusByLabel( String strStatusLabel );
     
     /**
      * Deletion of the demand and data related to the demand.

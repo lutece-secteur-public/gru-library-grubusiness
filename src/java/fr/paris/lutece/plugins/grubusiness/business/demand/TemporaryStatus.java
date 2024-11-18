@@ -40,14 +40,14 @@ import fr.paris.lutece.plugins.grubusiness.business.web.rs.EnumGenericStatus;
 import java.io.Serializable;
 
 /**
- * This is the business class for the object Status
+ * This is the business class for the object TemporaryStatus
  */
-public class DemandStatus implements Serializable
+public class TemporaryStatus implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
     // Variables declarations
-    private int _nId;
+    private int _nTemporayStatusId;
 
     @NotEmpty( message = "#i18n{notificationstore.validation.status.Status.notEmpty}" )
     private String _strStatus;
@@ -61,7 +61,7 @@ public class DemandStatus implements Serializable
      */
     public int getId( )
     {
-        return _nId;
+        return _nTemporayStatusId;
     }
 
     /**
@@ -72,7 +72,7 @@ public class DemandStatus implements Serializable
      */
     public void setId( int nId )
     {
-        _nId = nId;
+        _nTemporayStatusId = nId;
     }
 
     /**
