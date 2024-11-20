@@ -78,6 +78,15 @@ public interface IDemandTypeDAO
     Optional<DemandType> load( int nKey );
 
     /**
+     * Load the data from the table by type_id
+     * 
+     * @param sKey
+     *            The type_id of the demandType
+     * @return The instance of the demandType
+     */
+    Optional<DemandType> selectByTypeId( String sKey );
+
+    /**
      * Load the data of all the demandType objects and returns them as a list
      * 
      * @return The list which contains the data of all the demandType objects

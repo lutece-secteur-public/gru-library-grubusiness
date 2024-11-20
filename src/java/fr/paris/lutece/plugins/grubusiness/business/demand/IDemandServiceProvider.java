@@ -39,7 +39,6 @@ import java.util.Optional;
 
 import fr.paris.lutece.plugins.grubusiness.business.notification.INotificationDAO;
 import fr.paris.lutece.plugins.grubusiness.business.notification.INotificationEventDAO;
-import fr.paris.lutece.plugins.grubusiness.business.notification.INotificationListener;
 import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
 import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationEvent;
 
@@ -52,13 +51,6 @@ public interface IDemandServiceProvider
      * @param dao
      */
     public void setDemandDao( IDemandDAO dao );
-
-    /**
-     * init DAO
-     * 
-     * @param dao
-     */
-    public void setDemandTypeDao( IDemandTypeDAO dao );
 
     /**
      * init DAO
@@ -185,12 +177,12 @@ public interface IDemandServiceProvider
     public List<DemandType> getDemandTypesList( );
 
     /**
-     * get demand type
+     * get demand type by type_id
      * 
      * @param id
      * @return the demand type as optional
      */
-    public Optional<DemandType> getDemandType( int id );
+    public Optional<DemandType> getDemandType( String type_id );
 
     /**
      * get demand Ids by customer Id and demand Type
