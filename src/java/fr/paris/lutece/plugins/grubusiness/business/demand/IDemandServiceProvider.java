@@ -195,10 +195,10 @@ public interface IDemandServiceProvider
     public List<Integer> getIdsByCustomerIdAndDemandTypeId( String strCustomerId, String strNotificationType, String strIdDemandType );
 
     /**
-     * get status
-     * 
-     * @param strStatusLabel
-     * @return the status
+     * get status by like '%strStatus%'
+     * @param strStatus
+
+     * @return Only the first status found returned
      */
     public Optional<TemporaryStatus> getStatusByLabel( String strStatusLabel );
     

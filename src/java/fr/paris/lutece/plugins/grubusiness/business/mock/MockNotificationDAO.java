@@ -271,7 +271,7 @@ public class MockNotificationDAO implements INotificationDAO
     }
 
     @Override
-    public List<Notification> loadByDemandIdTypeIdCustomerId( String strDemandId, String strDemandTypeId, String strCustomerId )
+    public List<Notification> loadByDemandIdTypeIdCustomerId( String strDemandId, String strDemandTypeId, String strCustomerId, NotificationFilter filter )
     {
         return null;
     }

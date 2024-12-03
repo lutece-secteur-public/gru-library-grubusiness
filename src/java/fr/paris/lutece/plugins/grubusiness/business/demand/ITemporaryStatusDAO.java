@@ -125,12 +125,11 @@ public interface ITemporaryStatusDAO
     List<TemporaryStatus> selectStatusListByIds( List<Integer> listIds );
 
     /**
-     * Load the data from the table
-     * 
+     * Load the data from the table using a like '%strStatus%'
      * @param strStatus
      * @param plugin
      *            the Plugin
-     * @return The instance of the status
+     * @return Only the first status found returned
      */
     Optional<TemporaryStatus> loadByStatus( String strStatus );
 }

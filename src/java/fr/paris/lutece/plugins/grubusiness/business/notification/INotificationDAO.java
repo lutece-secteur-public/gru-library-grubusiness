@@ -87,9 +87,10 @@ public interface INotificationDAO
      * @param strDemandId
      * @param strDemandTypeId
      * @param strCustomerId
+     * @param filter
      * @return the notifications. An empty list is returned if no notification has been found.
      */
-    List<Notification> loadByDemandIdTypeIdCustomerId( String strDemandId, String strDemandTypeId, String strCustomerId );
+    List<Notification> loadByDemandIdTypeIdCustomerId( String strDemandId, String strDemandTypeId, String strCustomerId, NotificationFilter filter );
 
     /**
      * Find last notification by demand id and demand type id
