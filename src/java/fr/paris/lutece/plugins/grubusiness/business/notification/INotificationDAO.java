@@ -150,4 +150,12 @@ public interface INotificationDAO
      * @param id
      */
     void delete( int id );
+    
+    /**
+     * test if a notification exists for the specified  demand_type_id
+     * 
+     * @param nDemandTypeId
+     * @return true id exists
+     */
+    boolean existsNotificationWithDemandTypeId( int nDemandTypeId );
 }
