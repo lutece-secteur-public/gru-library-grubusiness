@@ -39,6 +39,8 @@ import java.util.List;
 import fr.paris.lutece.plugins.grubusiness.business.notification.INotificationDAO;
 import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
 import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationFilter;
+import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationLink;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -287,4 +289,9 @@ public class MockNotificationDAO implements INotificationDAO
 
 		return true;
 	}
+
+    @Override
+    public void createLink(NotificationLink notificationLink)
+    {
+    }
 }

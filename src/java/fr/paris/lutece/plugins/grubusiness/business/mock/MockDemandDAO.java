@@ -41,6 +41,7 @@ import java.util.Map;
 import fr.paris.lutece.plugins.grubusiness.business.demand.Demand;
 import fr.paris.lutece.plugins.grubusiness.business.demand.IDemandDAO;
 import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationFilter;
+import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationLink;
 
 import java.util.List;
 
@@ -124,6 +125,12 @@ public class MockDemandDAO implements IDemandDAO
     {
         _mapMockDemand.put( demand.getTypeId( ) + "|" + demand.getId( ), demand );
         return demand;
+    }
+
+    @Override
+    public void createLink(NotificationLink notificationLink)
+    {
+
     }
 
     /**

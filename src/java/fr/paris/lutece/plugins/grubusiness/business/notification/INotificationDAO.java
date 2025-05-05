@@ -158,4 +158,11 @@ public interface INotificationDAO
      * @return true id exists
      */
     boolean existsNotificationWithDemandTypeId( int nDemandTypeId );
+
+    /**
+     * update a notification when 2 identities ares merged
+     *
+     * @param notificationLink
+     */
+    void createLink(NotificationLink notificationLink);
 }
