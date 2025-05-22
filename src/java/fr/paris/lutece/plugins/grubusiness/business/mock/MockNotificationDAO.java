@@ -39,7 +39,6 @@ import java.util.List;
 import fr.paris.lutece.plugins.grubusiness.business.notification.INotificationDAO;
 import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
 import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationFilter;
-import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationLink;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -285,13 +284,14 @@ public class MockNotificationDAO implements INotificationDAO
     }
 
 	@Override
-	public boolean existsNotificationWithDemandTypeId(int nDemandTypeId) {
-
+	public boolean existsNotificationWithDemandTypeId(int nDemandTypeId) 
+	{
 		return true;
 	}
 
-    @Override
-    public void createLink(NotificationLink notificationLink)
-    {
-    }
+	@Override
+	public void reassignNotifications(String strOldCustomerId, String strNewCustomerId) 
+	{
+	}
+
 }

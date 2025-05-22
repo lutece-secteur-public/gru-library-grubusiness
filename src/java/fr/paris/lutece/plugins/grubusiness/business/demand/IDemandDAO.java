@@ -34,7 +34,6 @@
 package fr.paris.lutece.plugins.grubusiness.business.demand;
 
 import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationFilter;
-import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationLink;
 
 import java.util.Collection;
 import java.util.List;
@@ -117,13 +116,6 @@ public interface IDemandDAO
     Demand store( Demand demand );
 
     /**
-     * update a demand when 2 identities ares merged
-     *
-     * @param notificationLink
-     */
-    void createLink( NotificationLink notificationLink );
-    
-    /**
      * Update demands status id
      * 
      * @param nStatusId
@@ -198,5 +190,13 @@ public interface IDemandDAO
      * @return The list of demand ids
      */
     List<Integer> loadIdsByStatus( String strCustomerId, List<String> listStatus, String strNotificationType, String strIdDemandType );
+
+	/**
+	 * Reassign demands
+	 * 
+	 * @param strOldCustomerId
+	 * @param strNewCustomerId
+	 */
+	void reassignDemands(String strOldCustomerId, String strNewCustomerId);
 
 }

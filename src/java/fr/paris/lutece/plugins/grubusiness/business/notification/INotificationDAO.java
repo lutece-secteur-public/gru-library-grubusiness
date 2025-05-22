@@ -159,10 +159,12 @@ public interface INotificationDAO
      */
     boolean existsNotificationWithDemandTypeId( int nDemandTypeId );
 
-    /**
-     * update a notification when 2 identities ares merged
-     *
-     * @param notificationLink
-     */
-    void createLink(NotificationLink notificationLink);
+	/**
+	 * Reassign notifications
+	 * 
+	 * @param strOldCustomerId
+	 * @param strNewCustomerId
+	 */
+	void reassignNotifications(String strOldCustomerId, String strNewCustomerId);
+
 }

@@ -41,7 +41,6 @@ import java.util.Map;
 import fr.paris.lutece.plugins.grubusiness.business.demand.Demand;
 import fr.paris.lutece.plugins.grubusiness.business.demand.IDemandDAO;
 import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationFilter;
-import fr.paris.lutece.plugins.grubusiness.business.notification.NotificationLink;
 
 import java.util.List;
 
@@ -91,9 +90,7 @@ public class MockDemandDAO implements IDemandDAO
      */
     @Override
     public Demand load( int nId )
-    {
-       //TODO:
-        
+    {        
         return null;
     }
 
@@ -125,12 +122,6 @@ public class MockDemandDAO implements IDemandDAO
     {
         _mapMockDemand.put( demand.getTypeId( ) + "|" + demand.getId( ), demand );
         return demand;
-    }
-
-    @Override
-    public void createLink(NotificationLink notificationLink)
-    {
-
     }
 
     /**
@@ -169,8 +160,7 @@ public class MockDemandDAO implements IDemandDAO
     @Override
     public List<Integer> loadIdsByFilter( NotificationFilter filter )
     {
-        // TODO Auto-generated method stub
-        return null;
+    	return new ArrayList<Integer>();
     }
 
     @Override
@@ -185,27 +175,27 @@ public class MockDemandDAO implements IDemandDAO
     @Override
     public List<Integer> loadIdsByCustomerIdAndIdDemandType( String strCustomerId, String strNotificationType, String strIdDemandType )
     {
-        return null;
+    	return new ArrayList<Integer>();
     }
 
     @Override
     public List<Integer> loadIdsByStatus( String strCustomerId, List<String> listStatus, String strNotificationType, String strIdDemandType )
     {
-        return null;
+        return new ArrayList<Integer>();
     }
 
     @Override
     public void deleteByUid( int nUid )
     {
-        // TODO Auto-generated method stub
-        
     }
 
     @Override
     public void updateDemandsStatusId( int nStatusId, int nTemporaryStatusId )
     {
-        // TODO Auto-generated method stub
-        
     }
+
+	@Override
+	public void reassignDemands(String strOldCustomerId, String strNewCustomerId) {
+	}
 
 }

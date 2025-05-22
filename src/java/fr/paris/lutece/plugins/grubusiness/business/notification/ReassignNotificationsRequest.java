@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
-@JsonRootName( value = "notification_link" )
+@JsonRootName( value = "reassign_notifications" )
 @JsonPropertyOrder( {
         "old_customer_id", "new_customer_id"
 } )
-public class NotificationLink
+public class ReassignNotificationsRequest
 {
     private String oldCustomerId;
     private String newCustomerId;
