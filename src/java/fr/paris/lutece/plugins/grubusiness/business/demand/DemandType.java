@@ -33,6 +33,9 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.demand;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DemandType
@@ -55,6 +58,8 @@ public class DemandType
     @JsonProperty( "category" )
     private String _strCategory;
 
+    @JsonProperty( "meta_data" )
+    private Map<String,String> _mapMetaData;
     
     /**
      * @return the _nId
@@ -185,4 +190,39 @@ public class DemandType
         _strCategory = strCategory;
     }
 
+    /**
+     * get meta data
+     * 
+     * @return the data
+     */
+    public Map<String,String> getMetaData( ) 
+    {
+	return _mapMetaData;
+    }
+
+    /**
+     * set meta data
+     * 
+     * @param _mapMetaData
+     */
+    public void setMetaData( Map<String,String> _mapMetaData ) 
+    {
+	this._mapMetaData = _mapMetaData;
+    }
+	
+    /**
+     * add a meta data
+     * 
+     * @param key
+     * @param value
+     */
+    public void addMetaData( String key, String value )
+    {
+	if ( _mapMetaData == null )
+	{
+	    _mapMetaData = new HashMap<>();
+	}
+		
+	_mapMetaData.put(key, value);
+    }
 }
