@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2024, City of Paris
+ * Copyright (c) 2002-2025, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,25 +33,23 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.notification;
 
-import com.fasterxml.jackson.core.JsonParseException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.io.IOException;
+
+import org.junit.jupiter.api.Test;
+
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 import fr.paris.lutece.plugins.grubusiness.business.customer.Customer;
 import fr.paris.lutece.plugins.grubusiness.business.demand.Demand;
 
-import junit.framework.TestCase;
-
-import org.junit.Test;
-
-import java.io.IOException;
-
 /**
  * Test for json parsing, no controls are done !
  */
-public class NotificationTest extends TestCase
+public class NotificationTest
 {
     ObjectMapper _mapper;
 
@@ -60,7 +58,6 @@ public class NotificationTest extends TestCase
      */
     public NotificationTest( )
     {
-        super( );
         _mapper = new ObjectMapper( );
         _mapper.enable( DeserializationFeature.UNWRAP_ROOT_VALUE );
         _mapper.disable( DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES );
@@ -69,9 +66,11 @@ public class NotificationTest extends TestCase
     }
 
     @Test
-    public void testUnserialize( ) throws JsonParseException, JsonMappingException, IOException
+    public void testUnserialize( ) throws IOException
     {
         Notification notification = _mapper.readValue( getClass( ).getResourceAsStream( "/notification.json" ), Notification.class );
+        assertEquals( "809", notification.getDemand( ).getId( ) );
+
         String jsonNotif = _mapper.writeValueAsString( notification );
 
         // Uncomment for console checking
@@ -79,16 +78,17 @@ public class NotificationTest extends TestCase
     }
 
     @Test
-    public void testSerialize( ) throws JsonParseException, JsonMappingException, IOException
+    public void testSerialize( ) throws IOException
     {
         Notification notification = new Notification( );
+        String strDemandId = "strDemandId";
         int nCount = 0;
         long lCount = 0L;
 
         notification.setDate( lCount++ );
 
         Demand demandNotif = new Demand( );
-        demandNotif.setId( "strDemandId" );
+        demandNotif.setId( strDemandId );
         demandNotif.setTypeId( "strTypeId" );
         demandNotif.setSubtypeId( "strSubtypeId" );
         demandNotif.setReference( "strDemandReference" );
@@ -160,5 +160,6 @@ public class NotificationTest extends TestCase
         // Uncomment for console checking
         // System.out.println( jsonNotif );
         Notification notificationFromString = _mapper.readValue( jsonNotif, Notification.class );
+        assertEquals( strDemandId, notificationFromString.getDemand( ).getId( ) );
     }
 }

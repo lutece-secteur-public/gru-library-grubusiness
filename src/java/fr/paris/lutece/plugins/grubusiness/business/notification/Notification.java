@@ -39,7 +39,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import fr.paris.lutece.plugins.grubusiness.business.demand.Demand;
 
@@ -180,7 +179,7 @@ public class Notification
      * @return the user sms
      */
     @JsonProperty( "sms" )
-    @JsonSerialize( include = JsonSerialize.Inclusion.NON_NULL )
+    @JsonInclude( Include.NON_NULL )
     public SMSNotification getSmsNotification( )
     {
         return _smsNotification;
