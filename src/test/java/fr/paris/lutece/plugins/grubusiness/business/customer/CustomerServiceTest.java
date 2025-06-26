@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2024, City of Paris
+ * Copyright (c) 2002-2025, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,17 +33,18 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.customer;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import fr.paris.lutece.plugins.grubusiness.business.customer.Customer;
 import fr.paris.lutece.plugins.grubusiness.business.mock.MockCustomerDAO;
 
 /**
  *
  */
-public class CustomerServiceTest extends TestCase
+public class CustomerServiceTest
 {
     private MockCustomerDAO _customerDAO;
 
@@ -52,7 +53,6 @@ public class CustomerServiceTest extends TestCase
      */
     public CustomerServiceTest( )
     {
-        super( );
         _customerDAO = new MockCustomerDAO( );
     }
 

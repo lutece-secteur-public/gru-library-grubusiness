@@ -33,7 +33,7 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.demand;
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 import fr.paris.lutece.plugins.grubusiness.business.web.rs.EnumGenericStatus;
 
