@@ -42,7 +42,9 @@ import fr.paris.lutece.plugins.grubusiness.business.customer.Customer;
 import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Demand Class
@@ -70,6 +72,7 @@ public class Demand
     private boolean _bShowDetails;
     private Customer _customer;
     private long _lModifyDate;
+    private Map<String,String> _mapMetaData;
 
     /**
      * Get the primary key id
@@ -437,5 +440,43 @@ public class Demand
     public void setModifyDate( long lModifyDate )
     {
         this._lModifyDate = lModifyDate;
+    }
+
+    /**
+     * get meta data
+     * 
+     * @return the data
+     */
+    @JsonProperty( "meta_data" )
+    public Map<String,String> getMetaData( ) 
+    {
+	return _mapMetaData;
+    }
+
+    /**
+     * set meta data
+     * 
+     * @param _mapMetaData
+     */
+    @JsonProperty( "meta_data" )
+    public void setMetaData( Map<String,String> _mapMetaData ) 
+    {
+	this._mapMetaData = _mapMetaData;
+    }
+	
+    /**
+     * add a meta data
+     * 
+     * @param key
+     * @param value
+     */
+    public void addMetaData( String key, String value )
+    {
+	if ( _mapMetaData == null )
+	{
+	    _mapMetaData = new HashMap<>();
+	}
+		
+	_mapMetaData.put(key, value);
     }
 }
