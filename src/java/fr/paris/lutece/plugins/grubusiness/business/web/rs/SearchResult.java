@@ -46,6 +46,7 @@ import fr.paris.lutece.plugins.grubusiness.business.web.rs.responseStatus.Respon
 public abstract class SearchResult 
 {
     public static final String ERROR_FIELD_MANDATORY = "ERROR_FIELD_MANDATORY";
+    public static final String ERROR_FIELD_WRONG_VALUE = "ERROR_FIELD_WRONG_VALUE";
     
     protected ResponseStatus _status;
     

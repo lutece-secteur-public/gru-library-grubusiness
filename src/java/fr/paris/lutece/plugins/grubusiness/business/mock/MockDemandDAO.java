@@ -179,6 +179,12 @@ public class MockDemandDAO implements IDemandDAO
     }
 
     @Override
+    public List<Integer> loadIdsByCustomerIdAndIdDemandType(final String strCustomerId, final String strNotificationType, final String strIdDemandType,
+                                                            final String strDirectionDateOrderBy) {
+        return new ArrayList<Integer>();
+    }
+
+    @Override
     public List<Integer> loadIdsByStatus( String strCustomerId, List<String> listStatus, String strNotificationType, String strIdDemandType )
     {
         return new ArrayList<Integer>();
