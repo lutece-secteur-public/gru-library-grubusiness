@@ -170,7 +170,7 @@ public interface IDemandDAO
 
     /**
      * Load demand ids ordered by date notification
-     * 
+     *
      * @param strCustomerId
      * @param strNotificationType
      * @param strIdDemandType
@@ -178,6 +178,19 @@ public interface IDemandDAO
      * @return The list of demand ids
      */
     List<Integer> loadIdsByCustomerIdAndIdDemandType( String strCustomerId, String strNotificationType, String strIdDemandType );
+
+    /**
+     * Load demand ids ordered by date notification
+     *
+     * @param strCustomerId
+     * @param strNotificationType
+     * @param strIdDemandType
+     *            (Optional can be null)
+     * @param strDirectionDateOrderBy
+     *            (Optional can be null)
+     * @return The list of demand ids
+     */
+    List<Integer> loadIdsByCustomerIdAndIdDemandType( String strCustomerId, String strNotificationType, String strIdDemandType, String strDirectionDateOrderBy );
 
     /**
      * Load demand ids by status
