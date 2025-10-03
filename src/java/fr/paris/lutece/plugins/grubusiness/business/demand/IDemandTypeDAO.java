@@ -34,6 +34,7 @@
 package fr.paris.lutece.plugins.grubusiness.business.demand;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -108,4 +109,15 @@ public interface IDemandTypeDAO
      * @return The list which contains the data of all the avant objects
      */
     List<DemandType> selectDemandTypesListByIds( List<Integer> listIds );
+    
+    /**
+     * searchItemsIdList
+     * 
+     * @param mapFilterCriteria
+     * @param strColumnToOrder
+     * @param strSortMode
+     * @return
+     */
+    List<Integer> searchItemsIdList(Map<String, String> mapFilterCriteria, String strColumnToOrder,
+			String strSortMode) ;
 }

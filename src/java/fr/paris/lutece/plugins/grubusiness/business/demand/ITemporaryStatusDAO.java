@@ -34,6 +34,7 @@
 package fr.paris.lutece.plugins.grubusiness.business.demand;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -132,4 +133,15 @@ public interface ITemporaryStatusDAO
      * @return Only the first status found returned
      */
     Optional<TemporaryStatus> loadByStatus( String strStatus );
+    
+    /**
+     * 
+     * @param mapFilterCriteria
+     * @param strColumnToOrder
+     * @param strSortMode
+     * @return
+     */
+    List<Integer> searchItemsIdList(  Map<String,String> mapFilterCriteria, 
+			String strColumnToOrder, String strSortMode );
+  
 }
