@@ -36,6 +36,8 @@ package fr.paris.lutece.plugins.grubusiness.business.notification;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -50,9 +52,10 @@ public class NotifyGruResponse
     public static final String STATUS_RECEIVED = "received";
     public static final String STATUS_ERROR = "error";
     public static final String STATUS_WARNING = "warning";
+    public static final String STATUS_NOT_FOUND = "not found";
     private String _strStatus;
-    private List<Event> _warnings;
-    private List<Event> _errors;
+    private List<Event> _warnings = new ArrayList<> ( );
+    private List<Event> _errors  = new ArrayList<> ( );
 
     /**
      * @return the _strStatus
