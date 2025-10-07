@@ -33,13 +33,17 @@
  */
 package fr.paris.lutece.plugins.grubusiness.service.notification;
 
+import java.util.List;
+
+import fr.paris.lutece.plugins.grubusiness.business.notification.EnumNotificationType;
 import fr.paris.lutece.plugins.grubusiness.business.notification.Notification;
+import fr.paris.lutece.plugins.grubusiness.business.notification.NotifyGruResponse;
 
 /**
  * This interface provide notification methods to implement
  *
  */
-public interface INotifyerServiceProvider
+public interface INotifierServiceProvider
 {
 
     /**
@@ -48,12 +52,21 @@ public interface INotifyerServiceProvider
      * @param notification
      * @throws fr.paris.lutece.plugins.grubusiness.service.notification.NotificationException
      */
-    public void process( Notification notification ) throws NotificationException;
+    public NotifyGruResponse process( Notification notification ) throws NotificationException;
 
     /**
      * get provider name
      * 
      * @return the name of the provider
      */
-    public String getName( );
+    public default String getName( ) 
+    {
+	 return this.getClass( ).getName( );
+    };
+    
+    /**
+     * return the list of notification types (customer_email, sms, mydashboard ...) managed by the notifier
+     * @return
+     */
+    public List<EnumNotificationType> getNotificationTypes( );
 }
