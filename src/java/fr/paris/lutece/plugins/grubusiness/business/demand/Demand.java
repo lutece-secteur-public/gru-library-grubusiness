@@ -317,7 +317,7 @@ public class Demand
      * 
      * @return the creation date
      */
-    @JsonIgnore
+    @JsonProperty( "creation_date" )
     public long getCreationDate( )
     {
         return _lCreationDate;
