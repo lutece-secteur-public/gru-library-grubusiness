@@ -35,11 +35,15 @@ package fr.paris.lutece.plugins.grubusiness.business.demand;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DemandType
 {
+    public static final String DEMANDTYPE_METADATA_PUSH = "PUSH";
+    public static final String DEMANDTYPE_METADATA_DEFAULT_SUBJECT = "DEFAULT_SUBJECT";
+    public static final String DEMANDTYPE_METADATA_PUSH_ENABLE = "enable";
     @JsonProperty( "id" )
     private int _nId;
     
@@ -224,5 +228,16 @@ public class DemandType
 	}
 		
 	_mapMetaData.put(key, value);
+    }
+
+    public boolean isPushEnable() {
+        return Objects.nonNull(_mapMetaData) && DEMANDTYPE_METADATA_PUSH_ENABLE.equals(_mapMetaData.get(DEMANDTYPE_METADATA_PUSH));
+    }
+
+    public String getDefaultSubject() {
+        if(Objects.nonNull(_mapMetaData)) {
+            return _mapMetaData.get(DEMANDTYPE_METADATA_DEFAULT_SUBJECT);
+        }
+        return null;
     }
 }
