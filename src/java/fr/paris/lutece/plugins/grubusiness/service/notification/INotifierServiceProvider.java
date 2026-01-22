@@ -69,4 +69,14 @@ public interface INotifierServiceProvider
      * @return
      */
     public List<EnumNotificationType> getNotificationTypes( );
+
+    /**
+     * Check if the provider is enabled
+     * 
+     * @return true if enabled, false otherwise
+     */
+    default boolean isEnabled( )
+    {
+        return false;	
+    }
 }
