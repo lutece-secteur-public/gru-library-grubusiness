@@ -37,6 +37,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DemandType
@@ -199,6 +200,7 @@ public class DemandType
      * 
      * @return the data
      */
+    @JsonProperty("meta_data")
     public Map<String,String> getMetaData( ) 
     {
 	return _mapMetaData;
@@ -230,10 +232,12 @@ public class DemandType
 	_mapMetaData.put(key, value);
     }
 
+    @JsonIgnore
     public boolean isPushEnable() {
         return Objects.nonNull(_mapMetaData) && DEMANDTYPE_METADATA_PUSH_ENABLE.equals(_mapMetaData.get(DEMANDTYPE_METADATA_PUSH));
     }
 
+    @JsonIgnore
     public String getDefaultSubject() {
         if(Objects.nonNull(_mapMetaData)) {
             return _mapMetaData.get(DEMANDTYPE_METADATA_DEFAULT_SUBJECT);
