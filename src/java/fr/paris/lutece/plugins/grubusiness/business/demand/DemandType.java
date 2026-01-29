@@ -35,11 +35,17 @@ package fr.paris.lutece.plugins.grubusiness.business.demand;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DemandType
 {
+    public static final String DEMANDTYPE_METADATA_PUSH = "PUSH";
+    public static final String DEMANDTYPE_METADATA_DEFAULT_SUBJECT = "DEFAULT_SUBJECT";
+    public static final String DEMANDTYPE_METADATA_PUSH_DISABLE = "disable";
+
     @JsonProperty( "id" )
     private int _nId;
     
@@ -195,9 +201,10 @@ public class DemandType
      * 
      * @return the data
      */
-    public Map<String,String> getMetaData( ) 
+    @JsonProperty("meta_data")
+    public Map<String,String> getMetaData( )
     {
-	return _mapMetaData;
+        return _mapMetaData;
     }
 
     /**
@@ -207,7 +214,7 @@ public class DemandType
      */
     public void setMetaData( Map<String,String> _mapMetaData ) 
     {
-	this._mapMetaData = _mapMetaData;
+	    this._mapMetaData = _mapMetaData;
     }
 	
     /**
@@ -218,11 +225,24 @@ public class DemandType
      */
     public void addMetaData( String key, String value )
     {
-	if ( _mapMetaData == null )
-	{
-	    _mapMetaData = new HashMap<>();
-	}
-		
-	_mapMetaData.put(key, value);
+        if ( _mapMetaData == null )
+        {
+            _mapMetaData = new HashMap<>();
+        }
+
+        _mapMetaData.put(key, value);
+    }
+
+    @JsonIgnore
+    public boolean isPushDisabled() {
+        return Objects.nonNull(_mapMetaData) && DEMANDTYPE_METADATA_PUSH_DISABLE.equals(_mapMetaData.get(DEMANDTYPE_METADATA_PUSH));
+    }
+
+    @JsonIgnore
+    public String getDefaultSubject() {
+        if(Objects.nonNull(_mapMetaData)) {
+            return _mapMetaData.get(DEMANDTYPE_METADATA_DEFAULT_SUBJECT);
+        }
+        return null;
     }
 }
