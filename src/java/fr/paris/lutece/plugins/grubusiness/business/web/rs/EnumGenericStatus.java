@@ -33,6 +33,9 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.web.rs;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum EnumGenericStatus
 {
     CLOSED( 15, "grubusiness.enum.generic_status.label.closed", true ),
@@ -126,4 +129,19 @@ public enum EnumGenericStatus
         return null;
     }
 
+    /**
+     * get GenericStatus enumeration as Map
+     *  
+     * @return the map
+     */
+    public static Map<String,String> getGenericStatusAsMap( )
+    {
+	Map<String, String> map = new HashMap<String, String>( );
+	
+	for ( EnumGenericStatus status : EnumGenericStatus.values( ) )
+	{
+	    map.put( String.valueOf( status.getStatusId( ) ), status.getLabel( ) );
+	}
+	return map;
+    }
 }

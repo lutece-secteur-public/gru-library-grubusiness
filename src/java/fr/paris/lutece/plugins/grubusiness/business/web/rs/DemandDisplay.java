@@ -33,6 +33,8 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.web.rs;
 
+import java.sql.Timestamp;
+
 import fr.paris.lutece.plugins.grubusiness.business.demand.Demand;
 
 /**
@@ -44,6 +46,8 @@ public class DemandDisplay
 {
     private Demand _demand;
     private String _strStatus;
+    private Timestamp _regulatoryDateForIdentityRetention;
+    private String _appCode;
 
     /**
      * @return the _demand
@@ -79,4 +83,41 @@ public class DemandDisplay
         this._strStatus = strStatus;
     }
 
+    /**
+     * get RegulatoryDateForIdentityRetention 
+     * @return the timestamp
+     */
+    public Timestamp getRegulatoryDateForIdentityRetention( )
+    {
+        return _regulatoryDateForIdentityRetention;
+    }
+
+    /**
+     * set RegulatoryDateForIdentityRetention
+     * @param regulatoryDateForIdentityRetention
+     */
+    public void setRegulatoryDateForIdentityRetention( Timestamp regulatoryDateForIdentityRetention )
+    {
+        this._regulatoryDateForIdentityRetention = regulatoryDateForIdentityRetention;
+    }
+
+    /**
+     * get app code
+     * @return the app code
+     */
+    public String getAppCode( )
+    {
+        return _appCode;
+    }
+
+    /**
+     * set app code
+     * @param appCode
+     */
+    public void setAppCode( String appCode )
+    {
+        this._appCode = appCode;
+    }
+
+    
 }
