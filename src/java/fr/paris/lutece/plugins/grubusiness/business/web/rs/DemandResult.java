@@ -33,6 +33,7 @@
  */
 package fr.paris.lutece.plugins.grubusiness.business.web.rs;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,7 +43,7 @@ import java.util.List;
  */
 public class DemandResult extends SearchResult
 {
-    private List<DemandDisplay> _listDemandDisplay;
+    private List<DemandDisplay> _listDemandDisplay = new ArrayList<>( );
 
     /**
      * @return the _listDemandDisplay
