@@ -1,78 +1,258 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document>
     <properties>
-        <title>Librairie Grubusiness</title>
+        <title>Plugin gru-library-grubusiness</title>
     </properties>
+    <head>
+        <meta name="keywords" content="gru, customer, demand, notification, crm, citizen, email, sms, dashboard, indexing, encryption, lutece"/>
+    </head>
     <body>
-        <section name="Librairie Grubusiness">
+        <section name="Plugin gru-library-grubusiness">
+
             <subsection name="Introduction">
-                <p>Cette librairie met&amp;nbsp;&amp;agrave; disposition un mod&amp;egrave;le et des services pour les objets de la GRU.</p>
+                <p>
+                    The <strong>gru-library-grubusiness</strong> library is a shared business layer for the GRU (Gestion de la Relation Usager — Citizen Relationship Management) ecosystem
+                    in the Lutece framework. It does not provide a standalone plugin with its own back-office, but rather a set of business model classes,
+                    service interfaces, DAO interfaces, and utility classes that other GRU plugins depend upon.
+                </p>
+                <p>
+                    The library is structured around three main domains:
+                </p>
+                <p>
+                    <strong>Customer management:</strong> The <code>Customer</code> class models a citizen with all personal attributes (identity, contact details, account information).
+                    The <code>CustomerService</code> class exposes search operations (by filter, by name, by identifier) delegated to a pluggable <code>ICustomerDAO</code>.
+                    An <code>ICustomerEncryptionService</code> interface allows transparent encryption and decryption of customer data in the context of a given demand or an arbitrary code.
+                </p>
+                <p>
+                    <strong>Demand management:</strong> A <code>Demand</code> models a citizen request with typed status (<code>EnumGenericStatus</code>: ONGOING, TOPAY, TOCOMPLETE, PAID, CLOSED, CANCELED, UNDEFINED),
+                    a type identifier, a sub-type identifier, a reference, step counters, creation/modification/closure dates, a linked customer, actions and free-form metadata.
+                    <code>DemandType</code> and <code>DemandCategory</code> allow classification of demands. A <code>TemporaryStatus</code> entity maps arbitrary status labels to a generic status.
+                    The <code>IDemandServiceProvider</code> interface defines all lifecycle operations (create, update, delete, search by customer, by reference, by filter) and aggregates
+                    access to notification, notification-event and status DAOs.
+                    Listeners (<code>IDemandListener</code>, <code>INotificationListener</code>) allow other components to react to demand and notification lifecycle events.
+                </p>
+                <p>
+                    <strong>Notification management:</strong> A <code>Notification</code> aggregates all the different notification channels associated with a demand:
+                    email to the customer (<code>EmailNotification</code>), SMS (<code>SMSNotification</code> and its billing-account variant <code>BillingAccountBasedSMSNotification</code>),
+                    back-office agent message (<code>BackofficeNotification</code>), citizen dashboard notification (<code>MyDashboardNotification</code>),
+                    and broadcast emails (<code>BroadcastNotification</code>, supporting recipients, CC and BCC).
+                    <code>NotificationEvent</code> and <code>Event</code> allow logging of delivery events (success, failure, redelivery).
+                    A <code>NotificationFilter</code> allows fine-grained querying of notifications by demand, customer, type and date range.
+                    <code>ReassignNotificationsRequest</code> supports the reassignment of all notifications from one customer to another.
+                </p>
+                <p>
+                    The library also exposes a generic <code>IIndexingService</code> interface for indexing any business object, a REST response model
+                    (<code>SearchResult</code>, <code>DemandResult</code>, <code>NotificationResult</code>, <code>ResponseStatus</code>, <code>ResponseStatusFactory</code>)
+                    used by REST APIs built on top of this library, and mock implementations of all DAOs for unit testing purposes.
+                </p>
             </subsection>
-            <subsection name="Mod&amp;egrave;le, interface et services">
-                <p>
-                La librairie met&amp;nbsp;&amp;agrave; disposition des objets globaux&amp;nbsp;&amp;agrave; la GRU :
-                <ul>
-                    <li>Notification, une notification du workflow GRU</li>
-                    <li>Demand, des informations sur le ticket GRU</li>
-                    <li>Customer, des informations sur l'usager</li>
-                </ul>
-                </p>
-                <p>
-                Pour manipuler ces objets, un ensemble d'interface et de service sont pr&amp;eacute;sents :
-                <ul>
-                    <li>IDemandDAO, une interface de DAO pour les Demand</li>
-                    <li>IDemandListener, une interface qui est notifi&amp;eacute;&amp;nbsp;&amp;agrave; chaque op&amp;eacute;ration sur Demand via le DemandService</li>
-                    <li>INotificationDAO, une interface de DAO pour les Notification</li>
-                    <li>INotificationListener, une interface qui est notifi&amp;eacute;&amp;nbsp;&amp;agrave; chaque op&amp;eacute;ration sur Notification via le DemandService</li>
-                    <li>DemandService, un service permettant de g&amp;eacute;rer les Demand et les Notification</li>
-                    <li>ICustomerDAO, une interface de DAO pour les Customer</li>
-                    <li>CustomerService, un service permettant de g&amp;eacute;rer les Customer</li>
-                    <li>IIndexingService, une interface pour les indexations</li>
-                </ul> 
-                </p>
-                <p>
-                Attention cette librairie n'a pas d'impl&amp;eacute;mentation utilisable pour ces interfaces.
-                </p>
-            </subsection>
+
             <subsection name="Configuration">
                 <p>
-                La libraire a besoin d'avoir ces DAO et service de correctement configur&amp;eacute; via les contexts Spring.
+                    This library provides only interfaces; all concrete implementations are provided by dependent plugins (e.g. plugin-notificationstore, plugin-identitystore, etc.).
+                    The following beans must be injected by Spring configuration in the consuming plugin:
                 </p>
                 <p>
-                    Le service DemandService met&amp;nbsp;&amp;agrave; disposition deux constructeurs.
-                    Le premier n'a besoin de recevoir que les impl&amp;eacute;mentations des IDemandDAO et INotificationDAO.
-                    Le second a besoin des DAO ainsi que la liste des impl&amp;eacute;mentations des IDemandListener et INotificationListener.
+                    <strong>Beans to inject via Spring (ICustomerDAO):</strong>
+                    An implementation of <code>fr.paris.lutece.plugins.grubusiness.business.customer.ICustomerDAO</code> must be declared as a Spring bean and injected into
+                    <code>CustomerService</code>. This DAO is responsible for loading customers by filter, by name, or by identifier.
+                    A mock implementation (<code>MockCustomerDAO</code>) is available for testing.
                 </p>
                 <p>
-                    Le service CustomerService poss&amp;egrave;de un unique constructeur n&amp;eacute;cessitant l'impl&amp;eacute;mentation d'une ICustomerDAO.
+                    <strong>Beans to inject via Spring (IDemandServiceProvider):</strong>
+                    An implementation of <code>fr.paris.lutece.plugins.grubusiness.business.demand.IDemandServiceProvider</code> must be provided.
+                    This provider aggregates four DAO interfaces that must also be injected:
+                </p>
+                <p>
+                    — <code>fr.paris.lutece.plugins.grubusiness.business.demand.IDemandDAO</code>: persistence of demands (CRUD, filtering, reassignment).
+                </p>
+                <p>
+                    — <code>fr.paris.lutece.plugins.grubusiness.business.demand.IDemandTypeDAO</code>: persistence of demand types, with support for metadata (PUSH configuration, default subject).
+                </p>
+                <p>
+                    — <code>fr.paris.lutece.plugins.grubusiness.business.demand.IDemandCategoryDAO</code>: persistence of demand categories.
+                </p>
+                <p>
+                    — <code>fr.paris.lutece.plugins.grubusiness.business.demand.ITemporaryStatusDAO</code>: persistence of temporary status entries and their mapping to the generic status enumeration.
+                </p>
+                <p>
+                    <strong>Beans to inject via Spring (Notification DAOs):</strong>
+                </p>
+                <p>
+                    — <code>fr.paris.lutece.plugins.grubusiness.business.notification.INotificationDAO</code>: persistence of notifications with support for filtering, reassignment and existence checks.
+                </p>
+                <p>
+                    — <code>fr.paris.lutece.plugins.grubusiness.business.notification.INotificationEventDAO</code>: persistence of notification delivery events with date-based purge and customer-based deletion.
+                </p>
+                <p>
+                    <strong>Optional beans:</strong>
+                </p>
+                <p>
+                    — <code>fr.paris.lutece.plugins.grubusiness.service.encryption.ICustomerEncryptionService</code>: if customer data encryption is required, an implementation of this interface
+                    should be declared as a Spring bean. It provides <code>encrypt</code> and <code>decrypt</code> methods operating on a <code>Customer</code> in the context of a demand or an arbitrary code string.
+                </p>
+                <p>
+                    — <code>fr.paris.lutece.plugins.grubusiness.service.notification.INotifierServiceProvider</code>: implementations of this interface handle the actual dispatch of notifications
+                    to external channels (email gateway, SMS gateway, etc.). Multiple notifier providers can be registered, each declaring the notification types they manage via <code>getNotificationTypes()</code>.
+                </p>
+                <p>
+                    — <code>fr.paris.lutece.plugins.grubusiness.business.indexing.IIndexingService</code>: if search indexing of demands or notifications is needed, an implementation of this generic interface
+                    must be provided and wired via Spring.
+                </p>
+                <p>
+                    — Listener beans implementing <code>IDemandListener</code> and/or <code>INotificationListener</code> can be registered via Spring to react to lifecycle events on demands and notifications.
                 </p>
             </subsection>
-            <subsection name="Exemples de configuration spring">
+
+            <subsection name="Usage">
                 <p>
-                    <b>Configuration utilisant les objets d&amp;eacute;finis dans le plugin plugin-notificationstore</b>
-                    <pre>
-    &lt;bean id="notificationstore.demandDAO"  class="fr.paris.lutece.plugins.notificationstore.business.DemandDAO" /&gt;  
-    &lt;bean id="notificationstore.notificationDAO"  class="fr.paris.lutece.plugins.notificationstore.business.NotificationDAO" /&gt;
-    &lt;bean id="notificationstore.demandListener" class="fr.paris.lutece.plugins.notificationstore.business.listener.LogDemandListener" /&gt;
-    &lt;bean id="notificationstore.notificationListener" class="fr.paris.lutece.plugins.notificationstore.business.listener.LogNotificationListener" /&gt;
-    &lt;bean id="notificationstore.storageService" class="fr.paris.lutece.plugins.grubusiness.business.demand.DemandService"&gt;
-      &lt;constructor-arg ref="notificationstore.demandDAO" /&gt;
-      &lt;constructor-arg ref="notificationstore.notificationDAO" /&gt;
-      &lt;constructor-arg&gt;
-        &lt;list&gt;
-          &lt;ref bean="notificationstore.demandListener" /&gt;
-        &lt;/list&gt;
-      &lt;/constructor-arg&gt;
-      &lt;constructor-arg&gt;
-        &lt;list&gt;
-          &lt;ref bean="notificationstore.notificationListener" /&gt;
-        &lt;/list&gt;
-      &lt;/constructor-arg&gt;
-    &lt;/bean&gt;
-                    </pre>
+                    <strong>Service classes</strong>
+                </p>
+                <p>
+                    <code>fr.paris.lutece.plugins.grubusiness.business.customer.CustomerService</code> — Customer search service.
+                    This service delegates all persistence to the injected <code>ICustomerDAO</code> and exposes the following public methods:
+                </p>
+                <p>
+                    — <code>List&lt;Customer&gt; findbyFilter(Map&lt;String, String&gt; mapFilter)</code>: returns all customers matching the given attribute-value filter map.
+                </p>
+                <p>
+                    — <code>List&lt;Customer&gt; findbyName(String strFirstName, String strLastName)</code>: returns all customers matching the given first and last name.
+                </p>
+                <p>
+                    — <code>Customer findById(String strCustomerId)</code>: returns the customer with the given identifier, or <code>null</code> if not found.
+                </p>
+                <p>
+                    <code>fr.paris.lutece.plugins.grubusiness.business.demand.IDemandServiceProvider</code> — Core demand and notification lifecycle interface.
+                    Implementations of this interface (provided by dependent plugins) expose the following public contract:
+                </p>
+                <p>
+                    — <code>Collection&lt;Demand&gt; findByCustomerId(String strCustomerId)</code>: finds all demands for a given citizen.
+                </p>
+                <p>
+                    — <code>Collection&lt;Demand&gt; findByReference(String strReference)</code>: finds all demands matching a reference.
+                </p>
+                <p>
+                    — <code>Demand findByPrimaryKey(String strDemandId, String strDemandTypeId, String strCustomerId)</code>: loads a single demand by its composite key.
+                </p>
+                <p>
+                    — <code>Demand create(Demand demand)</code>: persists a new demand and fires <code>IDemandListener.onCreateDemand()</code> on all registered listeners.
+                </p>
+                <p>
+                    — <code>Notification create(Notification notification)</code>: persists a new notification and fires <code>INotificationListener.onCreateNotification()</code>.
+                </p>
+                <p>
+                    — <code>NotificationEvent create(NotificationEvent notificationEvent)</code>: persists a new notification delivery event.
+                </p>
+                <p>
+                    — <code>Demand update(Demand demand)</code>: updates an existing demand and fires <code>IDemandListener.onUpdateDemand()</code>.
+                </p>
+                <p>
+                    — <code>void updateDemandsStatusId(int nNewStatusId, int nTemporaryStatusId)</code>: bulk-updates the status of all demands linked to a given temporary status.
+                </p>
+                <p>
+                    — <code>void remove(String strDemandId, String strDemandTypeId, String strCustomerId)</code>: deletes a demand and fires <code>IDemandListener.onDeleteDemand()</code> and <code>INotificationListener.onDeleteDemand()</code>.
+                </p>
+                <p>
+                    — <code>List&lt;NotificationEvent&gt; findEventsByDateAndDemandTypeIdAndStatus(...)</code>: searches notification events by date range, demand type and status.
+                </p>
+                <p>
+                    — <code>List&lt;DemandType&gt; getDemandTypesList()</code>: returns the full list of demand types.
+                </p>
+                <p>
+                    — <code>Optional&lt;DemandType&gt; getDemandType(String type_id)</code>: returns a demand type by its type identifier.
+                </p>
+                <p>
+                    — <code>List&lt;Integer&gt; getIdsByCustomerIdAndDemandTypeId(String strCustomerId, String strNotificationType, String strIdDemandType)</code>: returns demand identifiers filtered by customer and demand type.
+                </p>
+                <p>
+                    — <code>Optional&lt;TemporaryStatus&gt; getStatusByLabel(String strStatusLabel)</code>: finds a temporary status by label (partial match).
+                </p>
+                <p>
+                    — <code>void deleteAllDemandByCustomerId(String strCustomerId)</code>: deletes all demands and associated data for a given citizen (GDPR erasure use-case).
+                </p>
+                <p>
+                    <code>fr.paris.lutece.plugins.grubusiness.service.notification.INotifierServiceProvider</code> — Notification dispatch service interface.
+                    Implementations handle the actual delivery of notifications to external systems and expose:
+                </p>
+                <p>
+                    — <code>NotifyGruResponse process(Notification notification)</code>: processes a notification and returns an acknowledgement response containing status, warnings and errors.
+                </p>
+                <p>
+                    — <code>String getName()</code>: returns the provider's name (defaults to the class name).
+                </p>
+                <p>
+                    — <code>List&lt;EnumNotificationType&gt; getNotificationTypes()</code>: declares which notification channels (SMS, CUSTOMER_EMAIL, BACKOFFICE, MYDASHBOARD, BROADCAST_EMAIL) this provider handles.
+                </p>
+                <p>
+                    <code>fr.paris.lutece.plugins.grubusiness.service.encryption.ICustomerEncryptionService</code> — Customer data encryption interface. Exposes:
+                </p>
+                <p>
+                    — <code>Customer encrypt(Customer customer, Demand demand)</code>: returns an encrypted copy of the customer for the given demand context.
+                </p>
+                <p>
+                    — <code>Customer encrypt(Customer customer, String strCode)</code>: returns an encrypted copy of the customer using the given code.
+                </p>
+                <p>
+                    — <code>Customer decrypt(Customer customer, Demand demand)</code>: returns a decrypted copy of the customer for the given demand context.
+                </p>
+                <p>
+                    — <code>Customer decrypt(Customer customer, String strCode)</code>: returns a decrypted copy of the customer using the given code.
+                </p>
+                <p>
+                    <code>fr.paris.lutece.plugins.grubusiness.business.indexing.IIndexingService</code> — Generic indexing service interface. Exposes:
+                </p>
+                <p>
+                    — <code>void index(T object)</code>: indexes a single object.
+                </p>
+                <p>
+                    — <code>void indexList(List&lt;T&gt; listObjects)</code>: indexes a list of objects.
+                </p>
+                <p>
+                    — <code>void deleteIndex(T object)</code>: removes the index entry for a given object.
+                </p>
+                <p>
+                    — <code>void deleteAllIndexes()</code>: removes all index entries.
+                </p>
+                <p>
+                    <strong>Generic status enumeration</strong>
+                </p>
+                <p>
+                    The <code>EnumGenericStatus</code> enumeration defines the standard demand statuses used across the GRU platform:
+                    ONGOING (11), TOPAY (12), TOCOMPLETE (13), PAID (14), CLOSED (15), CANCELED (10), UNDEFINED (-1).
+                    The statuses CLOSED, PAID and CANCELED are marked as final statuses.
+                    Internationalized labels are defined in <code>grubusiness_messages.properties</code> (English) and <code>grubusiness_messages_fr.properties</code> (French).
+                </p>
+                <p>
+                    <strong>REST response model</strong>
+                </p>
+                <p>
+                    The classes in <code>fr.paris.lutece.plugins.grubusiness.business.web.rs</code> provide a standard REST response structure for consuming plugins:
+                    <code>SearchResult</code> (abstract base with status, paginator and result count), <code>DemandResult</code> (list of <code>DemandDisplay</code>),
+                    <code>NotificationResult</code> (list of <code>Notification</code>), <code>ResponseStatus</code> (HTTP code + typed status + optional message),
+                    and <code>ResponseStatusFactory</code> (factory methods for all standard HTTP response codes: ok, success, badRequest, unauthorized, notFound, conflict, internalServerError, etc.).
+                </p>
+                <p>
+                    <strong>Listener interfaces</strong>
+                </p>
+                <p>
+                    Plugins wishing to react to demand or notification lifecycle events must implement the following interfaces and register them as Spring beans:
+                </p>
+                <p>
+                    — <code>IDemandListener</code>: <code>onCreateDemand(Demand)</code>, <code>onUpdateDemand(Demand)</code>, <code>onDeleteDemand(String, String)</code>.
+                </p>
+                <p>
+                    — <code>INotificationListener</code>: <code>onCreateNotification(Notification)</code>, <code>onUpdateNotification(Notification)</code>, <code>onDeleteDemand(String, String)</code>.
+                </p>
+                <p>
+                    <strong>Mock implementations for unit testing</strong>
+                </p>
+                <p>
+                    The package <code>fr.paris.lutece.plugins.grubusiness.business.mock</code> provides in-memory implementations of all DAO and listener interfaces:
+                    <code>MockCustomerDAO</code>, <code>MockDemandDAO</code>, <code>MockNotificationDAO</code>, <code>MockNotificationEventDAO</code>,
+                    <code>MockDemandListener</code>, <code>MockNotificationListener</code>. These are intended for unit testing only and must not be used in production configurations.
                 </p>
             </subsection>
+
         </section>
     </body>
 </document>
-

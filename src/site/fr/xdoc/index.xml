@@ -1,78 +1,268 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document>
     <properties>
-        <title>Librairie Grubusiness</title>
+        <title>Plugin gru-library-grubusiness</title>
     </properties>
+    <head>
+        <meta name="keywords" content="gru, usager, demande, notification, crm, citoyen, email, sms, tableau de bord, indexation, chiffrement, lutece"/>
+    </head>
     <body>
-        <section name="Librairie Grubusiness">
+        <section name="Plugin gru-library-grubusiness">
+
             <subsection name="Introduction">
-                <p>Cette librairie met&amp;nbsp;&amp;agrave; disposition un mod&amp;egrave;le et des services pour les objets de la GRU.</p>
+                <p>
+                    La bibliothèque <strong>gru-library-grubusiness</strong> constitue la couche métier partagée de l'écosystème GRU (Gestion de la Relation Usager)
+                    au sein du framework Lutece. Elle ne fournit pas de plugin autonome avec son propre back-office, mais un ensemble de classes de modèle métier,
+                    d'interfaces de service, d'interfaces DAO et de classes utilitaires dont dépendent les autres plugins GRU.
+                </p>
+                <p>
+                    La bibliothèque est organisée autour de trois domaines principaux :
+                </p>
+                <p>
+                    <strong>Gestion des usagers :</strong> La classe <code>Customer</code> modélise un citoyen avec l'ensemble de ses attributs personnels
+                    (identité, coordonnées, informations de compte). La classe <code>CustomerService</code> expose des opérations de recherche (par filtre, par nom, par identifiant)
+                    déléguées à une implémentation pluggable de <code>ICustomerDAO</code>.
+                    L'interface <code>ICustomerEncryptionService</code> permet le chiffrement et le déchiffrement transparents des données d'un usager dans le contexte
+                    d'une demande ou d'un code arbitraire.
+                </p>
+                <p>
+                    <strong>Gestion des demandes :</strong> Une <code>Demand</code> modélise une demande citoyenne avec un statut typé (<code>EnumGenericStatus</code>: ONGOING, TOPAY, TOCOMPLETE, PAID, CLOSED, CANCELED, UNDEFINED),
+                    un identifiant de type, un identifiant de sous-type, une référence, des compteurs d'étapes, les dates de création/modification/clôture,
+                    un usager associé, des actions et des métadonnées libres.
+                    <code>DemandType</code> et <code>DemandCategory</code> permettent la classification des demandes.
+                    Un <code>TemporaryStatus</code> fait la correspondance entre des libellés de statut arbitraires et le statut générique.
+                    L'interface <code>IDemandServiceProvider</code> définit toutes les opérations du cycle de vie (création, mise à jour, suppression, recherche par usager,
+                    par référence, par filtre) et agrège l'accès aux DAOs de notifications, d'événements de notification et de statuts.
+                    Des écouteurs (<code>IDemandListener</code>, <code>INotificationListener</code>) permettent à d'autres composants de réagir aux événements du cycle de vie
+                    des demandes et des notifications.
+                </p>
+                <p>
+                    <strong>Gestion des notifications :</strong> Une <code>Notification</code> agrège tous les canaux de notification associés à une demande :
+                    email à l'usager (<code>EmailNotification</code>), SMS (<code>SMSNotification</code> et sa variante avec compte de facturation <code>BillingAccountBasedSMSNotification</code>),
+                    message à l'agent back-office (<code>BackofficeNotification</code>), notification sur le tableau de bord du citoyen (<code>MyDashboardNotification</code>)
+                    et emails de diffusion (<code>BroadcastNotification</code>, avec destinataires, CC et BCC).
+                    <code>NotificationEvent</code> et <code>Event</code> permettent de journaliser les événements de distribution (succès, échec, rediffusion).
+                    Un <code>NotificationFilter</code> permet d'interroger finement les notifications par demande, usager, type et plage de dates.
+                    <code>ReassignNotificationsRequest</code> prend en charge la réaffectation de l'ensemble des notifications d'un usager vers un autre.
+                </p>
+                <p>
+                    La bibliothèque expose également une interface générique <code>IIndexingService</code> pour l'indexation de tout objet métier,
+                    un modèle de réponse REST (<code>SearchResult</code>, <code>DemandResult</code>, <code>NotificationResult</code>, <code>ResponseStatus</code>, <code>ResponseStatusFactory</code>)
+                    utilisé par les API REST construites sur cette bibliothèque, ainsi que des implémentations de simulation de tous les DAOs à des fins de tests unitaires.
+                </p>
             </subsection>
-            <subsection name="Mod&amp;egrave;le, interface et services">
-                <p>
-                La librairie met&amp;nbsp;&amp;agrave; disposition des objets globaux&amp;nbsp;&amp;agrave; la GRU :
-                <ul>
-                    <li>Notification, une notification du workflow GRU</li>
-                    <li>Demand, des informations sur le ticket GRU</li>
-                    <li>Customer, des informations sur l'usager</li>
-                </ul>
-                </p>
-                <p>
-                Pour manipuler ces objets, un ensemble d'interface et de service sont pr&amp;eacute;sents :
-                <ul>
-                    <li>IDemandDAO, une interface de DAO pour les Demand</li>
-                    <li>IDemandListener, une interface qui est notifi&amp;eacute;&amp;nbsp;&amp;agrave; chaque op&amp;eacute;ration sur Demand via le DemandService</li>
-                    <li>INotificationDAO, une interface de DAO pour les Notification</li>
-                    <li>INotificationListener, une interface qui est notifi&amp;eacute;&amp;nbsp;&amp;agrave; chaque op&amp;eacute;ration sur Notification via le DemandService</li>
-                    <li>DemandService, un service permettant de g&amp;eacute;rer les Demand et les Notification</li>
-                    <li>ICustomerDAO, une interface de DAO pour les Customer</li>
-                    <li>CustomerService, un service permettant de g&amp;eacute;rer les Customer</li>
-                    <li>IIndexingService, une interface pour les indexations</li>
-                </ul> 
-                </p>
-                <p>
-                Attention cette librairie n'a pas d'impl&amp;eacute;mentation utilisable pour ces interfaces.
-                </p>
-            </subsection>
+
             <subsection name="Configuration">
                 <p>
-                La libraire a besoin d'avoir ces DAO et service de correctement configur&amp;eacute; via les contexts Spring.
+                    Cette bibliothèque ne fournit que des interfaces ; toutes les implémentations concrètes sont apportées par les plugins consommateurs
+                    (par exemple plugin-notificationstore, plugin-identitystore, etc.).
+                    Les beans suivants doivent être injectés par configuration Spring dans le plugin consommateur :
                 </p>
                 <p>
-                    Le service DemandService met&amp;nbsp;&amp;agrave; disposition deux constructeurs.
-                    Le premier n'a besoin de recevoir que les impl&amp;eacute;mentations des IDemandDAO et INotificationDAO.
-                    Le second a besoin des DAO ainsi que la liste des impl&amp;eacute;mentations des IDemandListener et INotificationListener.
+                    <strong>Beans à injecter via Spring (ICustomerDAO) :</strong>
+                    Une implémentation de <code>fr.paris.lutece.plugins.grubusiness.business.customer.ICustomerDAO</code> doit être déclarée en tant que bean Spring
+                    et injectée dans <code>CustomerService</code>. Ce DAO assure le chargement des usagers par filtre, par nom ou par identifiant.
+                    Une implémentation de simulation (<code>MockCustomerDAO</code>) est disponible pour les tests.
                 </p>
                 <p>
-                    Le service CustomerService poss&amp;egrave;de un unique constructeur n&amp;eacute;cessitant l'impl&amp;eacute;mentation d'une ICustomerDAO.
+                    <strong>Beans à injecter via Spring (IDemandServiceProvider) :</strong>
+                    Une implémentation de <code>fr.paris.lutece.plugins.grubusiness.business.demand.IDemandServiceProvider</code> doit être fournie.
+                    Ce fournisseur agrège quatre interfaces DAO qui doivent également être injectées :
+                </p>
+                <p>
+                    — <code>fr.paris.lutece.plugins.grubusiness.business.demand.IDemandDAO</code> : persistance des demandes (CRUD, filtrage, réaffectation).
+                </p>
+                <p>
+                    — <code>fr.paris.lutece.plugins.grubusiness.business.demand.IDemandTypeDAO</code> : persistance des types de demande, avec prise en charge des métadonnées (configuration PUSH, sujet par défaut).
+                </p>
+                <p>
+                    — <code>fr.paris.lutece.plugins.grubusiness.business.demand.IDemandCategoryDAO</code> : persistance des catégories de demande.
+                </p>
+                <p>
+                    — <code>fr.paris.lutece.plugins.grubusiness.business.demand.ITemporaryStatusDAO</code> : persistance des statuts temporaires et de leur correspondance avec l'énumération de statuts génériques.
+                </p>
+                <p>
+                    <strong>Beans à injecter via Spring (DAOs de notification) :</strong>
+                </p>
+                <p>
+                    — <code>fr.paris.lutece.plugins.grubusiness.business.notification.INotificationDAO</code> : persistance des notifications avec prise en charge du filtrage, de la réaffectation et des contrôles d'existence.
+                </p>
+                <p>
+                    — <code>fr.paris.lutece.plugins.grubusiness.business.notification.INotificationEventDAO</code> : persistance des événements de distribution de notifications avec purge par date et suppression par usager.
+                </p>
+                <p>
+                    <strong>Beans optionnels :</strong>
+                </p>
+                <p>
+                    — <code>fr.paris.lutece.plugins.grubusiness.service.encryption.ICustomerEncryptionService</code> : si le chiffrement des données usager est requis,
+                    une implémentation de cette interface doit être déclarée comme bean Spring.
+                    Elle fournit des méthodes <code>encrypt</code> et <code>decrypt</code> opérant sur un <code>Customer</code> dans le contexte d'une demande ou d'un code arbitraire.
+                </p>
+                <p>
+                    — <code>fr.paris.lutece.plugins.grubusiness.service.notification.INotifierServiceProvider</code> : les implémentations de cette interface gèrent l'envoi effectif
+                    des notifications vers les systèmes externes. Plusieurs fournisseurs de notification peuvent être enregistrés, chacun déclarant les types de notifications
+                    qu'il prend en charge via <code>getNotificationTypes()</code>.
+                </p>
+                <p>
+                    — <code>fr.paris.lutece.plugins.grubusiness.business.indexing.IIndexingService</code> : si l'indexation des demandes ou des notifications est nécessaire,
+                    une implémentation de cette interface générique doit être fournie et câblée via Spring.
+                </p>
+                <p>
+                    — Des beans implémentant <code>IDemandListener</code> et/ou <code>INotificationListener</code> peuvent être enregistrés via Spring
+                    pour réagir aux événements du cycle de vie des demandes et des notifications.
                 </p>
             </subsection>
-            <subsection name="Exemples de configuration spring">
+
+            <subsection name="Usage">
                 <p>
-                    <b>Configuration utilisant les objets d&amp;eacute;finis dans le plugin plugin-notificationstore</b>
-                    <pre>
-    &lt;bean id="notificationstore.demandDAO"  class="fr.paris.lutece.plugins.notificationstore.business.DemandDAO" /&gt;  
-    &lt;bean id="notificationstore.notificationDAO"  class="fr.paris.lutece.plugins.notificationstore.business.NotificationDAO" /&gt;
-    &lt;bean id="notificationstore.demandListener" class="fr.paris.lutece.plugins.notificationstore.business.listener.LogDemandListener" /&gt;
-    &lt;bean id="notificationstore.notificationListener" class="fr.paris.lutece.plugins.notificationstore.business.listener.LogNotificationListener" /&gt;
-    &lt;bean id="notificationstore.storageService" class="fr.paris.lutece.plugins.grubusiness.business.demand.DemandService"&gt;
-      &lt;constructor-arg ref="notificationstore.demandDAO" /&gt;
-      &lt;constructor-arg ref="notificationstore.notificationDAO" /&gt;
-      &lt;constructor-arg&gt;
-        &lt;list&gt;
-          &lt;ref bean="notificationstore.demandListener" /&gt;
-        &lt;/list&gt;
-      &lt;/constructor-arg&gt;
-      &lt;constructor-arg&gt;
-        &lt;list&gt;
-          &lt;ref bean="notificationstore.notificationListener" /&gt;
-        &lt;/list&gt;
-      &lt;/constructor-arg&gt;
-    &lt;/bean&gt;
-                    </pre>
+                    <strong>Classes de service</strong>
+                </p>
+                <p>
+                    <code>fr.paris.lutece.plugins.grubusiness.business.customer.CustomerService</code> — Service de recherche d'usagers.
+                    Ce service délègue toute la persistance au <code>ICustomerDAO</code> injecté et expose les méthodes publiques suivantes :
+                </p>
+                <p>
+                    — <code>List&lt;Customer&gt; findbyFilter(Map&lt;String, String&gt; mapFilter)</code> : retourne tous les usagers correspondant à la carte de filtres attribut-valeur fournie.
+                </p>
+                <p>
+                    — <code>List&lt;Customer&gt; findbyName(String strFirstName, String strLastName)</code> : retourne tous les usagers correspondant au prénom et au nom donnés.
+                </p>
+                <p>
+                    — <code>Customer findById(String strCustomerId)</code> : retourne l'usager ayant l'identifiant donné, ou <code>null</code> s'il n'est pas trouvé.
+                </p>
+                <p>
+                    <code>fr.paris.lutece.plugins.grubusiness.business.demand.IDemandServiceProvider</code> — Interface centrale de gestion du cycle de vie des demandes et des notifications.
+                    Les implémentations de cette interface (fournies par les plugins consommateurs) exposent le contrat public suivant :
+                </p>
+                <p>
+                    — <code>Collection&lt;Demand&gt; findByCustomerId(String strCustomerId)</code> : recherche toutes les demandes d'un citoyen donné.
+                </p>
+                <p>
+                    — <code>Collection&lt;Demand&gt; findByReference(String strReference)</code> : recherche toutes les demandes correspondant à une référence.
+                </p>
+                <p>
+                    — <code>Demand findByPrimaryKey(String strDemandId, String strDemandTypeId, String strCustomerId)</code> : charge une demande unique par sa clé composite.
+                </p>
+                <p>
+                    — <code>Demand create(Demand demand)</code> : persiste une nouvelle demande et déclenche <code>IDemandListener.onCreateDemand()</code> sur tous les écouteurs enregistrés.
+                </p>
+                <p>
+                    — <code>Notification create(Notification notification)</code> : persiste une nouvelle notification et déclenche <code>INotificationListener.onCreateNotification()</code>.
+                </p>
+                <p>
+                    — <code>NotificationEvent create(NotificationEvent notificationEvent)</code> : persiste un nouvel événement de distribution de notification.
+                </p>
+                <p>
+                    — <code>Demand update(Demand demand)</code> : met à jour une demande existante et déclenche <code>IDemandListener.onUpdateDemand()</code>.
+                </p>
+                <p>
+                    — <code>void updateDemandsStatusId(int nNewStatusId, int nTemporaryStatusId)</code> : met à jour en masse le statut de toutes les demandes liées à un statut temporaire donné.
+                </p>
+                <p>
+                    — <code>void remove(String strDemandId, String strDemandTypeId, String strCustomerId)</code> : supprime une demande et déclenche <code>IDemandListener.onDeleteDemand()</code> et <code>INotificationListener.onDeleteDemand()</code>.
+                </p>
+                <p>
+                    — <code>List&lt;NotificationEvent&gt; findEventsByDateAndDemandTypeIdAndStatus(...)</code> : recherche des événements de notification par plage de dates, type de demande et statut.
+                </p>
+                <p>
+                    — <code>List&lt;DemandType&gt; getDemandTypesList()</code> : retourne la liste complète des types de demande.
+                </p>
+                <p>
+                    — <code>Optional&lt;DemandType&gt; getDemandType(String type_id)</code> : retourne un type de demande par son identifiant.
+                </p>
+                <p>
+                    — <code>List&lt;Integer&gt; getIdsByCustomerIdAndDemandTypeId(String strCustomerId, String strNotificationType, String strIdDemandType)</code> : retourne les identifiants de demandes filtrés par usager et type de demande.
+                </p>
+                <p>
+                    — <code>Optional&lt;TemporaryStatus&gt; getStatusByLabel(String strStatusLabel)</code> : recherche un statut temporaire par libellé (correspondance partielle).
+                </p>
+                <p>
+                    — <code>void deleteAllDemandByCustomerId(String strCustomerId)</code> : supprime toutes les demandes et données associées pour un citoyen donné (cas d'usage RGPD — droit à l'effacement).
+                </p>
+                <p>
+                    <code>fr.paris.lutece.plugins.grubusiness.service.notification.INotifierServiceProvider</code> — Interface de service d'envoi de notifications.
+                    Les implémentations gèrent la distribution effective des notifications vers les systèmes externes et exposent :
+                </p>
+                <p>
+                    — <code>NotifyGruResponse process(Notification notification)</code> : traite une notification et retourne une réponse d'accusé de réception contenant le statut, les avertissements et les erreurs.
+                </p>
+                <p>
+                    — <code>String getName()</code> : retourne le nom du fournisseur (par défaut, le nom de la classe).
+                </p>
+                <p>
+                    — <code>List&lt;EnumNotificationType&gt; getNotificationTypes()</code> : déclare les canaux de notification (SMS, CUSTOMER_EMAIL, BACKOFFICE, MYDASHBOARD, BROADCAST_EMAIL) pris en charge par ce fournisseur.
+                </p>
+                <p>
+                    <code>fr.paris.lutece.plugins.grubusiness.service.encryption.ICustomerEncryptionService</code> — Interface de chiffrement des données usager. Expose :
+                </p>
+                <p>
+                    — <code>Customer encrypt(Customer customer, Demand demand)</code> : retourne une copie chiffrée de l'usager dans le contexte de la demande donnée.
+                </p>
+                <p>
+                    — <code>Customer encrypt(Customer customer, String strCode)</code> : retourne une copie chiffrée de l'usager à l'aide du code donné.
+                </p>
+                <p>
+                    — <code>Customer decrypt(Customer customer, Demand demand)</code> : retourne une copie déchiffrée de l'usager dans le contexte de la demande donnée.
+                </p>
+                <p>
+                    — <code>Customer decrypt(Customer customer, String strCode)</code> : retourne une copie déchiffrée de l'usager à l'aide du code donné.
+                </p>
+                <p>
+                    <code>fr.paris.lutece.plugins.grubusiness.business.indexing.IIndexingService</code> — Interface de service d'indexation générique. Expose :
+                </p>
+                <p>
+                    — <code>void index(T object)</code> : indexe un objet unique.
+                </p>
+                <p>
+                    — <code>void indexList(List&lt;T&gt; listObjects)</code> : indexe une liste d'objets.
+                </p>
+                <p>
+                    — <code>void deleteIndex(T object)</code> : supprime l'entrée d'index d'un objet donné.
+                </p>
+                <p>
+                    — <code>void deleteAllIndexes()</code> : supprime toutes les entrées d'index.
+                </p>
+                <p>
+                    <strong>Énumération des statuts génériques</strong>
+                </p>
+                <p>
+                    L'énumération <code>EnumGenericStatus</code> définit les statuts de demande standard utilisés sur l'ensemble de la plateforme GRU :
+                    EN_COURS (11), À_RÉGLER (12), À_COMPLÉTER (13), ACQUITTÉE (14), TERMINÉE (15), ANNULÉE (10), NON_DÉFINI (-1).
+                    Les statuts TERMINÉE, ACQUITTÉE et ANNULÉE sont marqués comme statuts finaux.
+                    Les libellés internationalisés sont définis dans <code>grubusiness_messages.properties</code> (anglais) et <code>grubusiness_messages_fr.properties</code> (français).
+                </p>
+                <p>
+                    <strong>Modèle de réponse REST</strong>
+                </p>
+                <p>
+                    Les classes du package <code>fr.paris.lutece.plugins.grubusiness.business.web.rs</code> fournissent une structure de réponse REST normalisée pour les plugins consommateurs :
+                    <code>SearchResult</code> (base abstraite avec statut, paginateur et nombre de résultats), <code>DemandResult</code> (liste de <code>DemandDisplay</code>),
+                    <code>NotificationResult</code> (liste de <code>Notification</code>), <code>ResponseStatus</code> (code HTTP + statut typé + message optionnel),
+                    et <code>ResponseStatusFactory</code> (méthodes de fabrique pour tous les codes de réponse HTTP standards : ok, success, badRequest, unauthorized, notFound, conflict, internalServerError, etc.).
+                </p>
+                <p>
+                    <strong>Interfaces d'écouteurs</strong>
+                </p>
+                <p>
+                    Les plugins souhaitant réagir aux événements du cycle de vie des demandes ou des notifications doivent implémenter les interfaces suivantes et les enregistrer comme beans Spring :
+                </p>
+                <p>
+                    — <code>IDemandListener</code> : <code>onCreateDemand(Demand)</code>, <code>onUpdateDemand(Demand)</code>, <code>onDeleteDemand(String, String)</code>.
+                </p>
+                <p>
+                    — <code>INotificationListener</code> : <code>onCreateNotification(Notification)</code>, <code>onUpdateNotification(Notification)</code>, <code>onDeleteDemand(String, String)</code>.
+                </p>
+                <p>
+                    <strong>Implémentations de simulation pour les tests unitaires</strong>
+                </p>
+                <p>
+                    Le package <code>fr.paris.lutece.plugins.grubusiness.business.mock</code> fournit des implémentations en mémoire de toutes les interfaces DAO et écouteur :
+                    <code>MockCustomerDAO</code>, <code>MockDemandDAO</code>, <code>MockNotificationDAO</code>, <code>MockNotificationEventDAO</code>,
+                    <code>MockDemandListener</code>, <code>MockNotificationListener</code>.
+                    Ces classes sont destinées aux tests unitaires uniquement et ne doivent pas être utilisées dans les configurations de production.
                 </p>
             </subsection>
+
         </section>
     </body>
 </document>
-
