@@ -38,6 +38,7 @@ import java.util.Map;
 
 public enum EnumGenericStatus
 {
+	CONFIRMED(16,"grubusiness.enum.generic_status.label.confirmed",false ),
     CLOSED( 15, "grubusiness.enum.generic_status.label.closed", true ),
     PAID( 14, "grubusiness.enum.generic_status.label.paid", true ),
     TOCOMPLETE( 13, "grubusiness.enum.generic_status.label.tocomplete", false ),
