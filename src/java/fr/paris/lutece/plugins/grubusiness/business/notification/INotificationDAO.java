@@ -157,7 +157,7 @@ public interface INotificationDAO
      * @param nDemandTypeId
      * @return true id exists
      */
-    boolean existsNotificationWithDemandTypeId( int nDemandTypeId );
+    boolean existsNotificationWithDemandTypeId( String strDemandTypeId );
 
 	/**
 	 * Reassign notifications

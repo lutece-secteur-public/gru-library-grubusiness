@@ -284,7 +284,7 @@ public class MockNotificationDAO implements INotificationDAO
     }
 
 	@Override
-	public boolean existsNotificationWithDemandTypeId(int nDemandTypeId) 
+	public boolean existsNotificationWithDemandTypeId(String strDemandTypeId) 
 	{
 		return true;
 	}
