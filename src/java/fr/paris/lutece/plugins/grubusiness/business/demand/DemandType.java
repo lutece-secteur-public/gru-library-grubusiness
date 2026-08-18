@@ -44,7 +44,7 @@ public class DemandType
     private int _nId;
     
     @JsonProperty( "id_demand_type" )
-    private int _nIdDemandType;
+    private String _strIdDemandType;
 
     @JsonProperty( "label" )
     private String _strLabel;
@@ -83,21 +83,21 @@ public class DemandType
      * @return the id demand type
      */
     @JsonProperty( "id_demand_type" )
-    public int getIdDemandType( )
+    public String getIdDemandType( )
     {
-        return _nIdDemandType;
+        return _strIdDemandType;
     }
 
     /**
      * Set the id demand type
      * 
-     * @param nIdDemandType
+     * @param strIdDemandType
      *            the id deman type
      */
     @JsonProperty( "id_demand_type" )
-    public void setIdDemandType( int nIdDemandType )
+    public void setIdDemandType( String strIdDemandType )
     {
-        _nIdDemandType = nIdDemandType;
+        _strIdDemandType = strIdDemandType;
     }
 
     /**
@@ -160,7 +160,7 @@ public class DemandType
     /**
      * Set the app code
      * 
-     * @param strUrl
+     * @param strAppCode
      *            the app code
      */
     public void setAppCode( String strAppCode )
